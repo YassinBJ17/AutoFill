@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" kind="function" name="BoolToUint32">
+	<inputs>
+		<Variable name="InputBool">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/4a0e/50DF/2BEC/5cade9bb7c2c"/>
+			</pragmas>
+		</Variable>
+	</inputs>
+	<outputs>
+		<Variable name="OutNumeric">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/4a0d/50DF/2BEC/5cade9bb62c9"/>
+			</pragmas>
+		</Variable>
+	</outputs>
+	<locals>
+		<Variable name="_L1">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/4a09/50DF/2BEC/5cade9bb6b68"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L2">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/4a0a/50DF/2BEC/5cade9bb29c7"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L3">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/4a0b/50DF/2BEC/5cade9bb74c5"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L4">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/4a0c/50DF/2BEC/5cade9bb4f6b"/>
+			</pragmas>
+		</Variable>
+	</locals>
+	<data>
+		<!-- _L1 = K_U_one; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L1"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="K_U_one"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/4a03/50DF/2BEC/5cade9bb6049"/>
+			</pragmas>
+		</Equation>
+		<!-- _L2 = K_U_zero; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L2"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="K_U_zero"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/4a04/50DF/2BEC/5cade9bb738a"/>
+			</pragmas>
+		</Equation>
+		<!-- _L3 = if _L4 then (_L1) else (_L2); -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L3"/>
+			</lefts>
+			<right>
+				<!-- if _L4 then (_L1) else (_L2) -->
+				<IfThenElseOp name="1">
+					<if>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L4"/>
+							</path>
+						</IdExpression>
+					</if>
+					<then>
+						<ListExpression>
+							<items>
+								<IdExpression>
+									<path>
+										<ConstVarRef name="_L1"/>
+									</path>
+								</IdExpression>
+							</items>
+						</ListExpression>
+					</then>
+					<else>
+						<ListExpression>
+							<items>
+								<IdExpression>
+									<path>
+										<ConstVarRef name="_L2"/>
+									</path>
+								</IdExpression>
+							</items>
+						</ListExpression>
+					</else>
+				</IfThenElseOp>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/4a05/50DF/2BEC/5cade9bb67e9"/>
+			</pragmas>
+		</Equation>
+		<!-- _L4 = InputBool; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L4"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="InputBool"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/4a06/50DF/2BEC/5cade9bb27d4"/>
+			</pragmas>
+		</Equation>
+		<!-- OutNumeric = _L3; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="OutNumeric"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="_L3"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/4a07/50DF/2BEC/5cade9bb5aae"/>
+			</pragmas>
+		</Equation>
+	</data>
+	<pragmas>
+		<ed:Operator oid="!ed/4a02/50DF/2BEC/5cade9bb5cb3" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+			<comment>OutNumeric will be set to the unsigned 32 bit integer 1 if the InputBool is equal to TRUE, </comment>
+			<comment>otherwise it willl be set to unsigned 32 bit integer zero.</comment>
+			<diagrams>
+				<NetDiagram name="diagram_BoolToUint32_1" landscape="true" format="A4 (210 297)" oid="!ed/4a08/50DF/2BEC/5cade9bb4d3e">
+					<comment>Nature:LLR</comment>
+					<presentationElements>
+						<EquationGE kind="OBJ_LIT" presentable="!ed/4a03/50DF/2BEC/5cade9bb6049">
+							<position>
+								<Point x="8837" y="5662"/>
+							</position>
+							<size>
+								<Size width="212" height="318"/>
+							</size>
+						</EquationGE>
+						<EquationGE kind="OBJ_LIT" presentable="!ed/4a04/50DF/2BEC/5cade9bb738a">
+							<position>
+								<Point x="8943" y="6191"/>
+							</position>
+							<size>
+								<Size width="211" height="317"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/4a05/50DF/2BEC/5cade9bb67e9">
+							<position>
+								<Point x="11218" y="5265"/>
+							</position>
+							<size>
+								<Size width="1471" height="1604"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="2" srcEquation="!ed/4a03/50DF/2BEC/5cade9bb6049" dstEquation="!ed/4a05/50DF/2BEC/5cade9bb67e9">
+							<positions>
+								<Point x="9049" y="5821"/>
+								<Point x="10134" y="5821"/>
+								<Point x="10134" y="5821"/>
+								<Point x="11218" y="5821"/>
+							</positions>
+						</Edge>
+						<Edge leftVarIndex="1" rightExprIndex="3" srcEquation="!ed/4a04/50DF/2BEC/5cade9bb738a" dstEquation="!ed/4a05/50DF/2BEC/5cade9bb67e9">
+							<positions>
+								<Point x="9155" y="6350"/>
+								<Point x="10186" y="6350"/>
+								<Point x="10186" y="6350"/>
+								<Point x="11218" y="6350"/>
+							</positions>
+						</Edge>
+						<EquationGE presentable="!ed/4a06/50DF/2BEC/5cade9bb27d4">
+							<position>
+								<Point x="7382" y="3784"/>
+							</position>
+							<size>
+								<Size width="264" height="502"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/4a06/50DF/2BEC/5cade9bb27d4" dstEquation="!ed/4a05/50DF/2BEC/5cade9bb67e9">
+							<positions>
+								<Point x="7646" y="4048"/>
+								<Point x="11959" y="4048"/>
+								<Point x="11959" y="5265"/>
+							</positions>
+						</Edge>
+						<EquationGE presentable="!ed/4a07/50DF/2BEC/5cade9bb5aae">
+							<position>
+								<Point x="13758" y="5821"/>
+							</position>
+							<size>
+								<Size width="317" height="503"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/4a05/50DF/2BEC/5cade9bb67e9" dstEquation="!ed/4a07/50DF/2BEC/5cade9bb5aae">
+							<positions>
+								<Point x="12700" y="6085"/>
+								<Point x="13811" y="6085"/>
+								<Point x="13811" y="6085"/>
+								<Point x="13811" y="6085"/>
+							</positions>
+						</Edge>
+					</presentationElements>
+				</NetDiagram>
+			</diagrams>
+		</ed:Operator>
+	</pragmas>
+</Operator>

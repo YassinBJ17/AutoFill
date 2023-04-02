@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/cartridge/cartridge_init.o: R:/source/oss/cartridge/cartridge_init.c R:/source/shared/type/mcp_types.h R:/source/oss/cartridge/cartridge_public.h R:/source/lib_critical_service/libtools/memory/LIB_MEM_public.h

@@ -1,0 +1,4 @@
+-target_dir "..\..\LIBBSP_api\LIBBSP_TYPE\inc_gen" -target C -name_length 128 -significance_length 127 -user_config "user_macros_libbsp.h" -probes -separate_io_all
+-root DummyForGeneration
+"..\..\LIBBSP_api\LIBBSP_TYPE\LIBBSP_types_consts.xscade"
+"..\LIBBSP_TYPE\DummyForGeneration.xscade"

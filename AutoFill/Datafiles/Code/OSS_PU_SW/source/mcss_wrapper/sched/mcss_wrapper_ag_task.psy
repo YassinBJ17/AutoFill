@@ -1,0 +1,55 @@
+/* --------------------------------------------------------------------------
+ *                        SAFRAN Electronics & Defense
+ *                   Reproduction and disclosure forbidden.
+ * --------------------------------------------------------------------------
+ * DESCRIPTION : MCSS task
+ * -------------------------------------------------------------------------- */
+
+/* ---------- include provided interface: ----------------------------------- */
+#include "sched/clock_data.psyh"
+#include "main/mcss_wrapper_task_public.h"
+
+/* ---------- include required interface: ----------------------------------- */
+
+/* ---------- internal define constants: ------------------------------------ */
+
+/* ---------- internal types: ----------------------------------------------- */
+
+/* ---------- provided constants: ------------------------------------------- */
+
+/* ---------- provided data: ------------------------------------------------ */
+
+/* ---------- internal constants: ------------------------------------------- */
+
+/* ---------- internal data: ------------------------------------------------ */
+
+/* ---------- provided operation bodies: ------------------------------------ */
+/* Implements REQ_FADEX_OS_SRD-SCHED-0010 */
+/* Implements REQ_FADEX_OS_SRD-SCHED-0030 */
+/* MCSS task agent to schedule applicative software */
+agent mcss_wrapper_ag_task(uses SOURCE,
+                           starttime 2 with clock_10ms_offset_4ms)
+{
+   body start
+   {
+      /* Initialize applicative software environment for MCSS */
+      mcss_wrapper_init();
+
+      /* 2.5ms for the MCSS task, then advance to the next tick */
+      timebudget budget_ag_mcss_wrapper_task_1, advance 3 with clock_1ms;
+      timebudget budget_ag_mcss_wrapper_task_compil_1, advance 7 with clock_1ms;
+      next run;
+   }
+
+   body run
+   {
+      /* Call the applicative task for the scheduling MCSS */
+      mcss_wrapper_task();
+
+      /* 2.5ms for the MCSS task, then advance to the next tick */
+      timebudget budget_ag_mcss_wrapper_task_2, advance 3 with clock_1ms;
+      timebudget budget_ag_mcss_wrapper_task_compil_2, advance 7 with clock_1ms;
+   }
+}
+
+/* ---------- internal operations: ------------------------------------------ */

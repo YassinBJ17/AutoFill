@@ -1,0 +1,13 @@
+LIB_NAME := LIBBSP_FLOAT
+SCI := LIBBSP
+SOURCES_FILES:=\
+LIBBSP_FLOAT_SetFPR.c\
+LIBBSP_FLOAT_GetFPR.c
+
+INCLUDE_FILES := ../../LIBBSP_api/LIBBSP_FLOAT
+
+include ../../Makefile/MakefileLib.mk
+
+
+
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" kind="function" external="imported" name="IsSubnormal">
+	<inputs>
+		<Variable name="X">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1f65e/6395/1610/5bbb5bbcd65"/>
+			</pragmas>
+		</Variable>
+	</inputs>
+	<outputs>
+		<Variable name="IsSubnormal">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1f668/6395/1610/5bbb5bce7de6"/>
+			</pragmas>
+		</Variable>
+	</outputs>
+	<pragmas>
+		<ed:Operator oid="!ed/1f65d/6395/1610/5bbb5b7f67ca" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+			<comment>This symbol produces the output isSubnormal as the result of the comparison if the input x is a &quot;subnormal&quot; number (true) or not (false).</comment>
+		</ed:Operator>
+		<kcg:Pragma>
+			C:name IsSubnormal
+		</kcg:Pragma>
+		<kcg:Pragma>
+			keep
+		</kcg:Pragma>
+	</pragmas>
+</Operator>

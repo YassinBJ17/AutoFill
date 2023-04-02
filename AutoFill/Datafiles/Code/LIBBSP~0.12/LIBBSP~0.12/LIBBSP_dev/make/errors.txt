@@ -1,0 +1,22 @@
+mingw32-make : "LIBBSP_CMN_GetTicks.c", line 17: warning (dcc:1521): missing return expression
+Au caractŠre Ligne:1 : 1
++ mingw32-make -f makefile.mk all 2>&1 | tee ..\..\LIBBSP_gen\BUILD_LOG ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ("LIBBSP_CMN_Get...turn expression:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+"HW_TBL.c", line 18: warning (dcc:1521): missing return expression
+"smi.c", line 62: warning (dcc:1604): Useless assignment to variable value. Assigned value not used.
+"smi.c", line 90: warning (dcc:1604): Useless assignment to variable value. Assigned value not used.
+"smi.c", line 129: warning (dcc:1604): Useless assignment to variable value. Assigned value not used.
+"phy_connect.c", line 13: warning (dcc:1604): Useless assignment to variable unused. Assigned value not used.
+"LIBBSP_FLOAT_SetFPR.c", line 15: warning (dcc:1516): parameter v_FPSCR is never used
+"LIBBSP_FLOAT_GetFPR.c", line 17: warning (dcc:1521): missing return expression
+"LIBBSP_FNOR_Open.c", line 56: warning (dcc:1607): variable v_FlashStatus is used before set
+"LIBBSP_FNOR_ClearFlagStatusReg.c", line 25: warning (dcc:1607): variable v_ret is used before set
+"LIBBSP_I2C_Reset.c", line 25: warning (dcc:1604): Useless assignment to variable v_ret. Assigned value not used.
+"LIBBSP_I2C_Reset.c", line 35: warning (dcc:1604): Useless assignment to variable v_ret. Assigned value not used.
+"LIBBSP_SPI_Exchange.c", line 25: warning (dcc:1604): Useless assignment to variable v_ReturnErrorCode. Assigned value 
+not used.
+"LIBBSP_TEMP_Close.c", line 23: warning (dcc:1519): expression not used!
+"LIBBSP_TEMP_Open.c", line 21: warning (dcc:1518): variable v_state is never used

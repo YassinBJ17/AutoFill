@@ -1,0 +1,64 @@
+; ------------------------------------------------------------------------------
+;                        SAFRAN Electronics & Defense
+;                   Reproduction and disclosure forbidden.
+; ------------------------------------------------------------------------------
+; DESCRIPTION : Launch the RSF g1_2_3 or g4 with internal or external source
+; ------------------------------------------------------------------------------
+
+; Source choice / rsf init / flash mode :
+;update_rsf_info : 0 => do not udpate RSF info in MRAM
+;update_rsf_info : 1 => udpate RSF g4     info in MRAM
+;update_rsf_info : 2 => udpate RSF g1_2_3 info in MRAM
+entry &is_int_src &update_rsf_info &flash_mode
+
+; Call the main function
+do R:/tools/trace32/auxiliary/scripts_caller.cmm &is_int_src &flash_mode
+
+; Finish the boot
+do R:/tools/trace32/auxiliary/finish_boot.cmm &update_rsf_info
+
+; Cancel AS calls when no AS is flashed :
+do R:/tools/trace32/auxiliary/cancel_as_calls.cmm
+
+; Configure UOD in ICDL mode in MRAM :
+;   -> UOD OSS_PU
+;Data.Set SD:0x200103E4 %BE %Long 0x03FFFFFF
+;Data.Set SD:0x200103E8 %BE %Long 0xFFFFFF03
+;   -> UOD AS 
+;Data.Set SD:0x200103F4 %BE %Long 0x03FFFFFF
+;Data.Set SD:0x200103F8 %BE %Long 0xFFFFFF03
+
+; Configure UOD in RS mode in MRAM :
+;   -> UOD OSS_PU
+Data.Set SD:0x200103E4 %BE %Long 0x00FFFFFF
+Data.Set SD:0x200103E8 %BE %Long 0xFFFFFF00
+;   -> UOD AS 
+Data.Set SD:0x200103F4 %BE %Long 0x00FFFFFF
+Data.Set SD:0x200103F8 %BE %Long 0xFFFFFF00
+
+
+; Notify user :
+if &is_int_src==1
+(
+	PRINT "[INF] Internal source configured."
+)
+else
+(
+	PRINT "[INF] External source configured."
+)
+
+if &update_rsf_info==0
+(
+	PRINT "[INF] No MRAM modification (previous rsf kept)."
+)
+if &update_rsf_info==1
+(
+	PRINT "[INF] g4 rsf selected."
+)
+if &update_rsf_info==2
+(
+	PRINT "[INF] g1_2_3 rsf selected."
+)
+
+; End the function
+enddo

@@ -1,0 +1,3 @@
+#include "LIBBSP_UART_InitInputLink.h"
+
+ uint32_t switch_BaudRate(const TE_LIBBSP_UART_Speed baudrate) {    uint32_t RxBaudRate;    switch ( baudrate )    {    case E_LIBBSP_UART_BAUDS_9600:       RxBaudRate = 0x1047ul;       break;    case E_LIBBSP_UART_BAUDS_19200:       RxBaudRate = 0x0823ul;       break;    case E_LIBBSP_UART_BAUDS_38400:       RxBaudRate = 0x0412ul;       break;    case E_LIBBSP_UART_BAUDS_115200:       RxBaudRate = 0x015Cul;       break;    case E_LIBBSP_UART_BAUDS_460800:       RxBaudRate = 0x0057ul;       break;    case E_LIBBSP_UART_BAUDS_921600:       RxBaudRate = 0x002Cul;       break;    default:        RxBaudRate = 0x015Cul ;       break;    }    return RxBaudRate; }

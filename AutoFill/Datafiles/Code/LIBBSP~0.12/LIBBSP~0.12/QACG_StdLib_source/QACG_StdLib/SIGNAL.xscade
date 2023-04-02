@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Package name="SIGNAL">
+			<declarations>
+				<Operator name="Gain_r" href="Gain_r.xscade"/>
+				<Operator name="Gain_i" href="Gain_i.xscade"/>
+				<Operator name="Gain" href="Gain.xscade"/>
+			</declarations>
+			<pragmas>
+				<ed:Package oid="!ed/15/C6C/A6C/51cadfaa672a" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+					<diagrams>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/16/C6C/A6C/51cadfaa7864" blockKind="constants"/>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/17/C6C/A6C/51cadfaa4376" blockKind="types"/>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/18/C6C/A6C/51cadfaa732d" blockKind="sensors"/>
+					</diagrams>
+				</ed:Package>
+			</pragmas>
+		</Package>
+	</declarations>
+</File>

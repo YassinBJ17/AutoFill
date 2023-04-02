@@ -1,0 +1,5186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Type name="TE_LIBBSP_TMP_Number">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_TMP_TMP1">
+							<pragmas>
+								<ed:Value oid="!ed/4b4d/40EA/120E0/5da5ccb47098"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TMP_TMP2">
+							<pragmas>
+								<ed:Value oid="!ed/4b4e/40EA/120E0/5da5ccb45b76"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TMP_TMP3">
+							<pragmas>
+								<ed:Value oid="!ed/4b4f/40EA/120E0/5da5ccb45d3a"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4b4c/40EA/120E0/5da5ccb45e4b"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_TEMP_ReadRegAddr">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_HIGH_BYTE">
+							<pragmas>
+								<ed:Value oid="!ed/4b2e/40EA/120E0/5da5ccb44970"/>
+								<kcg:Pragma>
+									C:enum_val 0x0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_LOCAL_REMOTE_HIGH_BYTE">
+							<pragmas>
+								<ed:Value oid="!ed/4b2f/40EA/120E0/5da5ccb46176"/>
+								<kcg:Pragma>
+									C:enum_val 0x1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_STATUS_REGISTER">
+							<pragmas>
+								<ed:Value oid="!ed/4b30/40EA/120E0/5da5ccb4708e"/>
+								<kcg:Pragma>
+									C:enum_val 0x2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_CONFIGURATION_REGISTER">
+							<pragmas>
+								<ed:Value oid="!ed/4b31/40EA/120E0/5da5ccb46af9"/>
+								<kcg:Pragma>
+									C:enum_val 0x3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_CONVERSION_RATE_REGISTER">
+							<pragmas>
+								<ed:Value oid="!ed/4b32/40EA/120E0/5da5ccb43d0f"/>
+								<kcg:Pragma>
+									C:enum_val 0x4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_HIGH_LIMIT">
+							<pragmas>
+								<ed:Value oid="!ed/4b33/40EA/120E0/5da5ccb4197b"/>
+								<kcg:Pragma>
+									C:enum_val 0x5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_LOW_LIMIT">
+							<pragmas>
+								<ed:Value oid="!ed/4b34/40EA/120E0/5da5ccb481c"/>
+								<kcg:Pragma>
+									C:enum_val 0x6
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_HIGH_LIMIT_HIGH_BITE">
+							<pragmas>
+								<ed:Value oid="!ed/4b35/40EA/120E0/5da5ccb47cba"/>
+								<kcg:Pragma>
+									C:enum_val 0x7
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_LOW_LIMIT_HIGH_BITE">
+							<pragmas>
+								<ed:Value oid="!ed/4b36/40EA/120E0/5da5ccb438cf"/>
+								<kcg:Pragma>
+									C:enum_val 0x8
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_LOW_BITE">
+							<pragmas>
+								<ed:Value oid="!ed/4b37/40EA/120E0/5da5ccb46473"/>
+								<kcg:Pragma>
+									C:enum_val 0x10
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_OFFSET_HIGH_BITE">
+							<pragmas>
+								<ed:Value oid="!ed/4b38/40EA/120E0/5da5ccb478d3"/>
+								<kcg:Pragma>
+									C:enum_val 0x11
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_OFFSET_LOW_BITE">
+							<pragmas>
+								<ed:Value oid="!ed/4b39/40EA/120E0/5da5ccb410fd"/>
+								<kcg:Pragma>
+									C:enum_val 0x12
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_HIGH_LIMIT_LOW_BITE">
+							<pragmas>
+								<ed:Value oid="!ed/4b3a/40EA/120E0/5da5ccb43714"/>
+								<kcg:Pragma>
+									C:enum_val 0x13
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_LOW_LIMIT_LOW_BITE">
+							<pragmas>
+								<ed:Value oid="!ed/4b3b/40EA/120E0/5da5ccb46dbd"/>
+								<kcg:Pragma>
+									C:enum_val 0x14
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_LOW_BYTE">
+							<pragmas>
+								<ed:Value oid="!ed/4b3c/40EA/120E0/5da5ccb430e3"/>
+								<kcg:Pragma>
+									C:enum_val 0x15
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_THERM_LIMIT">
+							<pragmas>
+								<ed:Value oid="!ed/4b3d/40EA/120E0/5da5ccb44c3e"/>
+								<kcg:Pragma>
+									C:enum_val 0x19
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_THERM_LIMIT">
+							<pragmas>
+								<ed:Value oid="!ed/4b3e/40EA/120E0/5da5ccb43d35"/>
+								<kcg:Pragma>
+									C:enum_val 0x20
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_THERM_HISTERESYS">
+							<pragmas>
+								<ed:Value oid="!ed/4b3f/40EA/120E0/5da5ccb4cec"/>
+								<kcg:Pragma>
+									C:enum_val 0x21
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_CONSECUTIVE_ALTER">
+							<pragmas>
+								<ed:Value oid="!ed/4b40/40EA/120E0/5da5ccb432e8"/>
+								<kcg:Pragma>
+									C:enum_val 0x22
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_FACTOR_CORECTION">
+							<pragmas>
+								<ed:Value oid="!ed/4b41/40EA/120E0/5da5ccb44ac2"/>
+								<kcg:Pragma>
+									C:enum_val 0x23
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_DIGITAL_FILTER_CONTROL">
+							<pragmas>
+								<ed:Value oid="!ed/4b42/40EA/120E0/5da5ccb44a38"/>
+								<kcg:Pragma>
+									C:enum_val 0x24
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_TEMP_READ_DIGITAL_MANUFATURER_IR">
+							<pragmas>
+								<ed:Value oid="!ed/4b43/40EA/120E0/5da5ccb4977"/>
+								<kcg:Pragma>
+									C:enum_val 0xFE
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4b2d/40EA/120E0/5da5ccb463eb"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_SHM_Mode">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_SHM_POWER_UP_STATE">
+							<pragmas>
+								<ed:Value oid="!ed/4b0c/40EA/120E0/5da5ccb4249c"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_SHM_INITIALIZATION_STATE">
+							<pragmas>
+								<ed:Value oid="!ed/4b0d/40EA/120E0/5da5ccb41e42"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_SHM_IDLE_STATE">
+							<pragmas>
+								<ed:Value oid="!ed/4b0e/40EA/120E0/5da5ccb4c9a"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_SHM_OPERATIONNAL_UP_STATE">
+							<pragmas>
+								<ed:Value oid="!ed/4b0f/40EA/120E0/5da5ccb46764"/>
+								<kcg:Pragma>
+									C:enum_val 8
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_SHM_DEGRADED_STATE">
+							<pragmas>
+								<ed:Value oid="!ed/4b10/40EA/120E0/5da5ccb47e82"/>
+								<kcg:Pragma>
+									C:enum_val 16
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_SHM_FAILURE_STATE">
+							<pragmas>
+								<ed:Value oid="!ed/4b11/40EA/120E0/5da5ccb437e4"/>
+								<kcg:Pragma>
+									C:enum_val 32
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4b0b/40EA/120E0/5da5ccb4b25"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_PSUM_Adc">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_PSUM_ADC_1">
+							<pragmas>
+								<ed:Value oid="!ed/4af8/40EA/120E0/5da5ccb46547"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_PSUM_ADC_2">
+							<pragmas>
+								<ed:Value oid="!ed/4af9/40EA/120E0/5da5ccb43cce"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_PSUM_ADC_3">
+							<pragmas>
+								<ed:Value oid="!ed/4afa/40EA/120E0/5da5ccb45c13"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_PSUM_ADC_4">
+							<pragmas>
+								<ed:Value oid="!ed/4afb/40EA/120E0/5da5ccb41169"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_PSUM_ADC_5">
+							<pragmas>
+								<ed:Value oid="!ed/4afc/40EA/120E0/5da5ccb469ec"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_PSUM_ADC_6">
+							<pragmas>
+								<ed:Value oid="!ed/4afd/40EA/120E0/5da5ccb42104"/>
+								<kcg:Pragma>
+									C:enum_val 5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_PSUM_ADC_7">
+							<pragmas>
+								<ed:Value oid="!ed/4afe/40EA/120E0/5da5ccb47b46"/>
+								<kcg:Pragma>
+									C:enum_val 6
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_PSUM_NB_ADC">
+							<pragmas>
+								<ed:Value oid="!ed/4aff/40EA/120E0/5da5ccb4698d"/>
+								<kcg:Pragma>
+									C:enum_val 7
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4af7/40EA/120E0/5da5ccb446d5"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_SHM_Register">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_SHM_COMP_STATUS">
+							<pragmas>
+								<ed:Value oid="!ed/4ae7/40EA/120E0/5da5ccb473d4"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_SHM_BOARD_STATUS">
+							<pragmas>
+								<ed:Value oid="!ed/4ae8/40EA/120E0/5da5ccb43bda"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_SHM_NB_REGISTERS">
+							<pragmas>
+								<ed:Value oid="!ed/2a0/FDA/34BC/5f3d2f6a6936"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4ae6/40EA/120E0/5da5ccb423e3"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_MEGSCR_Register">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_0">
+							<pragmas>
+								<ed:Value oid="!ed/4abe/40EA/120E0/5da5ccb429e6"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_1">
+							<pragmas>
+								<ed:Value oid="!ed/4abf/40EA/120E0/5da5ccb43987"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_2">
+							<pragmas>
+								<ed:Value oid="!ed/4ac0/40EA/120E0/5da5ccb4d0b"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_3">
+							<pragmas>
+								<ed:Value oid="!ed/4ac1/40EA/120E0/5da5ccb47476"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_4">
+							<pragmas>
+								<ed:Value oid="!ed/4ac2/40EA/120E0/5da5ccb41cc3"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_5">
+							<pragmas>
+								<ed:Value oid="!ed/4ac3/40EA/120E0/5da5ccb43ae4"/>
+								<kcg:Pragma>
+									C:enum_val 5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_6">
+							<pragmas>
+								<ed:Value oid="!ed/4ac4/40EA/120E0/5da5ccb44355"/>
+								<kcg:Pragma>
+									C:enum_val 6
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_7">
+							<pragmas>
+								<ed:Value oid="!ed/4ac5/40EA/120E0/5da5ccb449b6"/>
+								<kcg:Pragma>
+									C:enum_val 7
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_8">
+							<pragmas>
+								<ed:Value oid="!ed/4ac6/40EA/120E0/5da5ccb43eea"/>
+								<kcg:Pragma>
+									C:enum_val 8
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_9">
+							<pragmas>
+								<ed:Value oid="!ed/4ac7/40EA/120E0/5da5ccb44ffa"/>
+								<kcg:Pragma>
+									C:enum_val 9
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_10">
+							<pragmas>
+								<ed:Value oid="!ed/4ac8/40EA/120E0/5da5ccb46db5"/>
+								<kcg:Pragma>
+									C:enum_val 10
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_11">
+							<pragmas>
+								<ed:Value oid="!ed/4ac9/40EA/120E0/5da5ccb478f0"/>
+								<kcg:Pragma>
+									C:enum_val 11
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_12">
+							<pragmas>
+								<ed:Value oid="!ed/4aca/40EA/120E0/5da5ccb4646c"/>
+								<kcg:Pragma>
+									C:enum_val 12
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_13">
+							<pragmas>
+								<ed:Value oid="!ed/4acb/40EA/120E0/5da5ccb4b22"/>
+								<kcg:Pragma>
+									C:enum_val 13
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_14">
+							<pragmas>
+								<ed:Value oid="!ed/4acc/40EA/120E0/5da5ccb46971"/>
+								<kcg:Pragma>
+									C:enum_val 14
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_15">
+							<pragmas>
+								<ed:Value oid="!ed/4acd/40EA/120E0/5da5ccb46d63"/>
+								<kcg:Pragma>
+									C:enum_val 15
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_16">
+							<pragmas>
+								<ed:Value oid="!ed/4ace/40EA/120E0/5da5ccb425c"/>
+								<kcg:Pragma>
+									C:enum_val 16
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_17">
+							<pragmas>
+								<ed:Value oid="!ed/4acf/40EA/120E0/5da5ccb428b6"/>
+								<kcg:Pragma>
+									C:enum_val 17
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_18">
+							<pragmas>
+								<ed:Value oid="!ed/4ad0/40EA/120E0/5da5ccb46ec8"/>
+								<kcg:Pragma>
+									C:enum_val 18
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_19">
+							<pragmas>
+								<ed:Value oid="!ed/4ad1/40EA/120E0/5da5ccb47663"/>
+								<kcg:Pragma>
+									C:enum_val 19
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_20">
+							<pragmas>
+								<ed:Value oid="!ed/4ad2/40EA/120E0/5da5ccb428e"/>
+								<kcg:Pragma>
+									C:enum_val 20
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_21">
+							<pragmas>
+								<ed:Value oid="!ed/4ad3/40EA/120E0/5da5ccb423c8"/>
+								<kcg:Pragma>
+									C:enum_val 21
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_22">
+							<pragmas>
+								<ed:Value oid="!ed/4ad4/40EA/120E0/5da5ccb422d6"/>
+								<kcg:Pragma>
+									C:enum_val 22
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_23">
+							<pragmas>
+								<ed:Value oid="!ed/4ad5/40EA/120E0/5da5ccb421ac"/>
+								<kcg:Pragma>
+									C:enum_val 23
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_24">
+							<pragmas>
+								<ed:Value oid="!ed/4ad6/40EA/120E0/5da5ccb449f"/>
+								<kcg:Pragma>
+									C:enum_val 24
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_25">
+							<pragmas>
+								<ed:Value oid="!ed/4ad7/40EA/120E0/5da5ccb4314"/>
+								<kcg:Pragma>
+									C:enum_val 25
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_26">
+							<pragmas>
+								<ed:Value oid="!ed/4ad8/40EA/120E0/5da5ccb4b7"/>
+								<kcg:Pragma>
+									C:enum_val 26
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_27">
+							<pragmas>
+								<ed:Value oid="!ed/4ad9/40EA/120E0/5da5ccb4ff6"/>
+								<kcg:Pragma>
+									C:enum_val 27
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_28">
+							<pragmas>
+								<ed:Value oid="!ed/4ada/40EA/120E0/5da5ccb43035"/>
+								<kcg:Pragma>
+									C:enum_val 28
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_29">
+							<pragmas>
+								<ed:Value oid="!ed/4adb/40EA/120E0/5da5ccb47234"/>
+								<kcg:Pragma>
+									C:enum_val 29
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_30">
+							<pragmas>
+								<ed:Value oid="!ed/4adc/40EA/120E0/5da5ccb45def"/>
+								<kcg:Pragma>
+									C:enum_val 30
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGSCR_SCRATCH_31">
+							<pragmas>
+								<ed:Value oid="!ed/4add/40EA/120E0/5da5ccb477c9"/>
+								<kcg:Pragma>
+									C:enum_val 31
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4abd/40EA/120E0/5da5ccb41df0"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_I2C_ErrorCode">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_I2C_COMMAND_TAKEN">
+							<pragmas>
+								<ed:Value oid="!ed/4a93/40EA/120E0/5da5ccb45a44"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_COMMAND_NOT_TAKEN">
+							<pragmas>
+								<ed:Value oid="!ed/4a94/40EA/120E0/5da5ccb4370d"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_COMMAND_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/4a95/40EA/120E0/5da5ccb42a05"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_WRITE_OVERSIZED">
+							<pragmas>
+								<ed:Value oid="!ed/4a96/40EA/120E0/5da5ccb45896"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_READ_OVERSIZED">
+							<pragmas>
+								<ed:Value oid="!ed/4a97/40EA/120E0/5da5ccb4c27"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4a92/40EA/120E0/5da5ccb42a7"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_I2C_CurrentStep">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_I2C_IDLE">
+							<pragmas>
+								<ed:Value oid="!ed/4a81/40EA/120E0/5da5ccb44437"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_WAIT_FOR_SLV_CMD_W_ACK">
+							<pragmas>
+								<ed:Value oid="!ed/4a82/40EA/120E0/5da5ccb42ad2"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_WAIT_FOR_SLV_W_ACK">
+							<pragmas>
+								<ed:Value oid="!ed/4a83/40EA/120E0/5da5ccb424bd"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_WAIT_FOR_SLV_CMD_R_ACK">
+							<pragmas>
+								<ed:Value oid="!ed/4a84/40EA/120E0/5da5ccb425b5"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_WAIT_FOR_SLV_R_DATA">
+							<pragmas>
+								<ed:Value oid="!ed/4a85/40EA/120E0/5da5ccb42ed5"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_DATA_WRITTEN">
+							<pragmas>
+								<ed:Value oid="!ed/4a86/40EA/120E0/5da5ccb426d0"/>
+								<kcg:Pragma>
+									C:enum_val 5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_DATA_READ">
+							<pragmas>
+								<ed:Value oid="!ed/4a87/40EA/120E0/5da5ccb41e7f"/>
+								<kcg:Pragma>
+									C:enum_val 6
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4a80/40EA/120E0/5da5ccb47250"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_I2C_Code">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_I2C_OK">
+							<pragmas>
+								<ed:Value oid="!ed/4a6d/40EA/120E0/5da5ccb42355"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_INVALID_ID">
+							<pragmas>
+								<ed:Value oid="!ed/4a6e/40EA/120E0/5da5ccb45219"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_ARBITRATION_LOST">
+							<pragmas>
+								<ed:Value oid="!ed/4a6f/40EA/120E0/5da5ccb456c0"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_NO_ACK">
+							<pragmas>
+								<ed:Value oid="!ed/4a70/40EA/120E0/5da5ccb436e2"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_BUS_BUSY">
+							<pragmas>
+								<ed:Value oid="!ed/4a71/40EA/120E0/5da5ccb4296c"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_TIMEOUT">
+							<pragmas>
+								<ed:Value oid="!ed/4a72/40EA/120E0/5da5ccb44170"/>
+								<kcg:Pragma>
+									C:enum_val 5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_CLOSED">
+							<pragmas>
+								<ed:Value oid="!ed/4a73/40EA/120E0/5da5ccb4712d"/>
+								<kcg:Pragma>
+									C:enum_val 6
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4a6c/40EA/120E0/5da5ccb4dbb"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_DISC_Expander">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_DISC_EXPANDER_1">
+							<pragmas>
+								<ed:Value oid="!ed/4a37/40EA/120E0/5da5ccb42a9d"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_DISC_EXPANDER_2">
+							<pragmas>
+								<ed:Value oid="!ed/4a38/40EA/120E0/5da5ccb45ac0"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_DISC_NB_EXPANDER">
+							<pragmas>
+								<ed:Value oid="!ed/4a39/40EA/120E0/5da5ccb47df0"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4a36/40EA/120E0/5da5ccb4280a"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_CMPSCR_Register">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_0">
+							<pragmas>
+								<ed:Value oid="!ed/4a0e/40EA/120E0/5da5ccb44cd1"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_1">
+							<pragmas>
+								<ed:Value oid="!ed/4a0f/40EA/120E0/5da5ccb44f1d"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_2">
+							<pragmas>
+								<ed:Value oid="!ed/4a10/40EA/120E0/5da5ccb43e44"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_3">
+							<pragmas>
+								<ed:Value oid="!ed/4a11/40EA/120E0/5da5ccb443dc"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_4">
+							<pragmas>
+								<ed:Value oid="!ed/4a12/40EA/120E0/5da5ccb45a5d"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_5">
+							<pragmas>
+								<ed:Value oid="!ed/4a13/40EA/120E0/5da5ccb47fb1"/>
+								<kcg:Pragma>
+									C:enum_val 5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_6">
+							<pragmas>
+								<ed:Value oid="!ed/4a14/40EA/120E0/5da5ccb4791d"/>
+								<kcg:Pragma>
+									C:enum_val 6
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_7">
+							<pragmas>
+								<ed:Value oid="!ed/4a15/40EA/120E0/5da5ccb424d3"/>
+								<kcg:Pragma>
+									C:enum_val 7
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_8">
+							<pragmas>
+								<ed:Value oid="!ed/4a16/40EA/120E0/5da5ccb41d33"/>
+								<kcg:Pragma>
+									C:enum_val 8
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_9">
+							<pragmas>
+								<ed:Value oid="!ed/4a17/40EA/120E0/5da5ccb4373d"/>
+								<kcg:Pragma>
+									C:enum_val 9
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_10">
+							<pragmas>
+								<ed:Value oid="!ed/4a18/40EA/120E0/5da5ccb43e8f"/>
+								<kcg:Pragma>
+									C:enum_val 10
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_11">
+							<pragmas>
+								<ed:Value oid="!ed/4a19/40EA/120E0/5da5ccb44b7b"/>
+								<kcg:Pragma>
+									C:enum_val 11
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_12">
+							<pragmas>
+								<ed:Value oid="!ed/4a1a/40EA/120E0/5da5ccb4127e"/>
+								<kcg:Pragma>
+									C:enum_val 12
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_13">
+							<pragmas>
+								<ed:Value oid="!ed/4a1b/40EA/120E0/5da5ccb430ce"/>
+								<kcg:Pragma>
+									C:enum_val 13
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_14">
+							<pragmas>
+								<ed:Value oid="!ed/4a1c/40EA/120E0/5da5ccb45c1"/>
+								<kcg:Pragma>
+									C:enum_val 14
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_15">
+							<pragmas>
+								<ed:Value oid="!ed/4a1d/40EA/120E0/5da5ccb41971"/>
+								<kcg:Pragma>
+									C:enum_val 15
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_16">
+							<pragmas>
+								<ed:Value oid="!ed/4a1e/40EA/120E0/5da5ccb439"/>
+								<kcg:Pragma>
+									C:enum_val 16
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_17">
+							<pragmas>
+								<ed:Value oid="!ed/4a1f/40EA/120E0/5da5ccb41a06"/>
+								<kcg:Pragma>
+									C:enum_val 17
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_18">
+							<pragmas>
+								<ed:Value oid="!ed/4a20/40EA/120E0/5da5ccb4722"/>
+								<kcg:Pragma>
+									C:enum_val 18
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_19">
+							<pragmas>
+								<ed:Value oid="!ed/4a21/40EA/120E0/5da5ccb46176"/>
+								<kcg:Pragma>
+									C:enum_val 19
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_20">
+							<pragmas>
+								<ed:Value oid="!ed/4a22/40EA/120E0/5da5ccb439f2"/>
+								<kcg:Pragma>
+									C:enum_val 20
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_21">
+							<pragmas>
+								<ed:Value oid="!ed/4a23/40EA/120E0/5da5ccb454ca"/>
+								<kcg:Pragma>
+									C:enum_val 21
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_22">
+							<pragmas>
+								<ed:Value oid="!ed/4a24/40EA/120E0/5da5ccb44750"/>
+								<kcg:Pragma>
+									C:enum_val 22
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_23">
+							<pragmas>
+								<ed:Value oid="!ed/4a25/40EA/120E0/5da5ccb456c2"/>
+								<kcg:Pragma>
+									C:enum_val 23
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_24">
+							<pragmas>
+								<ed:Value oid="!ed/4a26/40EA/120E0/5da5ccb422cd"/>
+								<kcg:Pragma>
+									C:enum_val 24
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_25">
+							<pragmas>
+								<ed:Value oid="!ed/4a27/40EA/120E0/5da5ccb413a"/>
+								<kcg:Pragma>
+									C:enum_val 25
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_26">
+							<pragmas>
+								<ed:Value oid="!ed/4a28/40EA/120E0/5da5ccb44939"/>
+								<kcg:Pragma>
+									C:enum_val 26
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_27">
+							<pragmas>
+								<ed:Value oid="!ed/4a29/40EA/120E0/5da5ccb469a"/>
+								<kcg:Pragma>
+									C:enum_val 27
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_28">
+							<pragmas>
+								<ed:Value oid="!ed/4a2a/40EA/120E0/5da5ccb410cb"/>
+								<kcg:Pragma>
+									C:enum_val 28
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_29">
+							<pragmas>
+								<ed:Value oid="!ed/4a2b/40EA/120E0/5da5ccb463e6"/>
+								<kcg:Pragma>
+									C:enum_val 29
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_30">
+							<pragmas>
+								<ed:Value oid="!ed/4a2c/40EA/120E0/5da5ccb42b80"/>
+								<kcg:Pragma>
+									C:enum_val 30
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMPSCR_SCRATCH_31">
+							<pragmas>
+								<ed:Value oid="!ed/4a2d/40EA/120E0/5da5ccb41025"/>
+								<kcg:Pragma>
+									C:enum_val 31
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4a0d/40EA/120E0/5da5ccb45f0a"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_CMN_Status">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_CMN_TIME_IS_REACHED">
+							<pragmas>
+								<ed:Value oid="!ed/49e6/40EA/120E0/5da5ccb47930"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_CMN_TIME_IS_NOT_REACHED">
+							<pragmas>
+								<ed:Value oid="!ed/49e7/40EA/120E0/5da5ccb420c7"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/49e5/40EA/120E0/5da5ccb43e8c"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_A429_TxLine">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_A429_TX_1">
+							<pragmas>
+								<ed:Value oid="!ed/49d6/40EA/120E0/5da5ccb44d5a"/>
+								<kcg:Pragma>
+									C:enum_val 15
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_TX_2">
+							<pragmas>
+								<ed:Value oid="!ed/49d7/40EA/120E0/5da5ccb41ac0"/>
+								<kcg:Pragma>
+									C:enum_val 16
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_TX_3">
+							<pragmas>
+								<ed:Value oid="!ed/49d8/40EA/120E0/5da5ccb45420"/>
+								<kcg:Pragma>
+									C:enum_val 17
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_TX_4">
+							<pragmas>
+								<ed:Value oid="!ed/49d9/40EA/120E0/5da5ccb47677"/>
+								<kcg:Pragma>
+									C:enum_val 18
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_TX_5">
+							<pragmas>
+								<ed:Value oid="!ed/49da/40EA/120E0/5da5ccb44a7e"/>
+								<kcg:Pragma>
+									C:enum_val 19
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_TX_6">
+							<pragmas>
+								<ed:Value oid="!ed/49db/40EA/120E0/5da5ccb469f5"/>
+								<kcg:Pragma>
+									C:enum_val 20
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_TX_7">
+							<pragmas>
+								<ed:Value oid="!ed/49dc/40EA/120E0/5da5ccb412d8"/>
+								<kcg:Pragma>
+									C:enum_val 21
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_TX_8">
+							<pragmas>
+								<ed:Value oid="!ed/49dd/40EA/120E0/5da5ccb4348b"/>
+								<kcg:Pragma>
+									C:enum_val 22
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/49d5/40EA/120E0/5da5ccb42cc7"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_A429_TxErrorCode">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_A429_TX_OK">
+							<pragmas>
+								<ed:Value oid="!ed/49c4/40EA/120E0/5da5ccb45a38"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_TX_INVALID_ID">
+							<pragmas>
+								<ed:Value oid="!ed/49c5/40EA/120E0/5da5ccb42407"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_TX_OVERFLOW_CMD">
+							<pragmas>
+								<ed:Value oid="!ed/49c6/40EA/120E0/5da5ccb44302"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_TX_OVERFLOW_FIFO">
+							<pragmas>
+								<ed:Value oid="!ed/49c7/40EA/120E0/5da5ccb43a8e"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/49c3/40EA/120E0/5da5ccb45fd2"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_PSUM_Conf">
+			<definition>
+				<Struct>
+					<fields>
+						<Field name="v_address">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint32"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4bb0/40EA/120E0/5da5cce16930"/>
+							</pragmas>
+						</Field>
+						<Field name="v_data">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint32"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4bb1/40EA/120E0/5da5cce15675"/>
+							</pragmas>
+						</Field>
+					</fields>
+				</Struct>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4baf/40EA/120E0/5da5cce117c4"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_PSUM_AdcErrorFlags">
+			<definition>
+				<Struct>
+					<fields>
+						<Field name="PresFail_or_Vin6Failure">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4ba2/40EA/120E0/5da5cce1276d"/>
+							</pragmas>
+						</Field>
+						<Field name="OverVoltage">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4ba3/40EA/120E0/5da5cce1522d"/>
+							</pragmas>
+						</Field>
+						<Field name="UnderVoltage">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4ba4/40EA/120E0/5da5cce155a3"/>
+							</pragmas>
+						</Field>
+						<Field name="ReferenceVoltageFailure">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4ba5/40EA/120E0/5da5cce1104e"/>
+							</pragmas>
+						</Field>
+						<Field name="Vin7NotInRange">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4ba6/40EA/120E0/5da5cce16098"/>
+							</pragmas>
+						</Field>
+						<Field name="GeneralFailure">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4ba7/40EA/120E0/5da5cce14090"/>
+							</pragmas>
+						</Field>
+					</fields>
+				</Struct>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4ba1/40EA/120E0/5da5cce11efc"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_PLDCMP_ErrorStatus">
+			<definition>
+				<Struct>
+					<fields>
+						<Field name="nvm_error">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4b7c/40EA/120E0/5da5cce1350e"/>
+							</pragmas>
+						</Field>
+						<Field name="parity_error">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4b7d/40EA/120E0/5da5cce11cdf"/>
+							</pragmas>
+						</Field>
+						<Field name="addr_error">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4b7e/40EA/120E0/5da5cce177f0"/>
+							</pragmas>
+						</Field>
+						<Field name="acc_error">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4b7f/40EA/120E0/5da5cce1ae2"/>
+							</pragmas>
+						</Field>
+						<Field name="timeout_error">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4b80/40EA/120E0/5da5cce11289"/>
+							</pragmas>
+						</Field>
+						<Field name="overload_error">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4b81/40EA/120E0/5da5cce1734f"/>
+							</pragmas>
+						</Field>
+						<Field name="wdg_comp_rst">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4b82/40EA/120E0/5da5cce17e3c"/>
+							</pragmas>
+						</Field>
+					</fields>
+				</Struct>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4b7b/40EA/120E0/5da5cce12b56"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_ETR_ReadInfos">
+			<definition>
+				<Struct>
+					<fields>
+						<Field name="v_AlarmRegdata">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint32"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4b59/40EA/120E0/5da5cce17ea3"/>
+							</pragmas>
+						</Field>
+						<Field name="v_ETregdata">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint32"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4b5a/40EA/120E0/5da5cce15348"/>
+							</pragmas>
+						</Field>
+						<Field name="v_EventCountdata">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint16"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/4b5b/40EA/120E0/5da5cce123ad"/>
+							</pragmas>
+						</Field>
+					</fields>
+				</Struct>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/4b58/40EA/120E0/5da5cce1505e"/>
+			</pragmas>
+		</Type>
+		<Constant name="C_LIBBSP_A429_BUFFER_SIZE">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="64"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/ee/751A/11CE0/5da5f9899de"/>
+			</pragmas>
+		</Constant>
+		<Type name="TS_LIBBSP_A429_Buffer">
+			<definition>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="uint32"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="C_LIBBSP_A429_BUFFER_SIZE"/>
+							</path>
+						</IdExpression>
+					</size>
+				</Table>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/ef/751A/11CE0/5da5f9b12fd0"/>
+			</pragmas>
+		</Type>
+		<Constant name="C_LIBBSP_PSUM_INIT_COUPLE">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="TS_LIBBSP_PSUM_Conf"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<!-- {v_address : 0, v_data : 0} -->
+				<DataStructOp>
+					<data>
+						<LabelledExpression label="v_address">
+							<flow>
+								<ConstValue value="0"/>
+							</flow>
+						</LabelledExpression>
+						<LabelledExpression label="v_data">
+							<flow>
+								<ConstValue value="0"/>
+							</flow>
+						</LabelledExpression>
+					</data>
+				</DataStructOp>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/111/751A/11CE0/5da5fac24a82"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_LIBBSP_PSUM_SHM_NB_COUPLE">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="0"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/11b/751A/11CE0/5da5fb616d79"/>
+			</pragmas>
+		</Constant>
+		<Type name="TS_LIBBSP_SHM_BoardStatus">
+			<definition>
+				<Struct>
+					<fields>
+						<Field name="pwr_good_28v1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/12e/ADC/11044/5da6cb214b43"/>
+							</pragmas>
+						</Field>
+						<Field name="pwr_good_28v2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/12f/ADC/11044/5da6cb2116bd"/>
+							</pragmas>
+						</Field>
+						<Field name="ddr_vtt_uv">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/130/ADC/11044/5da6cb21573f"/>
+							</pragmas>
+						</Field>
+						<Field name="ddr_vtt_ov">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/131/ADC/11044/5da6cb217f1b"/>
+							</pragmas>
+						</Field>
+						<Field name="vdd_uv">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/132/ADC/11044/5da6cb2114cc"/>
+							</pragmas>
+						</Field>
+						<Field name="vdd_ov">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/133/ADC/11044/5da6cb21f9c"/>
+							</pragmas>
+						</Field>
+						<Field name="cpcm_1v5_uv">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/134/ADC/11044/5da6cb217a"/>
+							</pragmas>
+						</Field>
+						<Field name="cpcm_1v5_ov">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/135/ADC/11044/5da6cb21b23"/>
+							</pragmas>
+						</Field>
+						<Field name="vio_3v3_uv">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/136/ADC/11044/5da6cb21fcb"/>
+							</pragmas>
+						</Field>
+						<Field name="vio_3v3_ov">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/137/ADC/11044/5da6cb211e9b"/>
+							</pragmas>
+						</Field>
+						<Field name="cpcm_1v8_uv">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/138/ADC/11044/5da6cb213bc5"/>
+							</pragmas>
+						</Field>
+						<Field name="cpcm_1v8_ov">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/139/ADC/11044/5da6cb2167a8"/>
+							</pragmas>
+						</Field>
+						<Field name="mezz_pgood">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/13a/ADC/11044/5da6cb21794a"/>
+							</pragmas>
+						</Field>
+						<Field name="mezz_fail">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/13b/ADC/11044/5da6cb21662f"/>
+							</pragmas>
+						</Field>
+						<Field name="ready_p1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/13c/ADC/11044/5da6cb215512"/>
+							</pragmas>
+						</Field>
+						<Field name="trig_out">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/13d/ADC/11044/5da6cb2156e5"/>
+							</pragmas>
+						</Field>
+						<Field name="pgood_p2v5">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/13e/ADC/11044/5da6cb21586e"/>
+							</pragmas>
+						</Field>
+						<Field name="pgood_1v2meg">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/13f/ADC/11044/5da6cb21277b"/>
+							</pragmas>
+						</Field>
+						<Field name="meg_fail">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/140/ADC/11044/5da6cb214548"/>
+							</pragmas>
+						</Field>
+						<Field name="meg_pll_lock">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/141/ADC/11044/5da6cb217931"/>
+							</pragmas>
+						</Field>
+						<Field name="therm">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/142/ADC/11044/5da6cb216af9"/>
+							</pragmas>
+						</Field>
+						<Field name="therm2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/292/211C/10C0C/61d5a4ca5495"/>
+							</pragmas>
+						</Field>
+						<Field name="lvdd_type">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/298/211C/10C0C/61d5a4d445f9"/>
+							</pragmas>
+						</Field>
+						<Field name="tank_fail">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/29e/211C/10C0C/61d5a4d74734"/>
+							</pragmas>
+						</Field>
+						<Field name="pgood_vant">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2a4/211C/10C0C/61d5a4d87c55"/>
+							</pragmas>
+						</Field>
+						<Field name="pgood_vrm">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2aa/211C/10C0C/61d5a4d93586"/>
+							</pragmas>
+						</Field>
+						<Field name="inhibit_wdg">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2b0/211C/10C0C/61d5a4d94d77"/>
+							</pragmas>
+						</Field>
+					</fields>
+				</Struct>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/12d/ADC/11044/5da6cb2113a4"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_SHM_CompStatus">
+			<definition>
+				<Struct>
+					<fields>
+						<Field name="wd_failure_cnt">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint8"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/14d/ADC/11044/5da6cb39713f"/>
+							</pragmas>
+						</Field>
+						<Field name="sw_reset_request_cnt">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint8"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/14e/ADC/11044/5da6cb393dda"/>
+							</pragmas>
+						</Field>
+						<Field name="hw_reset_request_cnt">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint8"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/14f/ADC/11044/5da6cb3956c6"/>
+							</pragmas>
+						</Field>
+						<Field name="critical_uvd_cnt">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint8"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/150/ADC/11044/5da6cb3921bf"/>
+							</pragmas>
+						</Field>
+					</fields>
+				</Struct>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/14c/ADC/11044/5da6cb396302"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_GPIO_DiscName">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_GPIO_MEGA_GPIO2">
+							<pragmas>
+								<ed:Value oid="!ed/144/7E/12978/5da730d81862"/>
+								<kcg:Pragma>
+									C:enum_val 0x0001
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_MEGA_GPIO1">
+							<pragmas>
+								<ed:Value oid="!ed/145/7E/12978/5da730d86b47"/>
+								<kcg:Pragma>
+									C:enum_val 0x0002
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_MEGA_GPIO0">
+							<pragmas>
+								<ed:Value oid="!ed/146/7E/12978/5da730d8ee0"/>
+								<kcg:Pragma>
+									C:enum_val 0x0004
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_COMP_GPIO2">
+							<pragmas>
+								<ed:Value oid="!ed/147/7E/12978/5da730d83dab"/>
+								<kcg:Pragma>
+									C:enum_val 0x0008
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_COMP_GPIO1">
+							<pragmas>
+								<ed:Value oid="!ed/148/7E/12978/5da730d85939"/>
+								<kcg:Pragma>
+									C:enum_val 0x0010
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_COMP_GPIO0">
+							<pragmas>
+								<ed:Value oid="!ed/149/7E/12978/5da730d870b1"/>
+								<kcg:Pragma>
+									C:enum_val 0x0020
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_SDHC_W_PROTECT">
+							<pragmas>
+								<ed:Value oid="!ed/14a/7E/12978/5da730d8616"/>
+								<kcg:Pragma>
+									C:enum_val 0x0040
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_SDHC_CARD_DETECT">
+							<pragmas>
+								<ed:Value oid="!ed/14b/7E/12978/5da730d823ed"/>
+								<kcg:Pragma>
+									C:enum_val 0x0080
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_GREEN_LED">
+							<pragmas>
+								<ed:Value oid="!ed/14c/7E/12978/5da730d81c04"/>
+								<kcg:Pragma>
+									C:enum_val 0x0100
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_YELLOW_LED">
+							<pragmas>
+								<ed:Value oid="!ed/14d/7E/12978/5da730d83bde"/>
+								<kcg:Pragma>
+									C:enum_val 0x0200
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_RED_LED">
+							<pragmas>
+								<ed:Value oid="!ed/14e/7E/12978/5da730d8d1f"/>
+								<kcg:Pragma>
+									C:enum_val 0x0400
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_IRQ11">
+							<pragmas>
+								<ed:Value oid="!ed/14f/7E/12978/5da730d86b61"/>
+								<kcg:Pragma>
+									C:enum_val 0x0800
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_DSI_SG_LABO">
+							<pragmas>
+								<ed:Value oid="!ed/150/7E/12978/5da730d86d3c"/>
+								<kcg:Pragma>
+									C:enum_val 0x1000
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_DSI_DL">
+							<pragmas>
+								<ed:Value oid="!ed/151/7E/12978/5da730d819b6"/>
+								<kcg:Pragma>
+									C:enum_val 0x2000
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_IRQ8">
+							<pragmas>
+								<ed:Value oid="!ed/152/7E/12978/5da730d82655"/>
+								<kcg:Pragma>
+									C:enum_val 0x4000
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_MEGA_MEZA_SPI_SEL">
+							<pragmas>
+								<ed:Value oid="!ed/153/7E/12978/5da730d811c7"/>
+								<kcg:Pragma>
+									C:enum_val 0x8000
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/143/7E/12978/5da730d85094"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_ECCMEM_SeuMbuEn">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_ECCMEM_MBU_ONLY_EN">
+							<pragmas>
+								<ed:Value oid="!ed/12f/B8F/9B8/5daebdb6244b"/>
+								<kcg:Pragma>
+									C:enum_val 0x4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ECCMEM_SEU_ONLY_EN">
+							<pragmas>
+								<ed:Value oid="!ed/136/B8F/9B8/5daebdbe4cdd"/>
+								<kcg:Pragma>
+									C:enum_val 0x8
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ECCMEM_MBU_SEU_EN">
+							<pragmas>
+								<ed:Value oid="!ed/13d/B8F/9B8/5daebdbe9b6"/>
+								<kcg:Pragma>
+									C:enum_val 0x0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ECCMEM_MBU_SEU_DIS">
+							<pragmas>
+								<ed:Value oid="!ed/144/B8F/9B8/5daebdbf3a35"/>
+								<kcg:Pragma>
+									C:enum_val 0xc
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/12e/B8F/9B8/5daebdab24ba"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_ECCMEM_SeuMbuIt">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_ECCMEM_MBU_ONLY_IT">
+							<pragmas>
+								<ed:Value oid="!ed/14f/B8F/9B8/5daebde6115a"/>
+								<kcg:Pragma>
+									C:enum_val 0x8
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ECCMEM_SEU_ONLY_IT">
+							<pragmas>
+								<ed:Value oid="!ed/150/B8F/9B8/5daebde673d7"/>
+								<kcg:Pragma>
+									C:enum_val 0x4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ECCMEM_MBU_SEU_IT">
+							<pragmas>
+								<ed:Value oid="!ed/151/B8F/9B8/5daebde66de1"/>
+								<kcg:Pragma>
+									C:enum_val 0xc
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ECCMEM_MBU_SEU_IT_DIS">
+							<pragmas>
+								<ed:Value oid="!ed/152/B8F/9B8/5daebde63d33"/>
+								<kcg:Pragma>
+									C:enum_val 0x0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/14e/B8F/9B8/5daebde6300d"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_ECCMEM_SeuStatus">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_ECCMEM_SEU_OK">
+							<pragmas>
+								<ed:Value oid="!ed/15d/B8F/9B8/5daef2e2488a"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ECCMEM_SEU_WRONG_NB">
+							<pragmas>
+								<ed:Value oid="!ed/15e/B8F/9B8/5daef2e2754c"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ECCMEM_SEU_THRESH_EXCEED">
+							<pragmas>
+								<ed:Value oid="!ed/15f/B8F/9B8/5daef2e22658"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ECCMEM_MBU_NOT_DETECTED">
+							<pragmas>
+								<ed:Value oid="!ed/2a1/FDA/34BC/5f3d4a45516"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/15c/B8F/9B8/5daef2e21779"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_IMU_WriteAddr">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_IMU_WRITE_ADDRESS">
+							<pragmas>
+								<ed:Value oid="!ed/13d/1B48/ADEC/5db2bc8146a6"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_IMU_NO_WRITE_ADDRESS">
+							<pragmas>
+								<ed:Value oid="!ed/144/1B48/ADEC/5db2bc897565"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/13c/1B48/ADEC/5db2bc5f793e"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_IMU_ProgStatus">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_IMU_NB_DATA_OK">
+							<pragmas>
+								<ed:Value oid="!ed/2b5/1B48/ADEC/5db2e6cb12c6"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_IMU_NB_DATA_EXCEEDED">
+							<pragmas>
+								<ed:Value oid="!ed/2bc/1B48/ADEC/5db2e6d51cc"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/2b4/1B48/ADEC/5db2e6b25f26"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_IMU_WriteAddrBuffer2">
+			<definition>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="uint32"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<!-- C_LIBBSP_IMU_NB_DATA_WRITE_MAX + 1 -->
+						<NAryOp operator="+">
+							<operands>
+								<IdExpression>
+									<path>
+										<ConstVarRef name="C_LIBBSP_IMU_NB_DATA_WRITE_MAX"/>
+									</path>
+								</IdExpression>
+								<ConstValue value="1"/>
+							</operands>
+						</NAryOp>
+					</size>
+				</Table>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/2bd/1B48/ADEC/5db2e7d0469b"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_IMU_WriteDataBuffer">
+			<definition>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="float32"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="C_LIBBSP_IMU_NB_DATA_WRITE_MAX"/>
+							</path>
+						</IdExpression>
+					</size>
+				</Table>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/2e3/1B48/ADEC/5db2fca753bb"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_IMU_InertialData">
+			<definition>
+				<Struct>
+					<fields>
+						<Field name="dTheta">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/1ee/74A4/105A4/5db322b1488a"/>
+							</pragmas>
+						</Field>
+						<Field name="dV">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/207/74A4/105A4/5db323d45355"/>
+							</pragmas>
+						</Field>
+						<Field name="Cp">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/20e/74A4/105A4/5db323d52e6"/>
+							</pragmas>
+						</Field>
+						<Field name="TheteE">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/215/74A4/105A4/5db323d5233"/>
+							</pragmas>
+						</Field>
+						<Field name="ErrFEP">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/21c/74A4/105A4/5db323d61fe5"/>
+							</pragmas>
+						</Field>
+						<Field name="IndFEP">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/223/74A4/105A4/5db323d6413e"/>
+							</pragmas>
+						</Field>
+						<Field name="synth_umi">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint32"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/232/74A4/105A4/5db324377c35"/>
+							</pragmas>
+						</Field>
+						<Field name="cpt_tache_fNav">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint32"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/23e/74A4/105A4/5db324397d82"/>
+							</pragmas>
+						</Field>
+						<Field name="fs_filtA_BdL_fPilot_custUnit">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/24e/74A4/105A4/5db3247346ff"/>
+							</pragmas>
+						</Field>
+						<Field name="fs_filtB_BdL_fPilot_custUnit">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/25e/74A4/105A4/5db324822af7"/>
+							</pragmas>
+						</Field>
+						<Field name="pqr_filtE_fPilot_custUnit">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/265/74A4/105A4/5db32482485c"/>
+							</pragmas>
+						</Field>
+						<Field name="pqr_filtF_fPilot_custUnit">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/26c/74A4/105A4/5db324836b74"/>
+							</pragmas>
+						</Field>
+						<Field name="accAng_filtE_fPilot_custUnit">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/273/74A4/105A4/5db3248671cf"/>
+							</pragmas>
+						</Field>
+						<Field name="accAng_filtF_fPilot_custUnit">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/27a/74A4/105A4/5db324873419"/>
+							</pragmas>
+						</Field>
+						<Field name="Tacc_filtre">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/281/74A4/105A4/5db324aa5a18"/>
+							</pragmas>
+						</Field>
+						<Field name="Tida_filtre">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/282/74A4/105A4/5db324b67c72"/>
+							</pragmas>
+						</Field>
+						<Field name="Tacc_sature">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/28b/74A4/105A4/5db324c6160f"/>
+							</pragmas>
+						</Field>
+						<Field name="Cpulse_sature">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect3"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/29b/74A4/105A4/5db324cf2177"/>
+							</pragmas>
+						</Field>
+						<Field name="Tida_sature">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2a1/74A4/105A4/5db324dd262b"/>
+							</pragmas>
+						</Field>
+						<Field name="AccStatus">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint32"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/227/B04/2FEC/5fa276d01f00"/>
+							</pragmas>
+						</Field>
+						<Field name="HrgStatus1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint32"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/23d/B04/2FEC/5fa278122391"/>
+							</pragmas>
+						</Field>
+						<Field name="HrgStatus2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint32"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/243/B04/2FEC/5fa27814740e"/>
+							</pragmas>
+						</Field>
+						<Field name="TicStatus1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint32"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/249/B04/2FEC/5fa278195c0e"/>
+							</pragmas>
+						</Field>
+						<Field name="TicStatus2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint32"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/24f/B04/2FEC/5fa2781b39a4"/>
+							</pragmas>
+						</Field>
+						<Field name="TmgyrData">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_IMU_Vect9"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/298/22FE/4708/61841a125e8f"/>
+							</pragmas>
+						</Field>
+					</fields>
+				</Struct>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/1ed/74A4/105A4/5db322aadce"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_IMU_Vect3">
+			<definition>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="float64"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<ConstValue value="3"/>
+					</size>
+				</Table>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/1ef/74A4/105A4/5db3231e595a"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_IMU_WriteEraseCmd">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_IMU_RESET_ALL_W_ADDR">
+							<pragmas>
+								<ed:Value oid="!ed/226/5EA3/D018/5db6fdba1050"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_IMU_RESET_ADD_W_ADDR">
+							<pragmas>
+								<ed:Value oid="!ed/22d/5EA3/D018/5db6fdc42a01"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/225/5EA3/D018/5db6fdb12c14"/>
+			</pragmas>
+		</Type>
+		<Constant name="C_LIBBSP_IMU_NB_DATA_WRITE_MAX">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="32"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/220/E57/10F64/5db8437f31ef"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_LIBBSP_IMU_NB_ADDITIONAL_DATA">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="6"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/24e/E57/10F64/5db843b64559"/>
+			</pragmas>
+		</Constant>
+		<Type name="TS_LIBBSP_IMU_AdditionalDataWriteBuffer">
+			<definition>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="float32"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="C_LIBBSP_IMU_NB_ADDITIONAL_DATA"/>
+							</path>
+						</IdExpression>
+					</size>
+				</Table>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/25c/E57/10F64/5db843cfb98"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_IMU_InstrumIMUData">
+			<definition>
+				<Struct>
+					<fields>
+						<Field name="v_lambda_ext_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2bd/E57/10F64/5db879a019b6"/>
+							</pragmas>
+						</Field>
+						<Field name="v_lambda_ext_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2be/E57/10F64/5db879a07f8e"/>
+							</pragmas>
+						</Field>
+						<Field name="v_lambda_ext_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2bf/E57/10F64/5db879a0554e"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A1_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2c0/E57/10F64/5db879a03c62"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A1_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2c1/E57/10F64/5db879a0139d"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A1_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2c2/E57/10F64/5db879a05835"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A1_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2c3/E57/10F64/5db879a01c87"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A1_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2c4/E57/10F64/5db879a0673"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A2_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2c5/E57/10F64/5db879a01c74"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A2_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2c6/E57/10F64/5db879a035d1"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A2_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2c7/E57/10F64/5db879a0138f"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A2_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2c8/E57/10F64/5db879a0904"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A3_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2c9/E57/10F64/5db879a01805"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A3_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2ca/E57/10F64/5db879a0a95"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A3_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2cb/E57/10F64/5db879a04b22"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A3_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2cc/E57/10F64/5db879a01bf3"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A3_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2cd/E57/10F64/5db879a02085"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A4_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2ce/E57/10F64/5db879a06270"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A4_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2cf/E57/10F64/5db879a04fbf"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A4_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2d0/E57/10F64/5db879a048ce"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A4_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2d1/E57/10F64/5db879a04c18"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_A4_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2d2/E57/10F64/5db879a02284"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B1_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2d3/E57/10F64/5db879a03b51"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B1_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2d4/E57/10F64/5db879a025e8"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B1_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2d5/E57/10F64/5db879a06b98"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B1_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2d6/E57/10F64/5db879a05cdb"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B1_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2d7/E57/10F64/5db879a0a0f"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B2_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2d8/E57/10F64/5db879a067ad"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B2_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2d9/E57/10F64/5db879a02692"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B2_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2da/E57/10F64/5db879a0c55"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B2_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2db/E57/10F64/5db879a036a1"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B2_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2dc/E57/10F64/5db879a01c32"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B3_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2dd/E57/10F64/5db879a01892"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B3_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2de/E57/10F64/5db879a04ce5"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B3_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2df/E57/10F64/5db879a06184"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B3_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2e0/E57/10F64/5db879a04511"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B3_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2e1/E57/10F64/5db879a053a1"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B4_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2e2/E57/10F64/5db879a063fd"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B4_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2e3/E57/10F64/5db879a07af"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B4_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2e4/E57/10F64/5db879a04373"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B4_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2e5/E57/10F64/5db879a06c0b"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_B4_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2e6/E57/10F64/5db879a02d47"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E1_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2e7/E57/10F64/5db879a0c77"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E1_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2e8/E57/10F64/5db879a04a6e"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E1_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2e9/E57/10F64/5db879a07166"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E1_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2ea/E57/10F64/5db879a03f96"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E1_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2eb/E57/10F64/5db879a01ab0"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E2_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2ec/E57/10F64/5db879a04b92"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E2_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2ed/E57/10F64/5db879a078cf"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E2_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2ee/E57/10F64/5db879a05e1c"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E2_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2ef/E57/10F64/5db879a02115"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E2_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2f0/E57/10F64/5db879a011be"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E3_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2f1/E57/10F64/5db879a01c77"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E3_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2f2/E57/10F64/5db879a09dd"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E3_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2f3/E57/10F64/5db879a06dea"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E3_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2f4/E57/10F64/5db879a07e38"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E3_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2f5/E57/10F64/5db879a0145f"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E4_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2f6/E57/10F64/5db879a04763"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E4_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2f7/E57/10F64/5db879a02ddf"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E4_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2f8/E57/10F64/5db879a01bfd"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E4_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2f9/E57/10F64/5db879a04c5f"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_E4_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2fa/E57/10F64/5db879a06cb4"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F1_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2fb/E57/10F64/5db879a05238"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F1_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2fc/E57/10F64/5db879a07d56"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F1_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2fd/E57/10F64/5db879a01b6d"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F1_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2fe/E57/10F64/5db879a0b81"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F1_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2ff/E57/10F64/5db879a0222b"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F2_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/300/E57/10F64/5db879a017ac"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F2_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/301/E57/10F64/5db879a01c"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F2_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/302/E57/10F64/5db879a04ba0"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F2_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/303/E57/10F64/5db879a07b89"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F2_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/304/E57/10F64/5db879a0119d"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F3_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/305/E57/10F64/5db879a0663"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F3_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/306/E57/10F64/5db879a049bd"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F3_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/307/E57/10F64/5db879a06a1"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F3_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/308/E57/10F64/5db879a03750"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F3_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/309/E57/10F64/5db879a03aa0"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F4_0">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/30a/E57/10F64/5db879a04e4c"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F4_1">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/30b/E57/10F64/5db879a06162"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F4_2">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/30c/E57/10F64/5db879a0905"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F4_3">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/30d/E57/10F64/5db879a04ddc"/>
+							</pragmas>
+						</Field>
+						<Field name="v_cfPilot_F4_4">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="float64"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/30e/E57/10F64/5db879a070c1"/>
+							</pragmas>
+						</Field>
+					</fields>
+				</Struct>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/2bc/E57/10F64/5db879a02bcf"/>
+			</pragmas>
+		</Type>
+		<Constant name="C_LIBBSP_IMU_NB_ADDITIONAL_DATA_READ_PER_CYCLE">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="5"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/284/2E29/F5E0/5db94c383094"/>
+			</pragmas>
+		</Constant>
+		<Type name="TS_LIBBSP_IMU_AdditionalDataReadBufferOut">
+			<definition>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="float64"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="C_LIBBSP_IMU_NB_ADDITIONAL_DATA_READ_PER_CYCLE"/>
+							</path>
+						</IdExpression>
+					</size>
+				</Table>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/29a/2E29/F5E0/5db94ccb6035"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_ETSEC_NetworkStatus">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_ETSEC_OK">
+							<pragmas>
+								<ed:Value oid="!ed/294/1A51/1534/5efd8d5a1b60"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETSEC_KO">
+							<pragmas>
+								<ed:Value oid="!ed/295/1A51/1534/5efd8d641056"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/291/5C4A/6734/5ef61fd92a8c"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_ETSEC_Network">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_ETSEC_NETWORK_1">
+							<pragmas>
+								<ed:Value oid="!ed/296/1A51/1534/5efd8d7b35c5"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETSEC_NETWORK_2">
+							<pragmas>
+								<ed:Value oid="!ed/297/1A51/1534/5efd8d856639"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETSEC_NETWORK_3">
+							<pragmas>
+								<ed:Value oid="!ed/298/1A51/1534/5efd8d922989"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETSEC_NB_NETWORK">
+							<pragmas>
+								<ed:Value oid="!ed/299/1A51/1534/5efd8da57cc2"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/292/5C4A/6734/5ef61ff56185"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_ETR_Ds1682State">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_ETR_DS1682_CLOSED">
+							<pragmas>
+								<ed:Value oid="!ed/29b/1A51/1534/5efe121c71fa"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETR_DS1682_OPEN">
+							<pragmas>
+								<ed:Value oid="!ed/29c/1A51/1534/5efe12203cb6"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/29a/1A51/1534/5efe11f21a0d"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_I2C_Bus">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_I2C_BUS_1">
+							<pragmas>
+								<ed:Value oid="!ed/29d/66E3/4F38/5f03588ff7e"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_BUS_2">
+							<pragmas>
+								<ed:Value oid="!ed/29e/66E3/4F38/5f03589f5d35"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_I2C_NB_I2C_BUS">
+							<pragmas>
+								<ed:Value oid="!ed/29f/66E3/4F38/5f0358b16a5f"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/29c/66E3/4F38/5f03587153a9"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_ETSEC_ConfHostMac">
+			<definition>
+				<Struct>
+					<fields>
+						<Field name="mac_addr">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="TS_LIBBSP_ETSEC_MacAddr"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/2c5/366D/1ED8/5f75eaec7e96"/>
+							</pragmas>
+						</Field>
+					</fields>
+				</Struct>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/2a7/39A5/36E8/5f747352506d"/>
+			</pragmas>
+		</Type>
+		<Constant name="C_LIBBSP_ETSEC_MAC_ADDR_SIZE">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="6"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/2bd/39A5/36E8/5f74736f61b6"/>
+			</pragmas>
+		</Constant>
+		<Type name="TE_LIBBSP_ETSEC_NetConfigStart">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_ETSEC_START_NETWORK_TX">
+							<pragmas>
+								<ed:Value oid="!ed/2dc/39A5/36E8/5f74741f548b"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETSEC_START_NETWORK_RX">
+							<pragmas>
+								<ed:Value oid="!ed/2dd/39A5/36E8/5f74741f3ba7"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETSEC_START_NETWORK_RX_TX">
+							<pragmas>
+								<ed:Value oid="!ed/2e4/39A5/36E8/5f74744139d9"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/2db/39A5/36E8/5f74741f3e13"/>
+			</pragmas>
+		</Type>
+		<Constant name="C_LIBBSP_ETSEC_MESSAGE_SIZE">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="1518"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/2f2/39A5/36E8/5f7496552819"/>
+			</pragmas>
+		</Constant>
+		<Type name="TS_LIBBSP_ETSEC_EthBuffer">
+			<definition>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="uint8"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="C_LIBBSP_ETSEC_MESSAGE_SIZE"/>
+							</path>
+						</IdExpression>
+					</size>
+				</Table>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/300/39A5/36E8/5f7496a67670"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_ETSEC_FrameStatus">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_ETSEC_NO_PHYSICAL_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/2c2/7E22/9B8/5f75e4aa46c5"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETSEC_PHYSICAL_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/2c3/7E22/9B8/5f75e4aad12"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETSEC_NO_FRAME_RECEIVED">
+							<pragmas>
+								<ed:Value oid="!ed/2ca/7E22/9B8/5f75e4f120ea"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETSEC_SOFTWARE_OVERRUN">
+							<pragmas>
+								<ed:Value oid="!ed/2d1/7E22/9B8/5f75e4f215a6"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/2c1/7E22/9B8/5f75e4aa6d73"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_ETSEC_MacAddr">
+			<definition>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="uint8"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="C_LIBBSP_ETSEC_MAC_ADDR_SIZE"/>
+							</path>
+						</IdExpression>
+					</size>
+				</Table>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/2c4/366D/1ED8/5f75ead42c82"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_ETSEC_NetConfigStop">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_ETSEC_STOP_NETWORK_TX">
+							<pragmas>
+								<ed:Value oid="!ed/2cb/53B2/E918/5f7f13085f2"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETSEC_STOP_NETWORK_RX">
+							<pragmas>
+								<ed:Value oid="!ed/2cc/53B2/E918/5f7f13084e1e"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_ETSEC_STOP_NETWORK_RX_TX">
+							<pragmas>
+								<ed:Value oid="!ed/2cd/53B2/E918/5f7f1308452d"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/2ca/53B2/E918/5f7f13084be8"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_A429_Speed">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_A429_BAUDS_12">
+							<pragmas>
+								<ed:Value oid="!ed/2c7/31D6/37CC/5fa03b413179"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_BAUDS_100">
+							<pragmas>
+								<ed:Value oid="!ed/2ce/31D6/37CC/5fa03b4b1155"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/2c6/31D6/37CC/5fa03b32956"/>
+			</pragmas>
+		</Type>
+		<Constant name="C_LIBBSP_IMU_NB_ADD_DATA_READ_MAX">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<!-- 64 - C_LIBBSP_IMU_NB_INERTIAL_DATA_READ -->
+				<BinaryOp operator="-">
+					<operands>
+						<ConstValue value="64"/>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="C_LIBBSP_IMU_NB_INERTIAL_DATA_READ"/>
+							</path>
+						</IdExpression>
+					</operands>
+				</BinaryOp>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/234/2167/1390/5fa18a0e481e"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_LIBBSP_IMU_NB_INERTIAL_DATA_READ">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="51"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/242/2167/1390/5fa18a423f26"/>
+			</pragmas>
+		</Constant>
+		<Type name="TS_LIBBSP_IMU_FloatTab">
+			<definition>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="float64"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="C_LIBBSP_IMU_NB_ADD_DATA_READ_MAX"/>
+							</path>
+						</IdExpression>
+					</size>
+				</Table>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/268/2167/1390/5fa18aa2728b"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_GPIO_Status">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_GPIO_SUCCEEDED">
+							<pragmas>
+								<ed:Value oid="!ed/23f/553D/8D0/60630c3e4241"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_GPIO_FAILED">
+							<pragmas>
+								<ed:Value oid="!ed/240/553D/8D0/60630c4d2bd5"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/23e/553D/8D0/60630c2f141a"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_PSUM_Status">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_PSUM_SUCCEEDED">
+							<pragmas>
+								<ed:Value oid="!ed/242/553D/8D0/60630cab4856"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_PSUM_FAILED">
+							<pragmas>
+								<ed:Value oid="!ed/243/553D/8D0/60630cb576ee"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/241/553D/8D0/60630ca2402f"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_MRAM_ErrorCode">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_MRAM_OK">
+							<pragmas>
+								<ed:Value oid="!ed/241/3EEF/436C/606d6f90b7e"/>
+								<kcg:Pragma>
+									C:enum_val 0x0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MRAM_OPEN_ESPI_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/242/3EEF/436C/606d6fac5601"/>
+								<kcg:Pragma>
+									C:enum_val 0x1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MRAM_CLOSE_ESPI_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/249/3EEF/436C/606d6fae1d0e"/>
+								<kcg:Pragma>
+									C:enum_val 0x2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MRAM_WRITE_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/250/3EEF/436C/606d6fb17c73"/>
+								<kcg:Pragma>
+									C:enum_val 0x3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MRAM_READ_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/257/3EEF/436C/606d6fb26029"/>
+								<kcg:Pragma>
+									C:enum_val 0x4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MRAM_EXCHANGE_ESPI_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/25e/3EEF/436C/606d6fb2158c"/>
+								<kcg:Pragma>
+									C:enum_val 0x5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/240/3EEF/436C/606d6f886c79"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_UART_Dev">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_UART_DEV_1_RX">
+							<pragmas>
+								<ed:Value oid="!ed/248/6D72/41C8/608fc8f42aa1"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_DEV_1_TX">
+							<pragmas>
+								<ed:Value oid="!ed/249/6D72/41C8/608fc90d302f"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_DEV_2_RX">
+							<pragmas>
+								<ed:Value oid="!ed/24a/6D72/41C8/608fc9237f56"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_DEV_2_TX">
+							<pragmas>
+								<ed:Value oid="!ed/24b/6D72/41C8/608fc92e185f"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_DEV_3_RX">
+							<pragmas>
+								<ed:Value oid="!ed/24c/6D72/41C8/608fc9377fb"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_DEV_3_TX">
+							<pragmas>
+								<ed:Value oid="!ed/24d/6D72/41C8/608fc9435e71"/>
+								<kcg:Pragma>
+									C:enum_val 5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_DEV_4_RX">
+							<pragmas>
+								<ed:Value oid="!ed/24e/6D72/41C8/608fc94f2ada"/>
+								<kcg:Pragma>
+									C:enum_val 6
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_DEV_4_TX">
+							<pragmas>
+								<ed:Value oid="!ed/24f/6D72/41C8/608fc959572d"/>
+								<kcg:Pragma>
+									C:enum_val 7
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_DEV_MAX">
+							<pragmas>
+								<ed:Value oid="!ed/250/6D72/41C8/608fc9625abd"/>
+								<kcg:Pragma>
+									C:enum_val 8
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/247/6D72/41C8/608fc8df4462"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_UART_Speed">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_UART_BAUDS_9600">
+							<pragmas>
+								<ed:Value oid="!ed/263/6D72/41C8/608fdc7078c2"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_BAUDS_19200">
+							<pragmas>
+								<ed:Value oid="!ed/264/6D72/41C8/608fdc846a00"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_BAUDS_38400">
+							<pragmas>
+								<ed:Value oid="!ed/265/6D72/41C8/608fdc8d2058"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_BAUDS_115200">
+							<pragmas>
+								<ed:Value oid="!ed/266/6D72/41C8/608fdc9758c8"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_BAUDS_460800">
+							<pragmas>
+								<ed:Value oid="!ed/267/6D72/41C8/608fdca17001"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_BAUDS_921600">
+							<pragmas>
+								<ed:Value oid="!ed/268/6D72/41C8/608fdcaa2fed"/>
+								<kcg:Pragma>
+									C:enum_val 5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/251/6D72/41C8/608fc9c33ee6"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_UART_Parity">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_UART_PARITY_NONE">
+							<pragmas>
+								<ed:Value oid="!ed/26a/6D72/41C8/608fdd006fd8"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_PARITY_ODD">
+							<pragmas>
+								<ed:Value oid="!ed/26b/6D72/41C8/608fdd136093"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_PARITY_EVEN">
+							<pragmas>
+								<ed:Value oid="!ed/26c/6D72/41C8/608fdd1b6c30"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_PARITY_NONE_3">
+							<pragmas>
+								<ed:Value commentsToC="true" oid="!ed/26d/6D72/41C8/608fdd255d62" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6">
+									<comment>Second value allowing to select the absence of parity for the RS</comment>
+								</ed:Value>
+								<kcg:Pragma>
+									doc Second value allowing to select the absence of parity for the RS
+								</kcg:Pragma>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/269/6D72/41C8/608fdcf849d2"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_UART_StopBits">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_UART_STOPBITS_TWO">
+							<pragmas>
+								<ed:Value oid="!ed/26f/6D72/41C8/608fdd4b33a9"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_STOPBITS_ONE">
+							<pragmas>
+								<ed:Value oid="!ed/270/6D72/41C8/608fdd5c2b41"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/26e/6D72/41C8/608fdd4555d"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_UART_RxErrorCode">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_UART_RX_OK">
+							<pragmas>
+								<ed:Value oid="!ed/272/6D72/41C8/608fdfbe5aaa"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_DEV_INVALID_ID">
+							<pragmas>
+								<ed:Value oid="!ed/273/6D72/41C8/608fdfce4b94"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_RX_STOP_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/274/6D72/41C8/608fdfdb1340"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_RX_PARITY_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/275/6D72/41C8/608fdfe5706e"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_RX_OVERFLOW_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/276/6D72/41C8/608fdfed7201"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_RX_ROLLOVER_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/277/6D72/41C8/608fdff740e6"/>
+								<kcg:Pragma>
+									C:enum_val 5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_RX_INCONSISTENT_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/281/D74/2A10/6155770d3eb6"/>
+								<kcg:Pragma>
+									C:enum_val 6
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_POST_KO">
+							<pragmas>
+								<ed:Value oid="!ed/278/6D72/41C8/608fe0003c8a"/>
+								<kcg:Pragma>
+									C:enum_val 7
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/271/6D72/41C8/608fdfac1d71"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_UART_TxErrorCode">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_UART_TX_OK">
+							<pragmas>
+								<ed:Value oid="!ed/27a/6D72/41C8/608fe04b4bbf"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_TX_INVALID_ID">
+							<pragmas>
+								<ed:Value oid="!ed/27b/6D72/41C8/608fe0587ad4"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_TX_OVERFLOW_CMD">
+							<pragmas>
+								<ed:Value oid="!ed/27c/6D72/41C8/608fe05f788b"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_UART_TX_OVERFLOW_FIFO">
+							<pragmas>
+								<ed:Value oid="!ed/27d/6D72/41C8/608fe06977f1"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/279/6D72/41C8/608fe0412715"/>
+			</pragmas>
+		</Type>
+		<Type name="TA_LIBBSP_UART_RxBuffer">
+			<definition>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="uint8"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="C_LIBBSP_UART_FIFO_SIZE"/>
+							</path>
+						</IdExpression>
+					</size>
+				</Table>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/26d/4613/40C8/608fe48d3318"/>
+			</pragmas>
+		</Type>
+		<Constant name="C_LIBBSP_UART_FIFO_SIZE">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="2048"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/27e/4613/40C8/608fe4d6841"/>
+			</pragmas>
+		</Constant>
+		<Type name="TE_LIBBSP_A429_RxLine">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_A429_RX_1">
+							<pragmas>
+								<ed:Value oid="!ed/29b/15FC/3558/60a4c3381047"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_2">
+							<pragmas>
+								<ed:Value oid="!ed/2a9/15FC/3558/60a4c3703c1"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_3">
+							<pragmas>
+								<ed:Value oid="!ed/2b0/15FC/3558/60a4c3715ecd"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_4">
+							<pragmas>
+								<ed:Value oid="!ed/2b7/15FC/3558/60a4c371692c"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_5">
+							<pragmas>
+								<ed:Value oid="!ed/2be/15FC/3558/60a4c3715cda"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_6">
+							<pragmas>
+								<ed:Value oid="!ed/2c5/15FC/3558/60a4c3714e06"/>
+								<kcg:Pragma>
+									C:enum_val 5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_7">
+							<pragmas>
+								<ed:Value oid="!ed/2cc/15FC/3558/60a4c3724a65"/>
+								<kcg:Pragma>
+									C:enum_val 6
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_8">
+							<pragmas>
+								<ed:Value oid="!ed/2d3/15FC/3558/60a4c3721bf7"/>
+								<kcg:Pragma>
+									C:enum_val 7
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_9">
+							<pragmas>
+								<ed:Value oid="!ed/2da/15FC/3558/60a4c3733575"/>
+								<kcg:Pragma>
+									C:enum_val 8
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/29a/15FC/3558/60a4c338d42"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_IMU_Vect9">
+			<definition>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="float64"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<ConstValue value="9"/>
+					</size>
+				</Table>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/28f/22FE/4708/618419f1518d"/>
+			</pragmas>
+		</Type>
+		<Type name="TS_LIBBSP_PLDMEG_IfCpuStatus">
+			<definition>
+				<Struct>
+					<fields>
+						<Field name="parity_error">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/28e/3192/63AC/61d5bee63b1b"/>
+							</pragmas>
+						</Field>
+						<Field name="addr_error">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/28f/3192/63AC/61d5bee6513c"/>
+							</pragmas>
+						</Field>
+						<Field name="acc_error">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/290/3192/63AC/61d5bee6754e"/>
+							</pragmas>
+						</Field>
+						<Field name="timeout_error">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/291/3192/63AC/61d5bee67967"/>
+							</pragmas>
+						</Field>
+						<Field name="overload_error">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="bool"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/292/3192/63AC/61d5bee6711b"/>
+							</pragmas>
+						</Field>
+						<Field name="error_counter">
+							<type>
+								<NamedType>
+									<type>
+										<TypeRef name="uint8"/>
+									</type>
+								</NamedType>
+							</type>
+							<pragmas>
+								<ed:Field oid="!ed/293/3192/63AC/61d5bee63f34"/>
+							</pragmas>
+						</Field>
+					</fields>
+				</Struct>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/28c/3192/63AC/61d5bee61b85"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_MEGIT_CpuSyncSource">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_MEGIT_CPU_NO_SOURCE">
+							<pragmas>
+								<ed:Value oid="!ed/287/F7F/2A8C/62d66205723c"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_CPU_SYNC_APPL">
+							<pragmas>
+								<ed:Value oid="!ed/288/F7F/2A8C/62d6622e7793"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_CPU_TIC_RDY">
+							<pragmas>
+								<ed:Value oid="!ed/289/F7F/2A8C/62d6623338ae"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_CPU_RT_RDY">
+							<pragmas>
+								<ed:Value oid="!ed/28a/F7F/2A8C/62d662597f6b"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_CPU_IRQ_2KH_ALL">
+							<pragmas>
+								<ed:Value oid="!ed/28b/F7F/2A8C/62d6625d54b9"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_CPU_IRQ_APPL_ALL">
+							<pragmas>
+								<ed:Value oid="!ed/28c/F7F/2A8C/62d6625f412f"/>
+								<kcg:Pragma>
+									C:enum_val 5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_CPU_IRQ_APPL_TIC">
+							<pragmas>
+								<ed:Value oid="!ed/28d/F7F/2A8C/62d662613bdd"/>
+								<kcg:Pragma>
+									C:enum_val 6
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_CPU_RTC_8K">
+							<pragmas>
+								<ed:Value oid="!ed/28e/F7F/2A8C/62d662863c11"/>
+								<kcg:Pragma>
+									C:enum_val 7
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_CPU_NB_SOURCE">
+							<pragmas>
+								<ed:Value oid="!ed/28f/F7F/2A8C/62d662a91970"/>
+								<kcg:Pragma>
+									C:enum_val 8
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/285/4148/3050/62d65b3164b0"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_MEGIT_RsSyncSource">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_MEGIT_RS_NO_SOURCE">
+							<pragmas>
+								<ed:Value oid="!ed/290/F7F/2A8C/62d665ae1b4f"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_RS_SYNC_100HZ">
+							<pragmas>
+								<ed:Value oid="!ed/297/F7F/2A8C/62d665b15059"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_RS_SYNC_APPL">
+							<pragmas>
+								<ed:Value oid="!ed/29e/F7F/2A8C/62d665b323ab"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_RS_RTC_IDA">
+							<pragmas>
+								<ed:Value oid="!ed/2a5/F7F/2A8C/62d665b4b07"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_RS_RTC_2K">
+							<pragmas>
+								<ed:Value oid="!ed/2ac/F7F/2A8C/62d665b429e"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_RS_CPU_RTC">
+							<pragmas>
+								<ed:Value oid="!ed/2b3/F7F/2A8C/62d665b51e14"/>
+								<kcg:Pragma>
+									C:enum_val 5
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_RS_NB_SOURCE">
+							<pragmas>
+								<ed:Value oid="!ed/2ba/F7F/2A8C/62d665b53e1b"/>
+								<kcg:Pragma>
+									C:enum_val 6
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/28b/4148/3050/62d65b5a4417"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_MEGIT_ItStatus">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_MEGIT_IT_SOURCE_INVALID">
+							<pragmas>
+								<ed:Value oid="!ed/2a4/3633/45FC/62d6c6562b5a"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_MEGIT_IT_SOURCE_VALID">
+							<pragmas>
+								<ed:Value oid="!ed/2a5/3633/45FC/62d6c656491"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/2a3/3633/45FC/62d6c65623cc"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_LIBBSP_A429_RxErrorCode">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_LIBBSP_A429_RX_OK">
+							<pragmas>
+								<ed:Value oid="!ed/29b/8E0/A04/631619c63de5"/>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_INVALID_ID">
+							<pragmas>
+								<ed:Value oid="!ed/29d/8E0/A04/63161a1e52df"/>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_ROLLOVER">
+							<pragmas>
+								<ed:Value oid="!ed/29e/8E0/A04/63161a2b25c5"/>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_PARITY_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/29f/8E0/A04/63161a324551"/>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_GAP_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/2a0/8E0/A04/63161a383d23"/>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_FORMAT_ERROR">
+							<pragmas>
+								<ed:Value oid="!ed/2a1/8E0/A04/63161a3f34bc"/>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_TOO_MANY_LABELS">
+							<pragmas>
+								<ed:Value oid="!ed/2a2/8E0/A04/63161a454975"/>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_RX_INCONSISTENT_ROLLOVER">
+							<pragmas>
+								<ed:Value oid="!ed/2a3/8E0/A04/63161a4beac"/>
+							</pragmas>
+						</Value>
+						<Value name="E_LIBBSP_A429_POST_KO">
+							<pragmas>
+								<ed:Value oid="!ed/2a4/8E0/A04/63161a511312"/>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/29a/8E0/A04/631619b145cb"/>
+			</pragmas>
+		</Type>
+	</declarations>
+</File>

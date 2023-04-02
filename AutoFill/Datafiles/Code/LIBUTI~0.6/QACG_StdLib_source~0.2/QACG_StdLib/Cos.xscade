@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" kind="function" external="imported" name="Cos">
+	<inputs>
+		<Variable name="X">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/923/5ACA/524/51d426282321"/>
+			</pragmas>
+		</Variable>
+	</inputs>
+	<outputs>
+		<Variable name="CosX">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/924/5ACA/524/51d4263414b4"/>
+			</pragmas>
+		</Variable>
+	</outputs>
+	<pragmas>
+		<ed:Operator oid="!ed/922/1114/13D0/51d425354f55" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+			<comment>This symbol computes the Cosine of the input value X</comment>
+		</ed:Operator>
+		<kcg:Pragma>
+			C:name Cos
+		</kcg:Pragma>
+		<kcg:Pragma>
+			Ada:name Cos
+		</kcg:Pragma>
+	</pragmas>
+</Operator>

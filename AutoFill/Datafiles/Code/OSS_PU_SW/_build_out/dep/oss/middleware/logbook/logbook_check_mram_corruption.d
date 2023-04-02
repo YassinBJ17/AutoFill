@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/middleware/logbook/logbook_check_mram_corruption.o: R:/source/oss/middleware/logbook/logbook_check_mram_corruption.c R:/source/oss/middleware/logbook/logbook_public.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/logbook/logbook_private.h

@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/middleware/t4/t4_init.o: R:/source/oss/middleware/t4/t4_init.c R:/source/oss/middleware/t4/t4_public.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/t4/t4_private.h R:/source/shared/memory/shared_memory_public.h R:/source/oss/driver/i2c/drv_I2C_public.h R:/source/shared/type/common_type.h

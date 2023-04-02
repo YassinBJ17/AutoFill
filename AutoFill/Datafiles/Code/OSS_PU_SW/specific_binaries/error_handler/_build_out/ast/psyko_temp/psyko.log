@@ -1,0 +1,23 @@
+psyko>log> psyko version...: 8.13.3-44d2f270
+psyko>log> gendir..........: R:\specific_binaries\error_handler\_build_out\ast\psyko_temp
+psyko>log> psykopath.......: C:\Program Files (x86)\Krono-Safe\psyko-8.13.3
+psyko>log> kernel path.....: C:\Program Files (x86)\Krono-Safe\rtk-power-mpc5777m-module-4.4.5\power-mpc5777m-module
+psyko>log> psyko program...: C:\Program Files (x86)\Krono-Safe\psyko-8.13.3\bin\psyko.exe
+psyko>log> command line....: C:/Program Files (x86)/Krono-Safe/psyko-8.13.3/bin/psyko.exe --product power-mpc5777m-module --kernel-dir C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5 --gendir R:/specific_binaries/error_handler/_build_out/ast/psyko_temp cc --output R:/specific_binaries/error_handler/_build_out/obj/handle_exception.o -- R:/specific_binaries/error_handler/source/handle_exception.c R:/specific_binaries/error_handler/_build_proc/flag/cflag_error_handler.hjson
+psyko>log> Step BACKEND COMPILATION: "C:\Program Files (x86)\Krono-Safe\psyko-8.13.3\bin\ninja.exe" --verbose -w dupbuild=err -w phonycycle=err -d keeprsp -f R:\specific_binaries\error_handler\_build_out\ast\psyko_temp\cc\build.ninja
+[BACKEND COMPILATION - 1/1] dcc -@R:/specific_binaries/error_handler/_build_out/obj/handle_exception.o.cmdline
+R:/specific_binaries/error_handler/source\handle_exception_public.h
+ C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\asterios.h
+  C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\libpsy.h
+   C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\kstdint.h
+    C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\kstdint_public.h
+   C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\em_types.h
+    C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\kstdint_private.h
+    C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\target_em.h
+     C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\kcompiler.h
+      C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\compiler.h
+       C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\far_jump_functions.h
+      C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\kalign.h
+       C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\align.h
+  C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5/power-mpc5777m-module/include\em_errors_kernel.h
+"R:/specific_binaries/error_handler/source/handle_exception.c", line 34: warning (dcc:1516): parameter error is never used

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" xmlns:SMP="unknown_address">
+	<declarations>
+		<Package name="LINEAR">
+			<declarations>
+				<Operator name="LimitCount" href="LimitCount.xscade"/>
+				<Operator name="Count" href="Count.xscade"/>
+				<Operator name="CyclicCount" href="CyclicCount.xscade"/>
+				<Operator name="IsInBound" href="IsInBound.xscade"/>
+			</declarations>
+			<pragmas>
+				<ed:Package oid="!ed/d/C6C/A6C/51cadf954f66" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+					<diagrams>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/e/C6C/A6C/51cadf95206c" blockKind="constants"/>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/f/C6C/A6C/51cadf9574a7" blockKind="types"/>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/10/C6C/A6C/51cadf9513d" blockKind="sensors"/>
+					</diagrams>
+				</ed:Package>
+			</pragmas>
+		</Package>
+	</declarations>
+</File>

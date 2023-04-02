@@ -1,0 +1,178 @@
+; ------------------------------------------------------------------------------
+;                         SAFRAN Electronics & Defense
+;                    Reproduction and disclosure forbidden.
+; ------------------------------------------------------------------------------
+; DESCRIPTION : Add the options to the menu
+; ------------------------------------------------------------------------------
+
+GLOBAL &dir_tools_t32
+GLOBAL &script_full_path
+&dir_tools_t32=OS.PPD()+"/../"
+
+MENU.RESet
+MENU.ReProgram
+(
+	ADD
+	MENU
+	(
+		POPUP "User"
+		(
+			POPUP "Incomplete flash"
+			(
+				DEFAULT
+				MENUITEM "[:colorblack]Int. src / RSF kept     / no flash (previously flashed),CTRL+R"
+				(
+					&script_full_path="&dir_tools_t32"+"main/select_rsf_css_wrapper_srcx_gy.cmm"
+					do &script_full_path 1 0 3
+				)
+				MENUITEM "[:colorblue]Int. src / RSF g4        / flash g4 only,CTRL+D"
+				(
+					&script_full_path="&dir_tools_t32"+"main/select_rsf_css_wrapper_srcx_gy.cmm"
+					do &script_full_path  1 1 1
+				)
+				MENUITEM "[:colorfuchsia]Int. src / RSF g1_2_3 / flash g1_2_3 only"
+				(
+					&script_full_path="&dir_tools_t32"+"main/select_rsf_css_wrapper_srcx_gy.cmm"
+					do &script_full_path 1 2 2
+				)
+				MENUITEM "[:colorblack]Int. src / RSF kept     / flash AS only"
+				(
+					&script_full_path="&dir_tools_t32"+"main/select_rsf_css_wrapper_srcx_gy.cmm"
+					do &script_full_path 1 0 4
+				)	
+			)
+			SEPARATOR
+			POPUP "Int. source"
+			(
+				MENUITEM "[:colorfuchsia]RSF CSS g1_2_3"
+				(
+					&script_full_path="&dir_tools_t32"+"main/select_rsf_css_wrapper_srcx_gy.cmm"
+					do &script_full_path 1 2 0
+				)
+				MENUITEM "[:colorblue]RSF CSS g4"
+				(
+					&script_full_path="&dir_tools_t32"+"main/select_rsf_css_wrapper_srcx_gy.cmm" 
+					do &script_full_path 1 1 0
+				)
+			)
+			POPUP "Ext. source"
+			(
+				MENUITEM "[:colorfuchsia]RSF CSS g1_2_3"
+				(
+					&script_full_path="&dir_tools_t32"+"main/select_rsf_css_wrapper_srcx_gy.cmm"
+					do &script_full_path 0 2 0
+				)
+				MENUITEM "[:colorblue]RSF CSS g4"
+				(
+					&script_full_path="&dir_tools_t32"+"main/select_rsf_css_wrapper_srcx_gy.cmm"
+					do &script_full_path 0 1 0
+				)
+			)
+			SEPARATOR
+			POPUP "[:aconfig]Utils"
+			(
+				MENUITEM "[:program]Zeroise MRAM"
+				(
+					&script_full_path="&dir_tools_t32"+"utilities/erase_mram.cmm"
+					do &script_full_path
+				)
+				MENUITEM "[:program]Zeroise && set OSS_CONF in MRAM for g1_2_3"
+				(
+					&script_full_path="&dir_tools_t32"+"utilities/erase_mram.cmm"
+					do &script_full_path
+					&script_full_path="&dir_tools_t32"+"utilities/oss_conf_mram_default_configuration_g1_2_3.cmm"
+					do &script_full_path
+				)
+				MENUITEM "[:program]Zeroise && set OSS_CONF in MRAM for g4"
+				(
+					&script_full_path="&dir_tools_t32"+"utilities/erase_mram.cmm"
+					do &script_full_path
+					&script_full_path="&dir_tools_t32"+"utilities/oss_conf_mram_default_configuration_g4.cmm"
+					do &script_full_path
+				)
+				MENUITEM "[:apuchip]Unlock MPC-5777x"
+				(
+					&script_full_path="&dir_tools_t32"+"utilities/unlock_mpc.cmm"
+					do &script_full_path
+				)
+				MENUITEM "[:apuchip]Enable debug in external source"
+				(
+					&script_full_path="&dir_tools_t32"+"utilities/make_debug_in_ext_src.cmm"
+					do &script_full_path
+				)
+				MENUITEM "[:aview]Enable spotlight"
+				(
+					Register.view /SpotLight
+				)
+				SEPARATOR
+				POPUP "ADC over SPI"
+				(
+					MENUITEM "ADC 1 SG / SAI"
+					(
+						Var.watch    sg1_sg3_sai1_sai3_sig
+						Var.addwatch sg1_sg3_sg4_sai1_sai3_gnd
+						Var.addwatch sg1_sg3_sg4_sai1_sai3_exc
+						Var.addwatch sg4_sig
+					)
+					MENUITEM "ADC 2 SG / SAI "
+					(
+						Var.watch    sg2_sai2_sig
+						Var.addwatch sg2_sg5b_sai2_sai4_gnd
+						Var.addwatch sg2_sg5b_sai2_sai4_exc
+						Var.addwatch sg5_sai4_sig
+					)
+					MENUITEM "ADC 3 P3"
+					(
+						Var.watch p3_sig
+						Var.addwatch p3_gnd
+						Var.addwatch p3_exc
+					)
+					SEPARATOR
+					MENUITEM "ADC 1 XR SIN"
+					(
+						Var.watch    xr_vsin_raw
+						Var.addwatch xr_vsin_ref
+						Var.addwatch xr_vsin_gnd
+					)
+					MENUITEM "ADC 2 XR COS"
+					(
+						Var.watch    xr_vcos_raw
+						Var.addwatch xr_vcos_ref
+						Var.addwatch xr_vcos_gnd
+					)
+					MENUITEM "ADC 3 XR EXC"
+					(
+						Var.watch    xr_exc_raw
+					)
+					SEPARATOR
+					MENUITEM "ADC 1/2/3 LVDT a/b"
+					(
+						Var.watch    lvdt_a_b_s1_raw
+						Var.watch    lvdt_a_b_s2_raw
+						Var.watch    lvdt_a_b_exc_raw
+					)
+					MENUITEM "ADC 1/2/3 LVDT a/b GRAPH"
+					(
+						Var.draw lvdt_a_b_s1_raw
+						Var.draw lvdt_a_b_s2_raw
+						Var.draw lvdt_a_b_exc_raw
+					)
+					SEPARATOR
+					MENUITEM "ADC 1/2/3 LVDT c"
+					(
+						Var.watch    lvdt_c_s1_raw
+						Var.watch    lvdt_c_s2_raw
+						Var.watch    lvdt_c_exc_raw
+					)
+					MENUITEM "ADC 1/2/3 LVDT c GRAPH"
+					(
+						Var.draw lvdt_c_s1_raw
+						Var.draw lvdt_c_s2_raw
+						Var.draw lvdt_c_exc_raw
+					)
+				)
+				SEPARATOR
+			)
+		)
+	)
+)

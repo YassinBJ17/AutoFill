@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/middleware/t4/t4_interp.o: R:/source/oss/middleware/t4/t4_interp.c R:/source/oss/middleware/t4/t4_private.h R:/source/shared/memory/shared_memory_public.h R:/source/shared/type/mcp_types.h

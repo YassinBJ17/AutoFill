@@ -1,0 +1,5 @@
+dld: warning: No main entry point defined
+dld: warning: Don't know where to allocate input section:
+dld:   no matching input specification found in linker command file.
+dld:   Section name: .text_vle
+dld:   File: R:/_build_out/ast/backend/app/core_0_psyslayer_runtime_core.o

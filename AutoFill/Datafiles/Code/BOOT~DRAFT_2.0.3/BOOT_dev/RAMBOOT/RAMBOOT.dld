@@ -1,0 +1,77 @@
+/****************************************************************************/
+/***************** RAM BOOT SOFTWARE LINKER FILE DESCRIPTION ****************/
+/****************************************************************************/
+
+/*****************************************************/
+/************** Memory Map definitions ***************/
+/*****************************************************/
+MEMORY
+{
+    vector_table:                   ORIGIN = 0x20010000,  LENGTH = 0x00000010
+    reset:                          ORIGIN = 0x20010010,  LENGTH = 0x00000010
+    code:                           ORIGIN = 0x20010020,  LENGTH = 0x00006FE0
+    data:                           ORIGIN = 0x2001a000,  LENGTH = 0x00001000
+    stack:                          ORIGIN = 0x2001b000,  LENGTH = 0x00002000
+}
+
+/*****************************************************/
+/************** All section definitions **************/
+/*****************************************************/
+SECTIONS
+{
+    GROUP :
+    {
+        .intvec: {*(.VectorTable)}  
+    } > vector_table
+    
+    GROUP :
+    {
+        .text: {*(.Reset)}
+    } > reset
+    
+    GROUP :
+    {
+        /* Code generated for functions, global asm statements, string constants, and large
+        const variables */
+        .text ALIGN(4): {*(.text)}
+      
+        /* Small Const Area (SDA2) begin */
+        _SDA2_BASE_ = .;
+        .sdata2: {}
+        
+        .sdata2: {*(.rodata)}
+        .sdata2: {*(.RAMBOOT_CODE_END)}
+    } > code
+
+    GROUP :
+    {
+        /* SDATA & SBSS area have to be contiguous */
+
+        /* Small Data Area (SDA) begin for SDATA & SBSS */
+        _SDA_BASE_ = .;
+
+        /* small non-const variables with Initial Values */
+        .sdata          : {}
+
+        /* small non-const variables without Initial Values */
+        .sbss           : {}
+
+        /* Small Data Area (SDA) end */
+
+        /* non-const variables without Initial Values */
+        .bss            : {}
+
+        /* non-const variables with Initial Values */
+        .data           : {}
+
+    } > data
+}
+
+
+/****************************************************/
+/********* Linker global symbol definitions *********/
+/****************************************************/
+__start = VECT_Reset;
+/* stack pointer */
+__SP_INIT       = ADDR(stack) + SIZEOF(stack);
+__SP_END        = ADDR(stack);

@@ -1,0 +1,64 @@
+/* --------------------------------------------------------------------------*/
+/*                        Safran Electronics & Defense                       */
+/*                               SAFRAN Group                                */
+/* --------------------------------------------------------------------------*/
+/* PROJECT : BOOT                                                            */
+/*                                                                           */
+/* Creation information:                                                     */
+/*   Created by: F073297                                                     */
+/*   Date : Wed Feb  6 10:32:56 CET 2019                                     */
+/* Modification information:                                                 */
+/*   %derived_by: F605763 %                                                  */
+/* --------------------------------------------------------------------------*/
+/* DESCRIPTION : Linker command file for boot software                       */
+/* ALL IS LINKED IN FLASH FOR CORE I/O                                       */
+/* --------------------------------------------------------------------------*/
+
+MEMORY
+{
+   /* =============================== */
+   /* Internal FLASH :                */
+   /* =============================== */
+
+   BOOT_CODE_FLASH               : ORIGIN = 0x00FC0000, LENGTH = 0x0000C000 /* BOOT */
+
+   HW_CARTRIDGE_CODE_FLASH       : ORIGIN = 0x00FCC000, LENGTH = 0x00004000 /* HW_CARTRIDGE  */
+
+   DTLD_CODE_FLASH               : ORIGIN = 0x016C4000, LENGTH = 0x0003BD00 /* DTLD */
+
+   ASTERIOS_CARTRIDGE_CODE_FLASH : ORIGIN = 0x01000000, LENGTH = 0x00000100 /* ASTERIOS_CARTRIDGE */
+
+   ASTERIOS_CODE_FLASH           : ORIGIN = 0x01000100, LENGTH = 0x0077FEFF /* ASTERIOS RTK 19.1 */
+
+
+   /* =============================== */
+   /* MRAM : 4 Mo = ~0x40_0000 Bytes  */
+   /* =============================== */
+   MRAM_LOG_BOOT : ORIGIN = 0x20001000, LENGTH = 0x00005400 /* LOGBOOK for BOOT */
+
+   /* =============================== */
+   /* Internal RAM : ORIGIN 0x40000000 LENGTH = 0x65000 (404ko) */
+   /* =============================== */
+   SRAM          : ORIGIN = 0x40000000, LENGTH = 0x000064FFF
+
+   /* =============================== */
+   /* Internal IMEM CPU0 */
+   /* =============================== */
+   IMEM_CPU0     : ORIGIN = 0x50000000, LENGTH = 0x4000
+   DMEM_CPU0     : ORIGIN = 0x50800000, LENGTH = 0x10000
+
+   /* =============================== */
+   /* Internal IMEM CPU1 */
+   /* =============================== */
+   IMEM_CPU1     : ORIGIN = 0x51000000, LENGTH = 0x4000
+   DMEM_CPU1     : ORIGIN = 0x51800000, LENGTH = 0x10000
+
+   /* =============================== */
+   /* Internal IMEM CPU2 */
+   /* =============================== */
+   IMEM_CPU2     : ORIGIN = 0x52000000, LENGTH = 0x4000
+   DMEM_CPU2     : ORIGIN = 0x52800000, LENGTH = 0xFB00
+   BOOT_INTC_DATA  : ORIGIN = 0x5280FB00 , LENGTH = 0x00000400 /* Interruption Data for DAL D & BOOT */
+   BOOT_INTC_STACK : ORIGIN = 0x5280FF00 , LENGTH = 0x00000100 /* Interruption Stack for DAL D & BOOT */
+
+}

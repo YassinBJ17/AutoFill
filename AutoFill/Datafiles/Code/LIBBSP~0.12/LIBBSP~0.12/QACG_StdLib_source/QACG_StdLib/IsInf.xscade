@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" kind="function" external="imported" name="IsInf">
+	<inputs>
+		<Variable name="X">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1ec1e/556A/1A60/5b9f86b53f5d"/>
+			</pragmas>
+		</Variable>
+	</inputs>
+	<outputs>
+		<Variable name="IsInf">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1ec28/556A/1A60/5b9f86c23b72"/>
+			</pragmas>
+		</Variable>
+	</outputs>
+	<pragmas>
+		<ed:Operator oid="!ed/1ec1d/556A/1A60/5b9f869c4131" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+			<comment>This symbol produces the output IsInf as the result of comparison if the input x is infinite (true) or not (false).</comment>
+		</ed:Operator>
+		<kcg:Pragma>
+			C:name IsInf
+		</kcg:Pragma>
+	</pragmas>
+</Operator>

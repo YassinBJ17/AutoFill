@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/driver/dma/DMA_GET_CFG_code.o: R:/source/oss/driver/dma/DMA_GET_CFG_code.c R:/source/oss/driver/dma/DMA_HAL_public.h R:/source/shared/type/common_type.h R:/source/shared/type/mcp_types.h R:/source/oss/driver/dma/DMA_CFEX_public.h R:/source/oss/driver/dma/DMA_REG_common.h

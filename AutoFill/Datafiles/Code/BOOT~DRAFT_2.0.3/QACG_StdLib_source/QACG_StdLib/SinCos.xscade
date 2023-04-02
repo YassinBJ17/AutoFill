@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" kind="function" external="imported" name="SinCos">
+	<inputs>
+		<Variable name="X">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/2426/1C2/1FA0/557e9d283503"/>
+			</pragmas>
+		</Variable>
+	</inputs>
+	<outputs>
+		<Variable name="SinX">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/2424/1C2/1FA0/557e9d282a11"/>
+			</pragmas>
+		</Variable>
+		<Variable name="CosX">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/2425/1C2/1FA0/557e9d28158d"/>
+			</pragmas>
+		</Variable>
+	</outputs>
+	<pragmas>
+		<ed:Operator oid="!ed/2423/1C2/1FA0/557e9d286f64" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+			<comment>This symbol computes the Sine and the Cosine of the input value X</comment>
+		</ed:Operator>
+		<kcg:Pragma>
+			C:name SinCos
+		</kcg:Pragma>
+		<kcg:Pragma>
+			Ada:name SinCos
+		</kcg:Pragma>
+	</pragmas>
+</Operator>

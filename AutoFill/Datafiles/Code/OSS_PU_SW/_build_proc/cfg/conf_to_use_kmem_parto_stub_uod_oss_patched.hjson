@@ -1,0 +1,12 @@
+{
+  "partition": {
+    "identifier": 5,
+    "modules_partition": {
+      "global_objects": [
+        "R:/_build_out/arc/lib_critical_service.a",
+        "R:/specific_binaries/uod_lib/UODG.a",
+        "R:/_build_out/arc/oss.a"
+      ]
+    }
+  }
+}

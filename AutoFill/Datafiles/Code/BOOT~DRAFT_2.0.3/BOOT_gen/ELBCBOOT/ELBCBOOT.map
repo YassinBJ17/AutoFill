@@ -1,0 +1,225 @@
+Removed unused sections:
+Wind River DLD V5.9.4.8		Wed Dec 07 18:23:09 2022
+
+Command line:
+c:\WindRiver\diab\5.9.4.8\WIN32\bin\dld.exe -tP1011EH:simple -m6
+-Xbranch-islands -Xcheck-input-patterns=2 -Xcheck-overlapping -Xelf
+-Xrescan-libraries -Xrescan-restart -Xunused-sections-list
+-Xremove-unused-sections
+../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a
+../../BOOT_gen/ELBCBOOT/ELBCBOOT_CopyAndBootRamBoot_CBRB/lib/ELBCBOOT_CopyAndBootRamBoot_CBRB.a
+../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a
+-o../../BOOT_gen/ELBCBOOT/ELBCBOOT.elf ELBCBOOT.dld
+
+Output file name   : ../../BOOT_gen/ELBCBOOT/ELBCBOOT.elf
+Output file format : ELF
+Target machine type: PPC
+
+		Link Editor Memory Map
+
+
+output		input		virtual
+section		section		address		size	 file
+
+.intvec         		ffffffe0	00000008
+		.VectorTable    ffffffe0	00000008 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_VectorTable.o]
+		   IVOR_Handler ffffffe0	00000000
+
+
+.text           		fffffffc	00000004
+		.Reset          fffffffc	00000004 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_VectorTable.o]
+		     VECT_Reset fffffffc	00000000
+
+
+.text           		fffff000	00000280
+		.text           fffff000	00000000 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_VectorTable.o]
+
+		.text           fffff000	00000018 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Main.o]
+		  ELBCBOOT_Main fffff000	00000000
+
+		.text           fffff018	0000003c ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Registers.o]
+		       REG_Init fffff018	00000000
+
+		.text           fffff054	00000038 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_CopyAndBootRamBoot_CBRB/lib/ELBCBOOT_CopyAndBootRamBoot_CBRB.a[ELBCBOOT_CopyAndBootRamBoot.o]
+    ELBCBOOT_CopyAndBootRamBoot fffff054	00000000
+			  stall fffff088	00000000
+
+		.text           fffff08c	00000000 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Memcpy.o]
+
+		.text           fffff08c	00000078 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Memcpy.o]
+		ELBCBOOT_Memcpy fffff08c	00000078
+
+		.text           fffff104	00000000 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureLAW.o]
+
+		.text           fffff104	00000060 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureLAW.o]
+     ELBCBOOT_CBHW_ConfigureLAW fffff104	00000060
+
+		.text           fffff164	00000000 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureDDR.o]
+
+		.text           fffff164	00000064 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureDDR.o]
+     ELBCBOOT_CBHW_ConfigureDDR fffff164	00000064
+
+		.text           fffff1c8	00000000 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureL2Cache.o]
+
+		.text           fffff1c8	00000070 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureL2Cache.o]
+ ELBCBOOT_CBHW_ConfigureL2Cache fffff1c8	00000070
+
+		.text           fffff238	00000048 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureBasicHW.o]
+ ELBCBOOT_CBHW_ConfigureBasicHW fffff238	00000000
+
+
+.sdata2         		fffff280	00000114
+		.rodata         fffff280	00000028 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureLAW.o]
+			   LAWs fffff280	00000028
+
+		.rodata         fffff2a8	000000e0 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureDDR.o]
+		     DDR_Config fffff2a8	000000e0
+
+		.rodata         fffff388	0000000c ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureL2Cache.o]
+		 L2_Cache_L2CTL fffff388	00000004
+	      L2_Cache_L2SRBARn fffff38c	00000004
+	      L2_Cache_L2ERRDIS fffff390	00000004
+
+
+.PPC.EMB.apuinfo		00000000	0000001c
+		.PPC.EMB.apuinfo 00000000	0000001c ELBCBOOT.dld
+
+
+.debug_line     		00000000	000010a5
+		.debug_line     00000000	00000146 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_VectorTable.o]
+
+		.debug_line     00000146	000000d7 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Main.o]
+
+		.debug_line     0000021d	0000042f ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Registers.o]
+
+		.debug_line     0000064c	0000031a ../../BOOT_gen/ELBCBOOT/ELBCBOOT_CopyAndBootRamBoot_CBRB/lib/ELBCBOOT_CopyAndBootRamBoot_CBRB.a[ELBCBOOT_CopyAndBootRamBoot.o]
+
+		.debug_line     00000966	00000027 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Memcpy.o]
+
+		.debug_line     0000098d	000000e2 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Memcpy.o]
+
+		.debug_line     00000a6f	0000004a ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureLAW.o]
+
+		.debug_line     00000ab9	000000b2 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureLAW.o]
+
+		.debug_line     00000b6b	0000004a ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureDDR.o]
+
+		.debug_line     00000bb5	000000b2 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureDDR.o]
+
+		.debug_line     00000c67	0000004e ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureL2Cache.o]
+
+		.debug_line     00000cb5	000000ad ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureL2Cache.o]
+
+		.debug_line     00000d62	00000343 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureBasicHW.o]
+
+
+.debug_info     		00000000	000028d5
+		.debug_info     00000000	000001a7 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_VectorTable.o]
+
+		.debug_info     000001a7	00000099 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Main.o]
+
+		.debug_info     00000240	0000009e ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Registers.o]
+
+		.debug_info     000002de	000000a5 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_CopyAndBootRamBoot_CBRB/lib/ELBCBOOT_CopyAndBootRamBoot_CBRB.a[ELBCBOOT_CopyAndBootRamBoot.o]
+
+		.debug_info     00000383	0000010f ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Memcpy.o]
+
+		.debug_info     00000492	000001a6 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Memcpy.o]
+
+		.debug_info     00000638	000001f0 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureLAW.o]
+
+		.debug_info     00000828	00000118 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureLAW.o]
+
+		.debug_info     00000940	00001976 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureDDR.o]
+
+		.debug_info     000022b6	00000102 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureDDR.o]
+
+		.debug_info     000023b8	0000035c ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureL2Cache.o]
+
+		.debug_info     00002714	00000108 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureL2Cache.o]
+
+		.debug_info     0000281c	000000b9 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureBasicHW.o]
+
+
+.debug_abbrev   		00000000	00000311
+		.debug_abbrev   00000000	00000036 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_VectorTable.o]
+
+		.debug_abbrev   00000036	00000012 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Main.o]
+
+		.debug_abbrev   00000048	00000012 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Registers.o]
+
+		.debug_abbrev   0000005a	00000012 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_CopyAndBootRamBoot_CBRB/lib/ELBCBOOT_CopyAndBootRamBoot_CBRB.a[ELBCBOOT_CopyAndBootRamBoot.o]
+
+		.debug_abbrev   0000006c	00000083 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Memcpy.o]
+
+		.debug_abbrev   000000ef	000000b3 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureLAW.o]
+
+		.debug_abbrev   000001a2	000000b3 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureDDR.o]
+
+		.debug_abbrev   00000255	000000aa ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureL2Cache.o]
+
+		.debug_abbrev   000002ff	00000012 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureBasicHW.o]
+
+
+.debug_frame    		00000000	00000098
+		.debug_frame    00000000	00000014 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Memcpy.o]
+		    __local_cie 00000000	00000000
+
+		.debug_frame    00000014	00000010 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Memcpy.o]
+
+		.debug_frame    00000024	00000014 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureLAW.o]
+		    __local_cie 00000024	00000000
+
+		.debug_frame    00000038	00000010 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureLAW.o]
+
+		.debug_frame    00000048	00000014 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureDDR.o]
+		    __local_cie 00000048	00000000
+
+		.debug_frame    0000005c	00000010 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureDDR.o]
+
+		.debug_frame    0000006c	00000014 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureL2Cache.o]
+		    __local_cie 0000006c	00000000
+
+		.debug_frame    00000080	00000018 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureL2Cache.o]
+
+
+.debug_loc      		00000000	00000152
+		.debug_loc      00000000	0000010e ../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a[ELBCBOOT_Memcpy.o]
+
+		.debug_loc      0000010e	00000026 ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureLAW.o]
+
+		.debug_loc      00000134	0000001e ../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a[ELBCBOOT_CBHW_ConfigureDDR.o]
+
+
+Link editor command file symbols
+                        __start fffffffc
+
+                                Cross Reference Table
+
+Symbol                          Output          Input           Referenced
+                                Section         Section         (* - Defined)
+
+DDR_Config                      .sdata2 	.rodata 	* ELBCBOOT_CBHW_ConfigureDDR.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a)
+ELBCBOOT_CBHW_ConfigureBasicHW  .text   	.text   	* ELBCBOOT_CBHW_ConfigureBasicHW.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a)
+                                                                  ELBCBOOT_Main.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+ELBCBOOT_CBHW_ConfigureDDR      .text   	.text   	* ELBCBOOT_CBHW_ConfigureDDR.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a)
+                                                                  ELBCBOOT_Main.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+ELBCBOOT_CBHW_ConfigureL2Cache  .text   	.text   	* ELBCBOOT_CBHW_ConfigureL2Cache.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a)
+                                                                  ELBCBOOT_Main.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+ELBCBOOT_CBHW_ConfigureLAW      .text   	.text   	* ELBCBOOT_CBHW_ConfigureLAW.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a)
+                                                                  ELBCBOOT_Main.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+ELBCBOOT_CopyAndBootRamBoot     .text   	.text   	* ELBCBOOT_CopyAndBootRamBoot.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_CopyAndBootRamBoot_CBRB/lib/ELBCBOOT_CopyAndBootRamBoot_CBRB.a)
+                                                                  ELBCBOOT_Main.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+ELBCBOOT_Main                   .text   	.text   	* ELBCBOOT_Main.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+                                                                  ELBCBOOT_VectorTable.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+ELBCBOOT_Memcpy                 .text   	.text   	* ELBCBOOT_Memcpy.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+                                                                  ELBCBOOT_CopyAndBootRamBoot.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_CopyAndBootRamBoot_CBRB/lib/ELBCBOOT_CopyAndBootRamBoot_CBRB.a)
+IVOR_Handler                    .intvec 	.VectorTable	* ELBCBOOT_VectorTable.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+L2_Cache_L2CTL                  .sdata2 	.rodata 	* ELBCBOOT_CBHW_ConfigureL2Cache.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a)
+L2_Cache_L2ERRDIS               .sdata2 	.rodata 	* ELBCBOOT_CBHW_ConfigureL2Cache.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a)
+L2_Cache_L2SRBARn               .sdata2 	.rodata 	* ELBCBOOT_CBHW_ConfigureL2Cache.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a)
+LAWs                            .sdata2 	.rodata 	* ELBCBOOT_CBHW_ConfigureLAW.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_ConfigureBasicHW_CBHW/lib/ELBCBOOT_ConfigureBasicHW_CBHW.a)
+REG_Init                        .text   	.text   	* ELBCBOOT_Registers.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+                                                                  ELBCBOOT_Main.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+VECT_Reset                      .text   	.Reset  	* ELBCBOOT_VectorTable.o(../../BOOT_gen/ELBCBOOT/ELBCBOOT_Common/lib/ELBCBOOT_Common.a)
+__start                         [absolute]	        	* ELBCBOOT.dld

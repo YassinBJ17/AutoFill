@@ -1,0 +1,33 @@
+/* --------------------------------------------------------------------------
+ *                        SAFRAN Electronics & Defense
+ *                   Reproduction and disclosure forbidden.
+ * -------------------------------------------------------------------------- */
+
+#ifndef CLOCK_DATA_CSS_WRAPPER_G1_2_3_PSYH
+#define CLOCK_DATA_CSS_WRAPPER_G1_2_3_PSYH
+
+/* ---------- include required interface: ----------------------------------- */
+#include <asterios.h>
+#include "type/mcp_types.h"
+
+/* ---------- Linker command file symbol: ----------------------------------- */
+
+/* ---------- provided define constants: ------------------------------------ */
+
+/* ---------- provided types: ----------------------------------------------- */
+
+/* ---------- provided constants: ------------------------------------------- */
+
+/* ---------- provided data: ------------------------------------------------ */
+/* Synchronization between agent fast task and and agent slow task */
+temporal uint32_t sync_ft_st_tv with clock_1ms;
+
+/* Synchronization between agent slow task and and agent very slow task */
+temporal uint32_t sync_st_vst_tv with clock_1ms;
+
+/* Synchronization between agent very slow task and and agent background task */
+temporal uint32_t sync_vst_bt_tv with clock_1ms;
+
+/* ---------- provided operations: ------------------------------------------ */
+
+#endif /* CLOCK_DATA_CSS_WRAPPER_G1_2_3_PSYH */

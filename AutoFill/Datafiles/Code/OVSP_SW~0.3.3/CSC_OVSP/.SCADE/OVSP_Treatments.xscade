@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Type name="TE_Answer">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_No">
+							<pragmas>
+								<ed:Value oid="!ed/5c9/270E/20B8/626811a1f7b"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Yes">
+							<pragmas>
+								<ed:Value oid="!ed/5ca/270E/20B8/626811a672d4"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/5c8/270E/20B8/62681191592c"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_Cmd_Status">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_Cmd_Off">
+							<pragmas>
+								<ed:Value oid="!ed/688/4C12/1C28/626b954f6064"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Cmd_On">
+							<pragmas>
+								<ed:Value oid="!ed/689/4C12/1C28/626b955457ee"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/687/4C12/1C28/626b95435b86"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_Inhibition">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_Not_Inhibited">
+							<pragmas>
+								<ed:Value oid="!ed/5cf/270E/20B8/6268124b390e"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Inhibited">
+							<pragmas>
+								<ed:Value oid="!ed/5d0/270E/20B8/6268124f39df"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/5ce/270E/20B8/6268123e43c5"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_NTL_Threshold_Type">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_NTL_Fixed_Thres">
+							<pragmas>
+								<ed:Value oid="!ed/911/270E/20B8/626974191d83"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_NTL_Variable_Thres">
+							<pragmas>
+								<ed:Value oid="!ed/912/270E/20B8/626974257d56"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/910/270E/20B8/626973d91d0b"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_OneSensor_Authorization">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_NotAuthorized">
+							<pragmas>
+								<ed:Value oid="!ed/934/B5/83E4/626ab8aff17"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Authorized">
+							<pragmas>
+								<ed:Value oid="!ed/935/B5/83E4/626ab8b26f77"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/933/B5/83E4/626ab89745c2"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_OVSP_Mode">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_Mode_Init">
+							<pragmas>
+								<ed:Value oid="!ed/d1e/5BF5/3DBC/6273f3ef266"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Mode_Degraded">
+							<pragmas>
+								<ed:Value oid="!ed/d22/5BF5/3DBC/6273f40b7c1e"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Mode_Operational">
+							<pragmas>
+								<ed:Value oid="!ed/d21/5BF5/3DBC/6273f4082a87"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Mode_TriggTest">
+							<pragmas>
+								<ed:Value oid="!ed/d1f/5BF5/3DBC/6273f3f52bf5"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Mode_Fail">
+							<pragmas>
+								<ed:Value oid="!ed/d20/5BF5/3DBC/6273f3f85805"/>
+								<kcg:Pragma>
+									C:enum_val 4
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/d1d/5BF5/3DBC/6273f3e41a25"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_OVSP_Side">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_OVSP_HS">
+							<pragmas>
+								<ed:Value oid="!ed/bd0/4C12/1C28/626bb1e15695"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_OVSP_LS">
+							<pragmas>
+								<ed:Value oid="!ed/bd1/4C12/1C28/626bb1e77f4e"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/bcf/4C12/1C28/626bb1ae5fb5"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_Request">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_NotRequested">
+							<pragmas>
+								<ed:Value oid="!ed/93f/37AF/7880/62585cec2548"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Requested">
+							<pragmas>
+								<ed:Value oid="!ed/940/37AF/7880/62585cef78e"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/93e/37AF/7880/62585cdc7aa"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_Speed_Level">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_NCD_Speed">
+							<pragmas>
+								<ed:Value oid="!ed/6e7/37AF/7880/6258318f4a4f"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Low_Speed">
+							<pragmas>
+								<ed:Value oid="!ed/6e8/37AF/7880/6258319337e5"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Running_Speed">
+							<pragmas>
+								<ed:Value oid="!ed/6e9/37AF/7880/625831d54394"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Overspeed">
+							<pragmas>
+								<ed:Value oid="!ed/6ea/37AF/7880/625831d7a9f"/>
+								<kcg:Pragma>
+									C:enum_val 3
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/6e6/37AF/7880/62583154374f"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_Test_Result">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_Test_Passed">
+							<pragmas>
+								<ed:Value oid="!ed/791/37AF/7880/625837257d6"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Test_Failed">
+							<pragmas>
+								<ed:Value oid="!ed/790/37AF/7880/625836e87f31"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_Fatal_Error">
+							<pragmas>
+								<ed:Value oid="!ed/792/37AF/7880/625837273b7c"/>
+								<kcg:Pragma>
+									C:enum_val 2
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/78f/37AF/7880/6258369ce02"/>
+			</pragmas>
+		</Type>
+		<Type name="TE_Validity">
+			<definition>
+				<Enum>
+					<values>
+						<Value name="E_Valid">
+							<pragmas>
+								<ed:Value oid="!ed/5cc/270E/20B8/6268121d7b7d"/>
+								<kcg:Pragma>
+									C:enum_val 0
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+						<Value name="E_NotValid">
+							<pragmas>
+								<ed:Value oid="!ed/5cd/270E/20B8/626812222d3a"/>
+								<kcg:Pragma>
+									C:enum_val 1
+								</kcg:Pragma>
+							</pragmas>
+						</Value>
+					</values>
+				</Enum>
+			</definition>
+			<pragmas>
+				<ed:Type oid="!ed/5cb/270E/20B8/626812115329"/>
+			</pragmas>
+		</Type>
+		<Constant name="C_CAM_CURRENT_THRESH">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="float32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="0.060"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/bd8/5BF5/3DBC/62727b622924"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_FLEX_TIMER_FREQ_HZ">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="float32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="75000000.0"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/a2b/5675/435C/6262e311233d"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_FREQUENCY_HIGH_HZ">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="float32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="20000.0"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/a6d/5675/435C/6262e4824a82"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_FREQUENCY_ZERO">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="float32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="0.0"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/a5e/5675/435C/6262e4441f76"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_NH_NL_MAX">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="101"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/9e7/5675/435C/6262e283680a"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_ONE">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="uint32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="1"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/111a/5BF5/3DBC/627a32b86e90"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_RATIO_MS_TO_S">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="float32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="0.001"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/af6/5675/435C/6262e4f2d04"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_RATIO_PERCENT">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="float32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="0.01"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/75b/B5/83E4/626a9b73290a"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_RATIO_SPEED_LEVEL">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="float32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="0.25"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/a72/B5/83E4/626ac0606281"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_RTC_PERIOD">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="float32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="0.0005"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/53c/270E/20B8/6267fe5c4b91"/>
+			</pragmas>
+		</Constant>
+		<Constant name="C_ZERO_INT">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="int32"/>
+					</type>
+				</NamedType>
+			</type>
+			<value>
+				<ConstValue value="0"/>
+			</value>
+			<pragmas>
+				<ed:Constant oid="!ed/a16/5675/435C/6262e2ece9b"/>
+			</pragmas>
+		</Constant>
+	</declarations>
+</File>

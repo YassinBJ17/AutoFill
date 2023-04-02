@@ -1,0 +1,8 @@
+#include "middleware/stack_ip/ETH_IP_common.h"
+#include "middleware/stack_ip/ETH_IP_private.h"
+#include "middleware/stack_ip/ETH_IP_conf.h"
+#include "middleware/stack_ip/ETH_DEF_HEADER_common.h"
+#include "middleware/ethernet/ETH_porting.h"
+#include "libtools/time/LIB_TIME_public.h"
+
+ ETH_IP_Manage_L_Check ( const ts_CMN_IOSP_BUFFER * const p_Data ) {    const ts_ETH_IP_Header *   c_IPHeader_pt ;    const tu_ETH_IPAddr *      c_myIPAddr_pt ;    te_CMN_FLAG_VALIDITY       v_valid ;    uint16_t                   v_value ; #if (ETH_IP_TIME_CONF_ENABLE != 0)    CMN_SYSTEM_TIME_t    v_start_time;    CMN_SYSTEM_TIME_t    v_end_time; #endif    c_myIPAddr_pt = &v_ETH_DRV_EtherOwnAddr.s_IpAddress ;    if ( p_Data->s_buffer_size < (uint32_t)( sizeof(ts_ETH_EthernetHeader) + sizeof(ts_ETH_IP_Header) ) )    {       v_valid = e_CMN_FLAG_NOT_VALID ;    }    else    {       c_IPHeader_pt = (const ts_ETH_IP_Header *) ( p_Data->s_buffer + sizeof(ts_ETH_EthernetHeader) ) ; #if (ETH_IP_TIME_CONF_ENABLE != 0 )         LIBT_TIME_GET( &v_start_time ); #endif #if (ETH_IP_CONF_ENABLE_CHK != 0 )       v_value = ETH_IP_InCheckSum ( (uint16_t *) c_IPHeader_pt ,                                     (uint32_t) sizeof(ts_ETH_IP_Header) ) ; #else       v_value = 0; #endif #if (ETH_IP_TIME_CONF_ENABLE != 0)       LIBT_TIME_GET( &v_end_time );       v_duration_ip_Manage_crc_time = v_end_time - v_start_time; #endif       if ( ( c_myIPAddr_pt->u_IP != c_IPHeader_pt->s_DestinationAddress.u_IP ) ||                ( v_value != (uint16_t)0 ) )       {          v_valid = e_CMN_FLAG_NOT_VALID ;       }       else       {          v_valid = e_CMN_FLAG_VALID ;       }    }    return ( v_valid ) ; }

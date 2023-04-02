@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="function" external="imported" name="LIBBSP_IMU_GetAdditionalReadDataWrapper">
+			<inputs>
+				<Variable name="NbDataToRead">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="uint32"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/6f9/4CF7/2070/5fa18ada41ff"/>
+					</pragmas>
+				</Variable>
+			</inputs>
+			<outputs>
+				<Variable name="AdditionalReadData">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TS_LIBBSP_IMU_FloatTab"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/6fa/4CF7/2070/5fa18ae02a60"/>
+					</pragmas>
+				</Variable>
+			</outputs>
+			<pragmas>
+				<ed:Operator oid="!ed/373/4CF7/2070/5fa1892a2434"/>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

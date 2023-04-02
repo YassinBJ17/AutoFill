@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/memory/oss_section_def.o: R:/source/oss/memory/oss_section_def.c R:/source/oss/memory/oss_section_def_public.h R:/source/shared/type/mcp_types.h R:/source/shared/memory/shared_memory_public.h R:/source/shared/memory/memory_address_public.h R:/source/shared/conf/oss_conf_public.h

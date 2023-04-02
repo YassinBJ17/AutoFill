@@ -1,0 +1,1308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project id="1" oid_count="1484" defaultConfiguration="913">
+	<props>
+		<Prop id="10" name="@STUDIO:PRODUCT">
+			<value>SC</value>
+		</Prop>
+		<Prop id="20" name="@STUDIO:TOOLCONF">
+			<value>Code Generator</value>
+			<value>913</value>
+			<value>914</value>
+			<value>971</value>
+		</Prop>
+		<Prop id="35" name="@STUDIO:TOOLCONF">
+			<value>Reporter</value>
+			<value>913</value>
+			<value>914</value>
+			<value>971</value>
+		</Prop>
+		<Prop id="42" name="@STUDIO:TOOLCONF">
+			<value>Instrumenter</value>
+			<value>913</value>
+			<value>914</value>
+			<value>971</value>
+		</Prop>
+		<Prop id="59" name="@STUDIO:TOOLCONF">
+			<value>Timing and Stack Verifiers</value>
+			<value>913</value>
+			<value>914</value>
+			<value>971</value>
+		</Prop>
+		<Prop id="60" name="@SCADE:DEFAULTFILE">
+			<value>QACG_StdLib.xscade</value>
+		</Prop>
+		<Prop id="61" name="@SCADE:SEMFILE">
+			<value>QACG_StdLib.err</value>
+		</Prop>
+		<Prop id="62" name="@SCADE:NOTEFILE">
+			<value>$(SCADE)/lib/DefaultAty.aty</value>
+		</Prop>
+		<Prop id="63" name="@SCADE:SAVEVERSION">
+			<value>SCADE65</value>
+		</Prop>
+		<Prop id="64" name="@SCADE:NEWVARIABLESYMBOLS">
+			<value>true</value>
+		</Prop>
+		<Prop id="65" name="@STUDIO:TITLE">
+			<value>&lt;title&gt;</value>
+		</Prop>
+		<Prop id="66" name="@STUDIO:SUBTITLE">
+			<value>&lt;subtitle&gt;</value>
+		</Prop>
+		<Prop id="67" name="@STUDIO:DESCRIPTION">
+			<value>&lt;description&gt;</value>
+		</Prop>
+		<Prop id="68" name="@STUDIO:AUTHORS">
+			<value>&lt;authors&gt;</value>
+		</Prop>
+		<Prop id="69" name="@STUDIO:COMPAGNY">
+			<value>&lt;company&gt;</value>
+		</Prop>
+		<Prop id="70" name="@STUDIO:DATE">
+			<value>&lt;date&gt;</value>
+		</Prop>
+		<Prop id="71" name="@STUDIO:INDEX">
+			<value>&lt;index&gt;</value>
+		</Prop>
+		<Prop id="72" name="@STUDIO:REFERENCE">
+			<value>&lt;reference&gt;</value>
+		</Prop>
+		<Prop id="75" name="@STUDIO:TOOLCONF">
+			<value>Design Verifier</value>
+			<value>913</value>
+			<value>914</value>
+			<value>971</value>
+		</Prop>
+		<Prop id="76" name="@STUDIO:TOOLCONF">
+			<value>Checker</value>
+			<value>913</value>
+			<value>914</value>
+			<value>971</value>
+		</Prop>
+		<Prop id="77" name="@STUDIO:TOOLCONF">
+			<value>DiffAnalyzer</value>
+			<value>913</value>
+			<value>914</value>
+			<value>971</value>
+		</Prop>
+		<Prop id="223" name="@SCADE:CHECKED">
+			<value>false</value>
+		</Prop>
+		<Prop id="702" name="@STUDIO:TOOLCONF">
+			<value>Dashboard</value>
+			<value>913</value>
+			<value>914</value>
+			<value>971</value>
+		</Prop>
+		<Prop id="802" name="@SAFRAN:RULES">
+			<value>(rules) SCD_77</value>
+			<value>(rules) SCD_103</value>
+			<value>(rules) SCD_17</value>
+			<value>(rules) SCD_29</value>
+			<value>(rules) SCD_46</value>
+			<value>(rules) SCD_100</value>
+			<value>(rules) SCD_85</value>
+			<value>(rules) SCD_87</value>
+			<value>(rules) SCD_21</value>
+			<value>(rules) SCD_31</value>
+			<value>(rules) SCD_88</value>
+			<value>(rules) SCD_86</value>
+			<value>(rules) SCD_89</value>
+			<value>(rules) SCD_18</value>
+			<value>(rules) SCD_91</value>
+			<value>(rules) SCD_22</value>
+			<value>(rules) SCD_83</value>
+			<value>(rules) SCD_30</value>
+			<value>(rules) SCD_23</value>
+			<value>(rules) SCD_19</value>
+			<value>(rules) SCD_68</value>
+			<value>(rules) SCD_84</value>
+			<value>(rules) SCD_102</value>
+			<value>(tips) SCD_35</value>
+			<value>(tips) SCD_65</value>
+			<value>(tips) SCD_5</value>
+			<value>(tips) SCD_45</value>
+			<value>(tips) SCD_32</value>
+			<value>(info) SCD_39</value>
+		</Prop>
+		<Prop id="857" name="@STUDIO:TOOLCONF">
+			<value>Timing and Stack Analysis Tools</value>
+			<value>913</value>
+			<value>914</value>
+			<value>971</value>
+		</Prop>
+		<Prop id="858" name="@STUDIO:TOOLCONF">
+			<value>Synchronization</value>
+			<value>913</value>
+			<value>914</value>
+			<value>971</value>
+		</Prop>
+		<Prop id="885" name="@SCADE:ASSTRING_TRIM">
+			<value></value>
+		</Prop>
+		<Prop id="915" name="@GENERATOR:GENERATOR">
+			<value>C QUAL65</value>
+			<configuration>914</configuration>
+		</Prop>
+		<Prop id="916" name="@GENERATOR:TARGET_DIR">
+			<value>$(Configuration)</value>
+			<configuration>914</configuration>
+		</Prop>
+		<Prop id="918" name="@GENERATOR:PROBES">
+			<value>true</value>
+			<configuration>914</configuration>
+		</Prop>
+		<Prop id="920" name="@GENERATOR:OBSERVE_MODE">
+			<value>4</value>
+			<configuration>914</configuration>
+		</Prop>
+		<Prop id="922" name="@GENERATOR:USER_CONFIG">
+			<value>..\MCP_StdLib_source\config_types.h</value>
+			<configuration>913</configuration>
+		</Prop>
+		<Prop id="923" name="@GENERATOR:PROBES">
+			<value>true</value>
+			<configuration>913</configuration>
+		</Prop>
+		<Prop id="924" name="@GENERATOR:SIGNIFICANCE_LENGTH">
+			<value>127</value>
+			<configuration>914</configuration>
+		</Prop>
+		<Prop id="925" name="@GENERATOR:NAME_LENGTH">
+			<value>128</value>
+			<configuration>914</configuration>
+		</Prop>
+		<Prop id="926" name="@GNU C:PREPROC_DEF">
+			<value>BUILD_DLL FLOAT_32 S_LITTLE_ENDIAN</value>
+			<configuration>914</configuration>
+		</Prop>
+		<Prop id="959" name="@GNU Cwin64:PREPROC_DEF">
+			<value>BUILD_DLL FLOAT_64 S_LITTLE_ENDIAN</value>
+			<configuration>914</configuration>
+		</Prop>
+		<Prop id="961" name="@GENERATOR:GENERATOR">
+			<value>C QUAL65</value>
+			<configuration>913</configuration>
+		</Prop>
+		<Prop id="962" name="@GENERATOR:TARGET_DIR">
+			<value>$(Configuration)</value>
+			<configuration>913</configuration>
+		</Prop>
+		<Prop id="963" name="@GENERATOR:OBSERVE_MODE">
+			<value>4</value>
+			<configuration>913</configuration>
+		</Prop>
+		<Prop id="964" name="@GNU C:PREPROC_DEF">
+			<value>BUILD_DLL FLOAT_32 S_LITTLE_ENDIAN</value>
+			<configuration>913</configuration>
+		</Prop>
+		<Prop id="965" name="@GNU Cwin64:PREPROC_DEF">
+			<value>BUILD_DLL FLOAT_64 S_LITTLE_ENDIAN</value>
+			<configuration>913</configuration>
+		</Prop>
+		<Prop id="968" name="@GENERATOR:SIGNIFICANCE_LENGTH">
+			<value>127</value>
+			<configuration>913</configuration>
+		</Prop>
+		<Prop id="969" name="@GENERATOR:NAME_LENGTH">
+			<value>128</value>
+			<configuration>913</configuration>
+		</Prop>
+		<Prop id="970" name="@GENERATOR:USER_CONFIG">
+			<value>..\MCP_StdLib_source\config_types.h</value>
+			<configuration>914</configuration>
+		</Prop>
+		<Prop id="972" name="@GENERATOR:GENERATOR">
+			<value>C QUAL65</value>
+			<configuration>971</configuration>
+		</Prop>
+		<Prop id="973" name="@GENERATOR:TARGET_DIR">
+			<value>$(Configuratoin)</value>
+			<configuration>971</configuration>
+		</Prop>
+		<Prop id="974" name="@GENERATOR:USER_CONFIG">
+			<value>..\MCP_StbLib_source\config_types.h</value>
+			<configuration>971</configuration>
+		</Prop>
+		<Prop id="975" name="@GENERATOR:PROBES">
+			<value>true</value>
+			<configuration>971</configuration>
+		</Prop>
+		<Prop id="976" name="@GNU C:PREPROC_DEF">
+			<value>BUILD_DLL FLOAT_32 S_LITTLE_ENDIAN</value>
+			<configuration>971</configuration>
+		</Prop>
+		<Prop id="977" name="@GNU Cwin64:PREPROC_DEF">
+			<value>BUILD_DLL FLOAT_64 S_LITTLE_ENDIAN</value>
+			<configuration>971</configuration>
+		</Prop>
+		<Prop id="983" name="@SSM:REALFORMAT">
+			<value>12</value>
+		</Prop>
+		<Prop id="1235" name="@SSM:REALPRECISION">
+			<value>12</value>
+		</Prop>
+		<Prop id="1392" name="@STUDIO:TOOLCONF">
+			<value>Import/Export</value>
+			<value>913</value>
+			<value>914</value>
+			<value>971</value>
+		</Prop>
+		<Prop id="1448" name="@SIMULATOR:CPU_TYPE">
+			<value>win64</value>
+			<configuration>913</configuration>
+		</Prop>
+		<Prop id="1449" name="@SIMULATOR:CPU_TYPE">
+			<value>win64</value>
+			<configuration>914</configuration>
+		</Prop>
+		<Prop id="1450" name="@STUDIO:TOOLCONF">
+			<value>Metrics and Rules Checker</value>
+			<value>1484</value>
+		</Prop>
+		<Prop id="1458" name="@SIMULATOR:CPU_TYPE">
+			<value>win64</value>
+			<configuration>971</configuration>
+		</Prop>
+		<Prop id="1480" name="@GENERATOR:OBSERVE_MODE">
+			<value>4</value>
+			<configuration>971</configuration>
+		</Prop>
+		<Prop id="1482" name="@METRICS_RULES:USER_DEF_FILES">
+			<value>$(SCADE)/scripts/MetricRule/DefaultMetrics.py</value>
+			<value>$(SCADE)/scripts/MetricRule/DefaultRules.py</value>
+		</Prop>
+	</props>
+	<roots>
+		<Folder id="3" extensions="vsp;etp" name="SCADE Libraries"/>
+		<Folder id="11" extensions="xscade;scade" name="Model Files">
+			<elements>
+				<Folder id="12" extensions="xscade;scade" name="Separate Files">
+					<elements>
+						<FileRef id="152" persistAs="RisingEdge.xscade">
+							<props>
+								<Prop id="151" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="153" persistAs="FlipFlopS.xscade">
+							<props>
+								<Prop id="150" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="154" persistAs="FlipFlopR.xscade">
+							<props>
+								<Prop id="149" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="155" persistAs="FallingEdge.xscade">
+							<props>
+								<Prop id="148" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="162" persistAs="LimitCount.xscade">
+							<props>
+								<Prop id="159" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="188" persistAs="RealEquality.xscade">
+							<props>
+								<Prop id="181" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="194" persistAs="Min.xscade">
+							<props>
+								<Prop id="175" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="198" persistAs="Max.xscade">
+							<props>
+								<Prop id="171" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="200" persistAs="Limiter.xscade">
+							<props>
+								<Prop id="169" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="203" persistAs="Abs.xscade">
+							<props>
+								<Prop id="166" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="426" persistAs="Round.xscade">
+							<props>
+								<Prop id="425" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="495" persistAs="LinearInterp1D.xscade">
+							<props>
+								<Prop id="494" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="664" persistAs="Floor.xscade">
+							<props>
+								<Prop id="663" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1031" persistAs="IndexSearch.xscade">
+							<props>
+								<Prop id="1030" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1041" persistAs="VectSum.xscade">
+							<props>
+								<Prop id="1040" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1043" persistAs="VectSubtract.xscade">
+							<props>
+								<Prop id="1042" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1045" persistAs="VectNorm.xscade">
+							<props>
+								<Prop id="1044" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1047" persistAs="VectMult.xscade">
+							<props>
+								<Prop id="1046" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1049" persistAs="VectMatProd.xscade">
+							<props>
+								<Prop id="1048" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1053" persistAs="MatVectProd.xscade">
+							<props>
+								<Prop id="1052" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1055" persistAs="MatProd.xscade">
+							<props>
+								<Prop id="1054" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1057" persistAs="MatMult.xscade">
+							<props>
+								<Prop id="1056" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1059" persistAs="CrossProd.xscade">
+							<props>
+								<Prop id="1058" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1061" persistAs="MatSum.xscade">
+							<props>
+								<Prop id="1060" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1064" persistAs="QuatProduct.xscade">
+							<props>
+								<Prop id="1063" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1066" persistAs="Quat2Mat.xscade">
+							<props>
+								<Prop id="1065" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1068" persistAs="Mat2Quat.xscade">
+							<props>
+								<Prop id="1067" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1070" persistAs="QuatConjugate.xscade">
+							<props>
+								<Prop id="1069" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1072" persistAs="QuatNorm.xscade">
+							<props>
+								<Prop id="1071" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1074" persistAs="QuatNormalize.xscade">
+							<props>
+								<Prop id="1073" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1076" persistAs="QuatProject.xscade">
+							<props>
+								<Prop id="1075" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1136" persistAs="Sqrt.xscade">
+							<props>
+								<Prop id="1135" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1138" persistAs="ACos.xscade">
+							<props>
+								<Prop id="1137" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1140" persistAs="ASin.xscade">
+							<props>
+								<Prop id="1139" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1147" persistAs="CubeRoot.xscade">
+							<props>
+								<Prop id="1146" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1148" persistAs="Cos.xscade">
+							<props>
+								<Prop id="1145" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1149" persistAs="ATan2.xscade">
+							<props>
+								<Prop id="1144" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1150" persistAs="ATan.xscade">
+							<props>
+								<Prop id="1143" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1152" persistAs="Derivative.xscade">
+							<props>
+								<Prop id="1151" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1157" persistAs="Inv.xscade">
+							<props>
+								<Prop id="1156" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1159" persistAs="LinearInterp2D.xscade">
+							<props>
+								<Prop id="1158" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1161" persistAs="Log2.xscade">
+							<props>
+								<Prop id="1160" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1163" persistAs="Log10.xscade">
+							<props>
+								<Prop id="1162" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1165" persistAs="Max3.xscade">
+							<props>
+								<Prop id="1164" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1167" persistAs="Min3.xscade">
+							<props>
+								<Prop id="1166" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1169" persistAs="RestrictedPow.xscade">
+							<props>
+								<Prop id="1168" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1171" persistAs="Sin.xscade">
+							<props>
+								<Prop id="1170" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1173" persistAs="SinCos.xscade">
+							<props>
+								<Prop id="1172" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1189" persistAs="ComputePolynom.xscade">
+							<props>
+								<Prop id="1188" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1191" persistAs="ComputePolynomTerm.xscade">
+							<props>
+								<Prop id="1190" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1193" persistAs="CopySign.xscade">
+							<props>
+								<Prop id="1192" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1196" persistAs="Tan.xscade">
+							<props>
+								<Prop id="1195" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1201" persistAs="Count.xscade">
+							<props>
+								<Prop id="1200" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1203" persistAs="CyclicCount.xscade">
+							<props>
+								<Prop id="1202" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1205" persistAs="IsInBound.xscade">
+							<props>
+								<Prop id="1204" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1251" persistAs="Ln.xscade">
+							<props>
+								<Prop id="1250" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1255" persistAs="Expo.xscade">
+							<props>
+								<Prop id="1254" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1262" persistAs="IsNan.xscade">
+							<props>
+								<Prop id="1261" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1264" persistAs="IsInf.xscade">
+							<props>
+								<Prop id="1263" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1266" persistAs="UnitDelayRst.xscade">
+							<props>
+								<Prop id="1265" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1352" persistAs="RisingEdgeLatch.xscade">
+							<props>
+								<Prop id="1351" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1354" persistAs="FallingEdgeLatch.xscade">
+							<props>
+								<Prop id="1353" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1356" persistAs="FallingEdgeLatchRst.xscade">
+							<props>
+								<Prop id="1355" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1358" persistAs="RisingEdgeLatchRst.xscade">
+							<props>
+								<Prop id="1357" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1368" persistAs="RisingEdgeConfirmation.xscade">
+							<props>
+								<Prop id="1367" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1372" persistAs="FallingEdgeConfirmation.xscade">
+							<props>
+								<Prop id="1371" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1382" persistAs="IsZero.xscade">
+							<props>
+								<Prop id="1381" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1387" persistAs="IsSubnormal.xscade">
+							<props>
+								<Prop id="1386" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1396" persistAs="BooleanSwitch.xscade">
+							<props>
+								<Prop id="1395" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1400" persistAs="BoolToInteger.xscade">
+							<props>
+								<Prop id="1399" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1402" persistAs="BoolToReal.xscade">
+							<props>
+								<Prop id="1401" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1408" persistAs="Max4.xscade">
+							<props>
+								<Prop id="1407" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1417" persistAs="Min4.xscade">
+							<props>
+								<Prop id="1416" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1423" persistAs="RealToBool.xscade">
+							<props>
+								<Prop id="1422" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1425" persistAs="IntegerToBool.xscade">
+							<props>
+								<Prop id="1424" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1427" persistAs="NumericToBool.xscade">
+							<props>
+								<Prop id="1426" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1436" persistAs="FallingEdgeConfirmationRst.xscade">
+							<props>
+								<Prop id="1435" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1438" persistAs="RisingEdgeConfirmationRst.xscade">
+							<props>
+								<Prop id="1437" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1441" persistAs="Gain_r.xscade">
+							<props>
+								<Prop id="1440" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1443" persistAs="Gain_i.xscade">
+							<props>
+								<Prop id="1442" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1445" persistAs="Gain.xscade">
+							<props>
+								<Prop id="1444" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1447" persistAs="ScalarProduct.xscade">
+							<props>
+								<Prop id="1446" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1457" persistAs="BoolToUint32.xscade">
+							<props>
+								<Prop id="1456" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1475" persistAs="Power.xscade">
+							<props>
+								<Prop id="1474" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+						<FileRef id="1479" persistAs="ComputeIndex.xscade">
+							<props>
+								<Prop id="1478" name="@SCADE:NONROOT">
+									<value>true</value>
+								</Prop>
+							</props>
+						</FileRef>
+					</elements>
+				</Folder>
+				<FileRef id="79" persistAs="DIGITAL.xscade"/>
+				<FileRef id="81" persistAs="LINEAR.xscade"/>
+				<FileRef id="83" persistAs="MATH.xscade"/>
+				<FileRef id="85" persistAs="SIGNAL.xscade"/>
+				<FileRef id="222" persistAs="QACG_StdLib.xscade"/>
+				<FileRef id="1062" persistAs="MATRIX.xscade"/>
+				<FileRef id="1077" persistAs="QUATERNION.xscade"/>
+				<FileRef id="1258" persistAs="SERVICES.xscade"/>
+				<FileRef id="1439" persistAs="DIGITALZ.xscade"/>
+			</elements>
+		</Folder>
+		<Folder id="73" name="Design Verifier File">
+			<elements>
+				<FileRef id="74" persistAs="QACG_StdLib.l4"/>
+			</elements>
+		</Folder>
+		<Folder id="232" extensions="c;" name="External Code">
+			<props>
+				<Prop id="451" name="@SIMULATOR:FILEKIND">
+					<value>Macro</value>
+				</Prop>
+			</props>
+			<elements>
+				<FileRef id="561" persistAs="..\MCP_StdLib_source\BaseType.h">
+					<props>
+						<Prop id="935" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="665" persistAs="..\MCP_StdLib_source\Floor.c">
+					<props>
+						<Prop id="666" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="667" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::Floor</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="668" persistAs="..\MCP_StdLib_source\Floor.h">
+					<props>
+						<Prop id="950" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="929" persistAs="..\MCP_StdLib_source\config_types.h">
+					<props>
+						<Prop id="930" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1078" persistAs="..\MCP_StdLib_source\ATan2.h">
+					<props>
+						<Prop id="1109" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1079" persistAs="..\MCP_StdLib_source\ATan2.c">
+					<props>
+						<Prop id="1108" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1175" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::ATan2</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1080" persistAs="..\MCP_StdLib_source\ATan.h">
+					<props>
+						<Prop id="1107" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1081" persistAs="..\MCP_StdLib_source\ATan.c">
+					<props>
+						<Prop id="1106" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1174" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::ATan</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1082" persistAs="..\MCP_StdLib_source\ASin.h">
+					<props>
+						<Prop id="1105" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1083" persistAs="..\MCP_StdLib_source\ASin.c">
+					<props>
+						<Prop id="1104" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1141" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::ASin</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1084" persistAs="..\MCP_StdLib_source\ACos.h">
+					<props>
+						<Prop id="1103" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1085" persistAs="..\MCP_StdLib_source\ACos.c">
+					<props>
+						<Prop id="1102" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1142" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::ACos</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1086" persistAs="..\MCP_StdLib_source\Expo.h">
+					<props>
+						<Prop id="1117" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1087" persistAs="..\MCP_StdLib_source\Expo.c">
+					<props>
+						<Prop id="1116" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1155" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::Expo</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1088" persistAs="..\MCP_StdLib_source\CubeRoot.h">
+					<props>
+						<Prop id="1115" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1089" persistAs="..\MCP_StdLib_source\CubeRoot.c">
+					<props>
+						<Prop id="1114" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1177" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::CubeRoot</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1090" persistAs="..\MCP_StdLib_source\Cos.h">
+					<props>
+						<Prop id="1113" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1091" persistAs="..\MCP_StdLib_source\Cos.c">
+					<props>
+						<Prop id="1112" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1176" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::Cos</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1092" persistAs="..\MCP_StdLib_source\CopySign.h">
+					<props>
+						<Prop id="1111" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1093" persistAs="..\MCP_StdLib_source\CopySign.c">
+					<props>
+						<Prop id="1110" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1194" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::CopySign</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1094" persistAs="..\MCP_StdLib_source\Memcpy.h">
+					<props>
+						<Prop id="1125" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1095" persistAs="..\MCP_StdLib_source\Memcpy.c">
+					<props>
+						<Prop id="1124" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1096" persistAs="..\MCP_StdLib_source\Log2.h">
+					<props>
+						<Prop id="1123" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1097" persistAs="..\MCP_StdLib_source\Log2.c">
+					<props>
+						<Prop id="1122" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1178" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::Log2</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1098" persistAs="..\MCP_StdLib_source\LibTrig.h">
+					<props>
+						<Prop id="1121" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1099" persistAs="..\MCP_StdLib_source\LibTrig.c">
+					<props>
+						<Prop id="1120" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1100" persistAs="..\MCP_StdLib_source\LibIEEE.h">
+					<props>
+						<Prop id="1119" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1101" persistAs="..\MCP_StdLib_source\LibIEEE.c">
+					<props>
+						<Prop id="1226" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1132" persistAs="..\MCP_StdLib_source\Sqrt.c">
+					<props>
+						<Prop id="1133" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1134" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::Sqrt</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1179" persistAs="..\MCP_StdLib_source\RestrictedPow.c">
+					<props>
+						<Prop id="1180" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1181" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::RestrictedPow</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1182" persistAs="..\MCP_StdLib_source\Sin.c">
+					<props>
+						<Prop id="1183" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1184" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::Sin</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1185" persistAs="..\MCP_StdLib_source\SinCos.c">
+					<props>
+						<Prop id="1186" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1187" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::SinCos</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1197" persistAs="..\MCP_StdLib_source\Tan.c">
+					<props>
+						<Prop id="1198" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1199" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::Tan</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1227" persistAs="..\MCP_StdLib_source\Sin.h">
+					<props>
+						<Prop id="1234" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1228" persistAs="..\MCP_StdLib_source\SinCos.h">
+					<props>
+						<Prop id="1233" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1229" persistAs="..\MCP_StdLib_source\Tan.h">
+					<props>
+						<Prop id="1231" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1230" persistAs="..\MCP_StdLib_source\Sqrt.h">
+					<props>
+						<Prop id="1232" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1236" persistAs="..\MCP_StdLib_source\IsNan.h">
+					<props>
+						<Prop id="1243" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1237" persistAs="..\MCP_StdLib_source\IsNan.c">
+					<props>
+						<Prop id="1242" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1253" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::IsNan</value>
+							<value>SERVICES::IsNan</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1238" persistAs="..\MCP_StdLib_source\IsInf.h">
+					<props>
+						<Prop id="1241" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1239" persistAs="..\MCP_StdLib_source\IsInf.c">
+					<props>
+						<Prop id="1240" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1252" name="@SCADE:IMPORTED_NODES">
+							<value>MATH::IsInf</value>
+							<value>SERVICES::IsInf</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1377" persistAs="..\MCP_StdLib_source\IsZero.h">
+					<props>
+						<Prop id="1385" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1378" persistAs="..\MCP_StdLib_source\IsZero.c">
+					<props>
+						<Prop id="1383" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1384" name="@SCADE:IMPORTED_NODES">
+							<value>SERVICES::IsZero</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1379" persistAs="..\MCP_StdLib_source\IsSubnormal.h">
+					<props>
+						<Prop id="1390" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1380" persistAs="..\MCP_StdLib_source\IsSubnormal.c">
+					<props>
+						<Prop id="1388" name="@SIMULATOR:FILEKIND">
+							<value>CS</value>
+						</Prop>
+						<Prop id="1389" name="@SCADE:IMPORTED_NODES">
+							<value>SERVICES::IsSubnormal</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1393" persistAs="..\MCP_StdLib_source\RestrictedPow.h">
+					<props>
+						<Prop id="1394" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1459" persistAs="..\MCP_StdLib_source\MyImportedFunctions.h">
+					<props>
+						<Prop id="1460" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+				<FileRef id="1476" persistAs="..\MCP_StdLib_source\MyImportedConstants.h">
+					<props>
+						<Prop id="1477" name="@SIMULATOR:FILEKIND">
+							<value>Macro</value>
+						</Prop>
+					</props>
+				</FileRef>
+			</elements>
+		</Folder>
+	</roots>
+	<configurations>
+		<Configuration id="913" name="KCG"/>
+		<Configuration id="914" name="Simulation"/>
+		<Configuration id="971" name="MTC"/>
+		<Configuration id="1481" name="MetricRule"/>
+		<Configuration id="1483" name="MetricRule"/>
+		<Configuration id="1484" name="MetricRule"/>
+	</configurations>
+</Project>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="function" external="imported" name="LIBBSP_MRAM_Close">
+			<outputs>
+				<Variable name="v_rc">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_MRAM_ErrorCode"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/3a6/138E/88A8/60802d6d612b"/>
+					</pragmas>
+				</Variable>
+			</outputs>
+			<pragmas>
+				<ed:Operator oid="!ed/3a4/138E/88A8/60802d0b1cb2"/>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

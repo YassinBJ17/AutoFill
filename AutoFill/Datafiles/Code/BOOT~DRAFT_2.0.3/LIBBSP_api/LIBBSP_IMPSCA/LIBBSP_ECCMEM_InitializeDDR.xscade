@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="function" external="imported" name="LIBBSP_ECCMEM_InitializeDDR">
+			<inputs>
+				<Variable name="v_SeuMbuEn">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_ECCMEM_SeuMbuEn"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/3a9/B7E/3558/5daebfd72cc0"/>
+					</pragmas>
+				</Variable>
+				<Variable name="v_SeuMbuIT">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_ECCMEM_SeuMbuIt"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/3af/B7E/3558/5daebfd920da"/>
+					</pragmas>
+				</Variable>
+				<Variable name="v_SeuThresh">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="uint8"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/3b5/B7E/3558/5daebfd9e70"/>
+					</pragmas>
+				</Variable>
+			</inputs>
+			<pragmas>
+				<ed:Operator oid="!ed/3a8/B7E/3558/5daebfcbb2c"/>
+				<kcg:Pragma>
+					keep
+				</kcg:Pragma>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

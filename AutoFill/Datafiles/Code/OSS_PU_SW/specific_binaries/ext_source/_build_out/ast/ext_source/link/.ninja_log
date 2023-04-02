@@ -1,0 +1,6 @@
+# ninja log v5
+4	150	6723168567260014	R:/specific_binaries/ext_source/_build_out/ast/ext_source/kmemory_out.ks	26994fa4655d5cf4
+152	230	6723168568059994	R:/specific_binaries/ext_source/_build_out/ast/ext_source/link/db/kbinary.ks	bbae6e9884afbbfb
+232	305	6723168568797301	R:/specific_binaries/ext_source/_build_out/ast/ext_source/link/app.dld	e0727886ac2544e9
+306	394	6723168569697679	R:/specific_binaries/ext_source/_build_out/gen/xt_source.elf	7b0a5321f0f223d0
+394	443	6723168570097382	R:/specific_binaries/ext_source/_build_out/ast/ext_source/memreport.ks	15aa2944d4ba842b

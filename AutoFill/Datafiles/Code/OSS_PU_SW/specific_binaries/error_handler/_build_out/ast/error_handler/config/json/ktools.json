@@ -1,0 +1,31 @@
+{
+"ktools":
+{
+  "tools": [
+    {
+      "name": "as",
+      "command": "das"
+    },
+    {
+      "name": "cc",
+      "command": "dcc"
+    },
+    {
+      "name": "ld",
+      "command": "dld"
+    },
+    {
+      "name": "nm",
+      "command": "nm"
+    },
+    {
+      "name": "objcopy",
+      "command": "dld"
+    },
+    {
+      "name": "pp",
+      "command": "dcc"
+    }
+  ]
+}
+}

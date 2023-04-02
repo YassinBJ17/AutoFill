@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="function" external="imported" name="LIBBSP_TEMP_Configure">
+			<outputs>
+				<Variable name="v_ret">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_I2C_Code"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4da8/5F7B/CD94/5d9f3d324b"/>
+					</pragmas>
+				</Variable>
+			</outputs>
+			<pragmas>
+				<ed:Operator oid="!ed/4da7/5F7B/CD94/5d9f3d324b57"/>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

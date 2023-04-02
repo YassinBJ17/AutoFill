@@ -1,0 +1,66 @@
+/* --------------------------------------------------------------------------
+ *                        SAFRAN Electronics & Defense
+ *                   Reproduction and disclosure forbidden.
+ * --------------------------------------------------------------------------
+ * DESCRIPTION : Background task agent definition for g1_2_3 RSF
+ * -------------------------------------------------------------------------- */
+
+/* ---------- include provided interface: ----------------------------------- */
+#include "sched/clock_data.psyh"
+#include "sched/clock_data_css_wrapper_g1_2_3.psyh"
+#include "main/css_wrapper_g1_2_3_task_public.h"
+
+/* ---------- include required interface: ----------------------------------- */
+
+/* ---------- internal define constants: ------------------------------------ */
+
+/* ---------- internal types: ----------------------------------------------- */
+
+/* ---------- provided constants: ------------------------------------------- */
+
+/* ---------- provided data: ------------------------------------------------ */
+
+/* ---------- internal constants: ------------------------------------------- */
+
+/* ---------- internal data: ------------------------------------------------ */
+
+/* ---------- provided operation bodies: ------------------------------------ */
+/* Implements REQ_FADEX_OS_SRD-SCHED-0010 */
+/* Implements REQ_FADEX_OS_SRD-SCHED-0040 */
+/* Implements REQ_FADEX_OS_SRD-SCHED-0080 */
+/* Background task agent to schedule applicative software */
+agent css_wrapper_g1_2_3_ag_background_task(uses SOURCE,
+                                            starttime 3 with clock_10ms,
+                                            defaultclock clock_10ms)
+{
+   consult
+   {
+      /* Consult sync_vst_bt_tv produced by ag_VST */
+      1 $sync_vst_bt_tv;
+   }
+
+   global
+   {
+      /* For saving the consultation of sync_vst_bt_tv */
+      uint32_t sync_value_bt;
+
+      /* Execution counter of the background task */
+      uint32_t tick_value_bt;
+   }
+
+   body start
+   {
+      /* Time at disposal for the background task */
+      tick_value_bt = tick_value_bt + 1;
+      sync_value_bt = $[0] sync_vst_bt_tv;
+
+      /* Call the applicative background task for the scheduling g1_2_3 */
+      css_wrapper_g1_2_3_background_task();
+
+      /* 100ms allocated to the background task until going to the next cycle */
+      timebudget budget_css_wrapper_g1_2_3_ag_background_task, advance 1995 with clock_1ms;
+      timebudget budget_css_wrapper_g1_2_3_ag_background_task_compil, advance 5 with clock_1ms;
+   }
+}
+
+/* ---------- internal operations: ------------------------------------------ */

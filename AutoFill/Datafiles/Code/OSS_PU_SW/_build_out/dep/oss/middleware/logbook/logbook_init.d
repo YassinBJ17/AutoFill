@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/middleware/logbook/logbook_init.o: R:/source/oss/middleware/logbook/logbook_init.c R:/source/oss/middleware/logbook/logbook_public.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/logbook/logbook_private.h R:/source/oss/middleware/mram/mram_public.h R:/source/shared/memory/shared_memory_public.h

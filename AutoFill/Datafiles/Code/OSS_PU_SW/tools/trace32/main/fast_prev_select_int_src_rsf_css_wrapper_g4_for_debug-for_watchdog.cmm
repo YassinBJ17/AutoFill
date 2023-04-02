@@ -1,0 +1,55 @@
+; ------------------------------------------------------------------------------
+;                        SAFRAN Electronics & Defense
+;                   Reproduction and disclosure forbidden.
+; ------------------------------------------------------------------------------
+; DESCRIPTION : Fast relaunch the previous script
+; ------------------------------------------------------------------------------
+
+; Configure the load as an internal source application
+&is_int_src=1
+
+; Initialize trace32
+do R:/tools/trace32/auxiliary/initialize_t32.cmm
+
+; Load all filenames and do configuration
+do R:/tools/trace32/auxiliary/conf.cmm &is_int_src
+
+; Prepare the flash
+do ~~/demo/powerpc/flash/jpc577xm.cmm prepareonly
+
+; Flash the boot
+data.load.s3record "&boot_abs"
+data.load.elf "&boot_elf" /STRIPPATH /NOCLEAR /NOCODE
+
+; Flash Asterios (k2)
+data.load.elf "&k2_elf" /CODESEC /NOCODE /NOCLEAR
+
+; Flash the partitions
+data.load.elf "&parto_oss_css_wrapper_g4_elf" /NOCODE /NOCLEAR
+data.load.elf "&error_handler_elf" /NOCODE /NOCLEAR
+data.load.elf "&source_elf" /NOCODE /NOCLEAR
+
+; Flash the applications
+data.load.elf "&app_css_wrapper_g4_elf" /NOCODE /NOCLEAR
+
+; Uncomment to flash g4 AS:
+;data.load.elf "&css_g4" /NOCODE /NOCLEAR
+
+; Set the source file path for debug :
+do R:/tools/trace32/auxiliary/set_src_path.cmm
+
+; Configure MPC
+do R:/tools/trace32/auxiliary/configure_mpc.cmm
+
+; Configure T32 trace
+do R:/tools/trace32/auxiliary/configure_trace.cmm
+
+; Finish the boot
+do R:/tools/trace32/auxiliary/finish_boot-for_watchdog.cmm
+
+; Cancel AS calls when no AS is flashed :
+do R:/tools/trace32/auxiliary/cancel_as_calls.cmm
+
+PRINT "========================================================================"
+PRINT "PREVIOUS MODE LAUNCHED ! ==============================================="
+PRINT "========================================================================"

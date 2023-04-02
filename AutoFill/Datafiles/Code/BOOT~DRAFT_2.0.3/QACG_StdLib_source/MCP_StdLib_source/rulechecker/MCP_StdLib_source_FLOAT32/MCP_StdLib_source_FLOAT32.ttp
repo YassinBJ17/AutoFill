@@ -1,0 +1,100 @@
+Entities_Definitions DEFINITIONS ::= BEGIN
+file_ref ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		folder oid,
+		persist_as string
+	}
+}
+project ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		default_configuration oid
+	}
+}
+folder ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		folder oid,
+		extensions string,
+		name string
+	}
+}
+configuration ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		name string,
+		project oid
+	}
+}
+prop ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		name string,
+		entity oid,
+		configuration oid,
+		values SEQUENCE OF string
+	}
+}
+base ::= SEQUENCE OF {
+	SEQUENCE {
+		oid_count integer,
+		version string
+	}
+}
+base ::= {
+{82, ""}
+}
+prop ::= {
+{"3", "@LOG_BUILDER:VERSION", "1", NULL, {"660"}},
+{"4", "@STUDIO:PRODUCT", "1", NULL, {"LG"}},
+{"5", "@LOG_BUILDER:LANGUAGE", "1", NULL, {"c"}},
+{"6", "@LOG_BUILDER:MODULES", "1", NULL, {"rule"}},
+{"7", "@LOG_BUILDER:DATA_DIRECTORY", "1", NULL, {"%Project%/Logiscope"}},
+{"8", "@LOG_BUILDER:IMPORT_NAME", "1", NULL, {"Imported Files"}},
+{"9", "@LOG_API:INITIALIZED", "1", NULL, {"rule"}},
+{"10", "@LOG_BUILDER:PARSER_DIALECT", "1", NULL, {"ansi"}},
+{"11", "@LOG_BUILDER:PARSER_NOEXP", "1", NULL, {"false"}},
+{"12", "@LOG_BUILDER:PARSER_PREPRO", "1", NULL, {"-I.\\MCP_StdLib_source, -DFLOAT_32"}},
+{"37", "@LOG_BUILDER:FILE_SUFFIX", "1", NULL, {"*.c", "*.C"}},
+{"38", "@LOG_BUILDER:DEROGATION", "1", NULL, {"true"}},
+{"40", "@LOG_BUILDER:IMPORT", "1", NULL, {"true"}},
+{"82", "@LOG_BUILDER:PARSER_DEFFILE", "1", NULL, {"C:/App/SYNCHRONe/RuleCheckerForSYNCHRONe/4.3/SYNCHRONe.def"}}
+}
+configuration ::= {
+{"2", "Default", "1"}
+}
+folder ::= {
+{"13", NULL, "*.c;*.C", "Source Files"},
+{"39", NULL, "*.*", "Imported Files"},
+{"41", NULL, "*.rst", "Rule Set"}
+}
+project ::= {
+{"1", "2"}
+}
+file_ref ::= {
+{"42", "41", "MCP_StdLib_source_FLOAT32.rst"},
+{"59", "13", "..\\..\\Tan.c"},
+{"60", "13", "..\\..\\Sqrt.c"},
+{"61", "13", "..\\..\\SinCos.c"},
+{"62", "13", "..\\..\\Sin.c"},
+{"63", "13", "..\\..\\RestrictedPow.c"},
+{"64", "13", "..\\..\\Memcpy.c"},
+{"65", "13", "..\\..\\Log2.c"},
+{"66", "13", "..\\..\\LibTrig.c"},
+{"67", "13", "..\\..\\LibIEEE.c"},
+{"68", "13", "..\\..\\IsZero.c"},
+{"69", "13", "..\\..\\IsSubnormal.c"},
+{"70", "13", "..\\..\\IsNan.c"},
+{"71", "13", "..\\..\\IsInf.c"},
+{"72", "13", "..\\..\\Floor.c"},
+{"73", "13", "..\\..\\Expo.c"},
+{"74", "13", "..\\..\\CubeRoot.c"},
+{"75", "13", "..\\..\\Cos.c"},
+{"76", "13", "..\\..\\CopySign.c"},
+{"78", "13", "..\\..\\ATan2.c"},
+{"79", "13", "..\\..\\ATan.c"},
+{"80", "13", "..\\..\\ASin.c"},
+{"81", "13", "..\\..\\ACos.c"}
+}
+END

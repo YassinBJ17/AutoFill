@@ -1,0 +1,80 @@
+# Budget of 3 ms allocated to the fast task #
+budget_css_wrapper_g1_2_3_ag_fast_task_1 = 2750us
+budget_css_wrapper_g1_2_3_ag_fast_task_2 = 2750us
+
+# Budget of 20 ms allocated to the slow task #
+budget_css_wrapper_g1_2_3_ag_slow_task = 19ms
+
+# Budget of 25 ms allocated to the very slow task #
+budget_css_wrapper_g1_2_3_ag_very_slow_task = 23750us
+
+# Budget of 95 ms allocated to the background task #
+budget_css_wrapper_g1_2_3_ag_background_task = 95ms
+
+# Budget allocated to the end of the tasks (to avoid compilation failed) #
+budget_css_wrapper_g1_2_3_ag_fast_task_compil_1 = 50us
+budget_css_wrapper_g1_2_3_ag_fast_task_compil_2 = 50us
+budget_css_wrapper_g1_2_3_ag_fast_task_compil_3 = 50us
+budget_css_wrapper_g1_2_3_ag_fast_task_compil_4 = 50us
+budget_css_wrapper_g1_2_3_ag_slow_task_compil = 50us
+budget_css_wrapper_g1_2_3_ag_very_slow_task_compil = 50us
+budget_css_wrapper_g1_2_3_ag_background_task_compil = 50us
+
+# Budget of 6 ms allocated to the fast task #
+budget_css_wrapper_g4_ag_fast_task_1 = 5600us
+budget_css_wrapper_g4_ag_fast_task_2 = 5600us
+
+# Budget allocated to the end of the tasks (to avoid compilation failed) #
+budget_css_wrapper_g4_ag_fast_task_compil_1 = 30us
+budget_css_wrapper_g4_ag_fast_task_compil_2 = 30us
+
+# Budget of 2 ms allocated to the fast task #
+budget_css_wrapper_stub_ag_fast_task_1 = 1900us
+budget_css_wrapper_stub_ag_fast_task_2 = 1900us
+
+# Budget allocated to the end of the tasks (to avoid compilation failed) #
+budget_css_wrapper_stub_ag_fast_task_compil_1 = 30us
+budget_css_wrapper_stub_ag_fast_task_compil_2 = 30us
+budget_css_wrapper_stub_ag_fast_task_compil_3 = 30us
+budget_css_wrapper_stub_ag_fast_task_compil_4 = 30us
+
+
+# Budget of 2.5 ms allocated to the MCSS tasks #
+budget_ag_mcss_wrapper_task_1 = 2250us
+budget_ag_mcss_wrapper_task_2 = 2250us
+
+# Budget allocated to the end of the tasks (to avoid compilation failed) #
+budget_ag_mcss_wrapper_task_compil_1 = 30us
+budget_ag_mcss_wrapper_task_compil_2 = 30us
+budget_ag_mcss_wrapper_task_compil_3 = 10us
+budget_ag_mcss_wrapper_task_compil_4 = 10us
+
+# Budget of 4 ms allocated to the OSS task #
+budget_wk_oss_task = 3910us
+# Budget of 1 ms allocated to the OSS task2 #
+#TEMPORARILY REMOVED#budget_wk_oss_task2 = 900us
+# Budget of 1 ms allocated to the OSS task3 #
+budget_wk_oss_task3 = 900us
+# Budget of 2 ms allocated to the OSS task4 #
+budget_wk_oss_task4 = 1900us
+
+# Budget of 4 ms allocated to the OSS phantom task #
+#budget_wk_oss_phantom_task = 3890us  : OK for G4
+#budget_wk_oss_phantom_task = 3780us  : OK for G3 G4
+budget_wk_oss_phantom_task = 3800us
+
+# Budget of 4 ms allocated to the UOD task #
+budget_wk_uod_task = 3800us
+
+# Problem to fix TBD:
+# ------------------------------------------------------------------------------
+#   - There is an inconsistency between the effective budget allocated
+#     for each task and the budget requested by system specification.
+#   - When budget_css_wrapper_g1_2_3_ag_x_task_compil (with x means "fast", "slow", 
+#     "very slow" and "background") is set to 40us, it causes a budget violation
+#     during the compilation.
+#     Hence, budget_css_wrapper_g1_2_3_ag_x_task_compil is set to 50us.
+#   - When budget_wk_os_phantom_task is set to 1790us, it causes a budget
+#     violation during the compilation.
+#     Hence, budget_oss_phantom_task is set to 1780us.
+#     Based on prevision, 1930 should have worked but it is not the case.

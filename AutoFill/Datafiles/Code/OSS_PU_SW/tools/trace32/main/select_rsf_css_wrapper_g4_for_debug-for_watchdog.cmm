@@ -1,0 +1,61 @@
+; ------------------------------------------------------------------------------
+;                        SAFRAN Electronics & Defense
+;                   Reproduction and disclosure forbidden.
+; ------------------------------------------------------------------------------
+; DESCRIPTION : Launch the RSF G4 with internal source for debug
+; ------------------------------------------------------------------------------
+
+; Configure the load as an internal source application
+&is_int_src=1
+
+; Initialize trace32
+do R:/tools/trace32/auxiliary/initialize_t32.cmm
+
+; Load all filenames and do configuration
+do R:/tools/trace32/auxiliary/conf.cmm &is_int_src
+
+; Prepare the flash
+do ~~/demo/powerpc/flash/jpc577xm.cmm prepareonly
+
+; Set the source file path for debug :
+do R:/tools/trace32/auxiliary/set_src_path.cmm
+
+; Reprogram the flash without erasing it
+flash.reprogram all
+
+; Flash the boot
+data.load.s3record "&boot_abs"
+data.load.elf "&boot_elf" /STRIPPATH /NOCLEAR /NOCODE
+
+; Flash Asterios (k2)
+do R:/tools/trace32/auxiliary/load_binary.cmm "&k2_elf" FALSE()
+
+; Flash the partitions
+do R:/tools/trace32/auxiliary/load_binary.cmm "&parto_oss_css_wrapper_g4_elf" TRUE()
+do R:/tools/trace32/auxiliary/load_binary.cmm "&error_handler_elf" TRUE()
+do R:/tools/trace32/auxiliary/load_binary.cmm "&source_elf" TRUE()
+
+; Flash the applications
+do R:/tools/trace32/auxiliary/load_binary.cmm "&app_css_wrapper_g4_elf" TRUE()
+
+; Uncomment to flash g4 AS:
+;do R:/tools/trace32/auxiliary/load_binary.cmm "&css_g4" TRUE()
+
+; End the reprogramming of the flash
+flash.reprogram off
+
+; Configure MPC
+do R:/tools/trace32/auxiliary/configure_mpc.cmm
+
+; Configure T32 trace
+do R:/tools/trace32/auxiliary/configure_trace.cmm
+
+; Finish the boot
+do R:/tools/trace32/auxiliary/finish_boot-for_watchdog.cmm
+
+; Cancel AS calls when no AS is flashed :
+do R:/tools/trace32/auxiliary/cancel_as_calls.cmm
+
+PRINT "========================================================================"
+PRINT "DEBUG MODE: CSS WRAPPER G4 environment in internal source is ready ! ==="
+PRINT "========================================================================"

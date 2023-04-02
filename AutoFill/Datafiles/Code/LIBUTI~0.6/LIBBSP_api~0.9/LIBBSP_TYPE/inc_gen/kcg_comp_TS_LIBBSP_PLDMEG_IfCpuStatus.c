@@ -1,0 +1,3 @@
+#include "kcg_types.h"
+
+ kcg_bool kcg_comp_TS_LIBBSP_PLDMEG_IfCpuStatus(   TS_LIBBSP_PLDMEG_IfCpuStatus *kcg_c1,   TS_LIBBSP_PLDMEG_IfCpuStatus *kcg_c2) {   kcg_bool kcg_equ;   kcg_equ = kcg_true;   kcg_equ = kcg_equ & (kcg_c1->error_counter == kcg_c2->error_counter);   kcg_equ = kcg_equ & (kcg_c1->overload_error == kcg_c2->overload_error);   kcg_equ = kcg_equ & (kcg_c1->timeout_error == kcg_c2->timeout_error);   kcg_equ = kcg_equ & (kcg_c1->acc_error == kcg_c2->acc_error);   kcg_equ = kcg_equ & (kcg_c1->addr_error == kcg_c2->addr_error);   kcg_equ = kcg_equ & (kcg_c1->parity_error == kcg_c2->parity_error);   return kcg_equ; }

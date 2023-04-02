@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/middleware/nfreq/nfreq_parse_samples.o: R:/source/oss/middleware/nfreq/nfreq_parse_samples.c R:/source/shared/type/common_type.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/nfreq/nfreq_private.h R:/source/oss/middleware/nfreq/nfreq_public.h R:/source/oss/middleware/nfreq/nfreq_parse_samples.h

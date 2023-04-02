@@ -1,0 +1,127 @@
+Entities_Definitions DEFINITIONS ::= BEGIN
+file_ref ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		folder oid,
+		persist_as string
+	}
+}
+project ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		default_configuration oid
+	}
+}
+folder ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		folder oid,
+		extensions string,
+		name string
+	}
+}
+configuration ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		name string,
+		project oid
+	}
+}
+prop ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		name string,
+		entity oid,
+		configuration oid,
+		values SEQUENCE OF string
+	}
+}
+base ::= SEQUENCE OF {
+	SEQUENCE {
+		oid_count integer,
+		version string
+	}
+}
+base ::= {
+{110, ""}
+}
+prop ::= {
+{"3", "@LOG_BUILDER:VERSION", "1", NULL, {"660"}},
+{"4", "@STUDIO:PRODUCT", "1", NULL, {"LG"}},
+{"5", "@LOG_BUILDER:LANGUAGE", "1", NULL, {"c"}},
+{"6", "@LOG_BUILDER:MODULES", "1", NULL, {"rule"}},
+{"7", "@LOG_BUILDER:DATA_DIRECTORY", "1", NULL, {"%Project%/Logiscope"}},
+{"8", "@LOG_BUILDER:IMPORT_NAME", "1", NULL, {"Imported Files"}},
+{"9", "@LOG_API:INITIALIZED", "1", NULL, {"rule"}},
+{"10", "@LOG_BUILDER:PARSER_DIALECT", "1", NULL, {"msc70"}},
+{"11", "@LOG_BUILDER:PARSER_NOEXP", "1", NULL, {"false"}},
+{"12", "@LOG_BUILDER:PARSER_IGNFILE", "1", NULL, {"%Project%/../LIBUTI.ign"}},
+{"13", "@LOG_BUILDER:PARSER_DEFFILE", "1", NULL, {"%Project%/../LIBUTI.def"}},
+{"14", "@LOG_BUILDER:PARSER_MACFILE", "1", NULL, {"%Project%/../LIBUTI.mac"}},
+{"47", "@LOG_BUILDER:FILE_SUFFIX", "1", NULL, {"*.c", "*.C"}},
+{"48", "@LOG_BUILDER:DEROGATION", "1", NULL, {"true"}}
+}
+configuration ::= {
+{"2", "Default", "1"}
+}
+folder ::= {
+{"15", NULL, "*.c;*.C", "Source Files"},
+{"49", NULL, "*.rst", "Rule Set"}
+}
+project ::= {
+{"1", "2"}
+}
+file_ref ::= {
+{"50", "49", "Coding_standard.rst"},
+{"60", "15", "..\\..\\ARINC_665\\LIBUTI_A665_ParseLUH_VersionPN.c"},
+{"61", "15", "..\\..\\ARINC_665\\LIBUTI_A665_ParseLUH_Target.c"},
+{"62", "15", "..\\..\\ARINC_665\\LIBUTI_A665_ParseLUH_SupportFiles.c"},
+{"63", "15", "..\\..\\ARINC_665\\LIBUTI_A665_ParseLUH_Part3Targets.c"},
+{"64", "15", "..\\..\\ARINC_665\\LIBUTI_A665_ParseLUH_Part3Fields.c"},
+{"65", "15", "..\\..\\ARINC_665\\LIBUTI_A665_ParseLUH_Part3.c"},
+{"66", "15", "..\\..\\ARINC_665\\LIBUTI_A665_ParseLUH_NumberOfFiles.c"},
+{"67", "15", "..\\..\\ARINC_665\\LIBUTI_A665_ParseLUH_Init.c"},
+{"68", "15", "..\\..\\ARINC_665\\LIBUTI_A665_ParseLUH_DataFiles.c"},
+{"69", "15", "..\\..\\ARINC_665\\LIBUTI_A665_ParseLUH.c"},
+{"71", "15", "..\\..\\AES\\LIBUTI_AES_decryptBlock.c"},
+{"72", "15", "..\\..\\AES\\LIBUTI_AES_decrypt_in_place.c"},
+{"73", "15", "..\\..\\AES\\LIBUTI_AES_decrypt.c"},
+{"74", "15", "..\\..\\AES\\LIBUTI_AES_byteOperations.c"},
+{"75", "15", "..\\..\\COMMON\\LIBUTI_CMN_TestSupportFile.c"},
+{"76", "15", "..\\..\\COMMON\\LIBUTI_CMN_TestCompatibilityBetweenLoads.c"},
+{"77", "15", "..\\..\\COMMON\\LIBUTI_CMN_ParseSUP.c"},
+{"78", "15", "..\\..\\COMMON\\LIBUTI_CMN_ParseLUD.c"},
+{"79", "15", "..\\..\\COMMON\\LIBUTI_CMN_ParseCMP.c"},
+{"80", "15", "..\\..\\COMMON\\LIBUTI_CMN_MatchingFiles.c"},
+{"81", "15", "..\\..\\COMMON\\LIBUTI_CMN_IsCompatible.c"},
+{"82", "15", "..\\..\\COMMON\\LIBUTI_CMN_IdentifySupportFiles.c"},
+{"83", "15", "..\\..\\CRC\\LIBUTI_CRC_Update.c"},
+{"84", "15", "..\\..\\CRC\\LIBUTI_CRC.c"},
+{"85", "15", "..\\..\\MEM\\LIBUTI_MEM.c"},
+{"86", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Update_No_Loop.c"},
+{"87", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Update.c"},
+{"88", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_SearchZoneByZoneId.c"},
+{"89", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Reset.c"},
+{"90", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Read.c"},
+{"91", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_NextSubZone.c"},
+{"92", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Init_Reset.c"},
+{"93", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Init.c"},
+{"94", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Info.c"},
+{"95", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Global.c"},
+{"96", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Get_FS.c"},
+{"97", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Format.c"},
+{"98", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_DrvInit.c"},
+{"99", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Commit.c"},
+{"100", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_CheckSubZone.c"},
+{"101", "15", "..\\..\\NAND_FS\\LIBUTI_NAND_FS_Check.c"},
+{"102", "15", "..\\..\\SHA\\LIBUTI_SHA_Wrapper.c"},
+{"103", "15", "..\\..\\SHA\\LIBUTI_SHA_Transform.c"},
+{"104", "15", "..\\..\\SHA\\LIBUTI_SHA_Computation.c"},
+{"105", "15", "..\\..\\SIF\\LIBUTI_SIF_main.c"},
+{"106", "15", "..\\..\\SIF\\LIBUTI_SIF_iterators.c"},
+{"107", "15", "..\\..\\SIF\\LIBUTI_SIF_hashes.c"},
+{"108", "15", "..\\..\\SIF\\LIBUTI_SIF_getters_from_headers.c"},
+{"109", "15", "..\\..\\SIF\\LIBUTI_SIF_getters.c"},
+{"110", "15", "..\\..\\SIF\\LIBUTI_SIF_get_next_file_skip.c"}
+}
+END

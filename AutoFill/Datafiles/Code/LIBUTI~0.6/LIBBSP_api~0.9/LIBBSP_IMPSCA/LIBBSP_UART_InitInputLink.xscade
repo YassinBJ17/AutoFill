@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="function" external="imported" name="LIBBSP_UART_InitInputLink">
+			<inputs>
+				<Variable name="v_DevID">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_UART_Dev"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/3b1/5006/2778/608fc89a2301"/>
+					</pragmas>
+				</Variable>
+				<Variable name="v_RxBuffer">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TA_LIBBSP_UART_RxBuffer"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/b61/5006/2778/608fe0cf874"/>
+					</pragmas>
+				</Variable>
+				<Variable name="v_BaudRate">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_UART_Speed"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/b62/5006/2778/608fe0d743e9"/>
+					</pragmas>
+				</Variable>
+				<Variable name="v_Parity">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_UART_Parity"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/b6c/5006/2778/608fe0e72963"/>
+					</pragmas>
+				</Variable>
+			</inputs>
+			<outputs>
+				<Variable name="v_ret">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_UART_RxErrorCode"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/b76/5006/2778/608fe1af6fc7"/>
+					</pragmas>
+				</Variable>
+			</outputs>
+			<pragmas>
+				<ed:Operator oid="!ed/3b0/5006/2778/608fc882312d"/>
+				<kcg:Pragma>
+					keep
+				</kcg:Pragma>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

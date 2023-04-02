@@ -1,0 +1,18 @@
+{
+"error_handlers":
+{
+  "handlers": [
+    "handle_exception"
+  ],
+  "positioning": {
+    "flash_addr": {
+      "addr": 17661952
+    },
+    "place": {
+      "data": {
+        "addr": 1074077952
+      }
+    }
+  }
+}
+}

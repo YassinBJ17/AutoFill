@@ -1,0 +1,803 @@
+{
+"kmemory":
+{
+  "regions": [
+    {
+      "name": "dmem_c0",
+      "physical_address": 1350565888,
+      "size": 65536,
+      "only_for_cores": [
+        0
+      ]
+    },
+    {
+      "name": "dmem_c1",
+      "physical_address": 1367343104,
+      "size": 65536,
+      "only_for_cores": [
+        1
+      ]
+    },
+    {
+      "name": "dmem_c2",
+      "physical_address": 1384120320,
+      "size": 65536,
+      "only_for_cores": [
+        2
+      ]
+    },
+    {
+      "name": "flash",
+      "physical_address": 17301504,
+      "size": 7602176,
+      "domains": [
+        {
+          "output_sections": [
+            {
+              "name": ".rodata_global_objects",
+              "alignment": 4,
+              "physical_address": "0x011C1008",
+              "start_symbol": "_start__rodata_global_objects",
+              "end_symbol": "_end__rodata_global_objects",
+              "type": "CONST"
+            },
+            {
+              "name": ".critical_services_pointers",
+              "alignment": 4,
+              "physical_address": "0x011D101C",
+              "start_symbol": "_start__critical_services_pointers",
+              "end_symbol": "_end__critical_services_pointers",
+              "type": "CONST"
+            },
+            {
+              "name": ".copytable",
+              "alignment": 4,
+              "physical_address": "0x011D1D1C",
+              "start_symbol": "_start__copytable",
+              "end_symbol": "_end__copytable",
+              "filled_by_linker": true,
+              "type": "CONST"
+            },
+            {
+              "name": ".uid",
+              "alignment": 4,
+              "start_symbol": "_start__uid",
+              "end_symbol": "_end__uid",
+              "type": "CONST"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_stub_ag_fast_task",
+                "agent_permissions": "READ_ONLY"
+              },
+              {
+                "name": "css_wrapper_stub_wk_phantom_task",
+                "psyslayer_permissions": "READ_ONLY"
+              },
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "READ_ONLY"
+              },
+              {
+                "name": "uod_wrapper_wk_task",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".rodata_module_oss_wk_task",
+              "alignment": 4,
+              "physical_address": "0x011F0000",
+              "start_symbol": "_start__rodata_module_oss_wk_task",
+              "end_symbol": "_end__rodata_module_oss_wk_task",
+              "type": "CONST"
+            },
+            {
+              "name": ".oss_conf_tab",
+              "alignment": 4,
+              "physical_address": "0x01200000",
+              "start_symbol": "_start__oss_conf_tab",
+              "end_symbol": "_end__oss_conf_tab",
+              "type": "CONST"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "READ_ONLY"
+              },
+              {
+                "name": "uod_wrapper_wk_task",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".text_module_oss_wk_task",
+              "alignment": 4,
+              "physical_address": "0x01250000",
+              "start_symbol": "_start__text_module_oss_wk_task",
+              "end_symbol": "_end__text_module_oss_wk_task"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "EXECUTE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".text_global_objects",
+              "alignment": 4,
+              "physical_address": "0x01270000",
+              "start_symbol": "_start__text_global_objects",
+              "end_symbol": "_end__text_global_objects"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_stub_ag_fast_task",
+                "agent_permissions": "EXECUTE"
+              },
+              {
+                "name": "css_wrapper_stub_wk_phantom_task",
+                "psyslayer_permissions": "EXECUTE"
+              },
+              {
+                "name": "uod_wrapper_wk_task",
+                "psyslayer_permissions": "EXECUTE"
+              },
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "EXECUTE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".rodata_module_css_wrapper_stub_ag_fast_task",
+              "alignment": 4,
+              "physical_address": "0x01640000",
+              "start_symbol": "_start__rodata_module_css_wrapper_stub_ag_fast_task",
+              "end_symbol": "_end__rodata_module_css_wrapper_stub_ag_fast_task",
+              "type": "CONST"
+            },
+            {
+              "name": ".rodata_module_css_wrapper_stub_wk_phantom_task",
+              "alignment": 4,
+              "start_symbol": "_start__rodata_module_css_wrapper_stub_wk_phantom_task",
+              "end_symbol": "_end__rodata_module_css_wrapper_stub_wk_phantom_task",
+              "type": "CONST"
+            },
+            {
+              "name": ".rodata_module_uod_wrapper_wk_task",
+              "alignment": 4,
+              "start_symbol": "_start__rodata_module_uod_wrapper_wk_task",
+              "end_symbol": "_end__rodata_module_uod_wrapper_wk_task",
+              "type": "CONST"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_stub_ag_fast_task",
+                "agent_permissions": "READ_ONLY",
+                "psyslayer_permissions": "READ_ONLY"
+              },
+              {
+                "name": "css_wrapper_stub_wk_phantom_task",
+                "psyslayer_permissions": "READ_ONLY"
+              },
+              {
+                "name": "uod_wrapper_wk_task",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".text_module_css_wrapper_stub_ag_fast_task",
+              "alignment": 4,
+              "physical_address": "0x01650000",
+              "start_symbol": "_start__text_module_css_wrapper_stub_ag_fast_task",
+              "end_symbol": "_end__text_module_css_wrapper_stub_ag_fast_task"
+            },
+            {
+              "name": ".text_module_css_wrapper_stub_wk_phantom_task",
+              "alignment": 4,
+              "start_symbol": "_start__text_module_css_wrapper_stub_wk_phantom_task",
+              "end_symbol": "_end__text_module_css_wrapper_stub_wk_phantom_task"
+            },
+            {
+              "name": ".text_module_uod_wrapper_wk_task",
+              "alignment": 4,
+              "start_symbol": "_start__text_module_uod_wrapper_wk_task",
+              "end_symbol": "_end__text_module_uod_wrapper_wk_task"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_stub_ag_fast_task",
+                "agent_permissions": "EXECUTE"
+              },
+              {
+                "name": "css_wrapper_stub_wk_phantom_task",
+                "psyslayer_permissions": "EXECUTE"
+              },
+              {
+                "name": "uod_wrapper_wk_task",
+                "psyslayer_permissions": "EXECUTE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "external",
+      "physical_address": "0x20000000",
+      "size": "0x05000000",
+      "domains": [
+        {
+          "output_sections": [
+            {
+              "name": ".oss_mram_profiling",
+              "alignment": 4,
+              "initialization": "NONE",
+              "physical_address": "0x20003000"
+              "start_symbol": "_start__oss_mram_profiling",
+              "end_symbol": "_end__oss_mram_profiling",
+              "type": "BSS"
+            },
+            {
+              "name": ".oss_mram_other",
+              "alignment": 4,
+              "initialization": "NONE",
+              "physical_address": "0x20004000"
+              "start_symbol": "_start__oss_mram_other",
+              "end_symbol": "_end__oss_mram_other",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "READ_WRITE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".fpga_register",
+              "alignment": 4,
+              "physical_address": "0x24000000",
+              "initialization": "NONE",
+              "start_symbol": "_start__fpga_register",
+              "end_symbol": "_end__fpga_register",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_stub_ag_fast_task",
+                "agent_permissions": "READ_WRITE"
+              },
+              {
+                "name": "css_wrapper_stub_wk_phantom_task",
+                "psyslayer_permissions": "READ_WRITE"
+              }
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "READ_WRITE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "imem_c1",
+      "physical_address": 1358954496,
+      "size": 16384,
+      "only_for_cores": [
+        1
+      ]
+    },
+    {
+      "name": "imem_c2",
+      "physical_address": 1375731712,
+      "size": 16384,
+      "only_for_cores": [
+        2
+      ]
+    },
+    {
+      "name": "standby_ram",
+      "physical_address": 1073742080,
+      "size": 65280
+    },
+    {
+      "name": "system_ram",
+      "physical_address": "0x40011100",
+      "size": "0x00063FFF",
+      "domains": [
+        {
+          "output_sections": [
+            {
+              "name": ".bss_global_objects",
+              "alignment": 4,
+              "physical_address": "0x40011100",
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_global_objects",
+              "end_symbol": "_end__bss_global_objects",
+              "type": "BSS"
+            },
+            {
+              "name": ".shared_memory",
+              "initialization": "CLEAR",
+              "alignment": 4,
+              "physical_address": "0x40019100",
+              "start_symbol": "_start__shared_memory",
+              "end_symbol": "_end__shared_memory",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_stub_ag_fast_task",
+                "agent_permissions": "READ_WRITE"
+              },
+              {
+                "name": "css_wrapper_stub_wk_phantom_task",
+                "psyslayer_permissions": "READ_WRITE"
+              },
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "READ_WRITE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".bss_module_oss_wk_task",
+              "alignment": 4,
+              "physical_address": "0x40031100",
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_module_oss_wk_task",
+              "end_symbol": "_end__bss_module_oss_wk_task",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "READ_WRITE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".bss_module_css_wrapper_stub_ag_fast_task",
+              "alignment": 4,
+              "physical_address": "0x40056100"
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_module_css_wrapper_stub_ag_fast_task",
+              "end_symbol": "_end__bss_module_css_wrapper_stub_ag_fast_task",
+              "type": "BSS"
+            },
+            {
+              "name": ".bss_module_css_wrapper_stub_wk_phantom_task",
+              "alignment": 4,
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_module_css_wrapper_stub_wk_phantom_task",
+              "end_symbol": "_end__bss_module_css_wrapper_stub_wk_phantom_task",
+              "type": "BSS"
+            },
+            {
+              "name": ".bss_module_uod_wrapper_wk_task",
+              "alignment": 4,
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_module_uod_wrapper_wk_task",
+              "end_symbol": "_end__bss_module_uod_wrapper_wk_task",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_stub_ag_fast_task",
+                "agent_permissions": "READ_WRITE",
+                "psyslayer_permissions": "READ_ONLY"
+              },
+              {
+                "name": "css_wrapper_stub_wk_phantom_task",
+                "psyslayer_permissions": "READ_WRITE"
+              },
+              {
+                "name": "uod_wrapper_wk_task",
+                "psyslayer_permissions": "READ_WRITE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "imem_c0",
+      "physical_address": 1342177280,
+      "size": 65536,
+      domains: [
+        {
+          "output_sections": [
+            {
+              "name": ".oss_mailbox"
+              "alignment": 4,
+              "physical_address": "0x50000000",
+              "start_symbol": "_start__oss_mailbox",
+              "end_symbol": "_end__oss_mailbox",
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "EXECUTE"
+              },
+              {
+                "name": "uod_wrapper_wk_task",
+                "psyslayer_permissions": "EXECUTE"
+              }
+            ]
+          }
+        }
+      ]
+      "only_for_cores": [
+        0
+      ]
+    }
+  ],
+  "groups": [
+     {
+      "name": "oss_conf_tab",
+      "sources": [
+        ".oss_conf_tab_src*"
+      ],
+      "destination": ".oss_conf_tab"
+    },
+    {
+      "name": "oss_mram_profiling",
+      "sources": [
+        ".oss_mram_profiling_src*"
+      ],
+      "destination": ".oss_mram_profiling"
+    },
+    {
+      "name": "oss_mram_other",
+      "sources": [
+        ".oss_mram_other_src*"
+      ],
+      "destination": ".oss_mram_other"
+    },
+    {
+      "name": "fpga_register",
+      "sources": [
+        ".fpga_register_src*"
+      ],
+      "destination": ".fpga_register"
+    },
+    {
+      "name": "shared_memory",
+      "sources": [
+        ".shared_memory_src*"
+      ],
+      "destination": ".shared_memory"
+    },
+    {
+      "name": "critical_services_pointers",
+      "sources": [
+        ".critical_services_pointers_src*"
+      ],
+      "destination": ".critical_services_pointers"
+    },
+    {
+      "name": "oss_mailbox",
+      "sources": [
+        ".oss_mailbox_src*"
+      ],
+      "destination": ".oss_mailbox"
+    },
+    {
+      "name": "bss_global_objects",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_global_objects"
+    },
+    {
+      "name": "bss_module_css_wrapper_stub_ag_fast_task",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_module_css_wrapper_stub_ag_fast_task"
+    },
+    {
+      "name": "bss_module_css_wrapper_stub_wk_phantom_task",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_module_css_wrapper_stub_wk_phantom_task"
+    },
+    {
+      "name": "bss_module_oss_wk_task",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_module_oss_wk_task"
+    },
+    {
+      "name": "bss_module_uod_wrapper_wk_task",
+      "sources": [
+        ".bss*",
+        ".non_cacheable_bss*"
+      ],
+      "destination": ".bss_module_uod_wrapper_wk_task"
+    },
+    {
+      "name": "data_global_objects",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_global_objects"
+    },
+    {
+      "name": "data_module_css_wrapper_stub_ag_fast_task",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_module_css_wrapper_stub_ag_fast_task"
+    },
+    {
+      "name": "data_module_css_wrapper_stub_wk_phantom_task",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_module_css_wrapper_stub_wk_phantom_task"
+    },
+    {
+      "name": "data_module_oss_wk_task",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_module_oss_wk_task"
+    },
+    {
+      "name": "data_module_uod_wrapper_wk_task",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_module_uod_wrapper_wk_task"
+    },
+    {
+      "name": "global_objects",
+      "groups": [
+        "rodata_global_objects",
+        "data_global_objects",
+        "bss_global_objects",
+        "text_global_objects"
+      ]
+    },
+    {
+      "name": "module_css_wrapper_stub_ag_fast_task",
+      "groups": [
+        "rodata_module_css_wrapper_stub_ag_fast_task",
+        "data_module_css_wrapper_stub_ag_fast_task",
+        "bss_module_css_wrapper_stub_ag_fast_task",
+        "text_module_css_wrapper_stub_ag_fast_task"
+      ]
+    },
+    {
+      "name": "module_css_wrapper_stub_wk_phantom_task",
+      "groups": [
+        "rodata_module_css_wrapper_stub_wk_phantom_task",
+        "data_module_css_wrapper_stub_wk_phantom_task",
+        "bss_module_css_wrapper_stub_wk_phantom_task",
+        "text_module_css_wrapper_stub_wk_phantom_task"
+      ]
+    },
+    {
+      "name": "module_oss_wk_task",
+      "groups": [
+        "rodata_module_oss_wk_task",
+        "data_module_oss_wk_task",
+        "bss_module_oss_wk_task",
+        "text_module_oss_wk_task"
+      ]
+    },
+    {
+      "name": "module_uod_wrapper_wk_task",
+      "groups": [
+        "rodata_module_uod_wrapper_wk_task",
+        "data_module_uod_wrapper_wk_task",
+        "bss_module_uod_wrapper_wk_task",
+        "text_module_uod_wrapper_wk_task"
+      ]
+    },
+    {
+      "name": "rodata_global_objects",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_global_objects"
+    },
+    {
+      "name": "rodata_module_css_wrapper_stub_ag_fast_task",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_module_css_wrapper_stub_ag_fast_task"
+    },
+    {
+      "name": "rodata_module_css_wrapper_stub_wk_phantom_task",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_module_css_wrapper_stub_wk_phantom_task"
+    },
+    {
+      "name": "rodata_module_oss_wk_task",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_module_oss_wk_task"
+    },
+    {
+      "name": "rodata_module_uod_wrapper_wk_task",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_module_uod_wrapper_wk_task"
+    },
+    {
+      "name": "text_global_objects",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_global_objects"
+    },
+    {
+      "name": "text_module_css_wrapper_stub_ag_fast_task",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_module_css_wrapper_stub_ag_fast_task"
+    },
+    {
+      "name": "text_module_css_wrapper_stub_wk_phantom_task",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_module_css_wrapper_stub_wk_phantom_task"
+    },
+    {
+      "name": "text_module_oss_wk_task",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_module_oss_wk_task"
+    },
+    {
+      "name": "text_module_uod_wrapper_wk_task",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_module_uod_wrapper_wk_task"
+    },
+    {
+      "name": "uid",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".uid"
+    }
+  ],
+  "objects": [
+    {
+      "id": "uid.c",
+      "type": "GLOBAL",
+      "groups": [
+        "uid"
+      ]
+    },
+    {
+      "id": "R:/_build_out/arc/lib_critical_service.a",
+      "type": "GLOBAL",
+      "groups": [
+        "global_objects",
+        "shared_memory",
+        "critical_services_pointers"
+      ]
+    },
+    {
+      "id": "R:/_build_out/arc/oss.a",
+      "type": "GLOBAL",
+      "groups": [
+        "module_oss_wk_task",
+        "fpga_register",
+        "oss_mram_profiling",
+        "oss_mram_other",
+        "oss_conf_tab",
+        "oss_mailbox"
+      ]
+    },
+    {
+      "id": "R:/specific_binaries/uod_lib/UODG.a",
+      "type": "GLOBAL",
+      "groups": [
+        "module_uod_wrapper_wk_task"
+      ]
+    },
+    {
+      "id": "R:/source/css_wrapper_stub/sched/css_wrapper_stub_ag_fast_task.psy",
+      "type": "PRIVATE",
+      "owner": "css_wrapper_stub_ag_fast_task",
+      "groups": [
+        "module_css_wrapper_stub_ag_fast_task"
+      ]
+    },
+    {
+      "id": "R:/source/css_wrapper_stub/sched/css_wrapper_stub_wk_phantom_task.psy",
+      "type": "PRIVATE",
+      "owner": "css_wrapper_stub_wk_phantom_task",
+      "groups": [
+        "module_css_wrapper_stub_wk_phantom_task"
+      ]
+    },
+    {
+      "id": "R:/source/oss/sched/oss_wk_task.psy",
+      "type": "PRIVATE",
+      "owner": "oss_wk_task",
+      "groups": [
+        "module_oss_wk_task"
+      ]
+    },
+    {
+      "id": "R:/source/uod_wrapper/sched/uod_wrapper_wk_task.psy",
+      "type": "PRIVATE",
+      "owner": "uod_wrapper_wk_task",
+      "groups": [
+        "module_uod_wrapper_wk_task"
+      ]
+    }
+  ]
+}
+}

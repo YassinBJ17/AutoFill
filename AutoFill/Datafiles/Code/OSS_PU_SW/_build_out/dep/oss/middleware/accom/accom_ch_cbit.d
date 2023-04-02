@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/middleware/accom/accom_ch_cbit.o: R:/source/oss/middleware/accom/accom_ch_cbit.c R:/source/lib_critical_service/middleware/accom/accom_public.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/accom/accom_private.h

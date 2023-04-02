@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/middleware/watchdog/watchdog_cbit.o: R:/source/oss/middleware/watchdog/watchdog_cbit.c R:/source/oss/middleware/watchdog/watchdog_private.h R:/source/shared/type/mcp_types.h R:/source/shared/type/common_type.h R:/source/oss/middleware/reset/reset_public.h

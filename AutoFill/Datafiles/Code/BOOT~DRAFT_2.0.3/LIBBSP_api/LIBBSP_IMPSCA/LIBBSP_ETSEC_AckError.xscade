@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="function" external="imported" name="LIBBSP_ETSEC_AckError">
+			<inputs>
+				<Variable name="network">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_ETSEC_Network"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/399/37ED/47D0/5fce56b44e76"/>
+					</pragmas>
+				</Variable>
+			</inputs>
+			<outputs>
+				<Variable name="v_ret">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_ETSEC_NetworkStatus"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/3a3/37ED/47D0/5fce56c843ed"/>
+					</pragmas>
+				</Variable>
+			</outputs>
+			<pragmas>
+				<ed:Operator oid="!ed/398/37ED/47D0/5fce56ac602"/>
+				<kcg:Pragma>
+					keep
+				</kcg:Pragma>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

@@ -1,0 +1,6 @@
+# ninja log v5
+2	220	6723164524886191	R:/specific_binaries/error_handler/_build_out/ast/error_handler/kmemory_out.ks	cfe9eac747a6f90d
+222	269	6723164525386178	R:/specific_binaries/error_handler/_build_out/ast/error_handler/link/db/kbinary.ks	4d3ff6397be33b97
+271	409	6723164526882351	R:/specific_binaries/error_handler/_build_out/ast/error_handler/link/app.dld	ae2f264ea4f1132c
+411	469	6723164527482309	R:/specific_binaries/error_handler/_build_out/gen/emo_error_handler.elf	7f9b5f30f9d13cad
+469	551	6723164528282669	R:/specific_binaries/error_handler/_build_out/ast/error_handler/memreport.ks	8f7e3299de001c1e

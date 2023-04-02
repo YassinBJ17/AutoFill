@@ -1,0 +1,9 @@
+{
+"link_options":
+{
+  "ldflags": [
+    "-@O=R:/specific_binaries/error_handler/_build_out/gen/emo_error_handler.map",
+    "-@E=R:/specific_binaries/error_handler/_build_out/gen/emo_error_handler_err.map"
+  ]
+}
+}

@@ -1,0 +1,169 @@
+AREA.View
+AREA.Clear
+
+PRINT " ----------------------------------------------------------------------------- "
+PRINT "     Identify_OVSP_HS: Load the OVSP High Side Identifier in S32K144           "
+PRINT " ----------------------------------------------------------------------------- " 
+PRINT ""
+
+RESET
+
+; -----------------------------------------------------------------------------
+;                   Init Local Variables
+; -----------------------------------------------------------------------------
+
+LOCAL &current_dir
+LOCAL &HighSide_Id
+
+; Initialize local variables
+&current_dir=OS.PPD()
+
+PRINT " 1/ T32 environnement initialization"
+PRINT ""
+
+; Force directory
+CD "&current_dir"
+PRINT ""
+
+TOOLBAR ON
+STATUSBAR ON
+BREAK.RESET
+MODE.HLL
+
+PRINT " 2/ Import T32 global configuration"
+PRINT ""
+
+; make sure we use hexadecimal values by default
+RADIX.HEX
+
+; Declare global
+GLOBAL &CONF_TGT_NAME
+GLOBAL &CONF_TGT_EXE
+GLOBAL &CONF_TGT_MODE
+GLOBAL &CONF_ETM_PROBE
+
+;-------------------------;
+; CONF_TGT_EXE
+;-------------------------;
+&CONF_TGT_EXE="t32marm"
+
+;-------------------------;
+; CONF_TGT_NAME
+;-------------------------;
+&CONF_TGT_NAME="S32K144"
+
+;-------------------------;
+; CONF_TGT_MODE
+;-------------------------;
+&CONF_TGT_MODE="TARGET"
+
+;-------------------------;
+; CONF_ETM_PROBE
+;-------------------------;
+&CONF_ETM_PROBE="DISABLED"
+
+
+PRINT " 3/ Configure Trace 32 CPU environnement and Probe configuration"
+PRINT ""
+
+SYSTEM.RESET
+SYSTEM.JTAGCLOCK 10MHz
+
+SYStem.Option TRST on
+SYStem.Option ResBreak on
+SYStem.Option WaitReset ON
+
+SYStem.CPU S32K144
+
+SYSTEM.MEMACCESS DENIED    ;Default : DENIED
+SYSTEM.CPUACCESS DENIED    ;Default : DENIED
+SYSTEM.OPTION IMASKASM OFF ;Default : OFF
+SYSTEM.OPTION IMASKHLL OFF ;Default : OFF
+
+SYSTEM.ResetTarget
+SYSTEM.UP
+PRINT ""
+
+; SYSTEM is now UP
+
+PRINT " 4/ S32K144 Watchdog and Bootrom Disabling for safety in FLASH loading"
+PRINT ""
+
+GOSUB DisableBootrom
+GOSUB DisableWatchdog
+
+PRINT " 5/   RAM initialization"
+PRINT ""
+
+DATA.SET 0X1FFF8000--0X20007FFF %Quad 0
+
+; -----------------------------------------------------------------------------
+;    Symbols Loading
+; -----------------------------------------------------------------------------
+;Clear the symbol list if this list already exists
+SYMBOL.RESET
+SYMBOL.SPATH.RESET
+
+RESET
+
+&PFlashSize=0x80000
+&DFlashSize=0x10000
+
+PRINT " 6/ Set High Side Identifier"
+PRINT ""
+
+&HighSide_Id=0xA5000000
+
+FLASH.Create 2. 0x7F000--0x7FFFF 0x1000 TARGET Quad
+FLASH.TARGET 0x1FFFF000 0x20000000 0x1000 ~~/demo/arm/flash/quad/s32k_4k2k.bin
+
+SYStem.RESetTarget
+PRINT ""
+
+WAIT 1.
+
+FLASH.auto 0x7F000--0x7FFFF
+DATA.SET 0x7FFFC--0x7FFFF %Long &HighSide_Id
+FLASH.AUTO OFF
+
+
+IF !SYStem.Option.DUALPORT()
+   SYStem.Option.DUALPORT ON
+
+PRINT %COLOR.GREEN "&HighSide_Id corresponding to High Side (HS) is successfully loaded"
+DIALOG.MESSAGE "&HighSide_Id corresponding to High Side (HS) is successfully loaded"
+
+DO Read_OVSP_Identifier
+
+ENDDO
+
+DisableWatchdog:
+  LOCAL &tmp1 &tmp2
+  &tmp1=Data.Long(ST:0x20000000)
+  &tmp2=Data.Long(ST:0x20000004)
+
+  ; The watchdog has a restrictive timing. It has to be configured and unlocked within a peripod
+  ; of 128 cycles. Therefor the unlock sequence need to be done by a small target program.
+  Data.Assemble ST:0x20000000  strh r1,[r0]  ;SD:0x40052004 = 0xC520   (Key 1)
+  Data.Assemble ,              strh r2,[r0]  ;SD:0x40052004 = 0xD928   (Key 2)
+  Data.Assemble ,              strh r4,[r3]  ;SD:0x40052000 = 0x0000   (Config register)
+  Data.Assemble ,              bkpt #0
+  Register.Set PC 0x20000000
+  Register.Set SP 0x20001000
+  Register.Set R0 0x40052004
+  Register.Set R1 0xC520
+  Register.Set R2 0xD928
+  Register.Set R3 0x40052000
+  Register.Set R4 0x0
+  Go.direct
+  WAIT !RUN()
+
+  Data.Set ST:0x20000000 %Long &tmp1
+  Data.Set ST:0x20000004 %Long &tmp2
+
+  RETURN
+
+DisableBootrom:
+  Data.Set SD:0x4007F010 %LE %Long 0x6
+  Data.Set SD:0x4007F014 %LE %Long 0x0
+  RETURN

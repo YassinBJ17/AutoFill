@@ -1,0 +1,1071 @@
+{
+"kmemory":
+{
+  "regions": [
+    {
+      "name": "dmem_c0",
+      "physical_address": 1350565888,
+      "size": 65536,
+      "only_for_cores": [
+        0
+      ]
+    },
+    {
+      "name": "dmem_c1",
+      "physical_address": 1367343104,
+      "size": 65536,
+      "only_for_cores": [
+        1
+      ]
+    },
+    {
+      "name": "dmem_c2",
+      "physical_address": 1384120320,
+      "size": 65536,
+      "only_for_cores": [
+        2
+      ]
+    },
+    {
+      "name": "flash",
+      "physical_address": 17039360,
+      "size": 7864320,
+      "domains": [
+        {
+          "output_sections": [
+            {
+              "name": ".copytable",
+              "start_symbol": "_start__copytable",
+              "end_symbol": "_end__copytable",
+              "filled_by_linker": true,
+              "type": "CONST"
+            },
+            {
+              "name": ".uid",
+              "start_symbol": "_start__uid",
+              "end_symbol": "_end__uid",
+              "type": "CONST"
+            },
+            {
+              "name": ".rodata_global_objects",
+              "start_symbol": "_start__rodata_global_objects",
+              "end_symbol": "_end__rodata_global_objects",
+              "type": "CONST"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_background_task",
+                "agent_permissions": "READ_ONLY"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_ag_fast_task",
+                "agent_permissions": "READ_ONLY"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_ag_slow_task",
+                "agent_permissions": "READ_ONLY"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_ag_very_slow_task",
+                "agent_permissions": "READ_ONLY"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_wk_phantom_task",
+                "psyslayer_permissions": "READ_ONLY"
+              },
+              {
+                "name": "mcss_wrapper_ag_task",
+                "agent_permissions": "READ_ONLY"
+              },
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".rodata_module_css_wrapper_g1_2_3_ag_background_task",
+              "start_symbol": "_start__rodata_module_css_wrapper_g1_2_3_ag_background_task",
+              "end_symbol": "_end__rodata_module_css_wrapper_g1_2_3_ag_background_task",
+              "type": "CONST"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_background_task",
+                "agent_permissions": "READ_ONLY",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".rodata_module_css_wrapper_g1_2_3_ag_fast_task",
+              "start_symbol": "_start__rodata_module_css_wrapper_g1_2_3_ag_fast_task",
+              "end_symbol": "_end__rodata_module_css_wrapper_g1_2_3_ag_fast_task",
+              "type": "CONST"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_fast_task",
+                "agent_permissions": "READ_ONLY",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".rodata_module_css_wrapper_g1_2_3_ag_slow_task",
+              "start_symbol": "_start__rodata_module_css_wrapper_g1_2_3_ag_slow_task",
+              "end_symbol": "_end__rodata_module_css_wrapper_g1_2_3_ag_slow_task",
+              "type": "CONST"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_slow_task",
+                "agent_permissions": "READ_ONLY",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".rodata_module_css_wrapper_g1_2_3_ag_very_slow_task",
+              "start_symbol": "_start__rodata_module_css_wrapper_g1_2_3_ag_very_slow_task",
+              "end_symbol": "_end__rodata_module_css_wrapper_g1_2_3_ag_very_slow_task",
+              "type": "CONST"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_very_slow_task",
+                "agent_permissions": "READ_ONLY",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".rodata_module_css_wrapper_g1_2_3_wk_phantom_task",
+              "start_symbol": "_start__rodata_module_css_wrapper_g1_2_3_wk_phantom_task",
+              "end_symbol": "_end__rodata_module_css_wrapper_g1_2_3_wk_phantom_task",
+              "type": "CONST"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_wk_phantom_task",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".rodata_module_mcss_wrapper_ag_task",
+              "start_symbol": "_start__rodata_module_mcss_wrapper_ag_task",
+              "end_symbol": "_end__rodata_module_mcss_wrapper_ag_task",
+              "type": "CONST"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "mcss_wrapper_ag_task",
+                "agent_permissions": "READ_ONLY",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".rodata_module_oss_wk_task",
+              "start_symbol": "_start__rodata_module_oss_wk_task",
+              "end_symbol": "_end__rodata_module_oss_wk_task",
+              "type": "CONST"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".text_global_objects",
+              "start_symbol": "_start__text_global_objects",
+              "end_symbol": "_end__text_global_objects"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_background_task",
+                "agent_permissions": "EXECUTE"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_ag_fast_task",
+                "agent_permissions": "EXECUTE"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_ag_slow_task",
+                "agent_permissions": "EXECUTE"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_ag_very_slow_task",
+                "agent_permissions": "EXECUTE"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_wk_phantom_task",
+                "psyslayer_permissions": "EXECUTE"
+              },
+              {
+                "name": "mcss_wrapper_ag_task",
+                "agent_permissions": "EXECUTE"
+              },
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "EXECUTE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".text_module_css_wrapper_g1_2_3_ag_background_task",
+              "start_symbol": "_start__text_module_css_wrapper_g1_2_3_ag_background_task",
+              "end_symbol": "_end__text_module_css_wrapper_g1_2_3_ag_background_task"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_background_task",
+                "agent_permissions": "EXECUTE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".text_module_css_wrapper_g1_2_3_ag_fast_task",
+              "start_symbol": "_start__text_module_css_wrapper_g1_2_3_ag_fast_task",
+              "end_symbol": "_end__text_module_css_wrapper_g1_2_3_ag_fast_task"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_fast_task",
+                "agent_permissions": "EXECUTE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".text_module_css_wrapper_g1_2_3_ag_slow_task",
+              "start_symbol": "_start__text_module_css_wrapper_g1_2_3_ag_slow_task",
+              "end_symbol": "_end__text_module_css_wrapper_g1_2_3_ag_slow_task"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_slow_task",
+                "agent_permissions": "EXECUTE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".text_module_css_wrapper_g1_2_3_ag_very_slow_task",
+              "start_symbol": "_start__text_module_css_wrapper_g1_2_3_ag_very_slow_task",
+              "end_symbol": "_end__text_module_css_wrapper_g1_2_3_ag_very_slow_task"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_very_slow_task",
+                "agent_permissions": "EXECUTE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".text_module_css_wrapper_g1_2_3_wk_phantom_task",
+              "start_symbol": "_start__text_module_css_wrapper_g1_2_3_wk_phantom_task",
+              "end_symbol": "_end__text_module_css_wrapper_g1_2_3_wk_phantom_task"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_wk_phantom_task",
+                "psyslayer_permissions": "EXECUTE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".text_module_mcss_wrapper_ag_task",
+              "start_symbol": "_start__text_module_mcss_wrapper_ag_task",
+              "end_symbol": "_end__text_module_mcss_wrapper_ag_task"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "mcss_wrapper_ag_task",
+                "agent_permissions": "EXECUTE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".text_module_oss_wk_task",
+              "start_symbol": "_start__text_module_oss_wk_task",
+              "end_symbol": "_end__text_module_oss_wk_task"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "EXECUTE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "imem_c0",
+      "physical_address": 1342177280,
+      "size": 16384,
+      "only_for_cores": [
+        0
+      ]
+    },
+    {
+      "name": "imem_c1",
+      "physical_address": 1358954496,
+      "size": 16384,
+      "only_for_cores": [
+        1
+      ]
+    },
+    {
+      "name": "imem_c2",
+      "physical_address": 1375731712,
+      "size": 16384,
+      "only_for_cores": [
+        2
+      ]
+    },
+    {
+      "name": "standby_ram",
+      "physical_address": 1073742080,
+      "size": 65280,
+      "domains": [
+        {
+          "output_sections": [
+            {
+              "name": ".data_global_objects",
+              "physical_address": 1073745920,
+              "initialization": "LOAD",
+              "load_from_region": "flash",
+              "start_symbol": "_start__data_global_objects",
+              "end_symbol": "_end__data_global_objects",
+              "type": "DATA"
+            },
+            {
+              "name": ".bss_global_objects",
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_global_objects",
+              "end_symbol": "_end__bss_global_objects",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_background_task",
+                "agent_permissions": "READ_WRITE"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_ag_fast_task",
+                "agent_permissions": "READ_WRITE"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_ag_slow_task",
+                "agent_permissions": "READ_WRITE"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_ag_very_slow_task",
+                "agent_permissions": "READ_WRITE"
+              },
+              {
+                "name": "css_wrapper_g1_2_3_wk_phantom_task",
+                "psyslayer_permissions": "READ_WRITE"
+              },
+              {
+                "name": "mcss_wrapper_ag_task",
+                "agent_permissions": "READ_WRITE"
+              },
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "READ_WRITE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".data_module_css_wrapper_g1_2_3_ag_background_task",
+              "initialization": "LOAD",
+              "load_from_region": "flash",
+              "start_symbol": "_start__data_module_css_wrapper_g1_2_3_ag_background_task",
+              "end_symbol": "_end__data_module_css_wrapper_g1_2_3_ag_background_task",
+              "alignment": 32,
+              "type": "DATA"
+            },
+            {
+              "name": ".bss_module_css_wrapper_g1_2_3_ag_background_task",
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_module_css_wrapper_g1_2_3_ag_background_task",
+              "end_symbol": "_end__bss_module_css_wrapper_g1_2_3_ag_background_task",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_background_task",
+                "agent_permissions": "READ_WRITE",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".data_module_css_wrapper_g1_2_3_ag_fast_task",
+              "initialization": "LOAD",
+              "load_from_region": "flash",
+              "start_symbol": "_start__data_module_css_wrapper_g1_2_3_ag_fast_task",
+              "end_symbol": "_end__data_module_css_wrapper_g1_2_3_ag_fast_task",
+              "alignment": 32,
+              "type": "DATA"
+            },
+            {
+              "name": ".bss_module_css_wrapper_g1_2_3_ag_fast_task",
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_module_css_wrapper_g1_2_3_ag_fast_task",
+              "end_symbol": "_end__bss_module_css_wrapper_g1_2_3_ag_fast_task",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_fast_task",
+                "agent_permissions": "READ_WRITE",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".data_module_css_wrapper_g1_2_3_ag_slow_task",
+              "initialization": "LOAD",
+              "load_from_region": "flash",
+              "start_symbol": "_start__data_module_css_wrapper_g1_2_3_ag_slow_task",
+              "end_symbol": "_end__data_module_css_wrapper_g1_2_3_ag_slow_task",
+              "alignment": 32,
+              "type": "DATA"
+            },
+            {
+              "name": ".bss_module_css_wrapper_g1_2_3_ag_slow_task",
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_module_css_wrapper_g1_2_3_ag_slow_task",
+              "end_symbol": "_end__bss_module_css_wrapper_g1_2_3_ag_slow_task",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_slow_task",
+                "agent_permissions": "READ_WRITE",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".data_module_css_wrapper_g1_2_3_ag_very_slow_task",
+              "initialization": "LOAD",
+              "load_from_region": "flash",
+              "start_symbol": "_start__data_module_css_wrapper_g1_2_3_ag_very_slow_task",
+              "end_symbol": "_end__data_module_css_wrapper_g1_2_3_ag_very_slow_task",
+              "alignment": 32,
+              "type": "DATA"
+            },
+            {
+              "name": ".bss_module_css_wrapper_g1_2_3_ag_very_slow_task",
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_module_css_wrapper_g1_2_3_ag_very_slow_task",
+              "end_symbol": "_end__bss_module_css_wrapper_g1_2_3_ag_very_slow_task",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_ag_very_slow_task",
+                "agent_permissions": "READ_WRITE",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".data_module_css_wrapper_g1_2_3_wk_phantom_task",
+              "initialization": "LOAD",
+              "load_from_region": "flash",
+              "start_symbol": "_start__data_module_css_wrapper_g1_2_3_wk_phantom_task",
+              "end_symbol": "_end__data_module_css_wrapper_g1_2_3_wk_phantom_task",
+              "alignment": 32,
+              "type": "DATA"
+            },
+            {
+              "name": ".bss_module_css_wrapper_g1_2_3_wk_phantom_task",
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_module_css_wrapper_g1_2_3_wk_phantom_task",
+              "end_symbol": "_end__bss_module_css_wrapper_g1_2_3_wk_phantom_task",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "css_wrapper_g1_2_3_wk_phantom_task",
+                "psyslayer_permissions": "READ_WRITE"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".data_module_mcss_wrapper_ag_task",
+              "initialization": "LOAD",
+              "load_from_region": "flash",
+              "start_symbol": "_start__data_module_mcss_wrapper_ag_task",
+              "end_symbol": "_end__data_module_mcss_wrapper_ag_task",
+              "alignment": 32,
+              "type": "DATA"
+            },
+            {
+              "name": ".bss_module_mcss_wrapper_ag_task",
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_module_mcss_wrapper_ag_task",
+              "end_symbol": "_end__bss_module_mcss_wrapper_ag_task",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "mcss_wrapper_ag_task",
+                "agent_permissions": "READ_WRITE",
+                "psyslayer_permissions": "READ_ONLY"
+              }
+            ]
+          }
+        },
+        {
+          "output_sections": [
+            {
+              "name": ".data_module_oss_wk_task",
+              "initialization": "LOAD",
+              "load_from_region": "flash",
+              "start_symbol": "_start__data_module_oss_wk_task",
+              "end_symbol": "_end__data_module_oss_wk_task",
+              "alignment": 32,
+              "type": "DATA"
+            },
+            {
+              "name": ".bss_module_oss_wk_task",
+              "initialization": "CLEAR",
+              "start_symbol": "_start__bss_module_oss_wk_task",
+              "end_symbol": "_end__bss_module_oss_wk_task",
+              "type": "BSS"
+            }
+          ],
+          "protection": {
+            "modules": [
+              {
+                "name": "oss_wk_task",
+                "psyslayer_permissions": "READ_WRITE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "system_ram",
+      "physical_address": 1073807360,
+      "size": 348160
+    }
+  ],
+  "groups": [
+    {
+      "name": "bss_global_objects",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_global_objects"
+    },
+    {
+      "name": "bss_module_css_wrapper_g1_2_3_ag_background_task",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_module_css_wrapper_g1_2_3_ag_background_task"
+    },
+    {
+      "name": "bss_module_css_wrapper_g1_2_3_ag_fast_task",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_module_css_wrapper_g1_2_3_ag_fast_task"
+    },
+    {
+      "name": "bss_module_css_wrapper_g1_2_3_ag_slow_task",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_module_css_wrapper_g1_2_3_ag_slow_task"
+    },
+    {
+      "name": "bss_module_css_wrapper_g1_2_3_ag_very_slow_task",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_module_css_wrapper_g1_2_3_ag_very_slow_task"
+    },
+    {
+      "name": "bss_module_css_wrapper_g1_2_3_wk_phantom_task",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_module_css_wrapper_g1_2_3_wk_phantom_task"
+    },
+    {
+      "name": "bss_module_mcss_wrapper_ag_task",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_module_mcss_wrapper_ag_task"
+    },
+    {
+      "name": "bss_module_oss_wk_task",
+      "sources": [
+        ".bss*"
+      ],
+      "destination": ".bss_module_oss_wk_task"
+    },
+    {
+      "name": "data_global_objects",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_global_objects"
+    },
+    {
+      "name": "data_module_css_wrapper_g1_2_3_ag_background_task",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_module_css_wrapper_g1_2_3_ag_background_task"
+    },
+    {
+      "name": "data_module_css_wrapper_g1_2_3_ag_fast_task",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_module_css_wrapper_g1_2_3_ag_fast_task"
+    },
+    {
+      "name": "data_module_css_wrapper_g1_2_3_ag_slow_task",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_module_css_wrapper_g1_2_3_ag_slow_task"
+    },
+    {
+      "name": "data_module_css_wrapper_g1_2_3_ag_very_slow_task",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_module_css_wrapper_g1_2_3_ag_very_slow_task"
+    },
+    {
+      "name": "data_module_css_wrapper_g1_2_3_wk_phantom_task",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_module_css_wrapper_g1_2_3_wk_phantom_task"
+    },
+    {
+      "name": "data_module_mcss_wrapper_ag_task",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_module_mcss_wrapper_ag_task"
+    },
+    {
+      "name": "data_module_oss_wk_task",
+      "sources": [
+        ".data*"
+      ],
+      "destination": ".data_module_oss_wk_task"
+    },
+    {
+      "name": "global_objects",
+      "groups": [
+        "rodata_global_objects",
+        "data_global_objects",
+        "bss_global_objects",
+        "text_global_objects"
+      ]
+    },
+    {
+      "name": "module_css_wrapper_g1_2_3_ag_background_task",
+      "groups": [
+        "rodata_module_css_wrapper_g1_2_3_ag_background_task",
+        "data_module_css_wrapper_g1_2_3_ag_background_task",
+        "bss_module_css_wrapper_g1_2_3_ag_background_task",
+        "text_module_css_wrapper_g1_2_3_ag_background_task"
+      ]
+    },
+    {
+      "name": "module_css_wrapper_g1_2_3_ag_fast_task",
+      "groups": [
+        "rodata_module_css_wrapper_g1_2_3_ag_fast_task",
+        "data_module_css_wrapper_g1_2_3_ag_fast_task",
+        "bss_module_css_wrapper_g1_2_3_ag_fast_task",
+        "text_module_css_wrapper_g1_2_3_ag_fast_task"
+      ]
+    },
+    {
+      "name": "module_css_wrapper_g1_2_3_ag_slow_task",
+      "groups": [
+        "rodata_module_css_wrapper_g1_2_3_ag_slow_task",
+        "data_module_css_wrapper_g1_2_3_ag_slow_task",
+        "bss_module_css_wrapper_g1_2_3_ag_slow_task",
+        "text_module_css_wrapper_g1_2_3_ag_slow_task"
+      ]
+    },
+    {
+      "name": "module_css_wrapper_g1_2_3_ag_very_slow_task",
+      "groups": [
+        "rodata_module_css_wrapper_g1_2_3_ag_very_slow_task",
+        "data_module_css_wrapper_g1_2_3_ag_very_slow_task",
+        "bss_module_css_wrapper_g1_2_3_ag_very_slow_task",
+        "text_module_css_wrapper_g1_2_3_ag_very_slow_task"
+      ]
+    },
+    {
+      "name": "module_css_wrapper_g1_2_3_wk_phantom_task",
+      "groups": [
+        "rodata_module_css_wrapper_g1_2_3_wk_phantom_task",
+        "data_module_css_wrapper_g1_2_3_wk_phantom_task",
+        "bss_module_css_wrapper_g1_2_3_wk_phantom_task",
+        "text_module_css_wrapper_g1_2_3_wk_phantom_task"
+      ]
+    },
+    {
+      "name": "module_mcss_wrapper_ag_task",
+      "groups": [
+        "rodata_module_mcss_wrapper_ag_task",
+        "data_module_mcss_wrapper_ag_task",
+        "bss_module_mcss_wrapper_ag_task",
+        "text_module_mcss_wrapper_ag_task"
+      ]
+    },
+    {
+      "name": "module_oss_wk_task",
+      "groups": [
+        "rodata_module_oss_wk_task",
+        "data_module_oss_wk_task",
+        "bss_module_oss_wk_task",
+        "text_module_oss_wk_task"
+      ]
+    },
+    {
+      "name": "rodata_global_objects",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_global_objects"
+    },
+    {
+      "name": "rodata_module_css_wrapper_g1_2_3_ag_background_task",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_module_css_wrapper_g1_2_3_ag_background_task"
+    },
+    {
+      "name": "rodata_module_css_wrapper_g1_2_3_ag_fast_task",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_module_css_wrapper_g1_2_3_ag_fast_task"
+    },
+    {
+      "name": "rodata_module_css_wrapper_g1_2_3_ag_slow_task",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_module_css_wrapper_g1_2_3_ag_slow_task"
+    },
+    {
+      "name": "rodata_module_css_wrapper_g1_2_3_ag_very_slow_task",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_module_css_wrapper_g1_2_3_ag_very_slow_task"
+    },
+    {
+      "name": "rodata_module_css_wrapper_g1_2_3_wk_phantom_task",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_module_css_wrapper_g1_2_3_wk_phantom_task"
+    },
+    {
+      "name": "rodata_module_mcss_wrapper_ag_task",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_module_mcss_wrapper_ag_task"
+    },
+    {
+      "name": "rodata_module_oss_wk_task",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".rodata_module_oss_wk_task"
+    },
+    {
+      "name": "text_global_objects",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_global_objects"
+    },
+    {
+      "name": "text_module_css_wrapper_g1_2_3_ag_background_task",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_module_css_wrapper_g1_2_3_ag_background_task"
+    },
+    {
+      "name": "text_module_css_wrapper_g1_2_3_ag_fast_task",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_module_css_wrapper_g1_2_3_ag_fast_task"
+    },
+    {
+      "name": "text_module_css_wrapper_g1_2_3_ag_slow_task",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_module_css_wrapper_g1_2_3_ag_slow_task"
+    },
+    {
+      "name": "text_module_css_wrapper_g1_2_3_ag_very_slow_task",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_module_css_wrapper_g1_2_3_ag_very_slow_task"
+    },
+    {
+      "name": "text_module_css_wrapper_g1_2_3_wk_phantom_task",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_module_css_wrapper_g1_2_3_wk_phantom_task"
+    },
+    {
+      "name": "text_module_mcss_wrapper_ag_task",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_module_mcss_wrapper_ag_task"
+    },
+    {
+      "name": "text_module_oss_wk_task",
+      "sources": [
+        ".text*"
+      ],
+      "destination": ".text_module_oss_wk_task"
+    },
+    {
+      "name": "uid",
+      "sources": [
+        ".rodata*"
+      ],
+      "destination": ".uid"
+    }
+  ],
+  "objects": [
+    {
+      "id": "uid.c",
+      "type": "GLOBAL",
+      "groups": [
+        "uid"
+      ]
+    },
+    {
+      "id": "R:/_build_out/arc/css_wrapper_g1_2_3.a",
+      "type": "GLOBAL",
+      "groups": [
+        "global_objects"
+      ]
+    },
+    {
+      "id": "R:/_build_out/arc/lib_critical_service.a",
+      "type": "GLOBAL",
+      "groups": [
+        "global_objects"
+      ]
+    },
+    {
+      "id": "R:/_build_out/arc/mcss_wrapper.a",
+      "type": "GLOBAL",
+      "groups": [
+        "global_objects"
+      ]
+    },
+    {
+      "id": "R:/_build_out/arc/oss.a",
+      "type": "GLOBAL",
+      "groups": [
+        "global_objects"
+      ]
+    },
+    {
+      "id": "R:/source/css_wrapper_g1_2_3/sched/css_wrapper_g1_2_3_ag_background_task.psy",
+      "type": "PRIVATE",
+      "owner": "css_wrapper_g1_2_3_ag_background_task",
+      "groups": [
+        "module_css_wrapper_g1_2_3_ag_background_task"
+      ]
+    },
+    {
+      "id": "R:/source/css_wrapper_g1_2_3/sched/css_wrapper_g1_2_3_ag_fast_task.psy",
+      "type": "PRIVATE",
+      "owner": "css_wrapper_g1_2_3_ag_fast_task",
+      "groups": [
+        "module_css_wrapper_g1_2_3_ag_fast_task"
+      ]
+    },
+    {
+      "id": "R:/source/css_wrapper_g1_2_3/sched/css_wrapper_g1_2_3_ag_slow_task.psy",
+      "type": "PRIVATE",
+      "owner": "css_wrapper_g1_2_3_ag_slow_task",
+      "groups": [
+        "module_css_wrapper_g1_2_3_ag_slow_task"
+      ]
+    },
+    {
+      "id": "R:/source/css_wrapper_g1_2_3/sched/css_wrapper_g1_2_3_ag_very_slow_task.psy",
+      "type": "PRIVATE",
+      "owner": "css_wrapper_g1_2_3_ag_very_slow_task",
+      "groups": [
+        "module_css_wrapper_g1_2_3_ag_very_slow_task"
+      ]
+    },
+    {
+      "id": "R:/source/css_wrapper_g1_2_3/sched/css_wrapper_g1_2_3_wk_phantom_task.psy",
+      "type": "PRIVATE",
+      "owner": "css_wrapper_g1_2_3_wk_phantom_task",
+      "groups": [
+        "module_css_wrapper_g1_2_3_wk_phantom_task"
+      ]
+    },
+    {
+      "id": "R:/source/mcss_wrapper/sched/mcss_wrapper_ag_task.psy",
+      "type": "PRIVATE",
+      "owner": "mcss_wrapper_ag_task",
+      "groups": [
+        "module_mcss_wrapper_ag_task"
+      ]
+    },
+    {
+      "id": "R:/source/oss/sched/oss_wk_task.psy",
+      "type": "PRIVATE",
+      "owner": "oss_wk_task",
+      "groups": [
+        "module_oss_wk_task"
+      ]
+    }
+  ]
+}
+}

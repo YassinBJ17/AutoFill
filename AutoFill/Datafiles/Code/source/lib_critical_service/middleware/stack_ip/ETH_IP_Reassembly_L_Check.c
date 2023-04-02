@@ -1,0 +1,5 @@
+#include "middleware/stack_ip/ETH_IP_private.h"
+#include "middleware/ethernet/ETH_porting.h"
+#include "libtools/memory/LIB_MEM_public.h"
+
+ te_CMN_FLAG_VALIDITY ETH_IP_Reassembly_L_Check( const ts_ETH_IP_PacketHeader * const p_DataHeader ) {    const ts_ETH_IP_PacketHeader *   c_PcktHeader_pt ;    te_CMN_FLAG_VALIDITY             v_valid;    te_CMN_FLAG_QUESTION             v_MACValid ;    c_PcktHeader_pt = ( const ts_ETH_IP_PacketHeader *  ) v_ETH_IP_ControlObj.s_RxFragment.s_Packetbuff ;    v_MACValid = ETH_DRV_IsSameMAC_ADDR( &p_DataHeader->s_IP_eth.s_SourceHost,                                         &c_PcktHeader_pt->s_IP_eth.s_SourceHost );    if( (p_DataHeader->s_IP_ip.s_SourceAddress.u_IP ==  c_PcktHeader_pt->s_IP_ip.s_SourceAddress.u_IP ) &&             (v_MACValid == e_CMN_FLAG_YES) &&             (p_DataHeader->s_IP_ip.s_IP_Id ==  c_PcktHeader_pt->s_IP_ip.s_IP_Id )        )    {       v_valid = e_CMN_FLAG_VALID ;    }    else    {       v_valid = e_CMN_FLAG_NOT_VALID ;    }    return v_valid ; }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="function" external="imported" name="LIBBSP_ETSEC_Stop">
+			<inputs>
+				<Variable name="network">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_ETSEC_Network"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/7f5/3A55/127F8/5f7f13905013"/>
+					</pragmas>
+				</Variable>
+				<Variable name="network_config">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_ETSEC_NetConfigStop"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/7fc/3A55/127F8/5f7f1390108b"/>
+					</pragmas>
+				</Variable>
+			</inputs>
+			<outputs>
+				<Variable name="ret">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_ETSEC_NetworkStatus"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/803/3A55/127F8/5f7f13901b21"/>
+					</pragmas>
+				</Variable>
+			</outputs>
+			<pragmas>
+				<ed:Operator oid="!ed/3f3/3A55/127F8/5f7f0cca1657"/>
+				<kcg:Pragma>
+					keep
+				</kcg:Pragma>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

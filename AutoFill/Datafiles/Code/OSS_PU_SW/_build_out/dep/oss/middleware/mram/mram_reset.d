@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/middleware/mram/mram_reset.o: R:/source/oss/middleware/mram/mram_reset.c R:/source/oss/middleware/mram/mram_public.h R:/source/shared/type/mcp_types.h R:/source/shared/memory/shared_memory_public.h R:/source/lib_critical_service/memory/lib_critical_service_section_def_data.h R:/source/shared/memory/memory_address_public.h

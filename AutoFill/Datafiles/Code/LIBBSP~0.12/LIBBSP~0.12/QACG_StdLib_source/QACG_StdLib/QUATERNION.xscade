@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Package name="QUATERNION">
+			<declarations>
+				<Operator name="QuatProduct" href="QuatProduct.xscade"/>
+				<Operator name="Quat2Mat" href="Quat2Mat.xscade"/>
+				<Operator name="Mat2Quat" href="Mat2Quat.xscade"/>
+				<Operator name="QuatConjugate" href="QuatConjugate.xscade"/>
+				<Operator name="QuatNorm" href="QuatNorm.xscade"/>
+				<Operator name="QuatNormalize" href="QuatNormalize.xscade"/>
+				<Operator name="QuatProject" href="QuatProject.xscade"/>
+			</declarations>
+			<pragmas>
+				<ed:Package oid="!ed/2b55/1C2/1FA0/557e9dd7386e" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+					<diagrams>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/2b56/1C2/1FA0/557e9dd72347" blockKind="constants"/>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/2b57/1C2/1FA0/557e9dd74b1" blockKind="types"/>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/2b58/1C2/1FA0/557e9dd74fff" blockKind="sensors"/>
+					</diagrams>
+				</ed:Package>
+			</pragmas>
+		</Package>
+	</declarations>
+</File>

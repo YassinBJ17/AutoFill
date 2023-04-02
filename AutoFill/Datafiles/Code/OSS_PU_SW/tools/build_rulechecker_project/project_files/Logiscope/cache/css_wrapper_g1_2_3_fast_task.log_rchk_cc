@@ -1,0 +1,6 @@
+incr::DepCommandLine {log_rchk_cc} {-c} {-cacheon} {-longname} {R:\source\css_wrapper_g1_2_3\main\css_wrapper_g1_2_3_fast_task.c} {-c} {-extensions} {*.c;*.C;*.c;*.C} {-o} {R:\tools\build_rulechecker_project\project_files\Logiscope\css_wrapper_g1_2_3_fast_task} {-dial} {ansi} {-ddef} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def} {-ign} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign} {-mac} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.mac}
+incr::DepMainInput {R:\source\css_wrapper_g1_2_3\main\css_wrapper_g1_2_3_fast_task.c}
+incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign}
+incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def}
+incr::DepInput {R:\source\css_wrapper_g1_2_3\main/css_wrapper_g1_2_3_task_public.h}
+incr::DepOutput {R:\tools\build_rulechecker_project\project_files\Logiscope\cache\css_wrapper_g1_2_3_fast_task.log_rchk_cc.dmp}

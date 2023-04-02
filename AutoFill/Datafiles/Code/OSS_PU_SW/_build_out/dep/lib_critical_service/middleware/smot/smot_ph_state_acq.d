@@ -1,0 +1,1 @@
+R:/_build_out/obj/lib_critical_service/middleware/smot/smot_ph_state_acq.o: R:/source/lib_critical_service/middleware/smot/smot_ph_state_acq.c R:/source/lib_critical_service/middleware/smot/smot_gpio_common.h R:/source/shared/type/mcp_types.h R:/source/lib_critical_service/middleware/smot/smot_write_public.h R:/source/lib_critical_service/middleware/smot/smot_private.h

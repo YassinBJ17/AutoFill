@@ -1,0 +1,43 @@
+/****************************************************************************/
+/***************** ELBC BOOT SOFTWARE LINKER FILE DESCRIPTION ***************/
+/****************************************************************************/
+
+/*****************************************************/
+/************** Memory Map definitions ***************/
+/*****************************************************/
+MEMORY
+{
+    vector_table:                   ORIGIN = 0xFFFFFFE0,  LENGTH = 0x00000010
+    reset:                          ORIGIN = 0xFFFFFFFC,  LENGTH = 0x00000004
+    code:                           ORIGIN = 0xFFFFF000,  LENGTH = 0x00000800
+    /* vector_table:                   ORIGIN = 0x20000FE0,  LENGTH = 0x00000010 */
+    /* reset:                          ORIGIN = 0x20000FFC,  LENGTH = 0x00000004 */
+    /* code:                           ORIGIN = 0x20000000,  LENGTH = 0x00000800 */
+}
+
+/*****************************************************/
+/************** All section definitions **************
+/*****************************************************/
+SECTIONS
+{
+    GROUP :
+    {
+        .intvec: {*(.VectorTable)}  
+    } > vector_table
+    
+    GROUP :
+    {
+        .text: {*(.Reset)}
+    } > reset
+    
+    GROUP :
+    {
+        .text ALIGN(4): {*(.text)}
+        .sdata2: {*(.rodata)}
+    } > code
+}
+
+/****************************************************/
+/********* Linker global symbol definitions *********/
+/****************************************************/
+__start = VECT_Reset;

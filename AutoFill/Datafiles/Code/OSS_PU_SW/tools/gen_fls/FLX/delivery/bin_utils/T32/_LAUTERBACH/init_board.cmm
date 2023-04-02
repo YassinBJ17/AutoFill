@@ -1,0 +1,99 @@
+;------------------------------------------------------------------------------
+;                     PROJECT : S3P
+;------------------------------------------------------------------------------
+; SAFRAN ELECTRONICS & DEFENSE Proprietary information
+;------------------------------------------------------------------------------
+; ENTITY BODY : Trace32 script
+;------------------------------------------------------------------------------
+; HISTORY :
+; | Version | Date       | Author       | see FFTL #
+; | initial |            |              | Creation
+; |         |            |              |
+; |         |            |              |
+; -----------------------------------------------------------------------------
+
+GLOBAL &EXE_SUFFIX
+
+; prevent path problems
+LOCAL &current_dir
+&current_dir=OS.PPD()
+
+
+; According to the target
+IF "&CONF_TGT_NAME"=="PROJ_GEN"
+(
+   IF "&CONF_TGT_MODE"=="TARGET"
+   (
+      ; Initialize the board on target mode
+      DO &current_dir/PROJ_GEN/TGT/init_board.cmm
+   )
+   ELSE
+   (
+      ; Unsupported type
+      PRINT "UNSUPPORTED TARGET TYPE : &CONF_TGT_MODE on &CONF_TGT_NAME"
+      STOP
+   )
+
+   ; Suffix to use for loading executables
+   &EXE_SUFFIX="PROJ_GEN"
+)
+ELSE IF "&CONF_TGT_NAME"=="FADEX"
+(
+   IF "&CONF_TGT_MODE"=="TARGET"
+   (
+      ; Initialize the board on target mode
+      DO &current_dir/FADEX/TGT/init_board.cmm
+   )
+   ELSE
+   (
+      ; Unsupported type
+      PRINT "UNSUPPORTED TARGET TYPE : &CONF_TGT_MODE on &CONF_TGT_NAME"
+      STOP
+   )
+   ; Suffix to use for loading executables
+   &EXE_SUFFIX="FADEX"
+)
+ELSE IF "&CONF_TGT_NAME"=="M88"
+(
+   IF "&CONF_TGT_MODE"=="TARGET"
+   (
+      ; Initialize the board on target mode
+      DO &current_dir/M88/TGT/init_board.cmm
+   )
+   ELSE
+   (
+      ; Unsupported type
+      PRINT "UNSUPPORTED TARGET TYPE : &CONF_TGT_MODE on &CONF_TGT_NAME"
+      STOP
+   )
+   ; Suffix to use for loading executables
+   &EXE_SUFFIX="M88"
+)
+ELSE IF "&CONF_TGT_NAME"=="COBRA"
+(
+   IF "&CONF_TGT_MODE"=="TARGET"
+   (
+      ; Initialize the board on target mode
+      DO &current_dir/COBRA/TGT/init_board.cmm
+   )
+   ELSE
+   (
+      ; Unsupported type
+      PRINT "UNSUPPORTED TARGET TYPE : &CONF_TGT_MODE on &CONF_TGT_NAME"
+      STOP
+   )
+   ; Suffix to use for loading executables
+   &EXE_SUFFIX="COBRA"
+)
+ELSE
+(
+   ; Unsupported target
+   PRINT "UNSUPPORTED TARGET : &CONF_TGT_NAME"
+   STOP
+)
+
+
+; End Of Script
+ENDDO
+
+

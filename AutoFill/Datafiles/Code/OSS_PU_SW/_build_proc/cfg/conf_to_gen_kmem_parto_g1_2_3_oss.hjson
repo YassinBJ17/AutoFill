@@ -1,0 +1,23 @@
+{
+  "partition": {
+    "identifier": 3,
+    "positioning": {
+      "flash_addr": {
+        "addr": "0x01040000"
+      },
+      "place": {
+        "data": {
+          "addr": "0x40001000"
+        }
+      }
+    },
+    "modules_partition": {
+      "global_objects": [
+        "R:/_build_out/arc/css_wrapper_g1_2_3.a",
+        "R:/_build_out/arc/lib_critical_service.a",
+        "R:/_build_out/arc/mcss_wrapper.a",
+        "R:/_build_out/arc/oss.a"
+      ]
+    }
+  }
+}

@@ -1,0 +1,286 @@
+/* --------------------------------------------------------------------------*/
+/*                        Safran Electronics & Defense                       */
+/*                   Reproduction and disclosure forbidden.                  */
+/* --------------------------------------------------------------------------*/
+/* PROJECT : BOOT                                                            */
+/*                                                                           */
+/* Creation information:                                                     */
+/*   Created by: F073297                                                     */
+/*   Date : Wed Feb  6 10:32:56 CET 2019                                     */
+/*                                                                           */
+/* Modification information:                                                 */
+/*   %derived_by: F607264 %                                                  */
+/* --------------------------------------------------------------------------*/
+/* DESCRIPTION : Linker command file for boot software                       */
+/* ALL IS LINKED IN FLASH FOR CORE I/O                                       */
+/* --------------------------------------------------------------------------*/
+
+-e _start_boot
+
+./MEMORY_DEFINITION.dld
+-u K_BOOT_DESCRIPTOR
+
+
+/* Linker script to place sections and symbol values. Should be used together
+ * with other linker script that defines memory regions FLASH and RAM.
+ * It references following symbols, which must be defined in code:
+ *
+ *
+ * It defines following symbols, which code can use without definition:
+ *   __etext
+ *   __data_start__
+ *   __data_end__
+ *   __bss_start__
+ *   __bss_end__
+ *   __end__
+ */
+
+
+
+/***************************
+ * All section definitions *
+ ***************************/
+
+SECTIONS
+{
+   /*****************/
+   /* FLASH symbols */
+   /*****************/
+   GROUP :
+   {
+
+      __CARTOUCHE_START = .;
+      __CODE_START = . ;
+      /* BOOT Header used by MPC5777M BAF to know BOOT start address */
+        .rchw ALIGN (4) (TEXT) :
+        {
+          KEEP(*(.rchw))
+        }
+        .text_boot_c0 ALIGN (4) (TEXT) : { KEEP (*(.boot_c0) ) }
+        .text_boot_c1 ALIGN (4) (TEXT) : { KEEP (*(.boot_c1) ) }
+        .text_boot_c2 ALIGN (4) (TEXT) : { KEEP (*(.boot_c2) ) }
+        .text_boot_cc ALIGN (4) (TEXT) : { KEEP (*(.boot_cc) ) }
+
+      /* CARTRIDGE HEADER */
+      .sw_cartridge (CONST) : 
+      {
+         KEEP( *(.boot_header) )
+      }
+
+      /*----------------*/
+      /* Fill with zero holes at the end of the memory area, if any. */
+      .empty (TEXT) :
+      {
+         . = ADDR (boot_rchw_cart) + SIZEOF(boot_rchw_cart) ;
+      } = 0x0000
+      /*----------------*/
+
+   } > boot_rchw_cart
+
+   /*----------------*/
+   /* Fill with zero holes between the two memory areas, boot_rchw_cart and cf_core_c0 */
+   .empty (TEXT) BIND(ADDR(boot_rchw_cart) + SIZEOF(boot_rchw_cart) ) :
+   {
+      . = ADDR (cf_core_c0);
+   } = 0x0000
+   /*----------------*/
+
+   GROUP:
+   {
+      .conf_core_c0 ALIGN (256) (TEXT) : {
+         *(.ex_vector_table_c0)
+         *(.init_core_c0)
+
+      }=0x0 /* Fill with zero holes inside the section conf_core_c0 */
+
+      /*----------------*/
+      /* Fill with zero holes at the end of the memory area, if any. */
+      .empty (TEXT) :
+      {
+         . = ADDR (cf_core_c0) + SIZEOF(cf_core_c0) ;
+      } = 0x0000
+      /*----------------*/
+      
+   } > cf_core_c0
+
+   /*----------------*/
+   /* Fill with zero holes between the two memory areas, cf_core_c0 and cf_core_c1 */
+   .empty (TEXT) BIND(ADDR(cf_core_c0) + SIZEOF(cf_core_c0) ) :
+   {
+      . = ADDR (cf_core_c1);
+      
+   } = 0x0000
+   /*----------------*/
+
+   GROUP:
+   {
+      .conf_core_c1 ALIGN (256) (TEXT) : {
+         *(.ex_vector_table_c1)
+         *(.init_core_c1)
+      }=0x0 /* Fill with zero holes inside the section conf_core_c1 */
+
+      /*----------------*/
+      /* Fill with zero holes at the end of the memory area, if any. */
+      .empty (TEXT) :
+      {
+         . = ADDR (cf_core_c1) + SIZEOF(cf_core_c1) ;
+      } = 0x0000
+      /*----------------*/
+      
+   } > cf_core_c1
+
+   /*----------------*/
+   /* Fill with zero holes between the two memory areas, cf_core_c1 and cf_core_c2 */
+   .empty (TEXT) BIND(ADDR(cf_core_c1) + SIZEOF(cf_core_c1) ) :
+   {
+      . = ADDR (cf_core_c2);
+      
+   } = 0x0000
+   /*----------------*/
+
+   GROUP:
+   {
+      .conf_core_c2 ALIGN (256) (TEXT) : {
+         *(.ex_vector_table_c2)
+         *(.init_core_c2)
+      }=0x0 /* Fill with zero holes inside the section conf_core_c2 */
+
+      /*----------------*/
+      /* Fill with zero holes at the end of the memory area, if any. */
+      .empty (TEXT) :
+      {
+         . = ADDR (cf_core_c2) + SIZEOF(cf_core_c2) ;
+      } = 0x0000
+      /*----------------*/
+      
+   } > cf_core_c2
+
+   /*----------------*/
+   /* Fill with zero holes between the two memory areas, cf_core_c2 and BOOT_CODE_FLASH */
+   .empty (TEXT) BIND(ADDR(cf_core_c2) + SIZEOF(cf_core_c2) ) :
+   {
+      . = ADDR (BOOT_CODE_FLASH);
+      
+   } = 0x0000
+   /*----------------*/
+
+   GROUP:
+   {      
+      /* Small Const Area (SDA2) begin */
+      _BOOT_SDA2_BASE_ = .;
+      .sdata2   (DATA) : { *(.sdata2) }
+      .rodata   (DATA) : { *(.rodata) }
+         
+      .text  ALIGN (4)  (TEXT) :
+      {
+         KEEP(*(.startup))
+         KEEP(*(.startup_core))
+         KEEP ( *(.text_vle) )
+         KEEP( *(.text) )
+      }
+      __FUNCTIONAL_SOURCE_END = . -1 ;
+
+     .empty (TEXT) :
+      {
+         . = ADDR(BOOT_CODE_FLASH) + SIZEOF(BOOT_CODE_FLASH)  ;
+      } = 0xFFFF
+     
+   } > BOOT_CODE_FLASH
+   
+      GROUP:
+   {
+      .BOOT_DESCRIPTOR: {KEEP(*)}
+      .BOOT_CODE_END: {}
+     __CODE_END = . - 1;
+   } > BOOT_DESCR
+   /************************/
+   /* Internal RAM symbols */
+   /************************/
+   GROUP:
+   {
+      HW_CARTRIDGE = .  ;
+   } > HW_CARTRIDGE_CODE_FLASH
+   GROUP :
+   {
+      .BOOT_PBIT_INTC ALIGN (4): {}
+   } > SRAM
+   
+   GROUP :
+   {
+      .BOOT_PBIT_INTC_0 ALIGN (4): {}
+
+   } > DMEM_CPU0
+   
+   GROUP :
+   {
+      .BOOT_PBIT_INTC_1 ALIGN (4): {}
+
+   } > DMEM_CPU1
+
+   /* Stack boot core 2 */
+   GROUP :
+   {
+      /* alignment of local counter on a 8-bytes address */
+      boot_start_align_section ALIGN(8) : { BOOT_INIT_LOCAL_RAM = .; }
+
+      /* STACK BOOT */
+
+      __HEAP_START   = .;
+      .= ((. + 3) & ~3);
+      .=. + 0;    /* Reserve HEAP area */
+      __HEAP_END  = .;
+      .= ((. + 3) & ~3);
+      __SP_END = .;
+      .=. + 0x4000;    /* Reserve STACK area */
+      __BOOT_PLATFORM_SP_INIT   = .;
+
+      .BOOT_PBIT_INTC_2 ALIGN (4): {}
+      /* SDATA */
+
+      /* Small Data Area (SDA) begin for SDATA & SBSS */
+      _BOOT_SDA_BASE_ = .;
+      .sdata (DATA) : {}
+      .sbss (BSS) : {}
+      .bss  (BSS)   : {}
+      .sbss2        : {}
+      .data (DATA)   : {}
+
+      _SDA_BASE_END_ = .;
+
+      /* alignment of local counter on a 8-bytes address */
+      boot_end_align_section ALIGN(8) : { BOOT_INIT_LOCAL_RAM_END = .; }
+   } > DMEM_CPU2
+
+   GROUP :
+   {
+      .BOOT_ARINC_665_FILES_INFO_BUFFER: {}
+      .BOOT_FILES_INFO_BUFFER: {}
+   } > BOOT_BUFFERS
+
+      
+
+   /*****************/
+   /*  MRAM symbols  */
+   /*****************/
+
+   GROUP :
+   {
+      .BOOT_SAVE_DISCRETES ALIGN (4): {}
+      .BOOT_POWERUP_COUNTER ALIGN (4): {}
+   } > MRAM_2
+   
+   GROUP :
+   {
+      .BOOT_LOG_VALIDITY_TEST ALIGN (4): {}
+   } > BOOT_LOG
+   
+   GROUP :
+   {
+      .BOOT_OPEN_CLOSE_FLS_PBIT ALIGN (4): {}
+   } > BOOT_FLS_PBIT_LOCK
+   
+   BOOT_HW_CRC_0_BASE_ADDR = addr(HW_CRC_0_BASE_ADDR);
+}
+
+
+

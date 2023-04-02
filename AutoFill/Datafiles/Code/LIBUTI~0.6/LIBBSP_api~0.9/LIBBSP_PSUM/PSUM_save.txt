@@ -1,0 +1,397 @@
+/////INUTILE///////////////////////////////////////////////////////////////////////
+/* all the available voltages */
+typedef enum
+{
+	GND_ADC1_CHANNEL_0,
+	P10VN,
+	P4V2G,
+	M4V2G,
+	P3V3N,
+	P12VG,
+	M12VG,
+	MCANREF_ADC1,
+	GND_ADC2_CHANNEL_0,
+	VREF_P5V,
+	VREF_M2V5,
+	P11V2MEO,
+	M11V2MEO,
+	P3V3MEO,
+	GND_ADC2_CHANNEL_6,
+	MCANREF_ADC2,
+	GND_ADC3_CHANNEL_0,
+	PanaVA,
+	ManaVA,
+	PNumVA,
+	PRES_IBIS_AM301,
+	PRES_IDA,
+	GND_ADC3_CHANNEL_6,
+	MCANREF_ADC3,
+	GND_ADC4_CHANNEL_0,
+	VIO_P3V3,
+	VIO_P1V8,
+	DDR_P1V5,
+	CPU_P1V,
+	DDR_P0V75,
+	V_NUM_5V,
+	MCANREF_ADC4,
+	GND_ADC5_CHANNEL_0,
+	P1V2COMP,
+	P1V2MEG,
+	LVDD,
+	MEZZA_PWR1,
+	MEZZA_PWR2,
+	GND_ADC5_CHANNEL_6,
+	MCANREF_ADC5,
+	GND_ADC6_CHANNEL_0,
+	P3V7PA,
+	M3V7PA,
+	P11V2PA,
+	M11V2PA,
+	VCORHT,
+	PVSHUNT,
+	MCANREF_ADC6,
+	NB_VOLTAGE
+}TE_PSUMonitoring_Voltage;
+
+/* définition des registres */
+#define C_DRV_ADC_ZONE (+0x1000)
+
+#define C_DRV_ADC_ADC1234_CFG  (+0x000) /*Configuration of ADC1 to ADC4*/
+#define C_DRV_ADC_ADC567_CFG (+0x004) /*Configuration of ADC5 to ADC7*/
+#define C_DRV_ADC_ADC1_ERROR (+0x100) /*ADC1 errors flags*/
+#define C_DRV_ADC_ADC1_UVD_THRESHOLD_1 (+0x104) /*Under voltage threshold for channel 1 of ADC1*/
+#define C_DRV_ADC_ADC1_UVD_THRESHOLD_2 (+0x108) /*Under voltage threshold for channel 2 of ADC1*/
+#define C_DRV_ADC_ADC1_UVD_THRESHOLD_3 (+0x10C) /*Under voltage threshold for channel 3 of ADC1*/
+#define C_DRV_ADC_ADC1_UVD_THRESHOLD_4 (+0x110) /*Under voltage threshold for channel 4 of ADC1*/
+#define C_DRV_ADC_ADC1_UVD_THRESHOLD_5 (+0x114) /*Under voltage threshold for channel 5 of ADC1*/
+#define C_DRV_ADC_ADC1_UVD_THRESHOLD_6 (+0x118) /*Under voltage threshold for channel 6 of ADC1*/
+#define C_DRV_ADC_ADC1_UVD_THRESHOLD_7 (+0x11C) /*Under voltage threshold for channel 7 of ADC1*/
+#define C_DRV_ADC_ADC1_OVD_THRESHOLD_1 (+0x120) /*Over voltage threshold for channel 1 of ADC1*/
+#define C_DRV_ADC_ADC1_OVD_THRESHOLD_2 (+0x124) /*Over voltage threshold for channel 2 of ADC1*/
+#define C_DRV_ADC_ADC1_OVD_THRESHOLD_3 (+0x128) /*Over voltage threshold for channel 3 of ADC1*/
+#define C_DRV_ADC_ADC1_OVD_THRESHOLD_4 (+0x12C) /*Over voltage threshold for channel 4 of ADC1*/
+#define C_DRV_ADC_ADC1_OVD_THRESHOLD_5 (+0x130) /*Over voltage threshold for channel 5 of ADC1*/
+#define C_DRV_ADC_ADC1_OVD_THRESHOLD_6 (+0x134) /*Over voltage threshold for channel 6 of ADC1*/
+#define C_DRV_ADC_ADC1_OVD_THRESHOLD_7 (+0x138) /*Over voltage threshold for channel 7 of ADC1*/
+#define C_DRV_ADC_ADC1_SAMPLE1 (+0x13C) /*Sample value for channel 1 of ADC1*/
+#define C_DRV_ADC_ADC1_SAMPLE2 (+0x140) /*Sample value for channel 2 of ADC1*/
+#define C_DRV_ADC_ADC1_SAMPLE3 (+0x144) /*Sample value for channel 3 of ADC1*/
+#define C_DRV_ADC_ADC1_SAMPLE4 (+0x148) /*Sample value for channel 4 of ADC1*/
+#define C_DRV_ADC_ADC1_SAMPLE5 (+0x14C) /*Sample value for channel 5 of ADC1*/
+#define C_DRV_ADC_ADC1_SAMPLE6 (+0x150) /*Sample value for channel 6 of ADC1*/
+#define C_DRV_ADC_ADC1_SAMPLE7 (+0x154) /*Sample value for channel 7 of ADC1*/
+#define C_DRV_ADC_ADC1_SAMPLE0 (+0x158) /*Sample value for channel 0 of ADC1*/
+#define C_DRV_ADC_ADC2_ERROR (+0x200) /*ADC2 errors flags*/
+#define C_DRV_ADC_ADC2_UVD_THRESHOLD_1 (+0x204) /*Under voltage threshold for channel 1 of ADC2*/
+#define C_DRV_ADC_ADC2_UVD_THRESHOLD_2 (+0x208) /*Under voltage threshold for channel 2 of ADC2*/
+#define C_DRV_ADC_ADC2_UVD_THRESHOLD_3 (+0x20C) /*Under voltage threshold for channel 3 of ADC2*/
+#define C_DRV_ADC_ADC2_UVD_THRESHOLD_4 (+0x210) /*Under voltage threshold for channel 4 of ADC2*/
+#define C_DRV_ADC_ADC2_UVD_THRESHOLD_5 (+0x214) /*Under voltage threshold for channel 5 of ADC2*/
+#define C_DRV_ADC_ADC2_UVD_THRESHOLD_6 (+0x218) /*Under voltage threshold for channel 6 of ADC2*/
+#define C_DRV_ADC_ADC2_UVD_THRESHOLD_7 (+0x21C) /*Under voltage threshold for channel 7 of ADC2*/
+#define C_DRV_ADC_ADC2_OVD_THRESHOLD_1 (+0x220) /*Over voltage threshold for channel 1 of ADC2*/
+#define C_DRV_ADC_ADC2_OVD_THRESHOLD_2 (+0x224) /*Over voltage threshold for channel 2 of ADC2*/
+#define C_DRV_ADC_ADC2_OVD_THRESHOLD_3 (+0x228) /*Over voltage threshold for channel 3 of ADC2*/
+#define C_DRV_ADC_ADC2_OVD_THRESHOLD_4 (+0x22C) /*Over voltage threshold for channel 4 of ADC2*/
+#define C_DRV_ADC_ADC2_OVD_THRESHOLD_5 (+0x230) /*Over voltage threshold for channel 5 of ADC2*/
+#define C_DRV_ADC_ADC2_OVD_THRESHOLD_6 (+0x234) /*Over voltage threshold for channel 6 of ADC2*/
+#define C_DRV_ADC_ADC2_OVD_THRESHOLD_7 (+0x238) /*Over voltage threshold for channel 7 of ADC2*/
+#define C_DRV_ADC_ADC2_SAMPLE1 (+0x23C) /*Sample value for channel 1 of ADC2*/
+#define C_DRV_ADC_ADC2_SAMPLE2 (+0x240) /*Sample value for channel 2 of ADC2*/
+#define C_DRV_ADC_ADC2_SAMPLE3 (+0x244) /*Sample value for channel 3 of ADC2*/
+#define C_DRV_ADC_ADC2_SAMPLE4 (+0x248) /*Sample value for channel 4 of ADC2*/
+#define C_DRV_ADC_ADC2_SAMPLE5 (+0x24C) /*Sample value for channel 5 of ADC2*/
+#define C_DRV_ADC_ADC2_SAMPLE6 (+0x250) /*Sample value for channel 6 of ADC2*/
+#define C_DRV_ADC_ADC2_SAMPLE7 (+0x254) /*Sample value for channel 7 of ADC2*/
+#define C_DRV_ADC_ADC2_SAMPLE0 (+0x258) /*Sample value for channel 0 of ADC2*/
+#define C_DRV_ADC_ADC3_ERROR (+0x300) /*ADC3 errors flags */
+#define C_DRV_ADC_ADC3_UVD_THRESHOLD_1 (+0x304) /*Under voltage threshold for channel 1 of ADC3*/
+#define C_DRV_ADC_ADC3_UVD_THRESHOLD_2 (+0x308) /*Under voltage threshold for channel 2 of ADC3*/
+#define C_DRV_ADC_ADC3_UVD_THRESHOLD_3 (+0x30C) /*Under voltage threshold for channel 3 of ADC3*/
+#define C_DRV_ADC_ADC3_UVD_THRESHOLD_4 (+0x310) /*Under voltage threshold for channel 4 of ADC3*/
+#define C_DRV_ADC_ADC3_UVD_THRESHOLD_5 (+0x314) /*Under voltage threshold for channel 5 of ADC3*/
+#define C_DRV_ADC_ADC3_UVD_THRESHOLD_6 (+0x318) /*Under voltage threshold for channel 6 of ADC3*/
+#define C_DRV_ADC_ADC3_UVD_THRESHOLD_7 (+0x31C) /*Under voltage threshold for channel 7 of ADC3*/
+#define C_DRV_ADC_ADC3_OVD_THRESHOLD_1 (+0x320) /*Over voltage threshold for channel 1 of ADC3*/
+#define C_DRV_ADC_ADC3_OVD_THRESHOLD_2 (+0x324) /*Over voltage threshold for channel 2 of ADC3*/
+#define C_DRV_ADC_ADC3_OVD_THRESHOLD_3 (+0x328) /*Over voltage threshold for channel 3 of ADC3*/
+#define C_DRV_ADC_ADC3_OVD_THRESHOLD_4 (+0x32C) /*Over voltage threshold for channel 4 of ADC3*/
+#define C_DRV_ADC_ADC3_OVD_THRESHOLD_5 (+0x330) /*Over voltage threshold for channel 5 of ADC3*/
+#define C_DRV_ADC_ADC3_OVD_THRESHOLD_6 (+0x334) /*Over voltage threshold for channel 6 of ADC3*/
+#define C_DRV_ADC_ADC3_OVD_THRESHOLD_7 (+0x338) /*Over voltage threshold for channel 7 of ADC3*/
+#define C_DRV_ADC_ADC3_SAMPLE1 (+0x33C) /*Sample value for channel 1 of ADC3*/
+#define C_DRV_ADC_ADC3_SAMPLE2 (+0x340) /*Sample value for channel 2 of ADC3*/
+#define C_DRV_ADC_ADC3_SAMPLE3 (+0x344) /*Sample value for channel 3 of ADC3*/
+#define C_DRV_ADC_ADC3_SAMPLE4 (+0x348) /*Sample value for channel 4 of ADC3*/
+#define C_DRV_ADC_ADC3_SAMPLE5 (+0x34C) /*Sample value for channel 5 of ADC3*/
+#define C_DRV_ADC_ADC3_SAMPLE6 (+0x350) /*Sample value for channel 6 of ADC3*/
+#define C_DRV_ADC_ADC3_SAMPLE7 (+0x354) /*Sample value for channel 7 of ADC3*/
+#define C_DRV_ADC_ADC3_SAMPLE0 (+0x358) /*Sample value for channel 0 of ADC3*/
+#define C_DRV_ADC_ADC4_ERROR (+0x400) /*ADC4 errors flags */
+#define C_DRV_ADC_ADC4_UVD_THRESHOLD_1 (+0x404) /*Under voltage threshold for channel 1 of ADC4*/
+#define C_DRV_ADC_ADC4_UVD_THRESHOLD_2 (+0x408) /*Under voltage threshold for channel 2 of ADC4*/
+#define C_DRV_ADC_ADC4_UVD_THRESHOLD_3 (+0x40C) /*Under voltage threshold for channel 3 of ADC4*/
+#define C_DRV_ADC_ADC4_UVD_THRESHOLD_4 (+0x410) /*Under voltage threshold for channel 4 of ADC4*/
+#define C_DRV_ADC_ADC4_UVD_THRESHOLD_5 (+0x414) /*Under voltage threshold for channel 5 of ADC4*/
+#define C_DRV_ADC_ADC4_UVD_THRESHOLD_6 (+0x418) /*Under voltage threshold for channel 6 of ADC4*/
+#define C_DRV_ADC_ADC4_UVD_THRESHOLD_7 (+0x41C) /*Under voltage threshold for channel 7 of ADC4*/
+#define C_DRV_ADC_ADC4_OVD_THRESHOLD_1 (+0x420) /*Over voltage threshold for channel 1 of ADC4*/
+#define C_DRV_ADC_ADC4_OVD_THRESHOLD_2 (+0x424) /*Over voltage threshold for channel 2 of ADC4*/
+#define C_DRV_ADC_ADC4_OVD_THRESHOLD_3 (+0x428) /*Over voltage threshold for channel 3 of ADC4*/
+#define C_DRV_ADC_ADC4_OVD_THRESHOLD_4 (+0x42C) /*Over voltage threshold for channel 4 of ADC4*/
+#define C_DRV_ADC_ADC4_OVD_THRESHOLD_5 (+0x430) /*Over voltage threshold for channel 5 of ADC4*/
+#define C_DRV_ADC_ADC4_OVD_THRESHOLD_6 (+0x434) /*Over voltage threshold for channel 6 of ADC4*/
+#define C_DRV_ADC_ADC4_OVD_THRESHOLD_7 (+0x438) /*Over voltage threshold for channel 7 of ADC4*/
+#define C_DRV_ADC_ADC4_SAMPLE1 (+0x43C) /*Sample value for channel 1 of ADC4*/
+#define C_DRV_ADC_ADC4_SAMPLE2 (+0x440) /*Sample value for channel 2 of ADC4*/
+#define C_DRV_ADC_ADC4_SAMPLE3 (+0x444) /*Sample value for channel 3 of ADC4*/
+#define C_DRV_ADC_ADC4_SAMPLE4 (+0x448) /*Sample value for channel 4 of ADC4*/
+#define C_DRV_ADC_ADC4_SAMPLE5 (+0x44C) /*Sample value for channel 5 of ADC4*/
+#define C_DRV_ADC_ADC4_SAMPLE6 (+0x450) /*Sample value for channel 6 of ADC4*/
+#define C_DRV_ADC_ADC4_SAMPLE7 (+0x454) /*Sample value for channel 7 of ADC4*/
+#define C_DRV_ADC_ADC4_SAMPLE0 (+0x458) /*Sample value for channel 0 of ADC4*/
+#define C_DRV_ADC_ADC5_ERROR (+0x500) /*ADC5 errors flags */
+#define C_DRV_ADC_ADC5_UVD_THRESHOLD_1 (+0x504) /*Under voltage threshold for channel 1 of ADC5*/
+#define C_DRV_ADC_ADC5_UVD_THRESHOLD_2 (+0x508) /*Under voltage threshold for channel 2 of ADC5*/
+#define C_DRV_ADC_ADC5_UVD_THRESHOLD_3 (+0x50C) /*Under voltage threshold for channel 3 of ADC5*/
+#define C_DRV_ADC_ADC5_UVD_THRESHOLD_4 (+0x510) /*Under voltage threshold for channel 4 of ADC5*/
+#define C_DRV_ADC_ADC5_UVD_THRESHOLD_5 (+0x514) /*Under voltage threshold for channel 5 of ADC5*/
+#define C_DRV_ADC_ADC5_UVD_THRESHOLD_6 (+0x518) /*Under voltage threshold for channel 6 of ADC5*/
+#define C_DRV_ADC_ADC5_UVD_THRESHOLD_7 (+0x51C) /*Under voltage threshold for channel 7 of ADC5*/
+#define C_DRV_ADC_ADC5_OVD_THRESHOLD_1 (+0x520) /*Over voltage threshold for channel 1 of ADC5*/
+#define C_DRV_ADC_ADC5_OVD_THRESHOLD_2 (+0x524) /*Over voltage threshold for channel 2 of ADC5*/
+#define C_DRV_ADC_ADC5_OVD_THRESHOLD_3 (+0x528) /*Over voltage threshold for channel 3 of ADC5*/
+#define C_DRV_ADC_ADC5_OVD_THRESHOLD_4 (+0x52C) /*Over voltage threshold for channel 4 of ADC5*/
+#define C_DRV_ADC_ADC5_OVD_THRESHOLD_5 (+0x530) /*Over voltage threshold for channel 5 of ADC5*/
+#define C_DRV_ADC_ADC5_OVD_THRESHOLD_6 (+0x534) /*Over voltage threshold for channel 6 of ADC5*/
+#define C_DRV_ADC_ADC5_OVD_THRESHOLD_7 (+0x538) /*Over voltage threshold for channel 7 of ADC5*/
+#define C_DRV_ADC_ADC5_SAMPLE1 (+0x53C) /*Sample value for channel 1 of ADC5*/
+#define C_DRV_ADC_ADC5_SAMPLE2 (+0x540) /*Sample value for channel 2 of ADC5*/
+#define C_DRV_ADC_ADC5_SAMPLE3 (+0x544) /*Sample value for channel 3 of ADC5*/
+#define C_DRV_ADC_ADC5_SAMPLE4 (+0x548) /*Sample value for channel 4 of ADC5*/
+#define C_DRV_ADC_ADC5_SAMPLE5 (+0x54C) /*Sample value for channel 5 of ADC5*/
+#define C_DRV_ADC_ADC5_SAMPLE6 (+0x550) /*Sample value for channel 6 of ADC5*/
+#define C_DRV_ADC_ADC5_SAMPLE7 (+0x554) /*Sample value for channel 7 of ADC5*/
+#define C_DRV_ADC_ADC5_SAMPLE0 (+0x558) /*Sample value for channel 0 of ADC5*/
+#define C_DRV_ADC_ADC6_ERROR (+0x600) /*ADC6 errors flags */
+#define C_DRV_ADC_ADC6_UVD_THRESHOLD_1 (+0x604) /*Under voltage threshold for channel 1 of ADC6*/
+#define C_DRV_ADC_ADC6_UVD_THRESHOLD_2 (+0x608) /*Under voltage threshold for channel 2 of ADC6*/
+#define C_DRV_ADC_ADC6_UVD_THRESHOLD_3 (+0x60C) /*Under voltage threshold for channel 3 of ADC6*/
+#define C_DRV_ADC_ADC6_UVD_THRESHOLD_4 (+0x610) /*Under voltage threshold for channel 4 of ADC6*/
+#define C_DRV_ADC_ADC6_UVD_THRESHOLD_5 (+0x614) /*Under voltage threshold for channel 5 of ADC6*/
+#define C_DRV_ADC_ADC6_UVD_THRESHOLD_6 (+0x618) /*Under voltage threshold for channel 6 of ADC6*/
+#define C_DRV_ADC_ADC6_UVD_THRESHOLD_7 (+0x61C) /*Under voltage threshold for channel 7 of ADC6*/
+#define C_DRV_ADC_ADC6_OVD_THRESHOLD_1 (+0x620) /*Over voltage threshold for channel 1 of ADC6*/
+#define C_DRV_ADC_ADC6_OVD_THRESHOLD_2 (+0x624) /*Over voltage threshold for channel 2 of ADC6*/
+#define C_DRV_ADC_ADC6_OVD_THRESHOLD_3 (+0x628) /*Over voltage threshold for channel 3 of ADC6*/
+#define C_DRV_ADC_ADC6_OVD_THRESHOLD_4 (+0x62C) /*Over voltage threshold for channel 4 of ADC6*/
+#define C_DRV_ADC_ADC6_OVD_THRESHOLD_5 (+0x630) /*Over voltage threshold for channel 5 of ADC6*/
+#define C_DRV_ADC_ADC6_OVD_THRESHOLD_6 (+0x634) /*Over voltage threshold for channel 6 of ADC6*/
+#define C_DRV_ADC_ADC6_OVD_THRESHOLD_7 (+0x638) /*Over voltage threshold for channel 7 of ADC6*/
+#define C_DRV_ADC_ADC6_SAMPLE1 (+0x63C) /*Sample value for channel 1 of ADC6*/
+#define C_DRV_ADC_ADC6_SAMPLE2 (+0x640) /*Sample value for channel 2 of ADC6*/
+#define C_DRV_ADC_ADC6_SAMPLE3 (+0x644) /*Sample value for channel 3 of ADC6*/
+#define C_DRV_ADC_ADC6_SAMPLE4 (+0x648) /*Sample value for channel 4 of ADC6*/
+#define C_DRV_ADC_ADC6_SAMPLE5 (+0x64C) /*Sample value for channel 5 of ADC6*/
+#define C_DRV_ADC_ADC6_SAMPLE6 (+0x650) /*Sample value for channel 6 of ADC6*/
+#define C_DRV_ADC_ADC6_SAMPLE7 (+0x654) /*Sample value for channel 7 of ADC6*/
+#define C_DRV_ADC_ADC6_SAMPLE0 (+0x658) /*Sample value for channel 0 of ADC6*/
+#define C_DRV_ADC_ADC7_ERROR  (+0x700) /*ADC7 errors flags*/
+#define C_DRV_ADC_ADC7_UVD_THRESHOLD_1 (+0x704) /*Under voltage threshold for channel 1 of ADC7*/
+#define C_DRV_ADC_ADC7_UVD_THRESHOLD_2 (+0x708) /*Under voltage threshold for channel 2 of ADC7*/
+#define C_DRV_ADC_ADC7_UVD_THRESHOLD_3 (+0x70C) /*Under voltage threshold for channel 3 of ADC7*/
+#define C_DRV_ADC_ADC7_UVD_THRESHOLD_4 (+0x710) /*Under voltage threshold for channel 4 of ADC7*/
+#define C_DRV_ADC_ADC7_UVD_THRESHOLD_5 (+0x714) /*Under voltage threshold for channel 5 of ADC7*/
+#define C_DRV_ADC_ADC7_UVD_THRESHOLD_6 (+0x718) /*Under voltage threshold for channel 6 of ADC7*/
+#define C_DRV_ADC_ADC7_UVD_THRESHOLD_7 (+0x71C) /*Under voltage threshold for channel 7 of ADC7*/
+#define C_DRV_ADC_ADC7_OVD_THRESHOLD_1 (+0x720) /*Over voltage threshold for channel 1 of ADC7*/
+#define C_DRV_ADC_ADC7_OVD_THRESHOLD_2 (+0x724) /*Over voltage threshold for channel 2 of ADC7*/
+#define C_DRV_ADC_ADC7_OVD_THRESHOLD_3 (+0x728) /*Over voltage threshold for channel 3 of ADC7*/
+#define C_DRV_ADC_ADC7_OVD_THRESHOLD_4 (+0x72C) /*Over voltage threshold for channel 4 of ADC7*/
+#define C_DRV_ADC_ADC7_OVD_THRESHOLD_5 (+0x730) /*Over voltage threshold for channel 5 of ADC7*/
+#define C_DRV_ADC_ADC7_OVD_THRESHOLD_6 (+0x734) /*Over voltage threshold for channel 6 of ADC7*/
+#define C_DRV_ADC_ADC7_OVD_THRESHOLD_7 (+0x738) /*Over voltage threshold for channel 7 of ADC7*/
+#define C_DRV_ADC_ADC7_SAMPLE1 (+0x73C) /*Sample value for channel 1 of ADC7*/
+#define C_DRV_ADC_ADC7_SAMPLE2 (+0x740) /*Sample value for channel 2 of ADC7*/
+#define C_DRV_ADC_ADC7_SAMPLE3 (+0x744) /*Sample value for channel 3 of ADC7*/
+#define C_DRV_ADC_ADC7_SAMPLE4 (+0x748) /*Sample value for channel 4 of ADC7*/
+#define C_DRV_ADC_ADC7_SAMPLE5 (+0x74C) /*Sample value for channel 5 of ADC7*/
+#define C_DRV_ADC_ADC7_SAMPLE6 (+0x750) /*Sample value for channel 6 of ADC7*/
+#define C_DRV_ADC_ADC7_SAMPLE7 (+0x754) /*Sample value for channel 7 of ADC7*/
+#define C_DRV_ADC_ADC7_SAMPLE0 (+0x758) /*Sample value for channel 0 of ADC7*/
+
+
+////DEFAULT VALUES INUTILE POUR LE MOMENT
+#define C_DRV_ADC_NB_INITIALISATION_COUPLES (100)
+const TS_LIBBSP_PSUM_Conf C_DRV_ADC_Initialisation_Couples[/*C_NB_INITIALISATION_COUPLES*/] =
+{
+	/* parametrage des seuils */ /* valeurs trouvees dans 3300781920-R18-000-03_GANAV_BSIS.pdf */
+	/* ADC 1 */
+	{C_DRV_ADC_ADC1_UVD_THRESHOLD_1 , 2904}, /*Under voltage threshold for channel 1 of ADC1*/
+	{C_DRV_ADC_ADC1_UVD_THRESHOLD_2 , 2646}, /*Under voltage threshold for channel 2 of ADC1*/
+	{C_DRV_ADC_ADC1_UVD_THRESHOLD_3 , 657}, /*Under voltage threshold for channel 3 of ADC1*/
+	{C_DRV_ADC_ADC1_UVD_THRESHOLD_4 , 3002}, /*Under voltage threshold for channel 4 of ADC1*/
+	{C_DRV_ADC_ADC1_UVD_THRESHOLD_5 , 3563}, /*Under voltage threshold for channel 5 of ADC1*/
+	{C_DRV_ADC_ADC1_UVD_THRESHOLD_6 , 800}, /*Under voltage threshold for channel 6 of ADC1*/
+	{C_DRV_ADC_ADC1_UVD_THRESHOLD_7 , 3335}, /*Under voltage threshold for channel 7 of ADC1*/
+	{C_DRV_ADC_ADC1_OVD_THRESHOLD_1 , 3372}, /*Over voltage threshold for channel 1 of ADC1*/
+	{C_DRV_ADC_ADC1_OVD_THRESHOLD_2 , 2925}, /*Over voltage threshold for channel 2 of ADC1*/
+	{C_DRV_ADC_ADC1_OVD_THRESHOLD_3 , 864}, /*Over voltage threshold for channel 3 of ADC1*/
+	{C_DRV_ADC_ADC1_OVD_THRESHOLD_4 , 3432}, /*Over voltage threshold for channel 4 of ADC1*/
+	{C_DRV_ADC_ADC1_OVD_THRESHOLD_5 , 3969}, /*Over voltage threshold for channel 5 of ADC1*/
+	{C_DRV_ADC_ADC1_OVD_THRESHOLD_6 , 1041}, /*Over voltage threshold for channel 6 of ADC1*/
+	{C_DRV_ADC_ADC1_OVD_THRESHOLD_7 , 3375}, /*Over voltage threshold for channel 7 of ADC1*/
+	/* ADC 2 */
+	{C_DRV_ADC_ADC2_UVD_THRESHOLD_1 , 3216}, /*Under voltage threshold for channel 1 of ADC2*/
+	{C_DRV_ADC_ADC2_UVD_THRESHOLD_2 , 1410}, /*Under voltage threshold for channel 2 of ADC2*/
+	{C_DRV_ADC_ADC2_UVD_THRESHOLD_3 , 3324}, /*Under voltage threshold for channel 3 of ADC2*/
+	{C_DRV_ADC_ADC2_UVD_THRESHOLD_4 , 945}, /*Under voltage threshold for channel 4 of ADC2*/
+	{C_DRV_ADC_ADC2_UVD_THRESHOLD_5 , 3002}, /*Under voltage threshold for channel 5 of ADC2*/
+	{C_DRV_ADC_ADC2_UVD_THRESHOLD_6 , 0}, /*Under voltage threshold for channel 6 of ADC2*/
+	{C_DRV_ADC_ADC2_UVD_THRESHOLD_7 , 3335}, /*Under voltage threshold for channel 7 of ADC2*/
+	{C_DRV_ADC_ADC2_OVD_THRESHOLD_1 , 3416}, /*Over voltage threshold for channel 1 of ADC2*/
+	{C_DRV_ADC_ADC2_OVD_THRESHOLD_2 , 1523}, /*Over voltage threshold for channel 2 of ADC2*/
+	{C_DRV_ADC_ADC2_OVD_THRESHOLD_3 , 3705}, /*Over voltage threshold for channel 3 of ADC2*/
+	{C_DRV_ADC_ADC2_OVD_THRESHOLD_4 , 1174}, /*Over voltage threshold for channel 4 of ADC2*/
+	{C_DRV_ADC_ADC2_OVD_THRESHOLD_5 , 3432}, /*Over voltage threshold for channel 5 of ADC2*/
+	{C_DRV_ADC_ADC2_OVD_THRESHOLD_6 , 40}, /*Over voltage threshold for channel 6 of ADC2*/
+	{C_DRV_ADC_ADC2_OVD_THRESHOLD_7 , 3375}, /*Over voltage threshold for channel 7 of ADC2*/
+	/* ADC 3 */
+	{C_DRV_ADC_ADC3_UVD_THRESHOLD_1 , 2059}, /*Under voltage threshold for channel 1 of ADC3*/
+	{C_DRV_ADC_ADC3_UVD_THRESHOLD_2 , 207}, /*Under voltage threshold for channel 2 of ADC3*/
+	{C_DRV_ADC_ADC3_UVD_THRESHOLD_3 , 3147}, /*Under voltage threshold for channel 3 of ADC3*/
+	{C_DRV_ADC_ADC3_UVD_THRESHOLD_4 , 0}, /*Under voltage threshold for channel 4 of ADC3*/
+	{C_DRV_ADC_ADC3_UVD_THRESHOLD_5 , 0}, /*Under voltage threshold for channel 5 of ADC3*/
+	{C_DRV_ADC_ADC3_UVD_THRESHOLD_6 , 0}, /*Under voltage threshold for channel 6 of ADC3*/
+	{C_DRV_ADC_ADC3_UVD_THRESHOLD_7 , 3335}, /*Under voltage threshold for channel 7 of ADC3*/
+	{C_DRV_ADC_ADC3_OVD_THRESHOLD_1 , 2408}, /*Over voltage threshold for channel 1 of ADC3*/
+	{C_DRV_ADC_ADC3_OVD_THRESHOLD_2 , 595}, /*Over voltage threshold for channel 2 of ADC3*/
+	{C_DRV_ADC_ADC3_OVD_THRESHOLD_3 , 3486}, /*Over voltage threshold for channel 3 of ADC3*/
+	{C_DRV_ADC_ADC3_OVD_THRESHOLD_4 , 4095}, /*Over voltage threshold for channel 4 of ADC3*/
+	{C_DRV_ADC_ADC3_OVD_THRESHOLD_5 , 4095}, /*Over voltage threshold for channel 5 of ADC3*/
+	{C_DRV_ADC_ADC3_OVD_THRESHOLD_6 , 40}, /*Over voltage threshold for channel 6 of ADC3*/
+	{C_DRV_ADC_ADC3_OVD_THRESHOLD_7 , 3375}, /*Over voltage threshold for channel 7 of ADC3*/
+	/* ADC 4 */
+	{C_DRV_ADC_ADC4_UVD_THRESHOLD_1 , 3002}, /*Under voltage threshold for channel 1 of ADC4*/
+	{C_DRV_ADC_ADC4_UVD_THRESHOLD_2 , 2776}, /*Under voltage threshold for channel 2 of ADC4*/
+	{C_DRV_ADC_ADC4_UVD_THRESHOLD_3 , 2313}, /*Under voltage threshold for channel 3 of ADC4*/
+	{C_DRV_ADC_ADC4_UVD_THRESHOLD_4 , 1541}, /*Under voltage threshold for channel 4 of ADC4*/
+	{C_DRV_ADC_ADC4_UVD_THRESHOLD_5 , 1154}, /*Under voltage threshold for channel 5 of ADC4*/
+	{C_DRV_ADC_ADC4_UVD_THRESHOLD_6 , 3216}, /*Under voltage threshold for channel 6 of ADC4*/
+	{C_DRV_ADC_ADC4_UVD_THRESHOLD_7 , /*0*/3335}, /*Under voltage threshold for channel 7 of ADC4*/
+	{C_DRV_ADC_ADC4_OVD_THRESHOLD_1 , 3422}, /*Over voltage threshold for channel 1 of ADC4*/
+	{C_DRV_ADC_ADC4_OVD_THRESHOLD_2 , 3121}, /*Over voltage threshold for channel 2 of ADC4*/
+	{C_DRV_ADC_ADC4_OVD_THRESHOLD_3 , 2601}, /*Over voltage threshold for channel 3 of ADC4*/
+	{C_DRV_ADC_ADC4_OVD_THRESHOLD_4 , 1735}, /*Over voltage threshold for channel 4 of ADC4*/
+	{C_DRV_ADC_ADC4_OVD_THRESHOLD_5 , 1303}, /*Over voltage threshold for channel 5 of ADC4*/
+	{C_DRV_ADC_ADC4_OVD_THRESHOLD_6 , 3416}, /*Over voltage threshold for channel 6 of ADC4*/
+	{C_DRV_ADC_ADC4_OVD_THRESHOLD_7 , /*40*/3375}, /*Over voltage threshold for channel 7 of ADC4*/
+	/* ADC 5 */
+	{C_DRV_ADC_ADC5_UVD_THRESHOLD_1 , 1848}, /*Under voltage threshold for channel 1 of ADC5*/
+	{C_DRV_ADC_ADC5_UVD_THRESHOLD_2 , 1848}, /*Under voltage threshold for channel 2 of ADC5*/
+	{C_DRV_ADC_ADC5_UVD_THRESHOLD_3 , 3002}, /*Under voltage threshold for channel 3 of ADC5*/
+	{C_DRV_ADC_ADC5_UVD_THRESHOLD_4 , 0}, /*Under voltage threshold for channel 4 of ADC5*/
+	{C_DRV_ADC_ADC5_UVD_THRESHOLD_5 , 0}, /*Under voltage threshold for channel 5 of ADC5*/
+	{C_DRV_ADC_ADC5_UVD_THRESHOLD_6 , 0}, /*Under voltage threshold for channel 6 of ADC5*/
+	{C_DRV_ADC_ADC5_UVD_THRESHOLD_7 , 3335}, /*Under voltage threshold for channel 7 of ADC5*/
+	{C_DRV_ADC_ADC5_OVD_THRESHOLD_1 , 2083}, /*Over voltage threshold for channel 1 of ADC5*/
+	{C_DRV_ADC_ADC5_OVD_THRESHOLD_2 , 2083}, /*Over voltage threshold for channel 2 of ADC5*/
+	{C_DRV_ADC_ADC5_OVD_THRESHOLD_3 , 3432}, /*Over voltage threshold for channel 3 of ADC5*/
+	{C_DRV_ADC_ADC5_OVD_THRESHOLD_4 , 4095}, /*Over voltage threshold for channel 4 of ADC5*/
+	{C_DRV_ADC_ADC5_OVD_THRESHOLD_5 , 4095}, /*Over voltage threshold for channel 5 of ADC5*/
+	{C_DRV_ADC_ADC5_OVD_THRESHOLD_6 , 40}, /*Over voltage threshold for channel 6 of ADC5*/
+	{C_DRV_ADC_ADC5_OVD_THRESHOLD_7 , 3375}, /*Over voltage threshold for channel 7 of ADC5*/
+	/* ADC 6 */
+	{C_DRV_ADC_ADC6_UVD_THRESHOLD_1 , 3440}, /*Under voltage threshold for channel 1 of ADC6*/
+	{C_DRV_ADC_ADC6_UVD_THRESHOLD_2 , 873}, /*Under voltage threshold for channel 2 of ADC6*/
+	{C_DRV_ADC_ADC6_UVD_THRESHOLD_3 , 3324}, /*Under voltage threshold for channel 3 of ADC6*/
+	{C_DRV_ADC_ADC6_UVD_THRESHOLD_4 , 945}, /*Under voltage threshold for channel 4 of ADC6*/
+	{C_DRV_ADC_ADC6_UVD_THRESHOLD_5 , 0}, /*Under voltage threshold for channel 5 of ADC6*/
+	{C_DRV_ADC_ADC6_UVD_THRESHOLD_6 , 0}, /*Under voltage threshold for channel 6 of ADC6*/
+	{C_DRV_ADC_ADC6_UVD_THRESHOLD_7 , 3335}, /*Under voltage threshold for channel 7 of ADC6*/
+	{C_DRV_ADC_ADC6_OVD_THRESHOLD_1 , 3775}, /*Over voltage threshold for channel 1 of ADC6*/
+	{C_DRV_ADC_ADC6_OVD_THRESHOLD_2 , 1063}, /*Over voltage threshold for channel 2 of ADC6*/
+	{C_DRV_ADC_ADC6_OVD_THRESHOLD_3 , 3705}, /*Over voltage threshold for channel 3 of ADC6*/
+	{C_DRV_ADC_ADC6_OVD_THRESHOLD_4 , 1174}, /*Over voltage threshold for channel 4 of ADC6*/
+	{C_DRV_ADC_ADC6_OVD_THRESHOLD_5 , 4095}, /*Over voltage threshold for channel 5 of ADC6*/
+	{C_DRV_ADC_ADC6_OVD_THRESHOLD_6 , 4095}, /*Over voltage threshold for channel 6 of ADC6*/
+	{C_DRV_ADC_ADC6_OVD_THRESHOLD_7 , 3375}, /*Over voltage threshold for channel 7 of ADC6*/
+	/* ADC 7 */
+	{C_DRV_ADC_ADC7_UVD_THRESHOLD_1 , 0x00000000}, /*Under voltage threshold for channel 1 of ADC7*/
+	{C_DRV_ADC_ADC7_UVD_THRESHOLD_2 , 0x00000000}, /*Under voltage threshold for channel 2 of ADC7*/
+	{C_DRV_ADC_ADC7_UVD_THRESHOLD_3 , 0x00000000}, /*Under voltage threshold for channel 3 of ADC7*/
+	{C_DRV_ADC_ADC7_UVD_THRESHOLD_4 , 0x00000000}, /*Under voltage threshold for channel 4 of ADC7*/
+	{C_DRV_ADC_ADC7_UVD_THRESHOLD_5 , 0x00000000}, /*Under voltage threshold for channel 5 of ADC7*/
+	{C_DRV_ADC_ADC7_UVD_THRESHOLD_6 , 0x00000000}, /*Under voltage threshold for channel 6 of ADC7*/
+	{C_DRV_ADC_ADC7_UVD_THRESHOLD_7 , 0x00000000}, /*Under voltage threshold for channel 7 of ADC7*/
+	{C_DRV_ADC_ADC7_OVD_THRESHOLD_1 , 0x00000000}, /*Over voltage threshold for channel 1 of ADC7*/
+	{C_DRV_ADC_ADC7_OVD_THRESHOLD_2 , 0x00000000}, /*Over voltage threshold for channel 2 of ADC7*/
+	{C_DRV_ADC_ADC7_OVD_THRESHOLD_3 , 0x00000000}, /*Over voltage threshold for channel 3 of ADC7*/
+	{C_DRV_ADC_ADC7_OVD_THRESHOLD_4 , 0x00000000}, /*Over voltage threshold for channel 4 of ADC7*/
+	{C_DRV_ADC_ADC7_OVD_THRESHOLD_5 , 0x00000000}, /*Over voltage threshold for channel 5 of ADC7*/
+	{C_DRV_ADC_ADC7_OVD_THRESHOLD_6 , 0x00000000}, /*Over voltage threshold for channel 6 of ADC7*/
+	{C_DRV_ADC_ADC7_OVD_THRESHOLD_7 , 0x00000000}, /*Over voltage threshold for channel 7 of ADC7*/
+
+	{C_DRV_ADC_ADC1234_CFG, 0xFEFEFEFE  }, /* activation de tous les canaux */
+	{C_DRV_ADC_ADC567_CFG, 	0x0000FEFE  }, /* activation de tous les canaux */ /* l'adc 7 est un spare et le monitoring n'est pas activé sur ce spare */
+
+	/* dummy */
+	/*{C_DRV_ADC_ADC567_CFG, 0x00FEFE0  },
+	{C_DRV_ADC_ADC567_CFG, 0x00FEFEFE  }, */
+};
+
+//#define C_DRV_ADC_ADC_UVD_THRESHOLD (0x4)
+//#define C_DRV_ADC_ADC_DRV_ADC_OVD_THRESHOLD (0x20)
+
+//INUTILE
+const TS_Voltage_to_ADC_Channels C_DRV_ADC_Voltage_To_Channels[NB_VOLTAGE] =
+{
+		/* GND_ADC1_CHANNEL_0 */ {E_LIBBSP_PSUM_ADC_1,E_LIBBSP_PSUM_CHANNEL_0},
+		/* P10VN */ {E_LIBBSP_PSUM_ADC_1,E_LIBBSP_PSUM_CHANNEL_1},
+		/* P4V2G */ {E_LIBBSP_PSUM_ADC_1,E_LIBBSP_PSUM_CHANNEL_2},
+		/* M4V2G */ {E_LIBBSP_PSUM_ADC_1,E_LIBBSP_PSUM_CHANNEL_3},
+		/* P3V3N */ {E_LIBBSP_PSUM_ADC_1,E_LIBBSP_PSUM_CHANNEL_4},
+		/* P12VG */ {E_LIBBSP_PSUM_ADC_1,E_LIBBSP_PSUM_CHANNEL_5},
+		/* M12VG */ {E_LIBBSP_PSUM_ADC_1,E_LIBBSP_PSUM_CHANNEL_6},
+		/* MCANREF_ADC1 */ {E_LIBBSP_PSUM_ADC_1,E_LIBBSP_PSUM_CHANNEL_7},
+		/* GND_ADC2_CHANNEL_0 */ {E_LIBBSP_PSUM_ADC_2,E_LIBBSP_PSUM_CHANNEL_0},
+		/* VREF_P5V */ {E_LIBBSP_PSUM_ADC_2,E_LIBBSP_PSUM_CHANNEL_1},
+		/* VREF_M2V5 */ {E_LIBBSP_PSUM_ADC_2,E_LIBBSP_PSUM_CHANNEL_2},
+		/* P11V2MEO */ {E_LIBBSP_PSUM_ADC_2,E_LIBBSP_PSUM_CHANNEL_3},
+		/* M11V2MEO */ {E_LIBBSP_PSUM_ADC_2,E_LIBBSP_PSUM_CHANNEL_4},
+		/* P3V3MEO */ {E_LIBBSP_PSUM_ADC_2,E_LIBBSP_PSUM_CHANNEL_5},
+		/* GND_ADC2_CHANNEL_6 */ {E_LIBBSP_PSUM_ADC_2,E_LIBBSP_PSUM_CHANNEL_6},
+		/* MCANREF_ADC2 */ {E_LIBBSP_PSUM_ADC_2,E_LIBBSP_PSUM_CHANNEL_7},
+		/* GND_ADC3_CHANNEL_0 */ {E_LIBBSP_PSUM_ADC_3,E_LIBBSP_PSUM_CHANNEL_0},
+		/* PanaVA */ {E_LIBBSP_PSUM_ADC_3,E_LIBBSP_PSUM_CHANNEL_1},
+		/* ManaVA */ {E_LIBBSP_PSUM_ADC_3,E_LIBBSP_PSUM_CHANNEL_2},
+		/* PNumVA */ {E_LIBBSP_PSUM_ADC_3,E_LIBBSP_PSUM_CHANNEL_3},
+		/* PRES_IBIS_AM301 */ {E_LIBBSP_PSUM_ADC_3,E_LIBBSP_PSUM_CHANNEL_4},
+		/* PRES_IDA */ {E_LIBBSP_PSUM_ADC_3,E_LIBBSP_PSUM_CHANNEL_5},
+		/* GND_ADC3_CHANNEL_6 */ {E_LIBBSP_PSUM_ADC_3,E_LIBBSP_PSUM_CHANNEL_6},
+		/* MCANREF_ADC3 */ {E_LIBBSP_PSUM_ADC_3,E_LIBBSP_PSUM_CHANNEL_7},
+		/* GND_ADC4_CHANNEL_0 */ {E_LIBBSP_PSUM_ADC_4,E_LIBBSP_PSUM_CHANNEL_0},
+		/* VIO_P3V3 */ {E_LIBBSP_PSUM_ADC_4,E_LIBBSP_PSUM_CHANNEL_1},
+		/* VIO_P1V8 */ {E_LIBBSP_PSUM_ADC_4,E_LIBBSP_PSUM_CHANNEL_2},
+		/* DDR_P1V5 */ {E_LIBBSP_PSUM_ADC_4,E_LIBBSP_PSUM_CHANNEL_3},
+		/* CPU_P1V */ {E_LIBBSP_PSUM_ADC_4,E_LIBBSP_PSUM_CHANNEL_4},
+		/* DDR_P0V75 */ {E_LIBBSP_PSUM_ADC_4,E_LIBBSP_PSUM_CHANNEL_5},
+		/* V_NUM_5V */ {E_LIBBSP_PSUM_ADC_4,E_LIBBSP_PSUM_CHANNEL_6},
+		/* MCANREF_ADC4 */ {E_LIBBSP_PSUM_ADC_4,E_LIBBSP_PSUM_CHANNEL_7},
+		/* GND_ADC5_CHANNEL_0 */ {E_LIBBSP_PSUM_ADC_5,E_LIBBSP_PSUM_CHANNEL_0},
+		/* P1V2COMP */ {E_LIBBSP_PSUM_ADC_5,E_LIBBSP_PSUM_CHANNEL_1},
+		/* P1V2MEG */ {E_LIBBSP_PSUM_ADC_5,E_LIBBSP_PSUM_CHANNEL_2},
+		/* LVDD */ {E_LIBBSP_PSUM_ADC_5,E_LIBBSP_PSUM_CHANNEL_3},
+		/* MEZZA_PWR1 */ {E_LIBBSP_PSUM_ADC_5,E_LIBBSP_PSUM_CHANNEL_4},
+		/* MEZZA_PWR2 */ {E_LIBBSP_PSUM_ADC_5,E_LIBBSP_PSUM_CHANNEL_5},
+		/* GND_ADC5_CHANNEL_6 */ {E_LIBBSP_PSUM_ADC_5,E_LIBBSP_PSUM_CHANNEL_6},
+		/* MCANREF_ADC5 */ {E_LIBBSP_PSUM_ADC_5,E_LIBBSP_PSUM_CHANNEL_7},
+		/* GND_ADC6_CHANNEL_0 */ {E_LIBBSP_PSUM_ADC_6,E_LIBBSP_PSUM_CHANNEL_0},
+		/* P3V7PA */ {E_LIBBSP_PSUM_ADC_6,E_LIBBSP_PSUM_CHANNEL_1},
+		/* M3V7PA */ {E_LIBBSP_PSUM_ADC_6,E_LIBBSP_PSUM_CHANNEL_2},
+		/* P11V2PA */ {E_LIBBSP_PSUM_ADC_6,E_LIBBSP_PSUM_CHANNEL_3},
+		/* M11V2PA */ {E_LIBBSP_PSUM_ADC_6,E_LIBBSP_PSUM_CHANNEL_4},
+		/* VCORHT */ {E_LIBBSP_PSUM_ADC_6,E_LIBBSP_PSUM_CHANNEL_5},
+		/* PVSHUNT */ {E_LIBBSP_PSUM_ADC_6,E_LIBBSP_PSUM_CHANNEL_6},
+		/* MCANREF_ADC6 */ {E_LIBBSP_PSUM_ADC_6,E_LIBBSP_PSUM_CHANNEL_7}
+};

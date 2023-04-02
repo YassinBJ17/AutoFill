@@ -1,0 +1,13 @@
+$********** SCADE Suite KCG 32-bit 6.6 (build i19) ***********
+** Command: kcg66.exe -config ..\..\LIBBSP_api\LIBBSP_TYPE\config.txt
+** Generation date: 2022-04-29T15:46:05
+*************************************************************$
+*** Command Line Error (ERR_3): file not found
+ no such file or directory ..\LIBBSP_TYPE\DummyForGeneration.xscade
+No warning was found
+1 error was found
+No failure occurred
+$********** SCADE Suite KCG 32-bit 6.6 (build i19) ***********
+** kcg.log
+** Generation date: 2022-04-29T15:46:05
+*************************************************************$

@@ -1,0 +1,26 @@
+METRICS VERSION 3
+
+/* Generated for project oss_pu */
+
+/* Found in directory C:/App/SYNCHRONe/RuleCheckerForSYNCHRONe/4.3/CRulesQualified/RuleSets/C */
+INCLUDE "SYNCHRONe_CSCI.rst" END INCLUDE
+
+/* Found in directory C:/App/SYNCHRONe/RuleCheckerForSYNCHRONe/4.3/CRulesQualified/RuleSets/C */
+INCLUDE "SYNCHRONe_MCP_only.rst" END INCLUDE
+
+/* Severity order information */
+SEVERITY_VALUE "Tip" 100 END SEVERITY_VALUE
+SEVERITY_VALUE "Rule" 105 END SEVERITY_VALUE
+SEVERITY_VALUE "Rule*" 110 END SEVERITY_VALUE
+
+/* Redefinition of STANDARDS status */
+STANDARD SYNCHRONe_C_Code_5.7 SEVERITY "Tip" OFF  END STANDARD
+
+STANDARD SYNCHRONe_C_Code_24.4 SEVERITY "Tip" OFF  END STANDARD
+
+STANDARD SYNCHRONe_C_Code_24.5 SEVERITY "Tip" OFF  END STANDARD
+
+END METRICS
+
+
+

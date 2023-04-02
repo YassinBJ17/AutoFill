@@ -1,0 +1,4 @@
+set persist {..\..\HWCAR_code\sources\HWCAR\cartridge\impl\HWCAR_CARTRIDGE_data.c}
+set lprefix hwcar_cartridge_data
+set file2prefix($persist) HWCAR_CARTRIDGE_data
+set prefix2file($lprefix) $persist

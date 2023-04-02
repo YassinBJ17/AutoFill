@@ -1,0 +1,1 @@
+R:/_build_out/obj/css_wrapper_g1_2_3/memory/css_wrapper_g1_2_3_section_def.o: R:/source/css_wrapper_g1_2_3/memory/css_wrapper_g1_2_3_section_def.c R:/source/shared/type/mcp_types.h R:/source/shared/memory/memory_address_public.h

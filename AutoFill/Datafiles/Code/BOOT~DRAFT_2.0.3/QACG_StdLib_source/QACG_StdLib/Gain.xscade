@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" kind="node" external="imported" name="Gain">
+	<inputs>
+		<Variable name="Signal">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="'T"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/6c2a/4745/2714/5be3f30b773a"/>
+			</pragmas>
+		</Variable>
+		<Variable name="Gain">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="'T"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/6c3a/4745/2714/5be3f3324f98" hidden="true"/>
+			</pragmas>
+		</Variable>
+	</inputs>
+	<outputs>
+		<Variable name="AmplifiedSignal">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="'T"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/6c4a/4745/2714/5be3f33d5c26"/>
+			</pragmas>
+		</Variable>
+	</outputs>
+	<pragmas>
+		<ed:Operator oid="!ed/6c29/4745/2714/5be3f2f82656" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+			<comment>Output = Gain x Signal </comment>
+		</ed:Operator>
+	</pragmas>
+</Operator>

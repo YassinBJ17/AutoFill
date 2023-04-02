@@ -1,0 +1,13 @@
+{
+  "partition": {
+    "identifier": 3,
+    "modules_partition": {
+      "global_objects": [
+        "R:/_build_out/arc/css_wrapper_g1_2_3.a",
+        "R:/_build_out/arc/lib_critical_service.a",
+        "R:/_build_out/arc/mcss_wrapper.a",
+        "R:/_build_out/arc/oss.a"
+      ]
+    }
+  }
+}

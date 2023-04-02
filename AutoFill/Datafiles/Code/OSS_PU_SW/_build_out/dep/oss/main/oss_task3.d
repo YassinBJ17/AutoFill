@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/main/oss_task3.o: R:/source/oss/main/oss_task3.c R:/source/lib_critical_service/libtools/time/LIB_TIME_public.h R:/source/shared/type/mcp_types.h R:/source/shared/type/common_type.h R:/source/oss/main/oss_task_public.h R:/source/shared/memory/shared_memory_public.h R:/source/oss/middleware/rtc/rtc_public.h R:/source/shared/memory/memory_address_public.h

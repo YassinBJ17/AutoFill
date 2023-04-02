@@ -1,0 +1,32 @@
+
+BREAK_AFTER_CHANGE_MODE:
+
+
+SYSTEM.RESETTARGET
+
+BREAK.SET BOOT_MC_CHANGE_MODE_INIT /P
+GO
+WAIT !(STATE.RUN()) 1.
+
+IF STATE.RUN()
+(
+   BREAK;
+   PRINT "UNABLE TO REACH THE BOOT change mode function => PLEASE DO MANUALLY (with the boot option) "
+)
+ELSE
+(
+   BREAK.DELETE BOOT_MC_CHANGE_MODE_INIT
+   BREAK.SET BOOT_RESET_CORE /P
+   &b_addr=ADDRESS.OFFSET(VAR.ADDRESS(BOOT_RESET_CORE))
+   &c=0.
+   WAIT 0.5
+   while (REGISTER(pc)!=&b_addr)&&(&c<10.)
+   (
+      &c=&c+1.
+      STEP
+      WAIT !(STATE.RUN()) 2.
+   )
+)
+
+
+ENDDO

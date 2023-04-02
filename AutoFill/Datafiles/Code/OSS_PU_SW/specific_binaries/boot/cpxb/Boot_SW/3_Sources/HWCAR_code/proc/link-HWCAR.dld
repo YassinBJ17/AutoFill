@@ -1,0 +1,59 @@
+/* --------------------------------------------------------------------------*/
+/*                        SAFRAN Electronics & Defense                       */
+/*                   Reproduction and disclosure forbidden.                  */
+/* --------------------------------------------------------------------------*/
+/* PROJECT :  BOOT                                                           */
+/*                                                                           */
+/* Creation information:                                                     */
+/*   Created by: F073297                                                     */
+/*   Date : Wed Feb  6 10:32:56 CET 2019                                     */
+/* Modification information:                                                 */
+/*   %derived_by: F605763 %                                                  */
+/* --------------------------------------------------------------------------*/
+/* DESCRIPTION : Linker command file for boot software                       */
+/* ALL IS LINKED IN FLASH FOR CORE I/O                                       */
+/* --------------------------------------------------------------------------*/
+-u HWCAR_HEADER
+./MEMORY_DEFINITION.dld
+
+
+/* Linker script to place sections and symbol values. Should be used together
+ * with other linker script that defines memory regions FLASH and RAM.
+ * It references following symbols, which must be defined in code:
+ *
+ *
+ * It defines following symbols, which code can use without definition:
+ *   __etext
+ *   __data_start__
+ *   __data_end__
+ *   __bss_start__
+ *   __bss_end__
+ *   __end__
+ */
+
+
+
+/***************************
+ * All section definitions *
+ ***************************/
+
+SECTIONS
+{
+   /*****************/
+   /* FLASH symbols */
+   /*****************/
+   GROUP :
+   {
+      __CARTOUCHE_START = .;
+      /* CARTRIDGE HEADER */
+      .cartridge (CONST) :
+      {
+         KEEP( *(.hwcar_header) )
+      }
+   } > HW_CARTRIDGE_CODE_FLASH
+
+}
+
+
+
+

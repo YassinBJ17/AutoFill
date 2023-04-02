@@ -1,0 +1,5 @@
+dld: warning: No main entry point defined
+dld: warning: Don't know where to allocate input section:
+dld:   no matching input specification found in linker command file.
+dld:   Section name: .text_vle
+dld:   File: R:/specific_binaries/ext_source/_build_out/ast/ext_source/uid.o

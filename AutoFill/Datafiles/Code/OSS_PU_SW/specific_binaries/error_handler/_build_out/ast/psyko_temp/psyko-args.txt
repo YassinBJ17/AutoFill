@@ -1,0 +1,13 @@
+C:\Program Files (x86)\Krono-Safe\psyko-8.13.3\bin\psyko.exe
+--product
+power-mpc5777m-module
+--kernel-dir
+C:/Program Files (x86)/Krono-Safe/rtk-power-mpc5777m-module-4.4.5
+--gendir
+R:/specific_binaries/error_handler/_build_out/ast/psyko_temp
+cc
+--output
+R:/specific_binaries/error_handler/_build_out/obj/handle_exception.o
+--
+R:/specific_binaries/error_handler/source/handle_exception.c
+R:/specific_binaries/error_handler/_build_proc/flag/cflag_error_handler.hjson

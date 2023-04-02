@@ -1,0 +1,30 @@
+; ------------------------------------------------------------------------------
+;                         SAFRAN Electronics & Defense
+;                    Reproduction and disclosure forbidden.
+; ------------------------------------------------------------------------------
+; DESCRIPTION : Configure T32 trace
+; ------------------------------------------------------------------------------
+
+IF !POWERTRACE()
+(
+  IF CHIP.EmulationDevice()
+    Onchip.TBARange EEC:0xC000000--0xC1FFFFF
+  ELSE
+    Onchip.TBARange A:0x0D000000--0x0D003FFF
+
+  Trace.METHOD Onchip
+  Trace.Init
+)
+IF POWERTRACE()&&!POWERNEXUS()
+(
+  NEXUS.PortSize 4Lane
+  NEXUS.PortMode 1250Mbps
+  NEXUS.RefClock ON
+)
+
+TrOnchip.EDBRAC0 0x40000108 ; Give PMR ownership to target
+
+SYSTEM.Option.FREEZE OFF 
+SYSTEM.Option.DUALPORT ON 
+
+SETUP.StepAllCores ON

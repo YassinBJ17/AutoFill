@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" kind="function" name="Gain_r">
+	<inputs>
+		<Variable name="Signal">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1736/C6C/A6C/51cae04a5d0d"/>
+			</pragmas>
+		</Variable>
+		<Variable name="Gain">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1734/C6C/A6C/51cae04a1bb6" hidden="true"/>
+			</pragmas>
+		</Variable>
+	</inputs>
+	<outputs>
+		<Variable name="AmplifiedSignal">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1735/C6C/A6C/51cae04a7669"/>
+			</pragmas>
+		</Variable>
+	</outputs>
+	<specializedOperator>
+		<OperatorRef name="SIGNAL::Gain"/>
+	</specializedOperator>
+	<locals>
+		<Variable name="_L3">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1731/C6C/A6C/51cae04a3952"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L2">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1732/C6C/A6C/51cae04a36a2"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L1">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="float64"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1733/C6C/A6C/51cae04a6a5"/>
+			</pragmas>
+		</Variable>
+	</locals>
+	<data>
+		<!-- _L1 = _L2 * _L3; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L1"/>
+			</lefts>
+			<right>
+				<!-- _L2 * _L3 -->
+				<NAryOp name="1" operator="*">
+					<operands>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L2"/>
+							</path>
+						</IdExpression>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L3"/>
+							</path>
+						</IdExpression>
+					</operands>
+				</NAryOp>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/172c/C6C/A6C/51cae04a63d1"/>
+			</pragmas>
+		</Equation>
+		<!-- _L2 = Signal; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L2"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="Signal"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/172d/C6C/A6C/51cae04a70d4"/>
+			</pragmas>
+		</Equation>
+		<!-- AmplifiedSignal = _L1; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="AmplifiedSignal"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="_L1"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/172e/C6C/A6C/51cae04a7d17"/>
+			</pragmas>
+		</Equation>
+		<!-- _L3 = Gain; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L3"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="Gain"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/172f/C6C/A6C/51cae04a1318"/>
+			</pragmas>
+		</Equation>
+		<Assertion kind="assume" name="Precondition1">
+			<definition>
+				<!-- Gain * Signal <= K_MAX_KCG_REAL -->
+				<BinaryOp name="3" operator="&lt;=">
+					<operands>
+						<!-- Gain * Signal -->
+						<NAryOp name="17" operator="*">
+							<operands>
+								<IdExpression>
+									<path>
+										<ConstVarRef name="Gain"/>
+									</path>
+								</IdExpression>
+								<IdExpression>
+									<path>
+										<ConstVarRef name="Signal"/>
+									</path>
+								</IdExpression>
+							</operands>
+						</NAryOp>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="K_MAX_KCG_REAL"/>
+							</path>
+						</IdExpression>
+					</operands>
+				</BinaryOp>
+			</definition>
+			<pragmas>
+				<ed:Assertion oid="!ed/1413/40E2/1A94/51dad1736220"/>
+			</pragmas>
+		</Assertion>
+		<Assertion kind="assume" name="Precondition2">
+			<definition>
+				<!-- Gain * Signal >=  - K_MAX_KCG_REAL -->
+				<BinaryOp name="3" operator="&gt;=">
+					<operands>
+						<!-- Gain * Signal -->
+						<NAryOp name="18" operator="*">
+							<operands>
+								<IdExpression>
+									<path>
+										<ConstVarRef name="Gain"/>
+									</path>
+								</IdExpression>
+								<IdExpression>
+									<path>
+										<ConstVarRef name="Signal"/>
+									</path>
+								</IdExpression>
+							</operands>
+						</NAryOp>
+						<!--  - K_MAX_KCG_REAL -->
+						<UnaryOp name="1" operator="-">
+							<operand>
+								<IdExpression>
+									<path>
+										<ConstVarRef name="K_MAX_KCG_REAL"/>
+									</path>
+								</IdExpression>
+							</operand>
+						</UnaryOp>
+					</operands>
+				</BinaryOp>
+			</definition>
+			<pragmas>
+				<ed:Assertion oid="!ed/14da/40E2/1A94/51dad1ff7452"/>
+			</pragmas>
+		</Assertion>
+	</data>
+	<pragmas>
+		<ed:Operator oid="!ed/172b/C6C/A6C/51cae04a48b2" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+			<comment>Output = Gain x Signal </comment>
+			<diagrams>
+				<NetDiagram name="diagram_Gain_r_1" landscape="true" format="A4 (210 297)" oid="!ed/1730/C6C/A6C/51cae04a62ad">
+					<comment>Nature:LLR</comment>
+					<presentationElements>
+						<EquationGE presentable="!ed/172c/C6C/A6C/51cae04a63d1">
+							<position>
+								<Point x="6085" y="2910"/>
+							</position>
+							<size>
+								<Size width="1005" height="635"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/172d/C6C/A6C/51cae04a70d4">
+							<position>
+								<Point x="2990" y="2858"/>
+							</position>
+							<size>
+								<Size width="264" height="503"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/172e/C6C/A6C/51cae04a7d17">
+							<position>
+								<Point x="9260" y="2963"/>
+							</position>
+							<size>
+								<Size width="317" height="503"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/172f/C6C/A6C/51cae04a1318">
+							<position>
+								<Point x="2963" y="3678"/>
+							</position>
+							<size>
+								<Size width="265" height="503"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="2" srcEquation="!ed/172f/C6C/A6C/51cae04a1318" dstEquation="!ed/172c/C6C/A6C/51cae04a63d1">
+							<positions>
+								<Point x="3228" y="3942"/>
+								<Point x="4974" y="3942"/>
+								<Point x="4974" y="3334"/>
+								<Point x="6085" y="3334"/>
+							</positions>
+						</Edge>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/172d/C6C/A6C/51cae04a70d4" dstEquation="!ed/172c/C6C/A6C/51cae04a63d1">
+							<positions>
+								<Point x="3254" y="3122"/>
+								<Point x="4657" y="3122"/>
+								<Point x="4657" y="3122"/>
+								<Point x="6085" y="3122"/>
+							</positions>
+						</Edge>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/172c/C6C/A6C/51cae04a63d1" dstEquation="!ed/172e/C6C/A6C/51cae04a7d17">
+							<positions>
+								<Point x="7091" y="3228"/>
+								<Point x="8202" y="3228"/>
+								<Point x="8202" y="3228"/>
+								<Point x="9313" y="3228"/>
+							</positions>
+						</Edge>
+						<AssertionGE presentable="!ed/1413/40E2/1A94/51dad1736220">
+							<position>
+								<Point x="12012" y="1058"/>
+							</position>
+							<size>
+								<Size width="0" height="0"/>
+							</size>
+						</AssertionGE>
+						<AssertionGE presentable="!ed/14da/40E2/1A94/51dad1ff7452">
+							<position>
+								<Point x="12039" y="1667"/>
+							</position>
+							<size>
+								<Size width="0" height="0"/>
+							</size>
+						</AssertionGE>
+					</presentationElements>
+				</NetDiagram>
+			</diagrams>
+		</ed:Operator>
+	</pragmas>
+</Operator>

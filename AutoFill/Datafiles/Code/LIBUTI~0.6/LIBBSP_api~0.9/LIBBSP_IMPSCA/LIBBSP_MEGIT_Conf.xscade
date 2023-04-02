@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="function" external="imported" name="LIBBSP_MEGIT_Conf">
+			<inputs>
+				<Variable name="v_CpuSyncSource">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_MEGIT_CpuSyncSource"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/41f/2E5C/1048/62d7c62f3968"/>
+					</pragmas>
+				</Variable>
+				<Variable name="v_RsSyncSource">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_MEGIT_RsSyncSource"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/429/2E5C/1048/62d7c64b7eee"/>
+					</pragmas>
+				</Variable>
+				<Variable name="v_GlobalDebugEnable">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="bool"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/433/2E5C/1048/62d7c6772daa"/>
+					</pragmas>
+				</Variable>
+				<Variable name="v_SyncSignalsEnable">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="bool"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/434/2E5C/1048/62d7c68c3d3f"/>
+					</pragmas>
+				</Variable>
+			</inputs>
+			<outputs>
+				<Variable name="v_MegitConfStatus">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_MEGIT_ItStatus"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/435/2E5C/1048/62d7c6984d71"/>
+					</pragmas>
+				</Variable>
+			</outputs>
+			<pragmas>
+				<ed:Operator oid="!ed/41e/2E5C/1048/62d7c6066e07"/>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="function" external="imported" name="LIBBSP_DISC_ReadNoWait">
+			<inputs>
+				<Variable name="expanderID">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_DISC_Expander"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/49dc/5F7B/CD94/5d9f3ace6b89"/>
+					</pragmas>
+				</Variable>
+				<Variable name="v_step_in">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_I2C_CurrentStep"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/49dd/5F7B/CD94/5d9f3ace28ad"/>
+					</pragmas>
+				</Variable>
+			</inputs>
+			<outputs>
+				<Variable name="v_step_out">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_I2C_CurrentStep"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/49da/5F7B/CD94/5d9f3ace6647"/>
+					</pragmas>
+				</Variable>
+				<Variable name="v_ret">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_I2C_ErrorCode"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/49db/5F7B/CD94/5d9f3ace69f1"/>
+					</pragmas>
+				</Variable>
+			</outputs>
+			<pragmas>
+				<ed:Operator oid="!ed/49d9/5F7B/CD94/5d9f3ace212"/>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

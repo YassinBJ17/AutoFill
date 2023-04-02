@@ -1,0 +1,2051 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--$********** SCADE Suite KCG 32-bit 6.6 (build i19) ***********
+** Command: kcg66.exe -config ..\..\LIBBSP_api\LIBBSP_TYPE\config.txt
+** Generation date: 2022-10-20T18:05:10
+*************************************************************$-->
+<mapping>
+  <config>
+    <option name="use_types" value="#off#"/>
+    <option name="imported_root_package" value="#off#"/>
+    <option name="root_package" value="#off#"/>
+    <option name="xml_basename" value="kcg_xml_filter_out.scade"/>
+    <option name="state_vector" value="#off#"/>
+    <option name="static" value="#off#"/>
+    <option name="no_separate_io" value="#off#"/>
+    <option name="separate_io" value="#off#"/>
+    <option name="separate_io_all" value="#on#"/>
+    <option name="warn_error" value="#off#"/>
+    <option name="short_circuit" value="#off#"/>
+    <option name="wrap_c_ops" value="#off#"/>
+    <option name="input_file" value="..\LIBBSP_TYPE\DummyForGeneration.xscade"/>
+    <option name="input_file" value="..\..\LIBBSP_api\LIBBSP_TYPE\LIBBSP_types_consts.xscade"/>
+    <option name="probes" value="#on#"/>
+    <option name="debug" value="#off#"/>
+    <option name="no_observe" value="#off#"/>
+    <option name="observe" value="#off#"/>
+    <option name="user_config" value="user_macros_libbsp.h"/>
+    <option name="input_threshold" value="#off#"/>
+    <option name="header" value="#off#"/>
+    <option name="significance_length" value="127"/>
+    <option name="name_length" value="128"/>
+    <option name="globals_prefix" value="#off#"/>
+    <option name="keep_asserts" value="#off#"/>
+    <option name="global_root_context" value="#off#"/>
+    <option name="expall" value="#off#"/>
+    <option name="noexp" value="#off#"/>
+    <option name="exp" value="#off#"/>
+    <option name="target_dir" value="..\..\LIBBSP_api\LIBBSP_TYPE\inc_gen"/>
+    <option name="target" value="C"/>
+    <option name="root" value="DummyForGeneration"/>
+    <option name="auth" value="#off#"/>
+  </config>
+  <model>
+    <struct id="1">
+      <field id="2" name="parity_error" type="185"/>
+      <field id="3" name="addr_error" type="185"/>
+      <field id="4" name="acc_error" type="185"/>
+      <field id="5" name="timeout_error" type="185"/>
+      <field id="6" name="overload_error" type="185"/>
+      <field id="7" name="error_counter" type="191"/>
+    </struct>
+    <array id="8" baseType="196" size="9"/>
+    <struct id="9">
+      <field id="10" name="wd_failure_cnt" type="191"/>
+      <field id="11" name="sw_reset_request_cnt" type="191"/>
+      <field id="12" name="hw_reset_request_cnt" type="191"/>
+      <field id="13" name="critical_uvd_cnt" type="191"/>
+    </struct>
+    <array id="14" baseType="191" size="2048"/>
+    <struct id="15">
+      <field id="16" name="nvm_error" type="185"/>
+      <field id="17" name="parity_error" type="185"/>
+      <field id="18" name="addr_error" type="185"/>
+      <field id="19" name="acc_error" type="185"/>
+      <field id="20" name="timeout_error" type="185"/>
+      <field id="21" name="overload_error" type="185"/>
+      <field id="22" name="wdg_comp_rst" type="185"/>
+    </struct>
+    <array id="23" baseType="193" size="33"/>
+    <array id="24" baseType="195" size="32"/>
+    <array id="25" baseType="191" size="1518"/>
+    <array id="26" baseType="195" size="6"/>
+    <array id="27" baseType="196" size="5"/>
+    <struct id="28">
+      <field id="29" name="PresFail_or_Vin6Failure" type="185"/>
+      <field id="30" name="OverVoltage" type="185"/>
+      <field id="31" name="UnderVoltage" type="185"/>
+      <field id="32" name="ReferenceVoltageFailure" type="185"/>
+      <field id="33" name="Vin7NotInRange" type="185"/>
+      <field id="34" name="GeneralFailure" type="185"/>
+    </struct>
+    <struct id="35">
+      <field id="36" name="pwr_good_28v1" type="185"/>
+      <field id="37" name="pwr_good_28v2" type="185"/>
+      <field id="38" name="ddr_vtt_uv" type="185"/>
+      <field id="39" name="ddr_vtt_ov" type="185"/>
+      <field id="40" name="vdd_uv" type="185"/>
+      <field id="41" name="vdd_ov" type="185"/>
+      <field id="42" name="cpcm_1v5_uv" type="185"/>
+      <field id="43" name="cpcm_1v5_ov" type="185"/>
+      <field id="44" name="vio_3v3_uv" type="185"/>
+      <field id="45" name="vio_3v3_ov" type="185"/>
+      <field id="46" name="cpcm_1v8_uv" type="185"/>
+      <field id="47" name="cpcm_1v8_ov" type="185"/>
+      <field id="48" name="mezz_pgood" type="185"/>
+      <field id="49" name="mezz_fail" type="185"/>
+      <field id="50" name="ready_p1" type="185"/>
+      <field id="51" name="trig_out" type="185"/>
+      <field id="52" name="pgood_p2v5" type="185"/>
+      <field id="53" name="pgood_1v2meg" type="185"/>
+      <field id="54" name="meg_fail" type="185"/>
+      <field id="55" name="meg_pll_lock" type="185"/>
+      <field id="56" name="therm" type="185"/>
+      <field id="57" name="therm2" type="185"/>
+      <field id="58" name="lvdd_type" type="185"/>
+      <field id="59" name="tank_fail" type="185"/>
+      <field id="60" name="pgood_vant" type="185"/>
+      <field id="61" name="pgood_vrm" type="185"/>
+      <field id="62" name="inhibit_wdg" type="185"/>
+    </struct>
+    <struct id="63">
+      <field id="64" name="dTheta" type="405"/>
+      <field id="65" name="dV" type="405"/>
+      <field id="66" name="Cp" type="405"/>
+      <field id="67" name="TheteE" type="405"/>
+      <field id="68" name="ErrFEP" type="405"/>
+      <field id="69" name="IndFEP" type="405"/>
+      <field id="70" name="synth_umi" type="193"/>
+      <field id="71" name="cpt_tache_fNav" type="193"/>
+      <field id="72" name="fs_filtA_BdL_fPilot_custUnit" type="405"/>
+      <field id="73" name="fs_filtB_BdL_fPilot_custUnit" type="405"/>
+      <field id="74" name="pqr_filtE_fPilot_custUnit" type="405"/>
+      <field id="75" name="pqr_filtF_fPilot_custUnit" type="405"/>
+      <field id="76" name="accAng_filtE_fPilot_custUnit" type="405"/>
+      <field id="77" name="accAng_filtF_fPilot_custUnit" type="405"/>
+      <field id="78" name="Tacc_filtre" type="405"/>
+      <field id="79" name="Tida_filtre" type="196"/>
+      <field id="80" name="Tacc_sature" type="405"/>
+      <field id="81" name="Cpulse_sature" type="405"/>
+      <field id="82" name="Tida_sature" type="196"/>
+      <field id="83" name="AccStatus" type="193"/>
+      <field id="84" name="HrgStatus1" type="193"/>
+      <field id="85" name="HrgStatus2" type="193"/>
+      <field id="86" name="TicStatus1" type="193"/>
+      <field id="87" name="TicStatus2" type="193"/>
+      <field id="88" name="TmgyrData" type="518"/>
+    </struct>
+    <array id="89" baseType="196" size="3"/>
+    <struct id="90">
+      <field id="91" name="v_lambda_ext_0" type="196"/>
+      <field id="92" name="v_lambda_ext_1" type="196"/>
+      <field id="93" name="v_lambda_ext_2" type="196"/>
+      <field id="94" name="v_cfPilot_A1_0" type="196"/>
+      <field id="95" name="v_cfPilot_A1_1" type="196"/>
+      <field id="96" name="v_cfPilot_A1_2" type="196"/>
+      <field id="97" name="v_cfPilot_A1_3" type="196"/>
+      <field id="98" name="v_cfPilot_A1_4" type="196"/>
+      <field id="99" name="v_cfPilot_A2_1" type="196"/>
+      <field id="100" name="v_cfPilot_A2_2" type="196"/>
+      <field id="101" name="v_cfPilot_A2_3" type="196"/>
+      <field id="102" name="v_cfPilot_A2_4" type="196"/>
+      <field id="103" name="v_cfPilot_A3_1" type="196"/>
+      <field id="104" name="v_cfPilot_A3_0" type="196"/>
+      <field id="105" name="v_cfPilot_A3_2" type="196"/>
+      <field id="106" name="v_cfPilot_A3_3" type="196"/>
+      <field id="107" name="v_cfPilot_A3_4" type="196"/>
+      <field id="108" name="v_cfPilot_A4_0" type="196"/>
+      <field id="109" name="v_cfPilot_A4_1" type="196"/>
+      <field id="110" name="v_cfPilot_A4_2" type="196"/>
+      <field id="111" name="v_cfPilot_A4_3" type="196"/>
+      <field id="112" name="v_cfPilot_A4_4" type="196"/>
+      <field id="113" name="v_cfPilot_B1_0" type="196"/>
+      <field id="114" name="v_cfPilot_B1_1" type="196"/>
+      <field id="115" name="v_cfPilot_B1_2" type="196"/>
+      <field id="116" name="v_cfPilot_B1_3" type="196"/>
+      <field id="117" name="v_cfPilot_B1_4" type="196"/>
+      <field id="118" name="v_cfPilot_B2_0" type="196"/>
+      <field id="119" name="v_cfPilot_B2_1" type="196"/>
+      <field id="120" name="v_cfPilot_B2_2" type="196"/>
+      <field id="121" name="v_cfPilot_B2_3" type="196"/>
+      <field id="122" name="v_cfPilot_B2_4" type="196"/>
+      <field id="123" name="v_cfPilot_B3_0" type="196"/>
+      <field id="124" name="v_cfPilot_B3_1" type="196"/>
+      <field id="125" name="v_cfPilot_B3_2" type="196"/>
+      <field id="126" name="v_cfPilot_B3_3" type="196"/>
+      <field id="127" name="v_cfPilot_B3_4" type="196"/>
+      <field id="128" name="v_cfPilot_B4_0" type="196"/>
+      <field id="129" name="v_cfPilot_B4_1" type="196"/>
+      <field id="130" name="v_cfPilot_B4_2" type="196"/>
+      <field id="131" name="v_cfPilot_B4_3" type="196"/>
+      <field id="132" name="v_cfPilot_B4_4" type="196"/>
+      <field id="133" name="v_cfPilot_E1_0" type="196"/>
+      <field id="134" name="v_cfPilot_E1_1" type="196"/>
+      <field id="135" name="v_cfPilot_E1_2" type="196"/>
+      <field id="136" name="v_cfPilot_E1_3" type="196"/>
+      <field id="137" name="v_cfPilot_E1_4" type="196"/>
+      <field id="138" name="v_cfPilot_E2_0" type="196"/>
+      <field id="139" name="v_cfPilot_E2_1" type="196"/>
+      <field id="140" name="v_cfPilot_E2_2" type="196"/>
+      <field id="141" name="v_cfPilot_E2_3" type="196"/>
+      <field id="142" name="v_cfPilot_E2_4" type="196"/>
+      <field id="143" name="v_cfPilot_E3_0" type="196"/>
+      <field id="144" name="v_cfPilot_E3_1" type="196"/>
+      <field id="145" name="v_cfPilot_E3_2" type="196"/>
+      <field id="146" name="v_cfPilot_E3_3" type="196"/>
+      <field id="147" name="v_cfPilot_E3_4" type="196"/>
+      <field id="148" name="v_cfPilot_E4_0" type="196"/>
+      <field id="149" name="v_cfPilot_E4_1" type="196"/>
+      <field id="150" name="v_cfPilot_E4_2" type="196"/>
+      <field id="151" name="v_cfPilot_E4_3" type="196"/>
+      <field id="152" name="v_cfPilot_E4_4" type="196"/>
+      <field id="153" name="v_cfPilot_F1_0" type="196"/>
+      <field id="154" name="v_cfPilot_F1_1" type="196"/>
+      <field id="155" name="v_cfPilot_F1_2" type="196"/>
+      <field id="156" name="v_cfPilot_F1_3" type="196"/>
+      <field id="157" name="v_cfPilot_F1_4" type="196"/>
+      <field id="158" name="v_cfPilot_F2_0" type="196"/>
+      <field id="159" name="v_cfPilot_F2_1" type="196"/>
+      <field id="160" name="v_cfPilot_F2_2" type="196"/>
+      <field id="161" name="v_cfPilot_F2_3" type="196"/>
+      <field id="162" name="v_cfPilot_F2_4" type="196"/>
+      <field id="163" name="v_cfPilot_F3_0" type="196"/>
+      <field id="164" name="v_cfPilot_F3_1" type="196"/>
+      <field id="165" name="v_cfPilot_F3_2" type="196"/>
+      <field id="166" name="v_cfPilot_F3_3" type="196"/>
+      <field id="167" name="v_cfPilot_F3_4" type="196"/>
+      <field id="168" name="v_cfPilot_F4_0" type="196"/>
+      <field id="169" name="v_cfPilot_F4_1" type="196"/>
+      <field id="170" name="v_cfPilot_F4_2" type="196"/>
+      <field id="171" name="v_cfPilot_F4_3" type="196"/>
+      <field id="172" name="v_cfPilot_F4_4" type="196"/>
+    </struct>
+    <struct id="173">
+      <field id="174" name="v_address" type="193"/>
+      <field id="175" name="v_data" type="193"/>
+    </struct>
+    <struct id="176">
+      <field id="177" name="v_AlarmRegdata" type="193"/>
+      <field id="178" name="v_ETregdata" type="193"/>
+      <field id="179" name="v_EventCountdata" type="192"/>
+    </struct>
+    <array id="180" baseType="193" size="64"/>
+    <struct id="181">
+      <field id="182" name="mac_addr" type="443"/>
+    </struct>
+    <array id="183" baseType="191" size="6"/>
+    <array id="184" baseType="196" size="13"/>
+    <predefType id="185" name="bool"/>
+    <predefType id="186" name="char"/>
+    <predefType id="187" name="int8"/>
+    <predefType id="188" name="int16"/>
+    <predefType id="189" name="int32"/>
+    <predefType id="190" name="int64"/>
+    <predefType id="191" name="uint8"/>
+    <predefType id="192" name="uint16"/>
+    <predefType id="193" name="uint32"/>
+    <predefType id="194" name="uint64"/>
+    <predefType id="195" name="float32"/>
+    <predefType id="196" name="float64"/>
+    <predefType id="197" name="size"/>
+    <enum id="198" name="TE_LIBBSP_TMP_Number">
+      <value id="199" name="E_LIBBSP_TMP_TMP1" default="false"/>
+      <value id="200" name="E_LIBBSP_TMP_TMP2" default="false"/>
+      <value id="201" name="E_LIBBSP_TMP_TMP3" default="false"/>
+    </enum>
+    <enum id="202" name="TE_LIBBSP_TEMP_ReadRegAddr">
+      <value id="203" name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_HIGH_BYTE" default="false"/>
+      <value id="204" name="E_LIBBSP_TEMP_READ_LOCAL_REMOTE_HIGH_BYTE" default="false"/>
+      <value id="205" name="E_LIBBSP_TEMP_READ_STATUS_REGISTER" default="false"/>
+      <value id="206" name="E_LIBBSP_TEMP_READ_CONFIGURATION_REGISTER" default="false"/>
+      <value id="207" name="E_LIBBSP_TEMP_READ_CONVERSION_RATE_REGISTER" default="false"/>
+      <value id="208" name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_HIGH_LIMIT" default="false"/>
+      <value id="209" name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_LOW_LIMIT" default="false"/>
+      <value id="210" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_HIGH_LIMIT_HIGH_BITE" default="false"/>
+      <value id="211" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_LOW_LIMIT_HIGH_BITE" default="false"/>
+      <value id="212" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_LOW_BITE" default="false"/>
+      <value id="213" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_OFFSET_HIGH_BITE" default="false"/>
+      <value id="214" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_OFFSET_LOW_BITE" default="false"/>
+      <value id="215" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_HIGH_LIMIT_LOW_BITE" default="false"/>
+      <value id="216" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_LOW_LIMIT_LOW_BITE" default="false"/>
+      <value id="217" name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_LOW_BYTE" default="false"/>
+      <value id="218" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_THERM_LIMIT" default="false"/>
+      <value id="219" name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_THERM_LIMIT" default="false"/>
+      <value id="220" name="E_LIBBSP_TEMP_READ_THERM_HISTERESYS" default="false"/>
+      <value id="221" name="E_LIBBSP_TEMP_READ_CONSECUTIVE_ALTER" default="false"/>
+      <value id="222" name="E_LIBBSP_TEMP_READ_FACTOR_CORECTION" default="false"/>
+      <value id="223" name="E_LIBBSP_TEMP_READ_DIGITAL_FILTER_CONTROL" default="false"/>
+      <value id="224" name="E_LIBBSP_TEMP_READ_DIGITAL_MANUFATURER_IR" default="false"/>
+    </enum>
+    <enum id="225" name="TE_LIBBSP_SHM_Mode">
+      <value id="226" name="E_LIBBSP_SHM_POWER_UP_STATE" default="false"/>
+      <value id="227" name="E_LIBBSP_SHM_INITIALIZATION_STATE" default="false"/>
+      <value id="228" name="E_LIBBSP_SHM_IDLE_STATE" default="false"/>
+      <value id="229" name="E_LIBBSP_SHM_OPERATIONNAL_UP_STATE" default="false"/>
+      <value id="230" name="E_LIBBSP_SHM_DEGRADED_STATE" default="false"/>
+      <value id="231" name="E_LIBBSP_SHM_FAILURE_STATE" default="false"/>
+    </enum>
+    <enum id="232" name="TE_LIBBSP_PSUM_Adc">
+      <value id="233" name="E_LIBBSP_PSUM_ADC_1" default="false"/>
+      <value id="234" name="E_LIBBSP_PSUM_ADC_2" default="false"/>
+      <value id="235" name="E_LIBBSP_PSUM_ADC_3" default="false"/>
+      <value id="236" name="E_LIBBSP_PSUM_ADC_4" default="false"/>
+      <value id="237" name="E_LIBBSP_PSUM_ADC_5" default="false"/>
+      <value id="238" name="E_LIBBSP_PSUM_ADC_6" default="false"/>
+      <value id="239" name="E_LIBBSP_PSUM_ADC_7" default="false"/>
+      <value id="240" name="E_LIBBSP_PSUM_NB_ADC" default="false"/>
+    </enum>
+    <enum id="241" name="TE_LIBBSP_SHM_Register">
+      <value id="242" name="E_LIBBSP_SHM_COMP_STATUS" default="false"/>
+      <value id="243" name="E_LIBBSP_SHM_BOARD_STATUS" default="false"/>
+      <value id="244" name="E_LIBBSP_SHM_NB_REGISTERS" default="false"/>
+    </enum>
+    <enum id="245" name="TE_LIBBSP_MEGSCR_Register">
+      <value id="246" name="E_LIBBSP_MEGSCR_SCRATCH_0" default="false"/>
+      <value id="247" name="E_LIBBSP_MEGSCR_SCRATCH_1" default="false"/>
+      <value id="248" name="E_LIBBSP_MEGSCR_SCRATCH_2" default="false"/>
+      <value id="249" name="E_LIBBSP_MEGSCR_SCRATCH_3" default="false"/>
+      <value id="250" name="E_LIBBSP_MEGSCR_SCRATCH_4" default="false"/>
+      <value id="251" name="E_LIBBSP_MEGSCR_SCRATCH_5" default="false"/>
+      <value id="252" name="E_LIBBSP_MEGSCR_SCRATCH_6" default="false"/>
+      <value id="253" name="E_LIBBSP_MEGSCR_SCRATCH_7" default="false"/>
+      <value id="254" name="E_LIBBSP_MEGSCR_SCRATCH_8" default="false"/>
+      <value id="255" name="E_LIBBSP_MEGSCR_SCRATCH_9" default="false"/>
+      <value id="256" name="E_LIBBSP_MEGSCR_SCRATCH_10" default="false"/>
+      <value id="257" name="E_LIBBSP_MEGSCR_SCRATCH_11" default="false"/>
+      <value id="258" name="E_LIBBSP_MEGSCR_SCRATCH_12" default="false"/>
+      <value id="259" name="E_LIBBSP_MEGSCR_SCRATCH_13" default="false"/>
+      <value id="260" name="E_LIBBSP_MEGSCR_SCRATCH_14" default="false"/>
+      <value id="261" name="E_LIBBSP_MEGSCR_SCRATCH_15" default="false"/>
+      <value id="262" name="E_LIBBSP_MEGSCR_SCRATCH_16" default="false"/>
+      <value id="263" name="E_LIBBSP_MEGSCR_SCRATCH_17" default="false"/>
+      <value id="264" name="E_LIBBSP_MEGSCR_SCRATCH_18" default="false"/>
+      <value id="265" name="E_LIBBSP_MEGSCR_SCRATCH_19" default="false"/>
+      <value id="266" name="E_LIBBSP_MEGSCR_SCRATCH_20" default="false"/>
+      <value id="267" name="E_LIBBSP_MEGSCR_SCRATCH_21" default="false"/>
+      <value id="268" name="E_LIBBSP_MEGSCR_SCRATCH_22" default="false"/>
+      <value id="269" name="E_LIBBSP_MEGSCR_SCRATCH_23" default="false"/>
+      <value id="270" name="E_LIBBSP_MEGSCR_SCRATCH_24" default="false"/>
+      <value id="271" name="E_LIBBSP_MEGSCR_SCRATCH_25" default="false"/>
+      <value id="272" name="E_LIBBSP_MEGSCR_SCRATCH_26" default="false"/>
+      <value id="273" name="E_LIBBSP_MEGSCR_SCRATCH_27" default="false"/>
+      <value id="274" name="E_LIBBSP_MEGSCR_SCRATCH_28" default="false"/>
+      <value id="275" name="E_LIBBSP_MEGSCR_SCRATCH_29" default="false"/>
+      <value id="276" name="E_LIBBSP_MEGSCR_SCRATCH_30" default="false"/>
+      <value id="277" name="E_LIBBSP_MEGSCR_SCRATCH_31" default="false"/>
+    </enum>
+    <enum id="278" name="TE_LIBBSP_I2C_ErrorCode">
+      <value id="279" name="E_LIBBSP_I2C_COMMAND_TAKEN" default="false"/>
+      <value id="280" name="E_LIBBSP_I2C_COMMAND_NOT_TAKEN" default="false"/>
+      <value id="281" name="E_LIBBSP_I2C_COMMAND_ERROR" default="false"/>
+      <value id="282" name="E_LIBBSP_I2C_WRITE_OVERSIZED" default="false"/>
+      <value id="283" name="E_LIBBSP_I2C_READ_OVERSIZED" default="false"/>
+    </enum>
+    <enum id="284" name="TE_LIBBSP_I2C_CurrentStep">
+      <value id="285" name="E_LIBBSP_I2C_IDLE" default="false"/>
+      <value id="286" name="E_LIBBSP_I2C_WAIT_FOR_SLV_CMD_W_ACK" default="false"/>
+      <value id="287" name="E_LIBBSP_I2C_WAIT_FOR_SLV_W_ACK" default="false"/>
+      <value id="288" name="E_LIBBSP_I2C_WAIT_FOR_SLV_CMD_R_ACK" default="false"/>
+      <value id="289" name="E_LIBBSP_I2C_WAIT_FOR_SLV_R_DATA" default="false"/>
+      <value id="290" name="E_LIBBSP_I2C_DATA_WRITTEN" default="false"/>
+      <value id="291" name="E_LIBBSP_I2C_DATA_READ" default="false"/>
+    </enum>
+    <enum id="292" name="TE_LIBBSP_I2C_Code">
+      <value id="293" name="E_LIBBSP_I2C_OK" default="false"/>
+      <value id="294" name="E_LIBBSP_I2C_INVALID_ID" default="false"/>
+      <value id="295" name="E_LIBBSP_I2C_ARBITRATION_LOST" default="false"/>
+      <value id="296" name="E_LIBBSP_I2C_NO_ACK" default="false"/>
+      <value id="297" name="E_LIBBSP_I2C_BUS_BUSY" default="false"/>
+      <value id="298" name="E_LIBBSP_I2C_TIMEOUT" default="false"/>
+      <value id="299" name="E_LIBBSP_I2C_CLOSED" default="false"/>
+    </enum>
+    <enum id="300" name="TE_LIBBSP_DISC_Expander">
+      <value id="301" name="E_LIBBSP_DISC_EXPANDER_1" default="false"/>
+      <value id="302" name="E_LIBBSP_DISC_EXPANDER_2" default="false"/>
+      <value id="303" name="E_LIBBSP_DISC_NB_EXPANDER" default="false"/>
+    </enum>
+    <enum id="304" name="TE_LIBBSP_CMPSCR_Register">
+      <value id="305" name="E_LIBBSP_CMPSCR_SCRATCH_0" default="false"/>
+      <value id="306" name="E_LIBBSP_CMPSCR_SCRATCH_1" default="false"/>
+      <value id="307" name="E_LIBBSP_CMPSCR_SCRATCH_2" default="false"/>
+      <value id="308" name="E_LIBBSP_CMPSCR_SCRATCH_3" default="false"/>
+      <value id="309" name="E_LIBBSP_CMPSCR_SCRATCH_4" default="false"/>
+      <value id="310" name="E_LIBBSP_CMPSCR_SCRATCH_5" default="false"/>
+      <value id="311" name="E_LIBBSP_CMPSCR_SCRATCH_6" default="false"/>
+      <value id="312" name="E_LIBBSP_CMPSCR_SCRATCH_7" default="false"/>
+      <value id="313" name="E_LIBBSP_CMPSCR_SCRATCH_8" default="false"/>
+      <value id="314" name="E_LIBBSP_CMPSCR_SCRATCH_9" default="false"/>
+      <value id="315" name="E_LIBBSP_CMPSCR_SCRATCH_10" default="false"/>
+      <value id="316" name="E_LIBBSP_CMPSCR_SCRATCH_11" default="false"/>
+      <value id="317" name="E_LIBBSP_CMPSCR_SCRATCH_12" default="false"/>
+      <value id="318" name="E_LIBBSP_CMPSCR_SCRATCH_13" default="false"/>
+      <value id="319" name="E_LIBBSP_CMPSCR_SCRATCH_14" default="false"/>
+      <value id="320" name="E_LIBBSP_CMPSCR_SCRATCH_15" default="false"/>
+      <value id="321" name="E_LIBBSP_CMPSCR_SCRATCH_16" default="false"/>
+      <value id="322" name="E_LIBBSP_CMPSCR_SCRATCH_17" default="false"/>
+      <value id="323" name="E_LIBBSP_CMPSCR_SCRATCH_18" default="false"/>
+      <value id="324" name="E_LIBBSP_CMPSCR_SCRATCH_19" default="false"/>
+      <value id="325" name="E_LIBBSP_CMPSCR_SCRATCH_20" default="false"/>
+      <value id="326" name="E_LIBBSP_CMPSCR_SCRATCH_21" default="false"/>
+      <value id="327" name="E_LIBBSP_CMPSCR_SCRATCH_22" default="false"/>
+      <value id="328" name="E_LIBBSP_CMPSCR_SCRATCH_23" default="false"/>
+      <value id="329" name="E_LIBBSP_CMPSCR_SCRATCH_24" default="false"/>
+      <value id="330" name="E_LIBBSP_CMPSCR_SCRATCH_25" default="false"/>
+      <value id="331" name="E_LIBBSP_CMPSCR_SCRATCH_26" default="false"/>
+      <value id="332" name="E_LIBBSP_CMPSCR_SCRATCH_27" default="false"/>
+      <value id="333" name="E_LIBBSP_CMPSCR_SCRATCH_28" default="false"/>
+      <value id="334" name="E_LIBBSP_CMPSCR_SCRATCH_29" default="false"/>
+      <value id="335" name="E_LIBBSP_CMPSCR_SCRATCH_30" default="false"/>
+      <value id="336" name="E_LIBBSP_CMPSCR_SCRATCH_31" default="false"/>
+    </enum>
+    <enum id="337" name="TE_LIBBSP_CMN_Status">
+      <value id="338" name="E_LIBBSP_CMN_TIME_IS_REACHED" default="false"/>
+      <value id="339" name="E_LIBBSP_CMN_TIME_IS_NOT_REACHED" default="false"/>
+    </enum>
+    <enum id="340" name="TE_LIBBSP_A429_TxLine">
+      <value id="341" name="E_LIBBSP_A429_TX_1" default="false"/>
+      <value id="342" name="E_LIBBSP_A429_TX_2" default="false"/>
+      <value id="343" name="E_LIBBSP_A429_TX_3" default="false"/>
+      <value id="344" name="E_LIBBSP_A429_TX_4" default="false"/>
+      <value id="345" name="E_LIBBSP_A429_TX_5" default="false"/>
+      <value id="346" name="E_LIBBSP_A429_TX_6" default="false"/>
+      <value id="347" name="E_LIBBSP_A429_TX_7" default="false"/>
+      <value id="348" name="E_LIBBSP_A429_TX_8" default="false"/>
+    </enum>
+    <enum id="349" name="TE_LIBBSP_A429_TxErrorCode">
+      <value id="350" name="E_LIBBSP_A429_TX_OK" default="false"/>
+      <value id="351" name="E_LIBBSP_A429_TX_INVALID_ID" default="false"/>
+      <value id="352" name="E_LIBBSP_A429_TX_OVERFLOW_CMD" default="false"/>
+      <value id="353" name="E_LIBBSP_A429_TX_OVERFLOW_FIFO" default="false"/>
+    </enum>
+    <type id="354" name="TS_LIBBSP_PSUM_Conf" imported="false" type="173"/>
+    <type id="355" name="TS_LIBBSP_PSUM_AdcErrorFlags" imported="false" type="28"/>
+    <type id="356" name="TS_LIBBSP_PLDCMP_ErrorStatus" imported="false" type="15"/>
+    <type id="357" name="TS_LIBBSP_ETR_ReadInfos" imported="false" type="176"/>
+    <constant id="358" name="C_LIBBSP_A429_BUFFER_SIZE" imported="false" type="193"/>
+    <type id="359" name="TS_LIBBSP_A429_Buffer" imported="false" type="180"/>
+    <constant id="360" name="C_LIBBSP_PSUM_INIT_COUPLE" imported="false" type="354"/>
+    <constant id="361" name="C_LIBBSP_PSUM_SHM_NB_COUPLE" imported="false" type="193"/>
+    <type id="362" name="TS_LIBBSP_SHM_BoardStatus" imported="false" type="35"/>
+    <type id="363" name="TS_LIBBSP_SHM_CompStatus" imported="false" type="9"/>
+    <enum id="364" name="TE_LIBBSP_GPIO_DiscName">
+      <value id="365" name="E_LIBBSP_GPIO_MEGA_GPIO2" default="false"/>
+      <value id="366" name="E_LIBBSP_GPIO_MEGA_GPIO1" default="false"/>
+      <value id="367" name="E_LIBBSP_GPIO_MEGA_GPIO0" default="false"/>
+      <value id="368" name="E_LIBBSP_GPIO_COMP_GPIO2" default="false"/>
+      <value id="369" name="E_LIBBSP_GPIO_COMP_GPIO1" default="false"/>
+      <value id="370" name="E_LIBBSP_GPIO_COMP_GPIO0" default="false"/>
+      <value id="371" name="E_LIBBSP_GPIO_SDHC_W_PROTECT" default="false"/>
+      <value id="372" name="E_LIBBSP_GPIO_SDHC_CARD_DETECT" default="false"/>
+      <value id="373" name="E_LIBBSP_GPIO_GREEN_LED" default="false"/>
+      <value id="374" name="E_LIBBSP_GPIO_YELLOW_LED" default="false"/>
+      <value id="375" name="E_LIBBSP_GPIO_RED_LED" default="false"/>
+      <value id="376" name="E_LIBBSP_GPIO_IRQ11" default="false"/>
+      <value id="377" name="E_LIBBSP_GPIO_DSI_SG_LABO" default="false"/>
+      <value id="378" name="E_LIBBSP_GPIO_DSI_DL" default="false"/>
+      <value id="379" name="E_LIBBSP_GPIO_IRQ8" default="false"/>
+      <value id="380" name="E_LIBBSP_GPIO_MEGA_MEZA_SPI_SEL" default="false"/>
+    </enum>
+    <enum id="381" name="TE_LIBBSP_ECCMEM_SeuMbuEn">
+      <value id="382" name="E_LIBBSP_ECCMEM_MBU_ONLY_EN" default="false"/>
+      <value id="383" name="E_LIBBSP_ECCMEM_SEU_ONLY_EN" default="false"/>
+      <value id="384" name="E_LIBBSP_ECCMEM_MBU_SEU_EN" default="false"/>
+      <value id="385" name="E_LIBBSP_ECCMEM_MBU_SEU_DIS" default="false"/>
+    </enum>
+    <enum id="386" name="TE_LIBBSP_ECCMEM_SeuMbuIt">
+      <value id="387" name="E_LIBBSP_ECCMEM_MBU_ONLY_IT" default="false"/>
+      <value id="388" name="E_LIBBSP_ECCMEM_SEU_ONLY_IT" default="false"/>
+      <value id="389" name="E_LIBBSP_ECCMEM_MBU_SEU_IT" default="false"/>
+      <value id="390" name="E_LIBBSP_ECCMEM_MBU_SEU_IT_DIS" default="false"/>
+    </enum>
+    <enum id="391" name="TE_LIBBSP_ECCMEM_SeuStatus">
+      <value id="392" name="E_LIBBSP_ECCMEM_SEU_OK" default="false"/>
+      <value id="393" name="E_LIBBSP_ECCMEM_SEU_WRONG_NB" default="false"/>
+      <value id="394" name="E_LIBBSP_ECCMEM_SEU_THRESH_EXCEED" default="false"/>
+      <value id="395" name="E_LIBBSP_ECCMEM_MBU_NOT_DETECTED" default="false"/>
+    </enum>
+    <enum id="396" name="TE_LIBBSP_IMU_WriteAddr">
+      <value id="397" name="E_LIBBSP_IMU_WRITE_ADDRESS" default="false"/>
+      <value id="398" name="E_LIBBSP_IMU_NO_WRITE_ADDRESS" default="false"/>
+    </enum>
+    <enum id="399" name="TE_LIBBSP_IMU_ProgStatus">
+      <value id="400" name="E_LIBBSP_IMU_NB_DATA_OK" default="false"/>
+      <value id="401" name="E_LIBBSP_IMU_NB_DATA_EXCEEDED" default="false"/>
+    </enum>
+    <type id="402" name="TS_LIBBSP_IMU_WriteAddrBuffer2" imported="false" type="23"/>
+    <type id="403" name="TS_LIBBSP_IMU_WriteDataBuffer" imported="false" type="24"/>
+    <type id="404" name="TS_LIBBSP_IMU_InertialData" imported="false" type="63"/>
+    <type id="405" name="TS_LIBBSP_IMU_Vect3" imported="false" type="89"/>
+    <enum id="406" name="TE_LIBBSP_IMU_WriteEraseCmd">
+      <value id="407" name="E_LIBBSP_IMU_RESET_ALL_W_ADDR" default="false"/>
+      <value id="408" name="E_LIBBSP_IMU_RESET_ADD_W_ADDR" default="false"/>
+    </enum>
+    <constant id="409" name="C_LIBBSP_IMU_NB_DATA_WRITE_MAX" imported="false" type="193"/>
+    <constant id="410" name="C_LIBBSP_IMU_NB_ADDITIONAL_DATA" imported="false" type="193"/>
+    <type id="411" name="TS_LIBBSP_IMU_AdditionalDataWriteBuffer" imported="false" type="26"/>
+    <type id="412" name="TS_LIBBSP_IMU_InstrumIMUData" imported="false" type="90"/>
+    <constant id="413" name="C_LIBBSP_IMU_NB_ADDITIONAL_DATA_READ_PER_CYCLE" imported="false" type="193"/>
+    <type id="414" name="TS_LIBBSP_IMU_AdditionalDataReadBufferOut" imported="false" type="27"/>
+    <enum id="415" name="TE_LIBBSP_ETSEC_NetworkStatus">
+      <value id="416" name="E_LIBBSP_ETSEC_OK" default="false"/>
+      <value id="417" name="E_LIBBSP_ETSEC_KO" default="false"/>
+    </enum>
+    <enum id="418" name="TE_LIBBSP_ETSEC_Network">
+      <value id="419" name="E_LIBBSP_ETSEC_NETWORK_1" default="false"/>
+      <value id="420" name="E_LIBBSP_ETSEC_NETWORK_2" default="false"/>
+      <value id="421" name="E_LIBBSP_ETSEC_NETWORK_3" default="false"/>
+      <value id="422" name="E_LIBBSP_ETSEC_NB_NETWORK" default="false"/>
+    </enum>
+    <enum id="423" name="TE_LIBBSP_ETR_Ds1682State">
+      <value id="424" name="E_LIBBSP_ETR_DS1682_CLOSED" default="false"/>
+      <value id="425" name="E_LIBBSP_ETR_DS1682_OPEN" default="false"/>
+    </enum>
+    <enum id="426" name="TE_LIBBSP_I2C_Bus">
+      <value id="427" name="E_LIBBSP_I2C_BUS_1" default="false"/>
+      <value id="428" name="E_LIBBSP_I2C_BUS_2" default="false"/>
+      <value id="429" name="E_LIBBSP_I2C_NB_I2C_BUS" default="false"/>
+    </enum>
+    <type id="430" name="TS_LIBBSP_ETSEC_ConfHostMac" imported="false" type="181"/>
+    <constant id="431" name="C_LIBBSP_ETSEC_MAC_ADDR_SIZE" imported="false" type="193"/>
+    <enum id="432" name="TE_LIBBSP_ETSEC_NetConfigStart">
+      <value id="433" name="E_LIBBSP_ETSEC_START_NETWORK_TX" default="false"/>
+      <value id="434" name="E_LIBBSP_ETSEC_START_NETWORK_RX" default="false"/>
+      <value id="435" name="E_LIBBSP_ETSEC_START_NETWORK_RX_TX" default="false"/>
+    </enum>
+    <constant id="436" name="C_LIBBSP_ETSEC_MESSAGE_SIZE" imported="false" type="193"/>
+    <type id="437" name="TS_LIBBSP_ETSEC_EthBuffer" imported="false" type="25"/>
+    <enum id="438" name="TE_LIBBSP_ETSEC_FrameStatus">
+      <value id="439" name="E_LIBBSP_ETSEC_NO_PHYSICAL_ERROR" default="false"/>
+      <value id="440" name="E_LIBBSP_ETSEC_PHYSICAL_ERROR" default="false"/>
+      <value id="441" name="E_LIBBSP_ETSEC_NO_FRAME_RECEIVED" default="false"/>
+      <value id="442" name="E_LIBBSP_ETSEC_SOFTWARE_OVERRUN" default="false"/>
+    </enum>
+    <type id="443" name="TS_LIBBSP_ETSEC_MacAddr" imported="false" type="183"/>
+    <enum id="444" name="TE_LIBBSP_ETSEC_NetConfigStop">
+      <value id="445" name="E_LIBBSP_ETSEC_STOP_NETWORK_TX" default="false"/>
+      <value id="446" name="E_LIBBSP_ETSEC_STOP_NETWORK_RX" default="false"/>
+      <value id="447" name="E_LIBBSP_ETSEC_STOP_NETWORK_RX_TX" default="false"/>
+    </enum>
+    <enum id="448" name="TE_LIBBSP_A429_Speed">
+      <value id="449" name="E_LIBBSP_A429_BAUDS_12" default="false"/>
+      <value id="450" name="E_LIBBSP_A429_BAUDS_100" default="false"/>
+    </enum>
+    <constant id="451" name="C_LIBBSP_IMU_NB_ADD_DATA_READ_MAX" imported="false" type="193"/>
+    <constant id="452" name="C_LIBBSP_IMU_NB_INERTIAL_DATA_READ" imported="false" type="193"/>
+    <type id="453" name="TS_LIBBSP_IMU_FloatTab" imported="false" type="184"/>
+    <enum id="454" name="TE_LIBBSP_GPIO_Status">
+      <value id="455" name="E_LIBBSP_GPIO_SUCCEEDED" default="false"/>
+      <value id="456" name="E_LIBBSP_GPIO_FAILED" default="false"/>
+    </enum>
+    <enum id="457" name="TE_LIBBSP_PSUM_Status">
+      <value id="458" name="E_LIBBSP_PSUM_SUCCEEDED" default="false"/>
+      <value id="459" name="E_LIBBSP_PSUM_FAILED" default="false"/>
+    </enum>
+    <enum id="460" name="TE_LIBBSP_MRAM_ErrorCode">
+      <value id="461" name="E_LIBBSP_MRAM_OK" default="false"/>
+      <value id="462" name="E_LIBBSP_MRAM_OPEN_ESPI_ERROR" default="false"/>
+      <value id="463" name="E_LIBBSP_MRAM_CLOSE_ESPI_ERROR" default="false"/>
+      <value id="464" name="E_LIBBSP_MRAM_WRITE_ERROR" default="false"/>
+      <value id="465" name="E_LIBBSP_MRAM_READ_ERROR" default="false"/>
+      <value id="466" name="E_LIBBSP_MRAM_EXCHANGE_ESPI_ERROR" default="false"/>
+    </enum>
+    <enum id="467" name="TE_LIBBSP_UART_Dev">
+      <value id="468" name="E_LIBBSP_UART_DEV_1_RX" default="false"/>
+      <value id="469" name="E_LIBBSP_UART_DEV_1_TX" default="false"/>
+      <value id="470" name="E_LIBBSP_UART_DEV_2_RX" default="false"/>
+      <value id="471" name="E_LIBBSP_UART_DEV_2_TX" default="false"/>
+      <value id="472" name="E_LIBBSP_UART_DEV_3_RX" default="false"/>
+      <value id="473" name="E_LIBBSP_UART_DEV_3_TX" default="false"/>
+      <value id="474" name="E_LIBBSP_UART_DEV_4_RX" default="false"/>
+      <value id="475" name="E_LIBBSP_UART_DEV_4_TX" default="false"/>
+      <value id="476" name="E_LIBBSP_UART_DEV_MAX" default="false"/>
+    </enum>
+    <enum id="477" name="TE_LIBBSP_UART_Speed">
+      <value id="478" name="E_LIBBSP_UART_BAUDS_9600" default="false"/>
+      <value id="479" name="E_LIBBSP_UART_BAUDS_19200" default="false"/>
+      <value id="480" name="E_LIBBSP_UART_BAUDS_38400" default="false"/>
+      <value id="481" name="E_LIBBSP_UART_BAUDS_115200" default="false"/>
+      <value id="482" name="E_LIBBSP_UART_BAUDS_460800" default="false"/>
+      <value id="483" name="E_LIBBSP_UART_BAUDS_921600" default="false"/>
+    </enum>
+    <enum id="484" name="TE_LIBBSP_UART_Parity">
+      <value id="485" name="E_LIBBSP_UART_PARITY_NONE" default="false"/>
+      <value id="486" name="E_LIBBSP_UART_PARITY_ODD" default="false"/>
+      <value id="487" name="E_LIBBSP_UART_PARITY_EVEN" default="false"/>
+      <value id="488" name="E_LIBBSP_UART_PARITY_NONE_3" default="false"/>
+    </enum>
+    <enum id="489" name="TE_LIBBSP_UART_StopBits">
+      <value id="490" name="E_LIBBSP_UART_STOPBITS_TWO" default="false"/>
+      <value id="491" name="E_LIBBSP_UART_STOPBITS_ONE" default="false"/>
+    </enum>
+    <enum id="492" name="TE_LIBBSP_UART_RxErrorCode">
+      <value id="493" name="E_LIBBSP_UART_RX_OK" default="false"/>
+      <value id="494" name="E_LIBBSP_UART_DEV_INVALID_ID" default="false"/>
+      <value id="495" name="E_LIBBSP_UART_RX_STOP_ERROR" default="false"/>
+      <value id="496" name="E_LIBBSP_UART_RX_PARITY_ERROR" default="false"/>
+      <value id="497" name="E_LIBBSP_UART_RX_OVERFLOW_ERROR" default="false"/>
+      <value id="498" name="E_LIBBSP_UART_RX_ROLLOVER_ERROR" default="false"/>
+      <value id="499" name="E_LIBBSP_UART_RX_INCONSISTENT_ERROR" default="false"/>
+      <value id="500" name="E_LIBBSP_UART_POST_KO" default="false"/>
+    </enum>
+    <enum id="501" name="TE_LIBBSP_UART_TxErrorCode">
+      <value id="502" name="E_LIBBSP_UART_TX_OK" default="false"/>
+      <value id="503" name="E_LIBBSP_UART_TX_INVALID_ID" default="false"/>
+      <value id="504" name="E_LIBBSP_UART_TX_OVERFLOW_CMD" default="false"/>
+      <value id="505" name="E_LIBBSP_UART_TX_OVERFLOW_FIFO" default="false"/>
+    </enum>
+    <type id="506" name="TA_LIBBSP_UART_RxBuffer" imported="false" type="14"/>
+    <constant id="507" name="C_LIBBSP_UART_FIFO_SIZE" imported="false" type="193"/>
+    <enum id="508" name="TE_LIBBSP_A429_RxLine">
+      <value id="509" name="E_LIBBSP_A429_RX_1" default="false"/>
+      <value id="510" name="E_LIBBSP_A429_RX_2" default="false"/>
+      <value id="511" name="E_LIBBSP_A429_RX_3" default="false"/>
+      <value id="512" name="E_LIBBSP_A429_RX_4" default="false"/>
+      <value id="513" name="E_LIBBSP_A429_RX_5" default="false"/>
+      <value id="514" name="E_LIBBSP_A429_RX_6" default="false"/>
+      <value id="515" name="E_LIBBSP_A429_RX_7" default="false"/>
+      <value id="516" name="E_LIBBSP_A429_RX_8" default="false"/>
+      <value id="517" name="E_LIBBSP_A429_RX_9" default="false"/>
+    </enum>
+    <type id="518" name="TS_LIBBSP_IMU_Vect9" imported="false" type="8"/>
+    <type id="519" name="TS_LIBBSP_PLDMEG_IfCpuStatus" imported="false" type="1"/>
+    <enum id="520" name="TE_LIBBSP_MEGIT_CpuSyncSource">
+      <value id="521" name="E_LIBBSP_MEGIT_CPU_NO_SOURCE" default="false"/>
+      <value id="522" name="E_LIBBSP_MEGIT_CPU_SYNC_APPL" default="false"/>
+      <value id="523" name="E_LIBBSP_MEGIT_CPU_TIC_RDY" default="false"/>
+      <value id="524" name="E_LIBBSP_MEGIT_CPU_RT_RDY" default="false"/>
+      <value id="525" name="E_LIBBSP_MEGIT_CPU_IRQ_2KH_ALL" default="false"/>
+      <value id="526" name="E_LIBBSP_MEGIT_CPU_IRQ_APPL_ALL" default="false"/>
+      <value id="527" name="E_LIBBSP_MEGIT_CPU_IRQ_APPL_TIC" default="false"/>
+      <value id="528" name="E_LIBBSP_MEGIT_CPU_RTC_8K" default="false"/>
+      <value id="529" name="E_LIBBSP_MEGIT_CPU_NB_SOURCE" default="false"/>
+    </enum>
+    <enum id="530" name="TE_LIBBSP_MEGIT_RsSyncSource">
+      <value id="531" name="E_LIBBSP_MEGIT_RS_NO_SOURCE" default="false"/>
+      <value id="532" name="E_LIBBSP_MEGIT_RS_SYNC_100HZ" default="false"/>
+      <value id="533" name="E_LIBBSP_MEGIT_RS_SYNC_APPL" default="false"/>
+      <value id="534" name="E_LIBBSP_MEGIT_RS_RTC_IDA" default="false"/>
+      <value id="535" name="E_LIBBSP_MEGIT_RS_RTC_2K" default="false"/>
+      <value id="536" name="E_LIBBSP_MEGIT_RS_CPU_RTC" default="false"/>
+      <value id="537" name="E_LIBBSP_MEGIT_RS_NB_SOURCE" default="false"/>
+    </enum>
+    <enum id="538" name="TE_LIBBSP_MEGIT_ItStatus">
+      <value id="539" name="E_LIBBSP_MEGIT_IT_SOURCE_INVALID" default="false"/>
+      <value id="540" name="E_LIBBSP_MEGIT_IT_SOURCE_VALID" default="false"/>
+    </enum>
+    <enum id="541" name="TE_LIBBSP_A429_RxErrorCode">
+      <value id="542" name="E_LIBBSP_A429_RX_OK" default="false"/>
+      <value id="543" name="E_LIBBSP_A429_RX_INVALID_ID" default="false"/>
+      <value id="544" name="E_LIBBSP_A429_RX_ROLLOVER" default="false"/>
+      <value id="545" name="E_LIBBSP_A429_RX_PARITY_ERROR" default="false"/>
+      <value id="546" name="E_LIBBSP_A429_RX_GAP_ERROR" default="false"/>
+      <value id="547" name="E_LIBBSP_A429_RX_FORMAT_ERROR" default="false"/>
+      <value id="548" name="E_LIBBSP_A429_RX_TOO_MANY_LABELS" default="false"/>
+      <value id="549" name="E_LIBBSP_A429_RX_INCONSISTENT_ROLLOVER" default="false"/>
+      <value id="550" name="E_LIBBSP_A429_POST_KO" default="false"/>
+    </enum>
+    <operator id="551" name="DummyForGeneration" imported="false" root="true" expanded="false"/>
+  </model>
+  <generated>
+    <c>
+      <file id="552" name="DummyForGeneration.h">
+        <function id="553" name="DummyForGeneration"/>
+      </file>
+      <file id="554" name="kcg_types.h">
+        <ifdef id="555" name="kcg_use_TS_LIBBSP_IMU_FloatTab">
+          <function id="556" name="kcg_comp_TS_LIBBSP_IMU_FloatTab" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="800" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="800" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="559" name="kcg_use_TS_LIBBSP_IMU_AdditionalDataReadBufferOut">
+          <function id="560" name="kcg_comp_TS_LIBBSP_IMU_AdditionalDataReadBufferOut" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="799" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="799" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="563" name="kcg_use_TS_LIBBSP_IMU_WriteAddrBuffer2">
+          <function id="564" name="kcg_comp_TS_LIBBSP_IMU_WriteAddrBuffer2" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="711" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="711" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="567" name="kcg_use_TS_LIBBSP_IMU_WriteDataBuffer">
+          <function id="568" name="kcg_comp_TS_LIBBSP_IMU_WriteDataBuffer" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="713" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="713" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="571" name="kcg_use_TA_LIBBSP_UART_RxBuffer">
+          <function id="572" name="kcg_comp_TA_LIBBSP_UART_RxBuffer" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="664" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="664" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="575" name="kcg_use_TS_LIBBSP_IMU_Vect3">
+          <function id="576" name="kcg_comp_TS_LIBBSP_IMU_Vect3" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="798" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="798" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="579" name="kcg_use_TS_LIBBSP_IMU_Vect9">
+          <function id="580" name="kcg_comp_TS_LIBBSP_IMU_Vect9" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="797" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="797" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="583" name="kcg_use_TS_LIBBSP_IMU_AdditionalDataWriteBuffer">
+          <function id="584" name="kcg_comp_TS_LIBBSP_IMU_AdditionalDataWriteBuffer" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="712" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="712" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="587" name="kcg_use_TS_LIBBSP_A429_Buffer">
+          <function id="588" name="kcg_comp_TS_LIBBSP_A429_Buffer" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="707" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="707" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="591" name="kcg_use_TS_LIBBSP_ETSEC_EthBuffer">
+          <function id="592" name="kcg_comp_TS_LIBBSP_ETSEC_EthBuffer" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="663" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="663" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="595" name="kcg_use_TS_LIBBSP_ETSEC_MacAddr">
+          <function id="596" name="kcg_comp_TS_LIBBSP_ETSEC_MacAddr" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="662" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="662" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="599" name="kcg_use_TS_LIBBSP_PLDMEG_IfCpuStatus">
+          <function id="600" name="kcg_comp_TS_LIBBSP_PLDMEG_IfCpuStatus" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="670" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="670" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="603" name="kcg_use_TS_LIBBSP_PLDCMP_ErrorStatus">
+          <function id="604" name="kcg_comp_TS_LIBBSP_PLDCMP_ErrorStatus" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="836" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="836" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="607" name="kcg_use_TS_LIBBSP_ETR_ReadInfos">
+          <function id="608" name="kcg_comp_TS_LIBBSP_ETR_ReadInfos" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="677" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="677" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="611" name="kcg_use_TS_LIBBSP_SHM_CompStatus">
+          <function id="612" name="kcg_comp_TS_LIBBSP_SHM_CompStatus" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="665" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="665" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="615" name="kcg_use_TS_LIBBSP_PSUM_AdcErrorFlags">
+          <function id="616" name="kcg_comp_TS_LIBBSP_PSUM_AdcErrorFlags" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="829" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="829" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="619" name="kcg_use_TS_LIBBSP_PSUM_Conf">
+          <function id="620" name="kcg_comp_TS_LIBBSP_PSUM_Conf" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="708" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="708" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="623" name="kcg_use_TS_LIBBSP_ETSEC_ConfHostMac">
+          <function id="624" name="kcg_comp_TS_LIBBSP_ETSEC_ConfHostMac" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="660" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="660" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="627" name="kcg_use_TS_LIBBSP_SHM_BoardStatus">
+          <function id="628" name="kcg_comp_TS_LIBBSP_SHM_BoardStatus" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="801" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="801" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="631" name="kcg_use_TS_LIBBSP_IMU_InertialData">
+          <function id="632" name="kcg_comp_TS_LIBBSP_IMU_InertialData" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="681" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="681" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="635" name="kcg_use_TS_LIBBSP_IMU_InstrumIMUData">
+          <function id="636" name="kcg_comp_TS_LIBBSP_IMU_InstrumIMUData" returnType="1199">
+            <parameter id="637" name="kcg_c1" type="714" pointer="true"/>
+            <parameter id="638" name="kcg_c2" type="714" pointer="true"/>
+          </function>
+        </ifdef>
+        <macro id="639" name="kcg_copy_TS_LIBBSP_IMU_FloatTab"/>
+        <macro id="640" name="kcg_copy_TS_LIBBSP_IMU_AdditionalDataReadBufferOut"/>
+        <macro id="641" name="kcg_copy_TS_LIBBSP_IMU_WriteAddrBuffer2"/>
+        <macro id="642" name="kcg_copy_TS_LIBBSP_IMU_WriteDataBuffer"/>
+        <macro id="643" name="kcg_copy_TA_LIBBSP_UART_RxBuffer"/>
+        <macro id="644" name="kcg_copy_TS_LIBBSP_IMU_Vect3"/>
+        <macro id="645" name="kcg_copy_TS_LIBBSP_IMU_Vect9"/>
+        <macro id="646" name="kcg_copy_TS_LIBBSP_IMU_AdditionalDataWriteBuffer"/>
+        <macro id="647" name="kcg_copy_TS_LIBBSP_A429_Buffer"/>
+        <macro id="648" name="kcg_copy_TS_LIBBSP_ETSEC_EthBuffer"/>
+        <macro id="649" name="kcg_copy_TS_LIBBSP_ETSEC_MacAddr"/>
+        <macro id="650" name="kcg_copy_TS_LIBBSP_PLDMEG_IfCpuStatus"/>
+        <macro id="651" name="kcg_copy_TS_LIBBSP_PLDCMP_ErrorStatus"/>
+        <macro id="652" name="kcg_copy_TS_LIBBSP_ETR_ReadInfos"/>
+        <macro id="653" name="kcg_copy_TS_LIBBSP_SHM_CompStatus"/>
+        <macro id="654" name="kcg_copy_TS_LIBBSP_PSUM_AdcErrorFlags"/>
+        <macro id="655" name="kcg_copy_TS_LIBBSP_PSUM_Conf"/>
+        <macro id="656" name="kcg_copy_TS_LIBBSP_ETSEC_ConfHostMac"/>
+        <macro id="657" name="kcg_copy_TS_LIBBSP_SHM_BoardStatus"/>
+        <macro id="658" name="kcg_copy_TS_LIBBSP_IMU_InertialData"/>
+        <macro id="659" name="kcg_copy_TS_LIBBSP_IMU_InstrumIMUData"/>
+        <struct id="660" name="TS_LIBBSP_ETSEC_ConfHostMac" tagName="kcg_tag_TS_LIBBSP_ETSEC_ConfHostMac">
+          <field id="661" name="mac_addr" type="662" pointer="false"/>
+        </struct>
+        <array id="662" name="TS_LIBBSP_ETSEC_MacAddr" baseType="1192" size="6"/>
+        <array id="663" name="TS_LIBBSP_ETSEC_EthBuffer" baseType="1192" size="1518"/>
+        <array id="664" name="TA_LIBBSP_UART_RxBuffer" baseType="1192" size="2048"/>
+        <struct id="665" name="TS_LIBBSP_SHM_CompStatus" tagName="kcg_tag_TS_LIBBSP_SHM_CompStatus">
+          <field id="666" name="wd_failure_cnt" type="1192" pointer="false"/>
+          <field id="667" name="sw_reset_request_cnt" type="1192" pointer="false"/>
+          <field id="668" name="hw_reset_request_cnt" type="1192" pointer="false"/>
+          <field id="669" name="critical_uvd_cnt" type="1192" pointer="false"/>
+        </struct>
+        <struct id="670" name="TS_LIBBSP_PLDMEG_IfCpuStatus" tagName="kcg_tag_TS_LIBBSP_PLDMEG_IfCpuStatus">
+          <field id="671" name="parity_error" type="1199" pointer="false"/>
+          <field id="672" name="addr_error" type="1199" pointer="false"/>
+          <field id="673" name="acc_error" type="1199" pointer="false"/>
+          <field id="674" name="timeout_error" type="1199" pointer="false"/>
+          <field id="675" name="overload_error" type="1199" pointer="false"/>
+          <field id="676" name="error_counter" type="1192" pointer="false"/>
+        </struct>
+        <struct id="677" name="TS_LIBBSP_ETR_ReadInfos" tagName="kcg_tag_TS_LIBBSP_ETR_ReadInfos">
+          <field id="678" name="v_AlarmRegdata" type="1194" pointer="false"/>
+          <field id="679" name="v_ETregdata" type="1194" pointer="false"/>
+          <field id="680" name="v_EventCountdata" type="1193" pointer="false"/>
+        </struct>
+        <struct id="681" name="TS_LIBBSP_IMU_InertialData" tagName="kcg_tag_TS_LIBBSP_IMU_InertialData">
+          <field id="682" name="dTheta" type="798" pointer="false"/>
+          <field id="683" name="dV" type="798" pointer="false"/>
+          <field id="684" name="Cp" type="798" pointer="false"/>
+          <field id="685" name="TheteE" type="798" pointer="false"/>
+          <field id="686" name="ErrFEP" type="798" pointer="false"/>
+          <field id="687" name="IndFEP" type="798" pointer="false"/>
+          <field id="688" name="synth_umi" type="1194" pointer="false"/>
+          <field id="689" name="cpt_tache_fNav" type="1194" pointer="false"/>
+          <field id="690" name="fs_filtA_BdL_fPilot_custUnit" type="798" pointer="false"/>
+          <field id="691" name="fs_filtB_BdL_fPilot_custUnit" type="798" pointer="false"/>
+          <field id="692" name="pqr_filtE_fPilot_custUnit" type="798" pointer="false"/>
+          <field id="693" name="pqr_filtF_fPilot_custUnit" type="798" pointer="false"/>
+          <field id="694" name="accAng_filtE_fPilot_custUnit" type="798" pointer="false"/>
+          <field id="695" name="accAng_filtF_fPilot_custUnit" type="798" pointer="false"/>
+          <field id="696" name="Tacc_filtre" type="798" pointer="false"/>
+          <field id="697" name="Tida_filtre" type="1197" pointer="false"/>
+          <field id="698" name="Tacc_sature" type="798" pointer="false"/>
+          <field id="699" name="Cpulse_sature" type="798" pointer="false"/>
+          <field id="700" name="Tida_sature" type="1197" pointer="false"/>
+          <field id="701" name="AccStatus" type="1194" pointer="false"/>
+          <field id="702" name="HrgStatus1" type="1194" pointer="false"/>
+          <field id="703" name="HrgStatus2" type="1194" pointer="false"/>
+          <field id="704" name="TicStatus1" type="1194" pointer="false"/>
+          <field id="705" name="TicStatus2" type="1194" pointer="false"/>
+          <field id="706" name="TmgyrData" type="797" pointer="false"/>
+        </struct>
+        <array id="707" name="TS_LIBBSP_A429_Buffer" baseType="1194" size="64"/>
+        <struct id="708" name="TS_LIBBSP_PSUM_Conf" tagName="kcg_tag_TS_LIBBSP_PSUM_Conf">
+          <field id="709" name="v_address" type="1194" pointer="false"/>
+          <field id="710" name="v_data" type="1194" pointer="false"/>
+        </struct>
+        <array id="711" name="TS_LIBBSP_IMU_WriteAddrBuffer2" baseType="1194" size="33"/>
+        <array id="712" name="TS_LIBBSP_IMU_AdditionalDataWriteBuffer" baseType="1198" size="6"/>
+        <array id="713" name="TS_LIBBSP_IMU_WriteDataBuffer" baseType="1198" size="32"/>
+        <struct id="714" name="TS_LIBBSP_IMU_InstrumIMUData" tagName="kcg_tag_TS_LIBBSP_IMU_InstrumIMUData">
+          <field id="715" name="v_lambda_ext_0" type="1197" pointer="false"/>
+          <field id="716" name="v_lambda_ext_1" type="1197" pointer="false"/>
+          <field id="717" name="v_lambda_ext_2" type="1197" pointer="false"/>
+          <field id="718" name="v_cfPilot_A1_0" type="1197" pointer="false"/>
+          <field id="719" name="v_cfPilot_A1_1" type="1197" pointer="false"/>
+          <field id="720" name="v_cfPilot_A1_2" type="1197" pointer="false"/>
+          <field id="721" name="v_cfPilot_A1_3" type="1197" pointer="false"/>
+          <field id="722" name="v_cfPilot_A1_4" type="1197" pointer="false"/>
+          <field id="723" name="v_cfPilot_A2_1" type="1197" pointer="false"/>
+          <field id="724" name="v_cfPilot_A2_2" type="1197" pointer="false"/>
+          <field id="725" name="v_cfPilot_A2_3" type="1197" pointer="false"/>
+          <field id="726" name="v_cfPilot_A2_4" type="1197" pointer="false"/>
+          <field id="727" name="v_cfPilot_A3_1" type="1197" pointer="false"/>
+          <field id="728" name="v_cfPilot_A3_0" type="1197" pointer="false"/>
+          <field id="729" name="v_cfPilot_A3_2" type="1197" pointer="false"/>
+          <field id="730" name="v_cfPilot_A3_3" type="1197" pointer="false"/>
+          <field id="731" name="v_cfPilot_A3_4" type="1197" pointer="false"/>
+          <field id="732" name="v_cfPilot_A4_0" type="1197" pointer="false"/>
+          <field id="733" name="v_cfPilot_A4_1" type="1197" pointer="false"/>
+          <field id="734" name="v_cfPilot_A4_2" type="1197" pointer="false"/>
+          <field id="735" name="v_cfPilot_A4_3" type="1197" pointer="false"/>
+          <field id="736" name="v_cfPilot_A4_4" type="1197" pointer="false"/>
+          <field id="737" name="v_cfPilot_B1_0" type="1197" pointer="false"/>
+          <field id="738" name="v_cfPilot_B1_1" type="1197" pointer="false"/>
+          <field id="739" name="v_cfPilot_B1_2" type="1197" pointer="false"/>
+          <field id="740" name="v_cfPilot_B1_3" type="1197" pointer="false"/>
+          <field id="741" name="v_cfPilot_B1_4" type="1197" pointer="false"/>
+          <field id="742" name="v_cfPilot_B2_0" type="1197" pointer="false"/>
+          <field id="743" name="v_cfPilot_B2_1" type="1197" pointer="false"/>
+          <field id="744" name="v_cfPilot_B2_2" type="1197" pointer="false"/>
+          <field id="745" name="v_cfPilot_B2_3" type="1197" pointer="false"/>
+          <field id="746" name="v_cfPilot_B2_4" type="1197" pointer="false"/>
+          <field id="747" name="v_cfPilot_B3_0" type="1197" pointer="false"/>
+          <field id="748" name="v_cfPilot_B3_1" type="1197" pointer="false"/>
+          <field id="749" name="v_cfPilot_B3_2" type="1197" pointer="false"/>
+          <field id="750" name="v_cfPilot_B3_3" type="1197" pointer="false"/>
+          <field id="751" name="v_cfPilot_B3_4" type="1197" pointer="false"/>
+          <field id="752" name="v_cfPilot_B4_0" type="1197" pointer="false"/>
+          <field id="753" name="v_cfPilot_B4_1" type="1197" pointer="false"/>
+          <field id="754" name="v_cfPilot_B4_2" type="1197" pointer="false"/>
+          <field id="755" name="v_cfPilot_B4_3" type="1197" pointer="false"/>
+          <field id="756" name="v_cfPilot_B4_4" type="1197" pointer="false"/>
+          <field id="757" name="v_cfPilot_E1_0" type="1197" pointer="false"/>
+          <field id="758" name="v_cfPilot_E1_1" type="1197" pointer="false"/>
+          <field id="759" name="v_cfPilot_E1_2" type="1197" pointer="false"/>
+          <field id="760" name="v_cfPilot_E1_3" type="1197" pointer="false"/>
+          <field id="761" name="v_cfPilot_E1_4" type="1197" pointer="false"/>
+          <field id="762" name="v_cfPilot_E2_0" type="1197" pointer="false"/>
+          <field id="763" name="v_cfPilot_E2_1" type="1197" pointer="false"/>
+          <field id="764" name="v_cfPilot_E2_2" type="1197" pointer="false"/>
+          <field id="765" name="v_cfPilot_E2_3" type="1197" pointer="false"/>
+          <field id="766" name="v_cfPilot_E2_4" type="1197" pointer="false"/>
+          <field id="767" name="v_cfPilot_E3_0" type="1197" pointer="false"/>
+          <field id="768" name="v_cfPilot_E3_1" type="1197" pointer="false"/>
+          <field id="769" name="v_cfPilot_E3_2" type="1197" pointer="false"/>
+          <field id="770" name="v_cfPilot_E3_3" type="1197" pointer="false"/>
+          <field id="771" name="v_cfPilot_E3_4" type="1197" pointer="false"/>
+          <field id="772" name="v_cfPilot_E4_0" type="1197" pointer="false"/>
+          <field id="773" name="v_cfPilot_E4_1" type="1197" pointer="false"/>
+          <field id="774" name="v_cfPilot_E4_2" type="1197" pointer="false"/>
+          <field id="775" name="v_cfPilot_E4_3" type="1197" pointer="false"/>
+          <field id="776" name="v_cfPilot_E4_4" type="1197" pointer="false"/>
+          <field id="777" name="v_cfPilot_F1_0" type="1197" pointer="false"/>
+          <field id="778" name="v_cfPilot_F1_1" type="1197" pointer="false"/>
+          <field id="779" name="v_cfPilot_F1_2" type="1197" pointer="false"/>
+          <field id="780" name="v_cfPilot_F1_3" type="1197" pointer="false"/>
+          <field id="781" name="v_cfPilot_F1_4" type="1197" pointer="false"/>
+          <field id="782" name="v_cfPilot_F2_0" type="1197" pointer="false"/>
+          <field id="783" name="v_cfPilot_F2_1" type="1197" pointer="false"/>
+          <field id="784" name="v_cfPilot_F2_2" type="1197" pointer="false"/>
+          <field id="785" name="v_cfPilot_F2_3" type="1197" pointer="false"/>
+          <field id="786" name="v_cfPilot_F2_4" type="1197" pointer="false"/>
+          <field id="787" name="v_cfPilot_F3_0" type="1197" pointer="false"/>
+          <field id="788" name="v_cfPilot_F3_1" type="1197" pointer="false"/>
+          <field id="789" name="v_cfPilot_F3_2" type="1197" pointer="false"/>
+          <field id="790" name="v_cfPilot_F3_3" type="1197" pointer="false"/>
+          <field id="791" name="v_cfPilot_F3_4" type="1197" pointer="false"/>
+          <field id="792" name="v_cfPilot_F4_0" type="1197" pointer="false"/>
+          <field id="793" name="v_cfPilot_F4_1" type="1197" pointer="false"/>
+          <field id="794" name="v_cfPilot_F4_2" type="1197" pointer="false"/>
+          <field id="795" name="v_cfPilot_F4_3" type="1197" pointer="false"/>
+          <field id="796" name="v_cfPilot_F4_4" type="1197" pointer="false"/>
+        </struct>
+        <array id="797" name="TS_LIBBSP_IMU_Vect9" baseType="1197" size="9"/>
+        <array id="798" name="TS_LIBBSP_IMU_Vect3" baseType="1197" size="3"/>
+        <array id="799" name="TS_LIBBSP_IMU_AdditionalDataReadBufferOut" baseType="1197" size="5"/>
+        <array id="800" name="TS_LIBBSP_IMU_FloatTab" baseType="1197" size="13"/>
+        <struct id="801" name="TS_LIBBSP_SHM_BoardStatus" tagName="kcg_tag_TS_LIBBSP_SHM_BoardStatus">
+          <field id="802" name="pwr_good_28v1" type="1199" pointer="false"/>
+          <field id="803" name="pwr_good_28v2" type="1199" pointer="false"/>
+          <field id="804" name="ddr_vtt_uv" type="1199" pointer="false"/>
+          <field id="805" name="ddr_vtt_ov" type="1199" pointer="false"/>
+          <field id="806" name="vdd_uv" type="1199" pointer="false"/>
+          <field id="807" name="vdd_ov" type="1199" pointer="false"/>
+          <field id="808" name="cpcm_1v5_uv" type="1199" pointer="false"/>
+          <field id="809" name="cpcm_1v5_ov" type="1199" pointer="false"/>
+          <field id="810" name="vio_3v3_uv" type="1199" pointer="false"/>
+          <field id="811" name="vio_3v3_ov" type="1199" pointer="false"/>
+          <field id="812" name="cpcm_1v8_uv" type="1199" pointer="false"/>
+          <field id="813" name="cpcm_1v8_ov" type="1199" pointer="false"/>
+          <field id="814" name="mezz_pgood" type="1199" pointer="false"/>
+          <field id="815" name="mezz_fail" type="1199" pointer="false"/>
+          <field id="816" name="ready_p1" type="1199" pointer="false"/>
+          <field id="817" name="trig_out" type="1199" pointer="false"/>
+          <field id="818" name="pgood_p2v5" type="1199" pointer="false"/>
+          <field id="819" name="pgood_1v2meg" type="1199" pointer="false"/>
+          <field id="820" name="meg_fail" type="1199" pointer="false"/>
+          <field id="821" name="meg_pll_lock" type="1199" pointer="false"/>
+          <field id="822" name="therm" type="1199" pointer="false"/>
+          <field id="823" name="therm2" type="1199" pointer="false"/>
+          <field id="824" name="lvdd_type" type="1199" pointer="false"/>
+          <field id="825" name="tank_fail" type="1199" pointer="false"/>
+          <field id="826" name="pgood_vant" type="1199" pointer="false"/>
+          <field id="827" name="pgood_vrm" type="1199" pointer="false"/>
+          <field id="828" name="inhibit_wdg" type="1199" pointer="false"/>
+        </struct>
+        <struct id="829" name="TS_LIBBSP_PSUM_AdcErrorFlags" tagName="kcg_tag_TS_LIBBSP_PSUM_AdcErrorFlags">
+          <field id="830" name="PresFail_or_Vin6Failure" type="1199" pointer="false"/>
+          <field id="831" name="OverVoltage" type="1199" pointer="false"/>
+          <field id="832" name="UnderVoltage" type="1199" pointer="false"/>
+          <field id="833" name="ReferenceVoltageFailure" type="1199" pointer="false"/>
+          <field id="834" name="Vin7NotInRange" type="1199" pointer="false"/>
+          <field id="835" name="GeneralFailure" type="1199" pointer="false"/>
+        </struct>
+        <struct id="836" name="TS_LIBBSP_PLDCMP_ErrorStatus" tagName="kcg_tag_TS_LIBBSP_PLDCMP_ErrorStatus">
+          <field id="837" name="nvm_error" type="1199" pointer="false"/>
+          <field id="838" name="parity_error" type="1199" pointer="false"/>
+          <field id="839" name="addr_error" type="1199" pointer="false"/>
+          <field id="840" name="acc_error" type="1199" pointer="false"/>
+          <field id="841" name="timeout_error" type="1199" pointer="false"/>
+          <field id="842" name="overload_error" type="1199" pointer="false"/>
+          <field id="843" name="wdg_comp_rst" type="1199" pointer="false"/>
+        </struct>
+        <enum id="844" name="TE_LIBBSP_TMP_Number" tagName="kcg_tag_TE_LIBBSP_TMP_Number">
+          <value id="845" name="E_LIBBSP_TMP_TMP1"/>
+          <value id="846" name="E_LIBBSP_TMP_TMP2"/>
+          <value id="847" name="E_LIBBSP_TMP_TMP3"/>
+        </enum>
+        <enum id="848" name="TE_LIBBSP_TEMP_ReadRegAddr" tagName="kcg_tag_TE_LIBBSP_TEMP_ReadRegAddr">
+          <value id="849" name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_HIGH_BYTE"/>
+          <value id="850" name="E_LIBBSP_TEMP_READ_LOCAL_REMOTE_HIGH_BYTE"/>
+          <value id="851" name="E_LIBBSP_TEMP_READ_STATUS_REGISTER"/>
+          <value id="852" name="E_LIBBSP_TEMP_READ_CONFIGURATION_REGISTER"/>
+          <value id="853" name="E_LIBBSP_TEMP_READ_CONVERSION_RATE_REGISTER"/>
+          <value id="854" name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_HIGH_LIMIT"/>
+          <value id="855" name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_LOW_LIMIT"/>
+          <value id="856" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_HIGH_LIMIT_HIGH_BITE"/>
+          <value id="857" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_LOW_LIMIT_HIGH_BITE"/>
+          <value id="858" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_LOW_BITE"/>
+          <value id="859" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_OFFSET_HIGH_BITE"/>
+          <value id="860" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_OFFSET_LOW_BITE"/>
+          <value id="861" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_HIGH_LIMIT_LOW_BITE"/>
+          <value id="862" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_LOW_LIMIT_LOW_BITE"/>
+          <value id="863" name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_LOW_BYTE"/>
+          <value id="864" name="E_LIBBSP_TEMP_READ_REMOTE_TEMPERATURE_THERM_LIMIT"/>
+          <value id="865" name="E_LIBBSP_TEMP_READ_LOCAL_TEMPERATURE_THERM_LIMIT"/>
+          <value id="866" name="E_LIBBSP_TEMP_READ_THERM_HISTERESYS"/>
+          <value id="867" name="E_LIBBSP_TEMP_READ_CONSECUTIVE_ALTER"/>
+          <value id="868" name="E_LIBBSP_TEMP_READ_FACTOR_CORECTION"/>
+          <value id="869" name="E_LIBBSP_TEMP_READ_DIGITAL_FILTER_CONTROL"/>
+          <value id="870" name="E_LIBBSP_TEMP_READ_DIGITAL_MANUFATURER_IR"/>
+        </enum>
+        <enum id="871" name="TE_LIBBSP_SHM_Mode" tagName="kcg_tag_TE_LIBBSP_SHM_Mode">
+          <value id="872" name="E_LIBBSP_SHM_POWER_UP_STATE"/>
+          <value id="873" name="E_LIBBSP_SHM_INITIALIZATION_STATE"/>
+          <value id="874" name="E_LIBBSP_SHM_IDLE_STATE"/>
+          <value id="875" name="E_LIBBSP_SHM_OPERATIONNAL_UP_STATE"/>
+          <value id="876" name="E_LIBBSP_SHM_DEGRADED_STATE"/>
+          <value id="877" name="E_LIBBSP_SHM_FAILURE_STATE"/>
+        </enum>
+        <enum id="878" name="TE_LIBBSP_PSUM_Adc" tagName="kcg_tag_TE_LIBBSP_PSUM_Adc">
+          <value id="879" name="E_LIBBSP_PSUM_ADC_1"/>
+          <value id="880" name="E_LIBBSP_PSUM_ADC_2"/>
+          <value id="881" name="E_LIBBSP_PSUM_ADC_3"/>
+          <value id="882" name="E_LIBBSP_PSUM_ADC_4"/>
+          <value id="883" name="E_LIBBSP_PSUM_ADC_5"/>
+          <value id="884" name="E_LIBBSP_PSUM_ADC_6"/>
+          <value id="885" name="E_LIBBSP_PSUM_ADC_7"/>
+          <value id="886" name="E_LIBBSP_PSUM_NB_ADC"/>
+        </enum>
+        <enum id="887" name="TE_LIBBSP_SHM_Register" tagName="kcg_tag_TE_LIBBSP_SHM_Register">
+          <value id="888" name="E_LIBBSP_SHM_COMP_STATUS"/>
+          <value id="889" name="E_LIBBSP_SHM_BOARD_STATUS"/>
+          <value id="890" name="E_LIBBSP_SHM_NB_REGISTERS"/>
+        </enum>
+        <enum id="891" name="TE_LIBBSP_MEGSCR_Register" tagName="kcg_tag_TE_LIBBSP_MEGSCR_Register">
+          <value id="892" name="E_LIBBSP_MEGSCR_SCRATCH_0"/>
+          <value id="893" name="E_LIBBSP_MEGSCR_SCRATCH_1"/>
+          <value id="894" name="E_LIBBSP_MEGSCR_SCRATCH_2"/>
+          <value id="895" name="E_LIBBSP_MEGSCR_SCRATCH_3"/>
+          <value id="896" name="E_LIBBSP_MEGSCR_SCRATCH_4"/>
+          <value id="897" name="E_LIBBSP_MEGSCR_SCRATCH_5"/>
+          <value id="898" name="E_LIBBSP_MEGSCR_SCRATCH_6"/>
+          <value id="899" name="E_LIBBSP_MEGSCR_SCRATCH_7"/>
+          <value id="900" name="E_LIBBSP_MEGSCR_SCRATCH_8"/>
+          <value id="901" name="E_LIBBSP_MEGSCR_SCRATCH_9"/>
+          <value id="902" name="E_LIBBSP_MEGSCR_SCRATCH_10"/>
+          <value id="903" name="E_LIBBSP_MEGSCR_SCRATCH_11"/>
+          <value id="904" name="E_LIBBSP_MEGSCR_SCRATCH_12"/>
+          <value id="905" name="E_LIBBSP_MEGSCR_SCRATCH_13"/>
+          <value id="906" name="E_LIBBSP_MEGSCR_SCRATCH_14"/>
+          <value id="907" name="E_LIBBSP_MEGSCR_SCRATCH_15"/>
+          <value id="908" name="E_LIBBSP_MEGSCR_SCRATCH_16"/>
+          <value id="909" name="E_LIBBSP_MEGSCR_SCRATCH_17"/>
+          <value id="910" name="E_LIBBSP_MEGSCR_SCRATCH_18"/>
+          <value id="911" name="E_LIBBSP_MEGSCR_SCRATCH_19"/>
+          <value id="912" name="E_LIBBSP_MEGSCR_SCRATCH_20"/>
+          <value id="913" name="E_LIBBSP_MEGSCR_SCRATCH_21"/>
+          <value id="914" name="E_LIBBSP_MEGSCR_SCRATCH_22"/>
+          <value id="915" name="E_LIBBSP_MEGSCR_SCRATCH_23"/>
+          <value id="916" name="E_LIBBSP_MEGSCR_SCRATCH_24"/>
+          <value id="917" name="E_LIBBSP_MEGSCR_SCRATCH_25"/>
+          <value id="918" name="E_LIBBSP_MEGSCR_SCRATCH_26"/>
+          <value id="919" name="E_LIBBSP_MEGSCR_SCRATCH_27"/>
+          <value id="920" name="E_LIBBSP_MEGSCR_SCRATCH_28"/>
+          <value id="921" name="E_LIBBSP_MEGSCR_SCRATCH_29"/>
+          <value id="922" name="E_LIBBSP_MEGSCR_SCRATCH_30"/>
+          <value id="923" name="E_LIBBSP_MEGSCR_SCRATCH_31"/>
+        </enum>
+        <enum id="924" name="TE_LIBBSP_I2C_ErrorCode" tagName="kcg_tag_TE_LIBBSP_I2C_ErrorCode">
+          <value id="925" name="E_LIBBSP_I2C_COMMAND_TAKEN"/>
+          <value id="926" name="E_LIBBSP_I2C_COMMAND_NOT_TAKEN"/>
+          <value id="927" name="E_LIBBSP_I2C_COMMAND_ERROR"/>
+          <value id="928" name="E_LIBBSP_I2C_WRITE_OVERSIZED"/>
+          <value id="929" name="E_LIBBSP_I2C_READ_OVERSIZED"/>
+        </enum>
+        <enum id="930" name="TE_LIBBSP_I2C_CurrentStep" tagName="kcg_tag_TE_LIBBSP_I2C_CurrentStep">
+          <value id="931" name="E_LIBBSP_I2C_IDLE"/>
+          <value id="932" name="E_LIBBSP_I2C_WAIT_FOR_SLV_CMD_W_ACK"/>
+          <value id="933" name="E_LIBBSP_I2C_WAIT_FOR_SLV_W_ACK"/>
+          <value id="934" name="E_LIBBSP_I2C_WAIT_FOR_SLV_CMD_R_ACK"/>
+          <value id="935" name="E_LIBBSP_I2C_WAIT_FOR_SLV_R_DATA"/>
+          <value id="936" name="E_LIBBSP_I2C_DATA_WRITTEN"/>
+          <value id="937" name="E_LIBBSP_I2C_DATA_READ"/>
+        </enum>
+        <enum id="938" name="TE_LIBBSP_I2C_Code" tagName="kcg_tag_TE_LIBBSP_I2C_Code">
+          <value id="939" name="E_LIBBSP_I2C_OK"/>
+          <value id="940" name="E_LIBBSP_I2C_INVALID_ID"/>
+          <value id="941" name="E_LIBBSP_I2C_ARBITRATION_LOST"/>
+          <value id="942" name="E_LIBBSP_I2C_NO_ACK"/>
+          <value id="943" name="E_LIBBSP_I2C_BUS_BUSY"/>
+          <value id="944" name="E_LIBBSP_I2C_TIMEOUT"/>
+          <value id="945" name="E_LIBBSP_I2C_CLOSED"/>
+        </enum>
+        <enum id="946" name="TE_LIBBSP_DISC_Expander" tagName="kcg_tag_TE_LIBBSP_DISC_Expander">
+          <value id="947" name="E_LIBBSP_DISC_EXPANDER_1"/>
+          <value id="948" name="E_LIBBSP_DISC_EXPANDER_2"/>
+          <value id="949" name="E_LIBBSP_DISC_NB_EXPANDER"/>
+        </enum>
+        <enum id="950" name="TE_LIBBSP_CMPSCR_Register" tagName="kcg_tag_TE_LIBBSP_CMPSCR_Register">
+          <value id="951" name="E_LIBBSP_CMPSCR_SCRATCH_0"/>
+          <value id="952" name="E_LIBBSP_CMPSCR_SCRATCH_1"/>
+          <value id="953" name="E_LIBBSP_CMPSCR_SCRATCH_2"/>
+          <value id="954" name="E_LIBBSP_CMPSCR_SCRATCH_3"/>
+          <value id="955" name="E_LIBBSP_CMPSCR_SCRATCH_4"/>
+          <value id="956" name="E_LIBBSP_CMPSCR_SCRATCH_5"/>
+          <value id="957" name="E_LIBBSP_CMPSCR_SCRATCH_6"/>
+          <value id="958" name="E_LIBBSP_CMPSCR_SCRATCH_7"/>
+          <value id="959" name="E_LIBBSP_CMPSCR_SCRATCH_8"/>
+          <value id="960" name="E_LIBBSP_CMPSCR_SCRATCH_9"/>
+          <value id="961" name="E_LIBBSP_CMPSCR_SCRATCH_10"/>
+          <value id="962" name="E_LIBBSP_CMPSCR_SCRATCH_11"/>
+          <value id="963" name="E_LIBBSP_CMPSCR_SCRATCH_12"/>
+          <value id="964" name="E_LIBBSP_CMPSCR_SCRATCH_13"/>
+          <value id="965" name="E_LIBBSP_CMPSCR_SCRATCH_14"/>
+          <value id="966" name="E_LIBBSP_CMPSCR_SCRATCH_15"/>
+          <value id="967" name="E_LIBBSP_CMPSCR_SCRATCH_16"/>
+          <value id="968" name="E_LIBBSP_CMPSCR_SCRATCH_17"/>
+          <value id="969" name="E_LIBBSP_CMPSCR_SCRATCH_18"/>
+          <value id="970" name="E_LIBBSP_CMPSCR_SCRATCH_19"/>
+          <value id="971" name="E_LIBBSP_CMPSCR_SCRATCH_20"/>
+          <value id="972" name="E_LIBBSP_CMPSCR_SCRATCH_21"/>
+          <value id="973" name="E_LIBBSP_CMPSCR_SCRATCH_22"/>
+          <value id="974" name="E_LIBBSP_CMPSCR_SCRATCH_23"/>
+          <value id="975" name="E_LIBBSP_CMPSCR_SCRATCH_24"/>
+          <value id="976" name="E_LIBBSP_CMPSCR_SCRATCH_25"/>
+          <value id="977" name="E_LIBBSP_CMPSCR_SCRATCH_26"/>
+          <value id="978" name="E_LIBBSP_CMPSCR_SCRATCH_27"/>
+          <value id="979" name="E_LIBBSP_CMPSCR_SCRATCH_28"/>
+          <value id="980" name="E_LIBBSP_CMPSCR_SCRATCH_29"/>
+          <value id="981" name="E_LIBBSP_CMPSCR_SCRATCH_30"/>
+          <value id="982" name="E_LIBBSP_CMPSCR_SCRATCH_31"/>
+        </enum>
+        <enum id="983" name="TE_LIBBSP_CMN_Status" tagName="kcg_tag_TE_LIBBSP_CMN_Status">
+          <value id="984" name="E_LIBBSP_CMN_TIME_IS_REACHED"/>
+          <value id="985" name="E_LIBBSP_CMN_TIME_IS_NOT_REACHED"/>
+        </enum>
+        <enum id="986" name="TE_LIBBSP_A429_TxLine" tagName="kcg_tag_TE_LIBBSP_A429_TxLine">
+          <value id="987" name="E_LIBBSP_A429_TX_1"/>
+          <value id="988" name="E_LIBBSP_A429_TX_2"/>
+          <value id="989" name="E_LIBBSP_A429_TX_3"/>
+          <value id="990" name="E_LIBBSP_A429_TX_4"/>
+          <value id="991" name="E_LIBBSP_A429_TX_5"/>
+          <value id="992" name="E_LIBBSP_A429_TX_6"/>
+          <value id="993" name="E_LIBBSP_A429_TX_7"/>
+          <value id="994" name="E_LIBBSP_A429_TX_8"/>
+        </enum>
+        <enum id="995" name="TE_LIBBSP_A429_TxErrorCode" tagName="kcg_tag_TE_LIBBSP_A429_TxErrorCode">
+          <value id="996" name="E_LIBBSP_A429_TX_OK"/>
+          <value id="997" name="E_LIBBSP_A429_TX_INVALID_ID"/>
+          <value id="998" name="E_LIBBSP_A429_TX_OVERFLOW_CMD"/>
+          <value id="999" name="E_LIBBSP_A429_TX_OVERFLOW_FIFO"/>
+        </enum>
+        <enum id="1000" name="TE_LIBBSP_GPIO_DiscName" tagName="kcg_tag_TE_LIBBSP_GPIO_DiscName">
+          <value id="1001" name="E_LIBBSP_GPIO_MEGA_GPIO2"/>
+          <value id="1002" name="E_LIBBSP_GPIO_MEGA_GPIO1"/>
+          <value id="1003" name="E_LIBBSP_GPIO_MEGA_GPIO0"/>
+          <value id="1004" name="E_LIBBSP_GPIO_COMP_GPIO2"/>
+          <value id="1005" name="E_LIBBSP_GPIO_COMP_GPIO1"/>
+          <value id="1006" name="E_LIBBSP_GPIO_COMP_GPIO0"/>
+          <value id="1007" name="E_LIBBSP_GPIO_SDHC_W_PROTECT"/>
+          <value id="1008" name="E_LIBBSP_GPIO_SDHC_CARD_DETECT"/>
+          <value id="1009" name="E_LIBBSP_GPIO_GREEN_LED"/>
+          <value id="1010" name="E_LIBBSP_GPIO_YELLOW_LED"/>
+          <value id="1011" name="E_LIBBSP_GPIO_RED_LED"/>
+          <value id="1012" name="E_LIBBSP_GPIO_IRQ11"/>
+          <value id="1013" name="E_LIBBSP_GPIO_DSI_SG_LABO"/>
+          <value id="1014" name="E_LIBBSP_GPIO_DSI_DL"/>
+          <value id="1015" name="E_LIBBSP_GPIO_IRQ8"/>
+          <value id="1016" name="E_LIBBSP_GPIO_MEGA_MEZA_SPI_SEL"/>
+        </enum>
+        <enum id="1017" name="TE_LIBBSP_ECCMEM_SeuMbuEn" tagName="kcg_tag_TE_LIBBSP_ECCMEM_SeuMbuEn">
+          <value id="1018" name="E_LIBBSP_ECCMEM_MBU_ONLY_EN"/>
+          <value id="1019" name="E_LIBBSP_ECCMEM_SEU_ONLY_EN"/>
+          <value id="1020" name="E_LIBBSP_ECCMEM_MBU_SEU_EN"/>
+          <value id="1021" name="E_LIBBSP_ECCMEM_MBU_SEU_DIS"/>
+        </enum>
+        <enum id="1022" name="TE_LIBBSP_ECCMEM_SeuMbuIt" tagName="kcg_tag_TE_LIBBSP_ECCMEM_SeuMbuIt">
+          <value id="1023" name="E_LIBBSP_ECCMEM_MBU_ONLY_IT"/>
+          <value id="1024" name="E_LIBBSP_ECCMEM_SEU_ONLY_IT"/>
+          <value id="1025" name="E_LIBBSP_ECCMEM_MBU_SEU_IT"/>
+          <value id="1026" name="E_LIBBSP_ECCMEM_MBU_SEU_IT_DIS"/>
+        </enum>
+        <enum id="1027" name="TE_LIBBSP_ECCMEM_SeuStatus" tagName="kcg_tag_TE_LIBBSP_ECCMEM_SeuStatus">
+          <value id="1028" name="E_LIBBSP_ECCMEM_SEU_OK"/>
+          <value id="1029" name="E_LIBBSP_ECCMEM_SEU_WRONG_NB"/>
+          <value id="1030" name="E_LIBBSP_ECCMEM_SEU_THRESH_EXCEED"/>
+          <value id="1031" name="E_LIBBSP_ECCMEM_MBU_NOT_DETECTED"/>
+        </enum>
+        <enum id="1032" name="TE_LIBBSP_IMU_WriteAddr" tagName="kcg_tag_TE_LIBBSP_IMU_WriteAddr">
+          <value id="1033" name="E_LIBBSP_IMU_WRITE_ADDRESS"/>
+          <value id="1034" name="E_LIBBSP_IMU_NO_WRITE_ADDRESS"/>
+        </enum>
+        <enum id="1035" name="TE_LIBBSP_IMU_ProgStatus" tagName="kcg_tag_TE_LIBBSP_IMU_ProgStatus">
+          <value id="1036" name="E_LIBBSP_IMU_NB_DATA_OK"/>
+          <value id="1037" name="E_LIBBSP_IMU_NB_DATA_EXCEEDED"/>
+        </enum>
+        <enum id="1038" name="TE_LIBBSP_IMU_WriteEraseCmd" tagName="kcg_tag_TE_LIBBSP_IMU_WriteEraseCmd">
+          <value id="1039" name="E_LIBBSP_IMU_RESET_ALL_W_ADDR"/>
+          <value id="1040" name="E_LIBBSP_IMU_RESET_ADD_W_ADDR"/>
+        </enum>
+        <enum id="1041" name="TE_LIBBSP_ETSEC_NetworkStatus" tagName="kcg_tag_TE_LIBBSP_ETSEC_NetworkStatus">
+          <value id="1042" name="E_LIBBSP_ETSEC_OK"/>
+          <value id="1043" name="E_LIBBSP_ETSEC_KO"/>
+        </enum>
+        <enum id="1044" name="TE_LIBBSP_ETSEC_Network" tagName="kcg_tag_TE_LIBBSP_ETSEC_Network">
+          <value id="1045" name="E_LIBBSP_ETSEC_NETWORK_1"/>
+          <value id="1046" name="E_LIBBSP_ETSEC_NETWORK_2"/>
+          <value id="1047" name="E_LIBBSP_ETSEC_NETWORK_3"/>
+          <value id="1048" name="E_LIBBSP_ETSEC_NB_NETWORK"/>
+        </enum>
+        <enum id="1049" name="TE_LIBBSP_ETR_Ds1682State" tagName="kcg_tag_TE_LIBBSP_ETR_Ds1682State">
+          <value id="1050" name="E_LIBBSP_ETR_DS1682_CLOSED"/>
+          <value id="1051" name="E_LIBBSP_ETR_DS1682_OPEN"/>
+        </enum>
+        <enum id="1052" name="TE_LIBBSP_I2C_Bus" tagName="kcg_tag_TE_LIBBSP_I2C_Bus">
+          <value id="1053" name="E_LIBBSP_I2C_BUS_1"/>
+          <value id="1054" name="E_LIBBSP_I2C_BUS_2"/>
+          <value id="1055" name="E_LIBBSP_I2C_NB_I2C_BUS"/>
+        </enum>
+        <enum id="1056" name="TE_LIBBSP_ETSEC_NetConfigStart" tagName="kcg_tag_TE_LIBBSP_ETSEC_NetConfigStart">
+          <value id="1057" name="E_LIBBSP_ETSEC_START_NETWORK_TX"/>
+          <value id="1058" name="E_LIBBSP_ETSEC_START_NETWORK_RX"/>
+          <value id="1059" name="E_LIBBSP_ETSEC_START_NETWORK_RX_TX"/>
+        </enum>
+        <enum id="1060" name="TE_LIBBSP_ETSEC_FrameStatus" tagName="kcg_tag_TE_LIBBSP_ETSEC_FrameStatus">
+          <value id="1061" name="E_LIBBSP_ETSEC_NO_PHYSICAL_ERROR"/>
+          <value id="1062" name="E_LIBBSP_ETSEC_PHYSICAL_ERROR"/>
+          <value id="1063" name="E_LIBBSP_ETSEC_NO_FRAME_RECEIVED"/>
+          <value id="1064" name="E_LIBBSP_ETSEC_SOFTWARE_OVERRUN"/>
+        </enum>
+        <enum id="1065" name="TE_LIBBSP_ETSEC_NetConfigStop" tagName="kcg_tag_TE_LIBBSP_ETSEC_NetConfigStop">
+          <value id="1066" name="E_LIBBSP_ETSEC_STOP_NETWORK_TX"/>
+          <value id="1067" name="E_LIBBSP_ETSEC_STOP_NETWORK_RX"/>
+          <value id="1068" name="E_LIBBSP_ETSEC_STOP_NETWORK_RX_TX"/>
+        </enum>
+        <enum id="1069" name="TE_LIBBSP_A429_Speed" tagName="kcg_tag_TE_LIBBSP_A429_Speed">
+          <value id="1070" name="E_LIBBSP_A429_BAUDS_12"/>
+          <value id="1071" name="E_LIBBSP_A429_BAUDS_100"/>
+        </enum>
+        <enum id="1072" name="TE_LIBBSP_GPIO_Status" tagName="kcg_tag_TE_LIBBSP_GPIO_Status">
+          <value id="1073" name="E_LIBBSP_GPIO_SUCCEEDED"/>
+          <value id="1074" name="E_LIBBSP_GPIO_FAILED"/>
+        </enum>
+        <enum id="1075" name="TE_LIBBSP_PSUM_Status" tagName="kcg_tag_TE_LIBBSP_PSUM_Status">
+          <value id="1076" name="E_LIBBSP_PSUM_SUCCEEDED"/>
+          <value id="1077" name="E_LIBBSP_PSUM_FAILED"/>
+        </enum>
+        <enum id="1078" name="TE_LIBBSP_MRAM_ErrorCode" tagName="kcg_tag_TE_LIBBSP_MRAM_ErrorCode">
+          <value id="1079" name="E_LIBBSP_MRAM_OK"/>
+          <value id="1080" name="E_LIBBSP_MRAM_OPEN_ESPI_ERROR"/>
+          <value id="1081" name="E_LIBBSP_MRAM_CLOSE_ESPI_ERROR"/>
+          <value id="1082" name="E_LIBBSP_MRAM_WRITE_ERROR"/>
+          <value id="1083" name="E_LIBBSP_MRAM_READ_ERROR"/>
+          <value id="1084" name="E_LIBBSP_MRAM_EXCHANGE_ESPI_ERROR"/>
+        </enum>
+        <enum id="1085" name="TE_LIBBSP_UART_Dev" tagName="kcg_tag_TE_LIBBSP_UART_Dev">
+          <value id="1086" name="E_LIBBSP_UART_DEV_1_RX"/>
+          <value id="1087" name="E_LIBBSP_UART_DEV_1_TX"/>
+          <value id="1088" name="E_LIBBSP_UART_DEV_2_RX"/>
+          <value id="1089" name="E_LIBBSP_UART_DEV_2_TX"/>
+          <value id="1090" name="E_LIBBSP_UART_DEV_3_RX"/>
+          <value id="1091" name="E_LIBBSP_UART_DEV_3_TX"/>
+          <value id="1092" name="E_LIBBSP_UART_DEV_4_RX"/>
+          <value id="1093" name="E_LIBBSP_UART_DEV_4_TX"/>
+          <value id="1094" name="E_LIBBSP_UART_DEV_MAX"/>
+        </enum>
+        <enum id="1095" name="TE_LIBBSP_UART_Speed" tagName="kcg_tag_TE_LIBBSP_UART_Speed">
+          <value id="1096" name="E_LIBBSP_UART_BAUDS_9600"/>
+          <value id="1097" name="E_LIBBSP_UART_BAUDS_19200"/>
+          <value id="1098" name="E_LIBBSP_UART_BAUDS_38400"/>
+          <value id="1099" name="E_LIBBSP_UART_BAUDS_115200"/>
+          <value id="1100" name="E_LIBBSP_UART_BAUDS_460800"/>
+          <value id="1101" name="E_LIBBSP_UART_BAUDS_921600"/>
+        </enum>
+        <enum id="1102" name="TE_LIBBSP_UART_Parity" tagName="kcg_tag_TE_LIBBSP_UART_Parity">
+          <value id="1103" name="E_LIBBSP_UART_PARITY_NONE"/>
+          <value id="1104" name="E_LIBBSP_UART_PARITY_ODD"/>
+          <value id="1105" name="E_LIBBSP_UART_PARITY_EVEN"/>
+          <value id="1106" name="E_LIBBSP_UART_PARITY_NONE_3"/>
+        </enum>
+        <enum id="1107" name="TE_LIBBSP_UART_StopBits" tagName="kcg_tag_TE_LIBBSP_UART_StopBits">
+          <value id="1108" name="E_LIBBSP_UART_STOPBITS_TWO"/>
+          <value id="1109" name="E_LIBBSP_UART_STOPBITS_ONE"/>
+        </enum>
+        <enum id="1110" name="TE_LIBBSP_UART_RxErrorCode" tagName="kcg_tag_TE_LIBBSP_UART_RxErrorCode">
+          <value id="1111" name="E_LIBBSP_UART_RX_OK"/>
+          <value id="1112" name="E_LIBBSP_UART_DEV_INVALID_ID"/>
+          <value id="1113" name="E_LIBBSP_UART_RX_STOP_ERROR"/>
+          <value id="1114" name="E_LIBBSP_UART_RX_PARITY_ERROR"/>
+          <value id="1115" name="E_LIBBSP_UART_RX_OVERFLOW_ERROR"/>
+          <value id="1116" name="E_LIBBSP_UART_RX_ROLLOVER_ERROR"/>
+          <value id="1117" name="E_LIBBSP_UART_RX_INCONSISTENT_ERROR"/>
+          <value id="1118" name="E_LIBBSP_UART_POST_KO"/>
+        </enum>
+        <enum id="1119" name="TE_LIBBSP_UART_TxErrorCode" tagName="kcg_tag_TE_LIBBSP_UART_TxErrorCode">
+          <value id="1120" name="E_LIBBSP_UART_TX_OK"/>
+          <value id="1121" name="E_LIBBSP_UART_TX_INVALID_ID"/>
+          <value id="1122" name="E_LIBBSP_UART_TX_OVERFLOW_CMD"/>
+          <value id="1123" name="E_LIBBSP_UART_TX_OVERFLOW_FIFO"/>
+        </enum>
+        <enum id="1124" name="TE_LIBBSP_A429_RxLine" tagName="kcg_tag_TE_LIBBSP_A429_RxLine">
+          <value id="1125" name="E_LIBBSP_A429_RX_1"/>
+          <value id="1126" name="E_LIBBSP_A429_RX_2"/>
+          <value id="1127" name="E_LIBBSP_A429_RX_3"/>
+          <value id="1128" name="E_LIBBSP_A429_RX_4"/>
+          <value id="1129" name="E_LIBBSP_A429_RX_5"/>
+          <value id="1130" name="E_LIBBSP_A429_RX_6"/>
+          <value id="1131" name="E_LIBBSP_A429_RX_7"/>
+          <value id="1132" name="E_LIBBSP_A429_RX_8"/>
+          <value id="1133" name="E_LIBBSP_A429_RX_9"/>
+        </enum>
+        <enum id="1134" name="TE_LIBBSP_MEGIT_CpuSyncSource" tagName="kcg_tag_TE_LIBBSP_MEGIT_CpuSyncSource">
+          <value id="1135" name="E_LIBBSP_MEGIT_CPU_NO_SOURCE"/>
+          <value id="1136" name="E_LIBBSP_MEGIT_CPU_SYNC_APPL"/>
+          <value id="1137" name="E_LIBBSP_MEGIT_CPU_TIC_RDY"/>
+          <value id="1138" name="E_LIBBSP_MEGIT_CPU_RT_RDY"/>
+          <value id="1139" name="E_LIBBSP_MEGIT_CPU_IRQ_2KH_ALL"/>
+          <value id="1140" name="E_LIBBSP_MEGIT_CPU_IRQ_APPL_ALL"/>
+          <value id="1141" name="E_LIBBSP_MEGIT_CPU_IRQ_APPL_TIC"/>
+          <value id="1142" name="E_LIBBSP_MEGIT_CPU_RTC_8K"/>
+          <value id="1143" name="E_LIBBSP_MEGIT_CPU_NB_SOURCE"/>
+        </enum>
+        <enum id="1144" name="TE_LIBBSP_MEGIT_RsSyncSource" tagName="kcg_tag_TE_LIBBSP_MEGIT_RsSyncSource">
+          <value id="1145" name="E_LIBBSP_MEGIT_RS_NO_SOURCE"/>
+          <value id="1146" name="E_LIBBSP_MEGIT_RS_SYNC_100HZ"/>
+          <value id="1147" name="E_LIBBSP_MEGIT_RS_SYNC_APPL"/>
+          <value id="1148" name="E_LIBBSP_MEGIT_RS_RTC_IDA"/>
+          <value id="1149" name="E_LIBBSP_MEGIT_RS_RTC_2K"/>
+          <value id="1150" name="E_LIBBSP_MEGIT_RS_CPU_RTC"/>
+          <value id="1151" name="E_LIBBSP_MEGIT_RS_NB_SOURCE"/>
+        </enum>
+        <enum id="1152" name="TE_LIBBSP_MEGIT_ItStatus" tagName="kcg_tag_TE_LIBBSP_MEGIT_ItStatus">
+          <value id="1153" name="E_LIBBSP_MEGIT_IT_SOURCE_INVALID"/>
+          <value id="1154" name="E_LIBBSP_MEGIT_IT_SOURCE_VALID"/>
+        </enum>
+        <enum id="1155" name="TE_LIBBSP_A429_RxErrorCode" tagName="kcg_tag_TE_LIBBSP_A429_RxErrorCode">
+          <value id="1156" name="E_LIBBSP_A429_RX_OK"/>
+          <value id="1157" name="E_LIBBSP_A429_RX_INVALID_ID"/>
+          <value id="1158" name="E_LIBBSP_A429_RX_ROLLOVER"/>
+          <value id="1159" name="E_LIBBSP_A429_RX_PARITY_ERROR"/>
+          <value id="1160" name="E_LIBBSP_A429_RX_GAP_ERROR"/>
+          <value id="1161" name="E_LIBBSP_A429_RX_FORMAT_ERROR"/>
+          <value id="1162" name="E_LIBBSP_A429_RX_TOO_MANY_LABELS"/>
+          <value id="1163" name="E_LIBBSP_A429_RX_INCONSISTENT_ROLLOVER"/>
+          <value id="1164" name="E_LIBBSP_A429_POST_KO"/>
+        </enum>
+        <macro id="1165" name="kcg_assign_array"/>
+        <macro id="1166" name="kcg_assign_struct"/>
+        <macro id="1167" name="kcg_lnot_uint8"/>
+        <macro id="1168" name="kcg_lnot_uint16"/>
+        <macro id="1169" name="kcg_lnot_uint32"/>
+        <macro id="1170" name="kcg_lnot_uint64"/>
+        <macro id="1171" name="kcg_lsl_uint8"/>
+        <macro id="1172" name="kcg_lsl_uint16"/>
+        <macro id="1173" name="kcg_lsl_uint32"/>
+        <macro id="1174" name="kcg_lsl_uint64"/>
+        <macro id="1175" name="kcg_true"/>
+        <macro id="1176" name="kcg_false"/>
+        <macro id="1177" name="kcg_lit_int8"/>
+        <macro id="1178" name="kcg_lit_int16"/>
+        <macro id="1179" name="kcg_lit_int32"/>
+        <macro id="1180" name="kcg_lit_int64"/>
+        <macro id="1181" name="kcg_lit_uint8"/>
+        <macro id="1182" name="kcg_lit_uint16"/>
+        <macro id="1183" name="kcg_lit_uint32"/>
+        <macro id="1184" name="kcg_lit_uint64"/>
+        <macro id="1185" name="kcg_lit_size"/>
+        <macro id="1186" name="kcg_lit_float64"/>
+        <macro id="1187" name="kcg_lit_float32"/>
+        <predefType id="1188" name="kcg_int8"/>
+        <predefType id="1189" name="kcg_int16"/>
+        <predefType id="1190" name="kcg_int32"/>
+        <predefType id="1191" name="kcg_int64"/>
+        <predefType id="1192" name="kcg_uint8"/>
+        <predefType id="1193" name="kcg_uint16"/>
+        <predefType id="1194" name="kcg_uint32"/>
+        <predefType id="1195" name="kcg_uint64"/>
+        <predefType id="1196" name="kcg_size"/>
+        <predefType id="1197" name="kcg_float64"/>
+        <predefType id="1198" name="kcg_float32"/>
+        <predefType id="1199" name="kcg_bool"/>
+        <predefType id="1200" name="kcg_char"/>
+        <macro id="1201" name="KCG_MAPW_CPY"/>
+      </file>
+      <file id="1202" name="kcg_consts.h">
+        <macro id="1203" name="C_LIBBSP_A429_BUFFER_SIZE" type="1194"/>
+        <constant id="1204" name="C_LIBBSP_PSUM_INIT_COUPLE" type="708" pointer="false"/>
+        <macro id="1205" name="C_LIBBSP_PSUM_SHM_NB_COUPLE" type="1194"/>
+        <macro id="1206" name="C_LIBBSP_IMU_NB_DATA_WRITE_MAX" type="1194"/>
+        <macro id="1207" name="C_LIBBSP_IMU_NB_ADDITIONAL_DATA" type="1194"/>
+        <macro id="1208" name="C_LIBBSP_IMU_NB_ADDITIONAL_DATA_READ_PER_CYCLE" type="1194"/>
+        <macro id="1209" name="C_LIBBSP_ETSEC_MAC_ADDR_SIZE" type="1194"/>
+        <macro id="1210" name="C_LIBBSP_ETSEC_MESSAGE_SIZE" type="1194"/>
+        <macro id="1211" name="C_LIBBSP_IMU_NB_INERTIAL_DATA_READ" type="1194"/>
+        <macro id="1212" name="C_LIBBSP_IMU_NB_ADD_DATA_READ_MAX" type="1194"/>
+        <macro id="1213" name="C_LIBBSP_UART_FIFO_SIZE" type="1194"/>
+      </file>
+      <file id="1214" name="kcg_sensors.h"/>
+    </c>
+    <map srcId="1197" dstId="1186" role="wrapped-lit"/>
+    <map srcId="1198" dstId="1187" role="wrapped-lit"/>
+    <map srcId="1196" dstId="1185" role="wrapped-lit"/>
+    <map srcId="1195" dstId="1184" role="wrapped-lit"/>
+    <map srcId="1195" dstId="1170" role="wrapped-lnot"/>
+    <map srcId="1195" dstId="1174" role="wrapped-lsl"/>
+    <map srcId="1194" dstId="1183" role="wrapped-lit"/>
+    <map srcId="1194" dstId="1169" role="wrapped-lnot"/>
+    <map srcId="1194" dstId="1173" role="wrapped-lsl"/>
+    <map srcId="1193" dstId="1182" role="wrapped-lit"/>
+    <map srcId="1193" dstId="1168" role="wrapped-lnot"/>
+    <map srcId="1193" dstId="1172" role="wrapped-lsl"/>
+    <map srcId="1192" dstId="1181" role="wrapped-lit"/>
+    <map srcId="1192" dstId="1167" role="wrapped-lnot"/>
+    <map srcId="1192" dstId="1171" role="wrapped-lsl"/>
+    <map srcId="1191" dstId="1180" role="wrapped-lit"/>
+    <map srcId="1190" dstId="1179" role="wrapped-lit"/>
+    <map srcId="1189" dstId="1178" role="wrapped-lit"/>
+    <map srcId="1188" dstId="1177" role="wrapped-lit"/>
+    <map srcId="670" dstId="599" role="type-use"/>
+    <map srcId="670" dstId="600" role="type-comparison"/>
+    <map srcId="670" dstId="650" role="type-copy"/>
+    <map srcId="800" dstId="555" role="type-use"/>
+    <map srcId="800" dstId="556" role="type-comparison"/>
+    <map srcId="800" dstId="639" role="type-copy"/>
+    <map srcId="836" dstId="603" role="type-use"/>
+    <map srcId="836" dstId="604" role="type-comparison"/>
+    <map srcId="836" dstId="651" role="type-copy"/>
+    <map srcId="799" dstId="559" role="type-use"/>
+    <map srcId="799" dstId="560" role="type-comparison"/>
+    <map srcId="799" dstId="640" role="type-copy"/>
+    <map srcId="677" dstId="607" role="type-use"/>
+    <map srcId="677" dstId="608" role="type-comparison"/>
+    <map srcId="677" dstId="652" role="type-copy"/>
+    <map srcId="665" dstId="611" role="type-use"/>
+    <map srcId="665" dstId="612" role="type-comparison"/>
+    <map srcId="665" dstId="653" role="type-copy"/>
+    <map srcId="711" dstId="563" role="type-use"/>
+    <map srcId="711" dstId="564" role="type-comparison"/>
+    <map srcId="711" dstId="641" role="type-copy"/>
+    <map srcId="713" dstId="567" role="type-use"/>
+    <map srcId="713" dstId="568" role="type-comparison"/>
+    <map srcId="713" dstId="642" role="type-copy"/>
+    <map srcId="664" dstId="571" role="type-use"/>
+    <map srcId="664" dstId="572" role="type-comparison"/>
+    <map srcId="664" dstId="643" role="type-copy"/>
+    <map srcId="829" dstId="615" role="type-use"/>
+    <map srcId="829" dstId="616" role="type-comparison"/>
+    <map srcId="829" dstId="654" role="type-copy"/>
+    <map srcId="798" dstId="575" role="type-use"/>
+    <map srcId="798" dstId="576" role="type-comparison"/>
+    <map srcId="798" dstId="644" role="type-copy"/>
+    <map srcId="708" dstId="619" role="type-use"/>
+    <map srcId="708" dstId="620" role="type-comparison"/>
+    <map srcId="708" dstId="655" role="type-copy"/>
+    <map srcId="797" dstId="579" role="type-use"/>
+    <map srcId="797" dstId="580" role="type-comparison"/>
+    <map srcId="797" dstId="645" role="type-copy"/>
+    <map srcId="712" dstId="583" role="type-use"/>
+    <map srcId="712" dstId="584" role="type-comparison"/>
+    <map srcId="712" dstId="646" role="type-copy"/>
+    <map srcId="660" dstId="623" role="type-use"/>
+    <map srcId="660" dstId="624" role="type-comparison"/>
+    <map srcId="660" dstId="656" role="type-copy"/>
+    <map srcId="707" dstId="587" role="type-use"/>
+    <map srcId="707" dstId="588" role="type-comparison"/>
+    <map srcId="707" dstId="647" role="type-copy"/>
+    <map srcId="663" dstId="591" role="type-use"/>
+    <map srcId="663" dstId="592" role="type-comparison"/>
+    <map srcId="663" dstId="648" role="type-copy"/>
+    <map srcId="662" dstId="595" role="type-use"/>
+    <map srcId="662" dstId="596" role="type-comparison"/>
+    <map srcId="662" dstId="649" role="type-copy"/>
+    <map srcId="801" dstId="627" role="type-use"/>
+    <map srcId="801" dstId="628" role="type-comparison"/>
+    <map srcId="801" dstId="657" role="type-copy"/>
+    <map srcId="681" dstId="631" role="type-use"/>
+    <map srcId="681" dstId="632" role="type-comparison"/>
+    <map srcId="681" dstId="658" role="type-copy"/>
+    <map srcId="714" dstId="635" role="type-use"/>
+    <map srcId="714" dstId="636" role="type-comparison"/>
+    <map srcId="714" dstId="659" role="type-copy"/>
+  </generated>
+  <map modelId="550" generatedId="1164"/>
+  <map modelId="549" generatedId="1163"/>
+  <map modelId="548" generatedId="1162"/>
+  <map modelId="547" generatedId="1161"/>
+  <map modelId="546" generatedId="1160"/>
+  <map modelId="545" generatedId="1159"/>
+  <map modelId="544" generatedId="1158"/>
+  <map modelId="543" generatedId="1157"/>
+  <map modelId="542" generatedId="1156"/>
+  <map modelId="540" generatedId="1154"/>
+  <map modelId="539" generatedId="1153"/>
+  <map modelId="537" generatedId="1151"/>
+  <map modelId="536" generatedId="1150"/>
+  <map modelId="535" generatedId="1149"/>
+  <map modelId="534" generatedId="1148"/>
+  <map modelId="533" generatedId="1147"/>
+  <map modelId="532" generatedId="1146"/>
+  <map modelId="531" generatedId="1145"/>
+  <map modelId="529" generatedId="1143"/>
+  <map modelId="528" generatedId="1142"/>
+  <map modelId="527" generatedId="1141"/>
+  <map modelId="526" generatedId="1140"/>
+  <map modelId="525" generatedId="1139"/>
+  <map modelId="524" generatedId="1138"/>
+  <map modelId="523" generatedId="1137"/>
+  <map modelId="522" generatedId="1136"/>
+  <map modelId="521" generatedId="1135"/>
+  <map modelId="517" generatedId="1133"/>
+  <map modelId="516" generatedId="1132"/>
+  <map modelId="515" generatedId="1131"/>
+  <map modelId="514" generatedId="1130"/>
+  <map modelId="513" generatedId="1129"/>
+  <map modelId="512" generatedId="1128"/>
+  <map modelId="511" generatedId="1127"/>
+  <map modelId="510" generatedId="1126"/>
+  <map modelId="509" generatedId="1125"/>
+  <map modelId="505" generatedId="1123"/>
+  <map modelId="504" generatedId="1122"/>
+  <map modelId="503" generatedId="1121"/>
+  <map modelId="502" generatedId="1120"/>
+  <map modelId="500" generatedId="1118"/>
+  <map modelId="499" generatedId="1117"/>
+  <map modelId="498" generatedId="1116"/>
+  <map modelId="497" generatedId="1115"/>
+  <map modelId="496" generatedId="1114"/>
+  <map modelId="495" generatedId="1113"/>
+  <map modelId="494" generatedId="1112"/>
+  <map modelId="493" generatedId="1111"/>
+  <map modelId="491" generatedId="1109"/>
+  <map modelId="490" generatedId="1108"/>
+  <map modelId="488" generatedId="1106"/>
+  <map modelId="487" generatedId="1105"/>
+  <map modelId="486" generatedId="1104"/>
+  <map modelId="485" generatedId="1103"/>
+  <map modelId="483" generatedId="1101"/>
+  <map modelId="482" generatedId="1100"/>
+  <map modelId="481" generatedId="1099"/>
+  <map modelId="480" generatedId="1098"/>
+  <map modelId="479" generatedId="1097"/>
+  <map modelId="478" generatedId="1096"/>
+  <map modelId="476" generatedId="1094"/>
+  <map modelId="475" generatedId="1093"/>
+  <map modelId="474" generatedId="1092"/>
+  <map modelId="473" generatedId="1091"/>
+  <map modelId="472" generatedId="1090"/>
+  <map modelId="471" generatedId="1089"/>
+  <map modelId="470" generatedId="1088"/>
+  <map modelId="469" generatedId="1087"/>
+  <map modelId="468" generatedId="1086"/>
+  <map modelId="466" generatedId="1084"/>
+  <map modelId="465" generatedId="1083"/>
+  <map modelId="464" generatedId="1082"/>
+  <map modelId="463" generatedId="1081"/>
+  <map modelId="462" generatedId="1080"/>
+  <map modelId="461" generatedId="1079"/>
+  <map modelId="459" generatedId="1077"/>
+  <map modelId="458" generatedId="1076"/>
+  <map modelId="456" generatedId="1074"/>
+  <map modelId="455" generatedId="1073"/>
+  <map modelId="450" generatedId="1071"/>
+  <map modelId="449" generatedId="1070"/>
+  <map modelId="447" generatedId="1068"/>
+  <map modelId="446" generatedId="1067"/>
+  <map modelId="445" generatedId="1066"/>
+  <map modelId="442" generatedId="1064"/>
+  <map modelId="441" generatedId="1063"/>
+  <map modelId="440" generatedId="1062"/>
+  <map modelId="439" generatedId="1061"/>
+  <map modelId="435" generatedId="1059"/>
+  <map modelId="434" generatedId="1058"/>
+  <map modelId="433" generatedId="1057"/>
+  <map modelId="429" generatedId="1055"/>
+  <map modelId="428" generatedId="1054"/>
+  <map modelId="427" generatedId="1053"/>
+  <map modelId="425" generatedId="1051"/>
+  <map modelId="424" generatedId="1050"/>
+  <map modelId="422" generatedId="1048"/>
+  <map modelId="421" generatedId="1047"/>
+  <map modelId="420" generatedId="1046"/>
+  <map modelId="419" generatedId="1045"/>
+  <map modelId="417" generatedId="1043"/>
+  <map modelId="416" generatedId="1042"/>
+  <map modelId="408" generatedId="1040"/>
+  <map modelId="407" generatedId="1039"/>
+  <map modelId="401" generatedId="1037"/>
+  <map modelId="400" generatedId="1036"/>
+  <map modelId="398" generatedId="1034"/>
+  <map modelId="397" generatedId="1033"/>
+  <map modelId="395" generatedId="1031"/>
+  <map modelId="394" generatedId="1030"/>
+  <map modelId="393" generatedId="1029"/>
+  <map modelId="392" generatedId="1028"/>
+  <map modelId="390" generatedId="1026"/>
+  <map modelId="389" generatedId="1025"/>
+  <map modelId="388" generatedId="1024"/>
+  <map modelId="387" generatedId="1023"/>
+  <map modelId="385" generatedId="1021"/>
+  <map modelId="384" generatedId="1020"/>
+  <map modelId="383" generatedId="1019"/>
+  <map modelId="382" generatedId="1018"/>
+  <map modelId="380" generatedId="1016"/>
+  <map modelId="379" generatedId="1015"/>
+  <map modelId="378" generatedId="1014"/>
+  <map modelId="377" generatedId="1013"/>
+  <map modelId="376" generatedId="1012"/>
+  <map modelId="375" generatedId="1011"/>
+  <map modelId="374" generatedId="1010"/>
+  <map modelId="373" generatedId="1009"/>
+  <map modelId="372" generatedId="1008"/>
+  <map modelId="371" generatedId="1007"/>
+  <map modelId="370" generatedId="1006"/>
+  <map modelId="369" generatedId="1005"/>
+  <map modelId="368" generatedId="1004"/>
+  <map modelId="367" generatedId="1003"/>
+  <map modelId="366" generatedId="1002"/>
+  <map modelId="365" generatedId="1001"/>
+  <map modelId="353" generatedId="999"/>
+  <map modelId="352" generatedId="998"/>
+  <map modelId="351" generatedId="997"/>
+  <map modelId="350" generatedId="996"/>
+  <map modelId="348" generatedId="994"/>
+  <map modelId="347" generatedId="993"/>
+  <map modelId="346" generatedId="992"/>
+  <map modelId="345" generatedId="991"/>
+  <map modelId="344" generatedId="990"/>
+  <map modelId="343" generatedId="989"/>
+  <map modelId="342" generatedId="988"/>
+  <map modelId="341" generatedId="987"/>
+  <map modelId="339" generatedId="985"/>
+  <map modelId="338" generatedId="984"/>
+  <map modelId="336" generatedId="982"/>
+  <map modelId="335" generatedId="981"/>
+  <map modelId="334" generatedId="980"/>
+  <map modelId="333" generatedId="979"/>
+  <map modelId="332" generatedId="978"/>
+  <map modelId="331" generatedId="977"/>
+  <map modelId="330" generatedId="976"/>
+  <map modelId="329" generatedId="975"/>
+  <map modelId="328" generatedId="974"/>
+  <map modelId="327" generatedId="973"/>
+  <map modelId="326" generatedId="972"/>
+  <map modelId="325" generatedId="971"/>
+  <map modelId="324" generatedId="970"/>
+  <map modelId="323" generatedId="969"/>
+  <map modelId="322" generatedId="968"/>
+  <map modelId="321" generatedId="967"/>
+  <map modelId="320" generatedId="966"/>
+  <map modelId="319" generatedId="965"/>
+  <map modelId="318" generatedId="964"/>
+  <map modelId="317" generatedId="963"/>
+  <map modelId="316" generatedId="962"/>
+  <map modelId="315" generatedId="961"/>
+  <map modelId="314" generatedId="960"/>
+  <map modelId="313" generatedId="959"/>
+  <map modelId="312" generatedId="958"/>
+  <map modelId="311" generatedId="957"/>
+  <map modelId="310" generatedId="956"/>
+  <map modelId="309" generatedId="955"/>
+  <map modelId="308" generatedId="954"/>
+  <map modelId="307" generatedId="953"/>
+  <map modelId="306" generatedId="952"/>
+  <map modelId="305" generatedId="951"/>
+  <map modelId="303" generatedId="949"/>
+  <map modelId="302" generatedId="948"/>
+  <map modelId="301" generatedId="947"/>
+  <map modelId="299" generatedId="945"/>
+  <map modelId="298" generatedId="944"/>
+  <map modelId="297" generatedId="943"/>
+  <map modelId="296" generatedId="942"/>
+  <map modelId="295" generatedId="941"/>
+  <map modelId="294" generatedId="940"/>
+  <map modelId="293" generatedId="939"/>
+  <map modelId="291" generatedId="937"/>
+  <map modelId="290" generatedId="936"/>
+  <map modelId="289" generatedId="935"/>
+  <map modelId="288" generatedId="934"/>
+  <map modelId="287" generatedId="933"/>
+  <map modelId="286" generatedId="932"/>
+  <map modelId="285" generatedId="931"/>
+  <map modelId="283" generatedId="929"/>
+  <map modelId="282" generatedId="928"/>
+  <map modelId="281" generatedId="927"/>
+  <map modelId="280" generatedId="926"/>
+  <map modelId="279" generatedId="925"/>
+  <map modelId="277" generatedId="923"/>
+  <map modelId="276" generatedId="922"/>
+  <map modelId="275" generatedId="921"/>
+  <map modelId="274" generatedId="920"/>
+  <map modelId="273" generatedId="919"/>
+  <map modelId="272" generatedId="918"/>
+  <map modelId="271" generatedId="917"/>
+  <map modelId="270" generatedId="916"/>
+  <map modelId="269" generatedId="915"/>
+  <map modelId="268" generatedId="914"/>
+  <map modelId="267" generatedId="913"/>
+  <map modelId="266" generatedId="912"/>
+  <map modelId="265" generatedId="911"/>
+  <map modelId="264" generatedId="910"/>
+  <map modelId="263" generatedId="909"/>
+  <map modelId="262" generatedId="908"/>
+  <map modelId="261" generatedId="907"/>
+  <map modelId="260" generatedId="906"/>
+  <map modelId="259" generatedId="905"/>
+  <map modelId="258" generatedId="904"/>
+  <map modelId="257" generatedId="903"/>
+  <map modelId="256" generatedId="902"/>
+  <map modelId="255" generatedId="901"/>
+  <map modelId="254" generatedId="900"/>
+  <map modelId="253" generatedId="899"/>
+  <map modelId="252" generatedId="898"/>
+  <map modelId="251" generatedId="897"/>
+  <map modelId="250" generatedId="896"/>
+  <map modelId="249" generatedId="895"/>
+  <map modelId="248" generatedId="894"/>
+  <map modelId="247" generatedId="893"/>
+  <map modelId="246" generatedId="892"/>
+  <map modelId="244" generatedId="890"/>
+  <map modelId="243" generatedId="889"/>
+  <map modelId="242" generatedId="888"/>
+  <map modelId="240" generatedId="886"/>
+  <map modelId="239" generatedId="885"/>
+  <map modelId="238" generatedId="884"/>
+  <map modelId="237" generatedId="883"/>
+  <map modelId="236" generatedId="882"/>
+  <map modelId="235" generatedId="881"/>
+  <map modelId="234" generatedId="880"/>
+  <map modelId="233" generatedId="879"/>
+  <map modelId="231" generatedId="877"/>
+  <map modelId="230" generatedId="876"/>
+  <map modelId="229" generatedId="875"/>
+  <map modelId="228" generatedId="874"/>
+  <map modelId="227" generatedId="873"/>
+  <map modelId="226" generatedId="872"/>
+  <map modelId="224" generatedId="870"/>
+  <map modelId="223" generatedId="869"/>
+  <map modelId="222" generatedId="868"/>
+  <map modelId="221" generatedId="867"/>
+  <map modelId="220" generatedId="866"/>
+  <map modelId="219" generatedId="865"/>
+  <map modelId="218" generatedId="864"/>
+  <map modelId="217" generatedId="863"/>
+  <map modelId="216" generatedId="862"/>
+  <map modelId="215" generatedId="861"/>
+  <map modelId="214" generatedId="860"/>
+  <map modelId="213" generatedId="859"/>
+  <map modelId="212" generatedId="858"/>
+  <map modelId="211" generatedId="857"/>
+  <map modelId="210" generatedId="856"/>
+  <map modelId="209" generatedId="855"/>
+  <map modelId="208" generatedId="854"/>
+  <map modelId="207" generatedId="853"/>
+  <map modelId="206" generatedId="852"/>
+  <map modelId="205" generatedId="851"/>
+  <map modelId="204" generatedId="850"/>
+  <map modelId="203" generatedId="849"/>
+  <map modelId="201" generatedId="847"/>
+  <map modelId="200" generatedId="846"/>
+  <map modelId="199" generatedId="845"/>
+  <map modelId="551" generatedId="552" role="interface-file"/>
+  <map modelId="551" generatedId="553" role="cycle-method"/>
+  <map modelId="507" generatedId="1213"/>
+  <map modelId="451" generatedId="1212"/>
+  <map modelId="452" generatedId="1211"/>
+  <map modelId="436" generatedId="1210"/>
+  <map modelId="431" generatedId="1209"/>
+  <map modelId="413" generatedId="1208"/>
+  <map modelId="410" generatedId="1207"/>
+  <map modelId="409" generatedId="1206"/>
+  <map modelId="361" generatedId="1205"/>
+  <map modelId="360" generatedId="1204"/>
+  <map modelId="358" generatedId="1203"/>
+  <map modelId="541" generatedId="1155"/>
+  <map modelId="538" generatedId="1152"/>
+  <map modelId="530" generatedId="1144"/>
+  <map modelId="520" generatedId="1134"/>
+  <map modelId="508" generatedId="1124"/>
+  <map modelId="501" generatedId="1119"/>
+  <map modelId="492" generatedId="1110"/>
+  <map modelId="489" generatedId="1107"/>
+  <map modelId="484" generatedId="1102"/>
+  <map modelId="477" generatedId="1095"/>
+  <map modelId="467" generatedId="1085"/>
+  <map modelId="460" generatedId="1078"/>
+  <map modelId="457" generatedId="1075"/>
+  <map modelId="454" generatedId="1072"/>
+  <map modelId="448" generatedId="1069"/>
+  <map modelId="444" generatedId="1065"/>
+  <map modelId="438" generatedId="1060"/>
+  <map modelId="432" generatedId="1056"/>
+  <map modelId="426" generatedId="1052"/>
+  <map modelId="423" generatedId="1049"/>
+  <map modelId="418" generatedId="1044"/>
+  <map modelId="415" generatedId="1041"/>
+  <map modelId="406" generatedId="1038"/>
+  <map modelId="399" generatedId="1035"/>
+  <map modelId="396" generatedId="1032"/>
+  <map modelId="391" generatedId="1027"/>
+  <map modelId="386" generatedId="1022"/>
+  <map modelId="381" generatedId="1017"/>
+  <map modelId="364" generatedId="1000"/>
+  <map modelId="349" generatedId="995"/>
+  <map modelId="340" generatedId="986"/>
+  <map modelId="337" generatedId="983"/>
+  <map modelId="304" generatedId="950"/>
+  <map modelId="300" generatedId="946"/>
+  <map modelId="292" generatedId="938"/>
+  <map modelId="284" generatedId="930"/>
+  <map modelId="278" generatedId="924"/>
+  <map modelId="245" generatedId="891"/>
+  <map modelId="241" generatedId="887"/>
+  <map modelId="232" generatedId="878"/>
+  <map modelId="225" generatedId="871"/>
+  <map modelId="202" generatedId="848"/>
+  <map modelId="198" generatedId="844"/>
+  <map modelId="7" generatedId="676"/>
+  <map modelId="6" generatedId="675"/>
+  <map modelId="5" generatedId="674"/>
+  <map modelId="4" generatedId="673"/>
+  <map modelId="3" generatedId="672"/>
+  <map modelId="2" generatedId="671"/>
+  <map modelId="519" generatedId="670"/>
+  <map modelId="1" generatedId="670"/>
+  <map modelId="453" generatedId="800"/>
+  <map modelId="184" generatedId="800"/>
+  <map modelId="22" generatedId="843"/>
+  <map modelId="21" generatedId="842"/>
+  <map modelId="20" generatedId="841"/>
+  <map modelId="19" generatedId="840"/>
+  <map modelId="18" generatedId="839"/>
+  <map modelId="17" generatedId="838"/>
+  <map modelId="16" generatedId="837"/>
+  <map modelId="356" generatedId="836"/>
+  <map modelId="15" generatedId="836"/>
+  <map modelId="414" generatedId="799"/>
+  <map modelId="27" generatedId="799"/>
+  <map modelId="179" generatedId="680"/>
+  <map modelId="178" generatedId="679"/>
+  <map modelId="177" generatedId="678"/>
+  <map modelId="357" generatedId="677"/>
+  <map modelId="176" generatedId="677"/>
+  <map modelId="13" generatedId="669"/>
+  <map modelId="12" generatedId="668"/>
+  <map modelId="11" generatedId="667"/>
+  <map modelId="10" generatedId="666"/>
+  <map modelId="363" generatedId="665"/>
+  <map modelId="9" generatedId="665"/>
+  <map modelId="402" generatedId="711"/>
+  <map modelId="23" generatedId="711"/>
+  <map modelId="403" generatedId="713"/>
+  <map modelId="24" generatedId="713"/>
+  <map modelId="506" generatedId="664"/>
+  <map modelId="14" generatedId="664"/>
+  <map modelId="34" generatedId="835"/>
+  <map modelId="33" generatedId="834"/>
+  <map modelId="32" generatedId="833"/>
+  <map modelId="31" generatedId="832"/>
+  <map modelId="30" generatedId="831"/>
+  <map modelId="29" generatedId="830"/>
+  <map modelId="355" generatedId="829"/>
+  <map modelId="28" generatedId="829"/>
+  <map modelId="405" generatedId="798"/>
+  <map modelId="89" generatedId="798"/>
+  <map modelId="175" generatedId="710"/>
+  <map modelId="174" generatedId="709"/>
+  <map modelId="354" generatedId="708"/>
+  <map modelId="173" generatedId="708"/>
+  <map modelId="518" generatedId="797"/>
+  <map modelId="8" generatedId="797"/>
+  <map modelId="411" generatedId="712"/>
+  <map modelId="26" generatedId="712"/>
+  <map modelId="182" generatedId="661"/>
+  <map modelId="430" generatedId="660"/>
+  <map modelId="181" generatedId="660"/>
+  <map modelId="359" generatedId="707"/>
+  <map modelId="180" generatedId="707"/>
+  <map modelId="437" generatedId="663"/>
+  <map modelId="25" generatedId="663"/>
+  <map modelId="443" generatedId="662"/>
+  <map modelId="183" generatedId="662"/>
+  <map modelId="62" generatedId="828"/>
+  <map modelId="61" generatedId="827"/>
+  <map modelId="60" generatedId="826"/>
+  <map modelId="59" generatedId="825"/>
+  <map modelId="58" generatedId="824"/>
+  <map modelId="57" generatedId="823"/>
+  <map modelId="56" generatedId="822"/>
+  <map modelId="55" generatedId="821"/>
+  <map modelId="54" generatedId="820"/>
+  <map modelId="53" generatedId="819"/>
+  <map modelId="52" generatedId="818"/>
+  <map modelId="51" generatedId="817"/>
+  <map modelId="50" generatedId="816"/>
+  <map modelId="49" generatedId="815"/>
+  <map modelId="48" generatedId="814"/>
+  <map modelId="47" generatedId="813"/>
+  <map modelId="46" generatedId="812"/>
+  <map modelId="45" generatedId="811"/>
+  <map modelId="44" generatedId="810"/>
+  <map modelId="43" generatedId="809"/>
+  <map modelId="42" generatedId="808"/>
+  <map modelId="41" generatedId="807"/>
+  <map modelId="40" generatedId="806"/>
+  <map modelId="39" generatedId="805"/>
+  <map modelId="38" generatedId="804"/>
+  <map modelId="37" generatedId="803"/>
+  <map modelId="36" generatedId="802"/>
+  <map modelId="362" generatedId="801"/>
+  <map modelId="35" generatedId="801"/>
+  <map modelId="88" generatedId="706"/>
+  <map modelId="87" generatedId="705"/>
+  <map modelId="86" generatedId="704"/>
+  <map modelId="85" generatedId="703"/>
+  <map modelId="84" generatedId="702"/>
+  <map modelId="83" generatedId="701"/>
+  <map modelId="82" generatedId="700"/>
+  <map modelId="81" generatedId="699"/>
+  <map modelId="80" generatedId="698"/>
+  <map modelId="79" generatedId="697"/>
+  <map modelId="78" generatedId="696"/>
+  <map modelId="77" generatedId="695"/>
+  <map modelId="76" generatedId="694"/>
+  <map modelId="75" generatedId="693"/>
+  <map modelId="74" generatedId="692"/>
+  <map modelId="73" generatedId="691"/>
+  <map modelId="72" generatedId="690"/>
+  <map modelId="71" generatedId="689"/>
+  <map modelId="70" generatedId="688"/>
+  <map modelId="69" generatedId="687"/>
+  <map modelId="68" generatedId="686"/>
+  <map modelId="67" generatedId="685"/>
+  <map modelId="66" generatedId="684"/>
+  <map modelId="65" generatedId="683"/>
+  <map modelId="64" generatedId="682"/>
+  <map modelId="404" generatedId="681"/>
+  <map modelId="63" generatedId="681"/>
+  <map modelId="172" generatedId="796"/>
+  <map modelId="171" generatedId="795"/>
+  <map modelId="170" generatedId="794"/>
+  <map modelId="169" generatedId="793"/>
+  <map modelId="168" generatedId="792"/>
+  <map modelId="167" generatedId="791"/>
+  <map modelId="166" generatedId="790"/>
+  <map modelId="165" generatedId="789"/>
+  <map modelId="164" generatedId="788"/>
+  <map modelId="163" generatedId="787"/>
+  <map modelId="162" generatedId="786"/>
+  <map modelId="161" generatedId="785"/>
+  <map modelId="160" generatedId="784"/>
+  <map modelId="159" generatedId="783"/>
+  <map modelId="158" generatedId="782"/>
+  <map modelId="157" generatedId="781"/>
+  <map modelId="156" generatedId="780"/>
+  <map modelId="155" generatedId="779"/>
+  <map modelId="154" generatedId="778"/>
+  <map modelId="153" generatedId="777"/>
+  <map modelId="152" generatedId="776"/>
+  <map modelId="151" generatedId="775"/>
+  <map modelId="150" generatedId="774"/>
+  <map modelId="149" generatedId="773"/>
+  <map modelId="148" generatedId="772"/>
+  <map modelId="147" generatedId="771"/>
+  <map modelId="146" generatedId="770"/>
+  <map modelId="145" generatedId="769"/>
+  <map modelId="144" generatedId="768"/>
+  <map modelId="143" generatedId="767"/>
+  <map modelId="142" generatedId="766"/>
+  <map modelId="141" generatedId="765"/>
+  <map modelId="140" generatedId="764"/>
+  <map modelId="139" generatedId="763"/>
+  <map modelId="138" generatedId="762"/>
+  <map modelId="137" generatedId="761"/>
+  <map modelId="136" generatedId="760"/>
+  <map modelId="135" generatedId="759"/>
+  <map modelId="134" generatedId="758"/>
+  <map modelId="133" generatedId="757"/>
+  <map modelId="132" generatedId="756"/>
+  <map modelId="131" generatedId="755"/>
+  <map modelId="130" generatedId="754"/>
+  <map modelId="129" generatedId="753"/>
+  <map modelId="128" generatedId="752"/>
+  <map modelId="127" generatedId="751"/>
+  <map modelId="126" generatedId="750"/>
+  <map modelId="125" generatedId="749"/>
+  <map modelId="124" generatedId="748"/>
+  <map modelId="123" generatedId="747"/>
+  <map modelId="122" generatedId="746"/>
+  <map modelId="121" generatedId="745"/>
+  <map modelId="120" generatedId="744"/>
+  <map modelId="119" generatedId="743"/>
+  <map modelId="118" generatedId="742"/>
+  <map modelId="117" generatedId="741"/>
+  <map modelId="116" generatedId="740"/>
+  <map modelId="115" generatedId="739"/>
+  <map modelId="114" generatedId="738"/>
+  <map modelId="113" generatedId="737"/>
+  <map modelId="112" generatedId="736"/>
+  <map modelId="111" generatedId="735"/>
+  <map modelId="110" generatedId="734"/>
+  <map modelId="109" generatedId="733"/>
+  <map modelId="108" generatedId="732"/>
+  <map modelId="107" generatedId="731"/>
+  <map modelId="106" generatedId="730"/>
+  <map modelId="105" generatedId="729"/>
+  <map modelId="104" generatedId="728"/>
+  <map modelId="103" generatedId="727"/>
+  <map modelId="102" generatedId="726"/>
+  <map modelId="101" generatedId="725"/>
+  <map modelId="100" generatedId="724"/>
+  <map modelId="99" generatedId="723"/>
+  <map modelId="98" generatedId="722"/>
+  <map modelId="97" generatedId="721"/>
+  <map modelId="96" generatedId="720"/>
+  <map modelId="95" generatedId="719"/>
+  <map modelId="94" generatedId="718"/>
+  <map modelId="93" generatedId="717"/>
+  <map modelId="92" generatedId="716"/>
+  <map modelId="91" generatedId="715"/>
+  <map modelId="412" generatedId="714"/>
+  <map modelId="90" generatedId="714"/>
+  <map modelId="186" generatedId="1200"/>
+  <map modelId="185" generatedId="1199"/>
+  <map modelId="196" generatedId="1197"/>
+  <map modelId="195" generatedId="1198"/>
+  <map modelId="197" generatedId="1196"/>
+  <map modelId="194" generatedId="1195"/>
+  <map modelId="193" generatedId="1194"/>
+  <map modelId="192" generatedId="1193"/>
+  <map modelId="191" generatedId="1192"/>
+  <map modelId="190" generatedId="1191"/>
+  <map modelId="189" generatedId="1190"/>
+  <map modelId="188" generatedId="1189"/>
+  <map modelId="187" generatedId="1188"/>
+</mapping>
+<!--$********** SCADE Suite KCG 32-bit 6.6 (build i19) ***********
+** mapping.xml
+** Generation date: 2022-10-20T18:05:10
+*************************************************************$-->

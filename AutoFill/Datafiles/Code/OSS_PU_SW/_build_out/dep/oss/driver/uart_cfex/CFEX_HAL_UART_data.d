@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/driver/uart_cfex/CFEX_HAL_UART_data.o: R:/source/oss/driver/uart_cfex/CFEX_HAL_UART_data.c R:/source/oss/driver/uart/UART_CFEX_public.h R:/source/shared/type/mcp_types.h R:/source/oss/driver/uart/UART_REG_public.h R:/source/shared/type/common_type.h R:/source/oss/driver/dma/DMA_HAL_public.h R:/source/oss/driver/dma_cfex/CFEX_HAL_DMA_public.h

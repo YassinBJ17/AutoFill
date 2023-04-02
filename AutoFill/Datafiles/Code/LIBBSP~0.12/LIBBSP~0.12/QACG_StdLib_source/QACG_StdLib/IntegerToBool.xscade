@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" kind="function" name="IntegerToBool">
+	<inputs>
+		<Variable name="InputNumeric">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Integer_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1ae2/3AC4/2DB4/5bc4924e3f59"/>
+			</pragmas>
+		</Variable>
+	</inputs>
+	<outputs>
+		<Variable name="NumericToBool">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1ae3/3AC4/2DB4/5bc4924e17ab"/>
+			</pragmas>
+		</Variable>
+	</outputs>
+	<specializedOperator>
+		<OperatorRef name="SERVICES::NumericToBool"/>
+	</specializedOperator>
+	<locals>
+		<Variable name="_L9">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1ae9/3AC4/2DB4/5bc4924e58fe"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L8">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Integer_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1ae7/3AC4/2DB4/5bc4924e6041"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L7">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Integer_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/1ae5/3AC4/2DB4/5bc4924e19d0"/>
+			</pragmas>
+		</Variable>
+	</locals>
+	<data>
+		<!-- _L7 = InputNumeric; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L7"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="InputNumeric"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/1ae4/3AC4/2DB4/5bc4924e4374"/>
+			</pragmas>
+		</Equation>
+		<!-- _L8 = K_I_zero; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L8"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="K_I_zero"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/1ae6/3AC4/2DB4/5bc4924e61c4"/>
+			</pragmas>
+		</Equation>
+		<!-- _L9 = _L7 <> _L8; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L9"/>
+			</lefts>
+			<right>
+				<!-- _L7 <> _L8 -->
+				<BinaryOp name="1" operator="&lt;&gt;">
+					<operands>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L7"/>
+							</path>
+						</IdExpression>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L8"/>
+							</path>
+						</IdExpression>
+					</operands>
+				</BinaryOp>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/1ae8/3AC4/2DB4/5bc4924e7b6b"/>
+			</pragmas>
+		</Equation>
+		<!-- NumericToBool = _L9; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="NumericToBool"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="_L9"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/1aea/3AC4/2DB4/5bc4924e1a44"/>
+			</pragmas>
+		</Equation>
+	</data>
+	<pragmas>
+		<ed:Operator oid="!ed/22da1/5632/694/5bb5d5446b4a" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+			<comment>This symbol will set the output NumericToBool to TRUE if the input is equal to an integer zero,</comment>
+			<comment>otherwise it is set to FALSE.</comment>
+			<diagrams>
+				<NetDiagram name="diagram_IntegerToBool_1" landscape="true" format="A4 (210 297)" oid="!ed/22da2/5632/694/5bb5d5447393">
+					<comment>Nature:LLR</comment>
+					<presentationElements>
+						<EquationGE presentable="!ed/1ae4/3AC4/2DB4/5bc4924e4374">
+							<position>
+								<Point x="6376" y="3625"/>
+							</position>
+							<size>
+								<Size width="265" height="503"/>
+							</size>
+						</EquationGE>
+						<EquationGE kind="OBJ_LIT" presentable="!ed/1ae6/3AC4/2DB4/5bc4924e61c4">
+							<position>
+								<Point x="6218" y="5715"/>
+							</position>
+							<size>
+								<Size width="212" height="318"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/1ae8/3AC4/2DB4/5bc4924e7b6b">
+							<position>
+								<Point x="9763" y="4630"/>
+							</position>
+							<size>
+								<Size width="1006" height="662"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/1aea/3AC4/2DB4/5bc4924e1a44">
+							<position>
+								<Point x="12250" y="4710"/>
+							</position>
+							<size>
+								<Size width="318" height="502"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/1ae8/3AC4/2DB4/5bc4924e7b6b" dstEquation="!ed/1aea/3AC4/2DB4/5bc4924e1a44">
+							<positions>
+								<Point x="10769" y="4974"/>
+								<Point x="11827" y="4974"/>
+								<Point x="11827" y="4974"/>
+								<Point x="12303" y="4974"/>
+							</positions>
+						</Edge>
+						<Edge leftVarIndex="1" rightExprIndex="2" srcEquation="!ed/1ae6/3AC4/2DB4/5bc4924e61c4" dstEquation="!ed/1ae8/3AC4/2DB4/5bc4924e7b6b">
+							<positions>
+								<Point x="6429" y="5874"/>
+								<Point x="8096" y="5874"/>
+								<Point x="8096" y="5080"/>
+								<Point x="9763" y="5080"/>
+							</positions>
+						</Edge>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/1ae4/3AC4/2DB4/5bc4924e4374" dstEquation="!ed/1ae8/3AC4/2DB4/5bc4924e7b6b">
+							<positions>
+								<Point x="6641" y="3889"/>
+								<Point x="8149" y="3889"/>
+								<Point x="8149" y="4842"/>
+								<Point x="9763" y="4842"/>
+							</positions>
+						</Edge>
+					</presentationElements>
+				</NetDiagram>
+			</diagrams>
+		</ed:Operator>
+	</pragmas>
+</Operator>

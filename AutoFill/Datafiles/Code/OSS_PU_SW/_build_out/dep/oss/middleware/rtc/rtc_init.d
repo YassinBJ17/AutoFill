@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/middleware/rtc/rtc_init.o: R:/source/oss/middleware/rtc/rtc_init.c R:/source/oss/middleware/rtc/rtc_public.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/rtc/rtc_private.h R:/source/shared/type/common_type.h

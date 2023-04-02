@@ -1,0 +1,17 @@
+                               File: ELBCBOOT_V Errors    0
+  Location Pl  Code            Line 	Source Statement
+  00000000 00                     1 		.file "ELBCBOOT_VectorTable.s"
+  00000000 00                     2 	
+  00000000 00                     3 		.global IVOR_Handler
+  00000000 00                     4 		.global VECT_Reset
+  00000000 00                     5 	
+  00000000 00                     6 	; PowerPC Vector table definition
+  00000000 00                     7 		.section ".VectorTable", 4, rx
+  00000000 07                     8 	IVOR_Handler:
+  00000000 07  4800 0000          9 		b IVOR_Handler
+  00000004 07  4c00 0064         10 		rfi
+  00000008 07                    11 	
+  00000008 07                    12 		.section ".Reset", 4, rx
+  00000000 0b                    13 	VECT_Reset:
+  00000000 0b  4800 0000         14 		b ELBCBOOT_Main
+

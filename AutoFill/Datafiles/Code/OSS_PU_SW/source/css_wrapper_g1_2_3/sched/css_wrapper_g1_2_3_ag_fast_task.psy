@@ -1,0 +1,68 @@
+/* --------------------------------------------------------------------------
+ *                        SAFRAN Electronics & Defense
+ *                   Reproduction and disclosure forbidden.
+ * --------------------------------------------------------------------------
+ * DESCRIPTION : Fast task agent definition for g4 RSF
+ * -------------------------------------------------------------------------- */
+
+/* ---------- include provided interface: ----------------------------------- */
+#include "sched/clock_data.psyh"
+#include "sched/clock_data_css_wrapper_g1_2_3.psyh"
+#include "main/css_wrapper_g1_2_3_task_public.h"
+
+/* ---------- include required interface: ----------------------------------- */
+
+/* ---------- internal define constants: ------------------------------------ */
+
+/* ---------- internal types: ----------------------------------------------- */
+
+/* ---------- provided constants: ------------------------------------------- */
+
+/* ---------- provided data: ------------------------------------------------ */
+
+/* ---------- internal constants: ------------------------------------------- */
+
+/* ---------- internal data: ------------------------------------------------ */
+
+/* ---------- provided operation bodies: ------------------------------------ */
+/* Implements REQ_FADEX_OS_SRD-SCHED-0010 */
+/* Implements REQ_FADEX_OS_SRD-SCHED-0040 */
+/* Implements REQ_FADEX_OS_SRD-SCHED-0080 */
+/* Fast task agent to schedule applicative software */
+agent css_wrapper_g1_2_3_ag_fast_task(uses SOURCE,
+                                      starttime 2 with clock_10ms_offset_4ms)
+{
+   display
+   {
+      /* Display sync_ft_st_tv to ag_ST */
+      sync_ft_st_tv: css_wrapper_g1_2_3_ag_slow_task;
+   }
+
+   body start
+   {
+      /* Initialize applicative software environment for GX (g1_2_3 or g4) */
+      css_wrapper_g1_2_3_init_task();
+
+      /* 6ms for the fast task, then advance to the next tick */
+      timebudget budget_css_wrapper_g1_2_3_ag_fast_task_1, advance 3 with clock_1ms;
+      timebudget budget_css_wrapper_g1_2_3_ag_fast_task_compil_1, advance 7 with clock_1ms;
+
+      /* Go to body run */
+      next run;
+   }
+
+   body run
+   {
+      /* Time at disposal for the application */
+      sync_ft_st_tv = sync_ft_st_tv + 1;
+
+      /* Call the applicative fast task for the scheduling g1_2_3 */
+      css_wrapper_g1_2_3_fast_task();
+
+      /* 5ms for the fast task, then advance to the next tick */
+      timebudget budget_css_wrapper_g1_2_3_ag_fast_task_2, advance 3 with clock_1ms;
+      timebudget budget_css_wrapper_g1_2_3_ag_fast_task_compil_2, advance 7 with clock_1ms;
+   }
+}
+
+/* ---------- internal operations: ------------------------------------------ */

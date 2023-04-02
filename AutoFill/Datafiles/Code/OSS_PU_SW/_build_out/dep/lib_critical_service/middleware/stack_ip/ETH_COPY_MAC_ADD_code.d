@@ -1,0 +1,1 @@
+R:/_build_out/obj/lib_critical_service/middleware/stack_ip/ETH_COPY_MAC_ADD_code.o: R:/source/lib_critical_service/middleware/stack_ip/ETH_COPY_MAC_ADD_code.c R:/source/lib_critical_service/middleware/stack_ip/ETH_public.h R:/source/shared/type/common_type.h R:/source/shared/type/mcp_types.h R:/source/lib_critical_service/middleware/ethernet/ETH_MAC_public.h

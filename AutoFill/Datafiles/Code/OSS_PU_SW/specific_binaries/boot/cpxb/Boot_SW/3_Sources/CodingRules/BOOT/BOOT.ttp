@@ -1,0 +1,145 @@
+Entities_Definitions DEFINITIONS ::= BEGIN
+file_ref ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		folder oid,
+		persist_as string
+	}
+}
+project ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		default_configuration oid
+	}
+}
+folder ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		folder oid,
+		extensions string,
+		name string
+	}
+}
+configuration ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		name string,
+		project oid
+	}
+}
+prop ::= SEQUENCE OF {
+	SEQUENCE {
+		identity oid,
+		name string,
+		entity oid,
+		configuration oid,
+		values SEQUENCE OF string
+	}
+}
+base ::= SEQUENCE OF {
+	SEQUENCE {
+		oid_count integer,
+		version string
+	}
+}
+base ::= {
+{108, ""}
+}
+prop ::= {
+{"3", "@LOG_BUILDER:VERSION", "1", NULL, {"660"}},
+{"4", "@STUDIO:PRODUCT", "1", NULL, {"LG"}},
+{"5", "@LOG_BUILDER:LANGUAGE", "1", NULL, {"c"}},
+{"6", "@LOG_BUILDER:MODULES", "1", NULL, {"rule"}},
+{"7", "@LOG_BUILDER:DATA_DIRECTORY", "1", NULL, {"%Project%/Logiscope"}},
+{"8", "@LOG_BUILDER:IMPORT_NAME", "1", NULL, {"Imported Files"}},
+{"9", "@LOG_API:INITIALIZED", "1", NULL, {"rule"}},
+{"10", "@LOG_BUILDER:PARSER_DIALECT", "1", NULL, {"ansi"}},
+{"11", "@LOG_BUILDER:PARSER_NOEXP", "1", NULL, {"false"}},
+{"12", "@LOG_BUILDER:PARSER_IGNFILE", "1", NULL, {"%Project%/BOOT.ign"}},
+{"13", "@LOG_BUILDER:PARSER_DEFFILE", "1", NULL, {"%Project%/BOOT.def"}},
+{"84", "@LOG_BUILDER:FILE_SUFFIX", "1", NULL, {"*.c", "*.C"}},
+{"85", "@LOG_BUILDER:DEROGATION", "1", NULL, {"true"}}
+}
+configuration ::= {
+{"2", "Default", "1"}
+}
+folder ::= {
+{"14", NULL, "*.c;*.C", "Source Files"},
+{"86", NULL, "*.rst", "Rule Set"}
+}
+project ::= {
+{"1", "2"}
+}
+file_ref ::= {
+{"15", "14", "..\\..\\BOOT_code\\sources\\BSP\\FCCU\\impl\\BOOT_FCCU_CLEAR_FAULTS_code.c"},
+{"16", "14", "..\\..\\BOOT_code\\sources\\BSP\\FCCU\\impl\\BOOT_FCCU_INIT_code.c"},
+{"17", "14", "..\\..\\BOOT_code\\sources\\BSP\\FCCU\\impl\\BOOT_FCCU_LOG_code.c"},
+{"18", "14", "..\\..\\BOOT_code\\sources\\BSP\\FCCU\\impl\\BOOT_FCCU_MANAGEMENT_code.c"},
+{"26", "14", "..\\..\\BOOT_code\\sources\\BSP\\INTC\\impl\\BOOT_INTC_GET_EXT_IT_SRC_code.c"},
+{"27", "14", "..\\..\\BOOT_code\\sources\\BSP\\INTC\\impl\\BOOT_INTC_INIT_code.c"},
+{"28", "14", "..\\..\\BOOT_code\\sources\\BSP\\MC\\impl\\BOOT_MC_CHANGE_MODE_INIT_code.c"},
+{"29", "14", "..\\..\\BOOT_code\\sources\\BSP\\MC\\impl\\BOOT_MC_CLEAR_ERROR_code.c"},
+{"30", "14", "..\\..\\BOOT_code\\sources\\BSP\\MC\\impl\\BOOT_MC_MODE_INIT_code.c"},
+{"34", "14", "..\\..\\BOOT_code\\sources\\BSP\\MEM\\impl\\BOOT_MEM_EBI_INIT_code.c"},
+{"35", "14", "..\\..\\BOOT_code\\sources\\BSP\\MEM\\impl\\BOOT_MEM_LRAM_INIT_code.c"},
+{"36", "14", "..\\..\\BOOT_code\\sources\\BSP\\MEM\\impl\\BOOT_MEM_SMPU_code.c"},
+{"37", "14", "..\\..\\BOOT_code\\sources\\BSP\\PBRIDGE\\impl\\BOOT_PBRIDGE_INIT_code.c"},
+{"38", "14", "..\\..\\BOOT_code\\sources\\BSP\\PINOUT\\impl\\BOOT_PINOUT_INIT_code.c"},
+{"39", "14", "..\\..\\BOOT_code\\sources\\BSP\\RESET\\impl\\BOOT_RESET_data.c"},
+{"40", "14", "..\\..\\BOOT_code\\sources\\BSP\\WDG\\impl\\BOOT_WDG_CLEAR_ERROR_code.c"},
+{"41", "14", "..\\..\\BOOT_code\\sources\\BSP\\WDG\\impl\\BOOT_WDG_INIT_code.c"},
+{"42", "14", "..\\..\\BOOT_code\\sources\\BSP\\XBAR\\impl\\BOOT_XBAR_INIT_code.c"},
+{"43", "14", "..\\..\\BOOT_code\\sources\\CART\\impl\\BOOT_CART_data.c"},
+{"44", "14", "..\\..\\BOOT_code\\sources\\CONF\\impl\\BOOT_CONF_MAIN_data.c"},
+{"45", "14", "..\\..\\BOOT_code\\sources\\CONF\\impl\\BOOT_CONF_MODE_SELECT_code.c"},
+{"46", "14", "..\\..\\BOOT_code\\sources\\CONF\\impl\\BOOT_CONF_PBIT_data.c"},
+{"47", "14", "..\\..\\BOOT_code\\sources\\CONF\\impl\\BOOT_CONF_PBRIDGE_data.c"},
+{"48", "14", "..\\..\\BOOT_code\\sources\\CONF\\impl\\BOOT_CONF_PINOUT_data.c"},
+{"49", "14", "..\\..\\BOOT_code\\sources\\CONF\\impl\\BOOT_CONF_XBAR_data.c"},
+{"50", "14", "..\\..\\BOOT_code\\sources\\FAULT\\impl\\BOOT_FAULT_MANAGEMENT_code.c"},
+{"59", "14", "..\\..\\BOOT_code\\sources\\MAIN\\impl\\BOOT_MAIN_ENTRYPOINT_INIT_code.c"},
+{"60", "14", "..\\..\\BOOT_code\\sources\\MAIN\\impl\\BOOT_MAIN_INIT_code.c"},
+{"61", "14", "..\\..\\BOOT_code\\sources\\MAIN\\impl\\BOOT_MAIN_PERIPH_INIT_code.c"},
+{"62", "14", "..\\..\\BOOT_code\\sources\\MAIN\\impl\\BOOT_MAIN_SELECT_ASTEKCONF_code.c"},
+{"63", "14", "..\\..\\BOOT_code\\sources\\MAIN\\impl\\BOOT_MAIN_SET_ASTERIOS_INPUT_code.c"},
+{"64", "14", "..\\..\\BOOT_code\\sources\\MAIN\\impl\\BOOT_MAIN_START_SW_code.c"},
+{"65", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_EBI_code.c"},
+{"66", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_FPU_CHK_RES_code.c"},
+{"67", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_FPU_code.c"},
+{"68", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_INTC_CHK_RES_code.c"},
+{"69", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_INTC_DATA_ACCESS_code.c"},
+{"70", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_INTC_EFPU_ROUND_code.c"},
+{"71", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_INTC_EFPU_code.c"},
+{"72", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_INTC_INST_ACCESS_code.c"},
+{"73", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_INTC_MACHINE_CHECK_code.c"},
+{"74", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_INTC_MAIN_code.c"},
+{"75", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_MAIN_code.c"},
+{"76", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_MEM_ECC_MAIN_code.c"},
+{"77", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_MEM_INTEGRITY_MAIN_code.c"},
+{"78", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_PBRIDGEA_code.c"},
+{"79", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_PBRIDGEB_code.c"},
+{"80", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_PBRIDGE_MAIN_code.c"},
+{"81", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_REG_PROT_code.c"},
+{"82", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_SW_INTEGRITY_code.c"},
+{"83", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_PBIT_XBAR_code.c"},
+{"87", "86", "BOOT.rst"},
+{"88", "14", "..\\..\\BOOT_code\\sources\\LIB\\LIBCHK\\impl\\BOOT_LIBCHK_SUM32_COMPUTE_code.c"},
+{"89", "14", "..\\..\\BOOT_code\\sources\\LIB\\LIBCHK\\impl\\BOOT_LIBCHK_CRC32_COMPUTE_code.c"},
+{"90", "14", "..\\..\\BOOT_code\\sources\\LIB\\LIBCHK\\impl\\BOOT_LIBCHK_CARTRIDGE_code.c"},
+{"91", "14", "..\\..\\BOOT_code\\sources\\LIB\\LIBLOG\\impl\\BOOT_LIBLOG_RESET_code.c"},
+{"92", "14", "..\\..\\BOOT_code\\sources\\LIB\\LIBLOG\\impl\\BOOT_LIBLOG_RECORD_code.c"},
+{"93", "14", "..\\..\\BOOT_code\\sources\\LIB\\LIBTIME\\impl\\BOOT_LIBTIME_INIT_code.c"},
+{"94", "14", "..\\..\\BOOT_code\\sources\\LIB\\LIBTIME\\impl\\BOOT_LIBTIME_GET_code.c"},
+{"95", "14", "..\\..\\BOOT_code\\sources\\LIB\\LIBTIME\\impl\\BOOT_LIBTIME_data.c"},
+{"96", "14", "..\\..\\BOOT_code\\sources\\BSP\\MC\\impl\\BOOT_MC_SET_code.c"},
+{"97", "14", "..\\..\\BOOT_code\\sources\\BSP\\GPIO\\GPIO_COMMON\\impl\\BOOT_GPIO_INIT_code.c"},
+{"99", "14", "..\\..\\BOOT_code\\sources\\BSP\\GPIO\\GPIO_PIN\\impl\\BOOT_GPIO_WRITE_PIN_code.c"},
+{"100", "14", "..\\..\\BOOT_code\\sources\\BSP\\GPIO\\GPIO_PIN\\impl\\BOOT_GPIO_READ_IN_PIN_code.c"},
+{"101", "14", "..\\..\\BOOT_code\\sources\\BSP\\GPIO\\GPIO_PORT\\impl\\BOOT_GPIO_WRITE_WITH_MASK_PORT_code.c"},
+{"102", "14", "..\\..\\BOOT_code\\sources\\BSP\\GPIO\\GPIO_PORT\\impl\\BOOT_GPIO_WRITE_PORT_code.c"},
+{"103", "14", "..\\..\\BOOT_code\\sources\\BSP\\GPIO\\GPIO_PORT\\impl\\BOOT_GPIO_READ_IN_PORT_code.c"},
+{"104", "14", "..\\..\\BOOT_code\\sources\\BSP\\GPIO\\GPIO_COMMON\\impl\\BOOT_GPIO_data.c"},
+{"107", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_BIST_MODE_CHANGE_code.c"},
+{"108", "14", "..\\..\\BOOT_code\\sources\\PBIT\\impl\\BOOT_BIST_MAIN_code.c"}
+}
+END

@@ -1,0 +1,33 @@
+
+../build/BOOT.elf:     file format elf32-powerpc
+
+
+Checking section .rchw:
+
+Checking section .text_boot_c0:
+
+Checking section .text_boot_c1:
+
+Checking section .text_boot_c2:
+
+Checking section .text_boot_cc:
+
+Checking section .empty:
+
+Checking section .conf_core_c0:
+
+Checking section .empty:
+
+Checking section .conf_core_c1:
+
+Checking section .empty:
+
+Checking section .conf_core_c2:
+
+Checking section .empty:
+
+Checking section .text:
+
+Checking section .empty:
+
+PASSED: No e200z branch violations detected

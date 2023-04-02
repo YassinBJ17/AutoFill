@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" kind="node" name="FallingEdgeLatch">
+	<inputs>
+		<Variable name="Status">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/960d/7609/1B14/5bb3966a6019"/>
+			</pragmas>
+		</Variable>
+	</inputs>
+	<outputs>
+		<Variable name="FE">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/9619/7609/1B14/5bb3966a778d"/>
+			</pragmas>
+		</Variable>
+	</outputs>
+	<locals>
+		<Variable name="_L1">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/961b/7609/1B14/5bb3966fe7"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L2">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/9621/7609/1B14/5bb3967362e6"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L4">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/962d/7609/1B14/5bb3967c1e33"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L5">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="bool"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/9633/7609/1B14/5bb396985f23"/>
+			</pragmas>
+		</Variable>
+	</locals>
+	<data>
+		<!-- _L1 = DIGITAL::FallingEdge(_L2, false); -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L1"/>
+			</lefts>
+			<right>
+				<!-- DIGITAL::FallingEdge(_L2, false) -->
+				<CallExpression>
+					<operator>
+						<OpCall name="1">
+							<operator>
+								<OperatorRef name="DIGITAL::FallingEdge"/>
+							</operator>
+						</OpCall>
+					</operator>
+					<callParameters>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L2"/>
+							</path>
+						</IdExpression>
+						<ConstValue value="false"/>
+					</callParameters>
+				</CallExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/961a/7609/1B14/5bb3966f6441"/>
+			</pragmas>
+		</Equation>
+		<!-- _L2 = Status; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L2"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="Status"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/9620/7609/1B14/5bb39673163b"/>
+			</pragmas>
+		</Equation>
+		<!-- _L4 = fby(_L5; 1; false); -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L4"/>
+			</lefts>
+			<right>
+				<!-- fby(_L5; 1; false) -->
+				<FbyOp name="1">
+					<flows>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L5"/>
+							</path>
+						</IdExpression>
+					</flows>
+					<delay>
+						<ConstValue value="1"/>
+					</delay>
+					<values>
+						<ConstValue value="false"/>
+					</values>
+				</FbyOp>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/962c/7609/1B14/5bb3967c4aea"/>
+			</pragmas>
+		</Equation>
+		<!-- _L5 = _L1 or _L4; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L5"/>
+			</lefts>
+			<right>
+				<!-- _L1 or _L4 -->
+				<NAryOp name="1" operator="or">
+					<operands>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L1"/>
+							</path>
+						</IdExpression>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L4"/>
+							</path>
+						</IdExpression>
+					</operands>
+				</NAryOp>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/9632/7609/1B14/5bb396983bce"/>
+			</pragmas>
+		</Equation>
+		<!-- FE = _L5; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="FE"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="_L5"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/9638/7609/1B14/5bb3969c2a03"/>
+			</pragmas>
+		</Equation>
+	</data>
+	<pragmas>
+		<ed:Operator oid="!ed/9606/7609/1B14/5bb3965450c2" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+			<comment>This symbol will latch the output FE  to TRUE on falling edge detection of input Status.</comment>
+			<diagrams>
+				<NetDiagram name="diagram_FallingEdgeLatch_1" landscape="true" format="A4 (210 297)" oid="!ed/9607/7609/1B14/5bb396541910">
+					<comment>Nature:LLR</comment>
+					<presentationElements>
+						<EquationGE presentable="!ed/961a/7609/1B14/5bb3966f6441">
+							<position>
+								<Point x="9252" y="6871"/>
+							</position>
+							<size>
+								<Size width="1869" height="1524"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/9620/7609/1B14/5bb39673163b">
+							<position>
+								<Point x="5927" y="6959"/>
+							</position>
+							<size>
+								<Size width="264" height="502"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/9620/7609/1B14/5bb39673163b" dstEquation="!ed/961a/7609/1B14/5bb3966f6441">
+							<positions>
+								<Point x="6191" y="7223"/>
+								<Point x="7726" y="7223"/>
+								<Point x="7726" y="7594"/>
+								<Point x="9260" y="7594"/>
+							</positions>
+						</Edge>
+						<EquationGE rotation="180" presentable="!ed/962c/7609/1B14/5bb3967c4aea">
+							<position>
+								<Point x="14684" y="9022"/>
+							</position>
+							<size>
+								<Size width="1006" height="1005"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/9632/7609/1B14/5bb396983bce">
+							<position>
+								<Point x="14579" y="7091"/>
+							</position>
+							<size>
+								<Size width="1005" height="661"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/9638/7609/1B14/5bb3969c2a03">
+							<position>
+								<Point x="19632" y="7117"/>
+							</position>
+							<size>
+								<Size width="318" height="503"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/9632/7609/1B14/5bb396983bce" dstEquation="!ed/9638/7609/1B14/5bb3969c2a03">
+							<positions>
+								<Point x="15584" y="7435"/>
+								<Point x="17621" y="7435"/>
+								<Point x="17621" y="7382"/>
+								<Point x="19685" y="7382"/>
+							</positions>
+						</Edge>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/9632/7609/1B14/5bb396983bce" dstEquation="!ed/962c/7609/1B14/5bb3967c4aea">
+							<positions>
+								<Point x="15584" y="7435"/>
+								<Point x="17013" y="7435"/>
+								<Point x="17013" y="9525"/>
+								<Point x="15690" y="9525"/>
+							</positions>
+						</Edge>
+						<Edge leftVarIndex="1" rightExprIndex="2" srcEquation="!ed/962c/7609/1B14/5bb3967c4aea" dstEquation="!ed/9632/7609/1B14/5bb396983bce">
+							<positions>
+								<Point x="14684" y="9525"/>
+								<Point x="13256" y="9525"/>
+								<Point x="13256" y="7541"/>
+								<Point x="14579" y="7541"/>
+							</positions>
+						</Edge>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/961a/7609/1B14/5bb3966f6441" dstEquation="!ed/9632/7609/1B14/5bb396983bce">
+							<positions>
+								<Point x="11033" y="7594"/>
+								<Point x="12806" y="7594"/>
+								<Point x="12806" y="7303"/>
+								<Point x="14579" y="7303"/>
+							</positions>
+						</Edge>
+					</presentationElements>
+				</NetDiagram>
+			</diagrams>
+		</ed:Operator>
+	</pragmas>
+</Operator>

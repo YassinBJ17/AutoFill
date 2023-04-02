@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/middleware/hpdisc/hpdisc_process_raw.o: R:/source/oss/middleware/hpdisc/hpdisc_process_raw.c R:/source/shared/type/common_type.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/hpdisc/hpdisc_private.h R:/source/oss/middleware/hpdisc/hpdisc_public.h R:/source/oss/middleware/hpdisc/hpdisc_process_raw.h

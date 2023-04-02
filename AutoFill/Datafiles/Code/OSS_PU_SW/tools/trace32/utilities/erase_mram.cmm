@@ -1,0 +1,17 @@
+; ------------------------------------------------------------------------------
+;                        SAFRAN Electronics & Defense
+;                   Reproduction and disclosure forbidden.
+; ------------------------------------------------------------------------------
+; DESCRIPTION : Erase the MRAM by writing 0x00000000 in all address
+; ------------------------------------------------------------------------------
+
+; MRAM range
+&mram="SD:0x20000000--0x2001FFFF"
+
+; Initialization pattern for MRAM
+&mram_pattern=0x00000000
+
+; Set the &mram_pattern in the &mram 
+Data.Set &mram %BE %Long &mram_pattern
+
+PRINT "[INF] MRAM has been zeroised."

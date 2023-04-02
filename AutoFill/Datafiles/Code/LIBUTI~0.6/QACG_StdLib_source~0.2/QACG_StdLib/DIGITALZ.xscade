@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Package name="DIGITALZ">
+			<declarations>
+				<Operator name="RisingEdgeLatch" href="RisingEdgeLatch.xscade"/>
+				<Operator name="FallingEdgeLatch" href="FallingEdgeLatch.xscade"/>
+				<Operator name="FallingEdgeLatchRst" href="FallingEdgeLatchRst.xscade"/>
+				<Operator name="RisingEdgeLatchRst" href="RisingEdgeLatchRst.xscade"/>
+				<Operator name="RisingEdgeConfirmation" href="RisingEdgeConfirmation.xscade"/>
+				<Operator name="FallingEdgeConfirmation" href="FallingEdgeConfirmation.xscade"/>
+				<Operator name="FallingEdgeConfirmationRst" href="FallingEdgeConfirmationRst.xscade"/>
+				<Operator name="RisingEdgeConfirmationRst" href="RisingEdgeConfirmationRst.xscade"/>
+			</declarations>
+			<pragmas>
+				<ed:Package oid="!ed/a78/41FC/FC4/51cae137442" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+					<diagrams>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/a79/41FC/FC4/51cae1371196" blockKind="constants"/>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/a7a/41FC/FC4/51cae13735be" blockKind="types"/>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/a7b/41FC/FC4/51cae13774cd" blockKind="sensors"/>
+					</diagrams>
+				</ed:Package>
+			</pragmas>
+		</Package>
+	</declarations>
+</File>

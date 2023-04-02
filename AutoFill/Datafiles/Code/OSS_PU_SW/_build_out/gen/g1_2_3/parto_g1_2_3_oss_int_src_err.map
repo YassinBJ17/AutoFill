@@ -1,0 +1,6 @@
+dld: warning: Overlapping memory block 'flash_for_mcss_wrapper_data', overlaps with 'flash'
+dld: warning: No main entry point defined
+dld: warning: Don't know where to allocate input section:
+dld:   no matching input specification found in linker command file.
+dld:   Section name: .text_vle
+dld:   File: R:/_build_out/ast/parto_g1_2_3_oss_int_src/uid.o

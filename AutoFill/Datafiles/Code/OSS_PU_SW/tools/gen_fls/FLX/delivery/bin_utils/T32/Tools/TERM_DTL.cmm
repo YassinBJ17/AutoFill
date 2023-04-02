@@ -1,0 +1,21 @@
+; Patch introduced in order to stub MPU behaviour
+
+IF "&CONF_TGT_MODE"=="SIMU"
+(
+   ;Term.Method COM &port &baudrate &data &parity &stop &flowcontrol
+   ;TERM.METHOD SIM COM1 1000000. 8 NONE 1STOP NONE
+   TERM.RESET
+   TERM.METHOD SIM 
+   TERM.MODE ASCII
+   TERM.SCROLL ON 
+   TERM.LOCALECHO OFF
+   ;TERM.SIZE 80 1000
+   ;WINPOS 1.0 20.0 150. 24. 0. 0. TermWin
+   ;SCREEN.ALWAYS
+   ;TERM.VIEW
+   ;TERM.view 0 0
+   ;TERM.view 1 1
+   TERM.view 2 2
+)
+ 
+ ENDDO

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="function" external="imported" name="LIBBSP_A429_WriteWrapper">
+			<inputs>
+				<Variable name="devID">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_A429_TxLine"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4e8b/5F7B/CD94/5d9f3d865bf7"/>
+					</pragmas>
+				</Variable>
+				<Variable name="size">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="uint32"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4e8c/5F7B/CD94/5d9f3d8675cc"/>
+					</pragmas>
+				</Variable>
+				<Variable name="buffer">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TS_LIBBSP_A429_Buffer"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4e8d/5F7B/CD94/5d9f3d8677db"/>
+					</pragmas>
+				</Variable>
+			</inputs>
+			<outputs>
+				<Variable name="v_ret_Write">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_A429_TxErrorCode"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4e87/5F7B/CD94/5d9f3d8644e"/>
+					</pragmas>
+				</Variable>
+				<Variable name="count">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="uint32"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4e86/5F7B/CD94/5d9f3d862312"/>
+					</pragmas>
+				</Variable>
+				<Variable name="OverflowFIFO">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="bool"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4e88/5F7B/CD94/5d9f3d862f3"/>
+					</pragmas>
+				</Variable>
+				<Variable name="OverflowCMD">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="bool"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4e89/5F7B/CD94/5d9f3d8624a7"/>
+					</pragmas>
+				</Variable>
+				<Variable name="Reg_value">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="uint32"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4e8a/5F7B/CD94/5d9f3d861890"/>
+					</pragmas>
+				</Variable>
+			</outputs>
+			<pragmas>
+				<ed:Operator oid="!ed/4e85/5F7B/CD94/5d9f3d86405c"/>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

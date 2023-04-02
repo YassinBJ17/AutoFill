@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Package name="MATH">
+			<declarations>
+				<Operator name="RealEquality" href="RealEquality.xscade"/>
+				<Operator name="Min" href="Min.xscade"/>
+				<Operator name="Max" href="Max.xscade"/>
+				<Operator name="Limiter" href="Limiter.xscade"/>
+				<Operator name="Abs" href="Abs.xscade"/>
+				<Operator name="Round" href="Round.xscade"/>
+				<Operator name="LinearInterp1D" href="LinearInterp1D.xscade"/>
+				<Operator name="Floor" href="Floor.xscade"/>
+				<Operator name="ComputeIndex" href="ComputeIndex.xscade"/>
+				<Operator name="IndexSearch" href="IndexSearch.xscade"/>
+				<Operator name="ACos" href="ACos.xscade"/>
+				<Operator name="ASin" href="ASin.xscade"/>
+				<Operator name="Sqrt" href="Sqrt.xscade"/>
+				<Operator name="ATan" href="ATan.xscade"/>
+				<Operator name="ATan2" href="ATan2.xscade"/>
+				<Operator name="Cos" href="Cos.xscade"/>
+				<Operator name="CubeRoot" href="CubeRoot.xscade"/>
+				<Operator name="Derivative" href="Derivative.xscade"/>
+				<Operator name="Expo" href="Expo.xscade"/>
+				<Operator name="Inv" href="Inv.xscade"/>
+				<Operator name="LinearInterp2D" href="LinearInterp2D.xscade"/>
+				<Operator name="Log2" href="Log2.xscade"/>
+				<Operator name="Log10" href="Log10.xscade"/>
+				<Operator name="Max3" href="Max3.xscade"/>
+				<Operator name="Min3" href="Min3.xscade"/>
+				<Operator name="RestrictedPow" href="RestrictedPow.xscade"/>
+				<Operator name="Sin" href="Sin.xscade"/>
+				<Operator name="SinCos" href="SinCos.xscade"/>
+				<Operator name="ComputePolynom" href="ComputePolynom.xscade"/>
+				<Operator name="ComputePolynomTerm" href="ComputePolynomTerm.xscade"/>
+				<Operator name="CopySign" href="CopySign.xscade"/>
+				<Operator name="Tan" href="Tan.xscade"/>
+				<Operator name="Ln" href="Ln.xscade"/>
+				<Operator name="Max4" href="Max4.xscade"/>
+				<Operator name="Min4" href="Min4.xscade"/>
+				<Operator name="Power" href="Power.xscade"/>
+			</declarations>
+			<pragmas>
+				<ed:Package oid="!ed/11/C6C/A6C/51cadf9d6219" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+					<diagrams>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/12/C6C/A6C/51cadf9d45b" blockKind="constants" columnsSize="0, 224, 178, 291, 236"/>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/13/C6C/A6C/51cadf9d505" blockKind="types"/>
+						<TreeDiagram landscape="true" format="A4 (210 297)" oid="!ed/14/C6C/A6C/51cadf9d6ae3" blockKind="sensors"/>
+					</diagrams>
+				</ed:Package>
+			</pragmas>
+		</Package>
+	</declarations>
+</File>

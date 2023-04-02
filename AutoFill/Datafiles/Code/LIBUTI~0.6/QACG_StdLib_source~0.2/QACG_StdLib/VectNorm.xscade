@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" kind="function" name="VectNorm">
+	<sizeParameters>
+		<SizeParameter name="N">
+			<pragmas>
+				<ed:SizeParameter oid="!ed/2f77/1C2/1FA0/557e9de4346f"/>
+			</pragmas>
+		</SizeParameter>
+	</sizeParameters>
+	<inputs>
+		<Variable name="V">
+			<type>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="'T"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="N"/>
+							</path>
+						</IdExpression>
+					</size>
+				</Table>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/2f79/1C2/1FA0/557e9de44e97"/>
+			</pragmas>
+		</Variable>
+	</inputs>
+	<outputs>
+		<Variable name="Norm">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/2f78/1C2/1FA0/557e9de47a24"/>
+			</pragmas>
+		</Variable>
+	</outputs>
+	<numericTypes>
+		<NumericType>
+			<typeVar>
+				<TypeRef name="'T"/>
+			</typeVar>
+		</NumericType>
+	</numericTypes>
+	<locals>
+		<Variable name="_L1">
+			<type>
+				<Table>
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="'T"/>
+							</type>
+						</NamedType>
+					</type>
+					<size>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="N"/>
+							</path>
+						</IdExpression>
+					</size>
+				</Table>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/2f73/1C2/1FA0/557e9de428be"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L4">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="'T"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/2f74/1C2/1FA0/557e9de41cde"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L5">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/2f75/1C2/1FA0/557e9de43e34"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L7">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/2f76/1C2/1FA0/557e9de41efd"/>
+			</pragmas>
+		</Variable>
+	</locals>
+	<data>
+		<!-- _L1 = V; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L1"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="V"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/2f6c/1C2/1FA0/557e9de4fce"/>
+			</pragmas>
+		</Equation>
+		<!-- Norm = _L7; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="Norm"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="_L7"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/2f6d/1C2/1FA0/557e9de45f8c"/>
+			</pragmas>
+		</Equation>
+		<!-- _L4 = (ScalarProduct<<N>>)(_L1, _L1); -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L4"/>
+			</lefts>
+			<right>
+				<!-- (ScalarProduct<<N>>)(_L1, _L1) -->
+				<CallExpression>
+					<operator>
+						<OpCall name="1">
+							<operator>
+								<OperatorRef name="ScalarProduct"/>
+							</operator>
+							<instanceParameters>
+								<IdExpression>
+									<path>
+										<ConstVarRef name="N"/>
+									</path>
+								</IdExpression>
+							</instanceParameters>
+						</OpCall>
+					</operator>
+					<callParameters>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L1"/>
+							</path>
+						</IdExpression>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L1"/>
+							</path>
+						</IdExpression>
+					</callParameters>
+				</CallExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/2f6e/1C2/1FA0/557e9de44001"/>
+			</pragmas>
+		</Equation>
+		<Assertion kind="assume" name="A1">
+			<definition>
+				<!-- N >= K_I_one -->
+				<BinaryOp name="2" operator="&gt;=">
+					<operands>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="N"/>
+							</path>
+						</IdExpression>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="K_I_one"/>
+							</path>
+						</IdExpression>
+					</operands>
+				</BinaryOp>
+			</definition>
+			<pragmas>
+				<ed:Assertion oid="!ed/2f6f/1C2/1FA0/557e9de467c3"/>
+			</pragmas>
+		</Assertion>
+		<!-- _L5 = (_L4 : T_Float_user); -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L5"/>
+			</lefts>
+			<right>
+				<!-- (_L4 : T_Float_user) -->
+				<NumericCastOp name="1">
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+					<flow>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L4"/>
+							</path>
+						</IdExpression>
+					</flow>
+				</NumericCastOp>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/2f70/1C2/1FA0/557e9de42c8e"/>
+			</pragmas>
+		</Equation>
+		<!-- _L7 = MATH::Sqrt(_L5); -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L7"/>
+			</lefts>
+			<right>
+				<!-- MATH::Sqrt(_L5) -->
+				<CallExpression>
+					<operator>
+						<OpCall name="1">
+							<operator>
+								<OperatorRef name="MATH::Sqrt"/>
+							</operator>
+						</OpCall>
+					</operator>
+					<callParameters>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L5"/>
+							</path>
+						</IdExpression>
+					</callParameters>
+				</CallExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/2f71/1C2/1FA0/557e9de423a6"/>
+			</pragmas>
+		</Equation>
+	</data>
+	<pragmas>
+		<ed:Operator oid="!ed/2f6b/1C2/1FA0/557e9de4625c" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+			<comment>Computes the norm of vector V</comment>
+			<diagrams>
+				<NetDiagram name="diagram_VectNorm_1" landscape="true" format="A4 (210 297)" oid="!ed/2f72/1C2/1FA0/557e9de440e6">
+					<comment>Nature:LLR</comment>
+					<presentationElements>
+						<EquationGE presentable="!ed/2f6c/1C2/1FA0/557e9de4fce">
+							<position>
+								<Point x="5424" y="7038"/>
+							</position>
+							<size>
+								<Size width="265" height="503"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/2f6d/1C2/1FA0/557e9de45f8c">
+							<position>
+								<Point x="19288" y="7011"/>
+							</position>
+							<size>
+								<Size width="318" height="503"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/2f6e/1C2/1FA0/557e9de44001">
+							<position>
+								<Point x="9305" y="6236"/>
+							</position>
+							<size>
+								<Size width="3959" height="2080"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/2f6c/1C2/1FA0/557e9de4fce" dstEquation="!ed/2f6e/1C2/1FA0/557e9de44001">
+							<positions>
+								<Point x="5689" y="7303"/>
+								<Point x="7488" y="7303"/>
+								<Point x="7488" y="6932"/>
+								<Point x="9313" y="6932"/>
+							</positions>
+						</Edge>
+						<Edge leftVarIndex="1" rightExprIndex="2" srcEquation="!ed/2f6c/1C2/1FA0/557e9de4fce" dstEquation="!ed/2f6e/1C2/1FA0/557e9de44001">
+							<positions>
+								<Point x="5689" y="7303"/>
+								<Point x="7488" y="7303"/>
+								<Point x="7488" y="7620"/>
+								<Point x="9313" y="7620"/>
+							</positions>
+						</Edge>
+						<AssertionGE presentable="!ed/2f6f/1C2/1FA0/557e9de467c3">
+							<position>
+								<Point x="3704" y="2725"/>
+							</position>
+							<size>
+								<Size width="0" height="0"/>
+							</size>
+						</AssertionGE>
+						<EquationGE presentable="!ed/2f70/1C2/1FA0/557e9de42c8e">
+							<position>
+								<Point x="14023" y="6932"/>
+							</position>
+							<size>
+								<Size width="1005" height="662"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/2f6e/1C2/1FA0/557e9de44001" dstEquation="!ed/2f70/1C2/1FA0/557e9de42c8e">
+							<positions>
+								<Point x="13256" y="7276"/>
+								<Point x="13626" y="7276"/>
+								<Point x="13626" y="7276"/>
+								<Point x="14023" y="7276"/>
+							</positions>
+						</Edge>
+						<EquationGE presentable="!ed/2f71/1C2/1FA0/557e9de423a6">
+							<position>
+								<Point x="16510" y="6562"/>
+							</position>
+							<size>
+								<Size width="1772" height="1402"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/2f70/1C2/1FA0/557e9de42c8e" dstEquation="!ed/2f71/1C2/1FA0/557e9de423a6">
+							<positions>
+								<Point x="15028" y="7276"/>
+								<Point x="15531" y="7276"/>
+								<Point x="15531" y="7276"/>
+								<Point x="16510" y="7276"/>
+							</positions>
+						</Edge>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/2f71/1C2/1FA0/557e9de423a6" dstEquation="!ed/2f6d/1C2/1FA0/557e9de45f8c">
+							<positions>
+								<Point x="18283" y="7276"/>
+								<Point x="18574" y="7276"/>
+								<Point x="18574" y="7276"/>
+								<Point x="19341" y="7276"/>
+							</positions>
+						</Edge>
+					</presentationElements>
+				</NetDiagram>
+			</diagrams>
+		</ed:Operator>
+	</pragmas>
+</Operator>

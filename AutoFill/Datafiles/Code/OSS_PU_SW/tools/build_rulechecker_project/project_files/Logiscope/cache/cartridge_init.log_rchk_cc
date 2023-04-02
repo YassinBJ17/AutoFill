@@ -1,0 +1,8 @@
+incr::DepCommandLine {log_rchk_cc} {-c} {-cacheon} {-longname} {R:\source\oss\middleware\cartridge\cartridge_init.c} {-c} {-extensions} {*.c;*.C;*.c;*.C} {-o} {R:\tools\build_rulechecker_project\project_files\Logiscope\cartridge_init} {-dial} {ansi} {-ddef} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def} {-ign} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign} {-mac} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.mac}
+incr::DepMainInput {R:\source\oss\middleware\cartridge\cartridge_init.c}
+incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign}
+incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def}
+incr::DepInput {R:\source\shared\type/mcp_types.h}
+incr::DepInput {R:\source\oss\middleware\cartridge/cartridge_public.h}
+incr::DepInput {R:\source\lib_critical_service\libtools\memory/LIB_MEM_public.h}
+incr::DepOutput {R:\tools\build_rulechecker_project\project_files\Logiscope\cache\cartridge_init.log_rchk_cc.dmp}

@@ -1,0 +1,129 @@
+;
+; copy from demo\powerpc\flash\jpc577xm.cmm
+;
+
+  ; Check if script is called with parameters
+  ; Valid parameters:
+  ;   PREPAREONLY     : prepare flash programming without user interaction
+  ;   SKIPCONFIG      : skip configuration part to allow script external configuration
+  LOCAL &parameters &param_prepareonly &param_skipconfig
+  ENTRY %LINE &parameters
+  &param_prepareonly=(STRing.SCAN(STRing.UPpeR("&parameters"),"PREPAREONLY",0)!=-1)
+  &param_skipconfig=(STRing.SCAN(STRing.UPpeR("&parameters"),"SKIPCONFIG",0)!=-1)
+
+  ;LOCAL &DualPort
+  ;IF VERSION.BUILD.BASE()>=45520.
+  ;  &DualPort="/DualPort"
+  &DualPort=""
+
+  ; ------------------------------------------------------------------------------
+  ; CPU setup
+
+  IF !&param_skipconfig
+  (
+    SYStem.RESet
+    SYStem.BdmClock 4.0MHz
+    SYStem.CPU MPC5777M
+    SYStem.CONFIG.CORE 3. 1.
+    SYStem.CONFIG.Slave OFF
+    SYStem.Option.WATCHDOG OFF
+    SYStem.Up
+
+    ; Initialize internal SRAM (only partially used)
+    Data.Set EA:0x40000000--0x4000FFFF %Quad 0
+  )
+
+  ; ------------------------------------------------------------------------------
+  ; Flash declaration
+
+  FLASH.RESet
+
+  ; Low address space
+  FLASH.Create 1. 0x00404000--0x00407FFF NOP    Quad 0x0000 /INFO "BAF (read only)"
+  FLASH.Create 1. 0x00FC0000--0x00FC3FFF TARGET Quad 0x0001
+  FLASH.Create 1. 0x00FC4000--0x00FC7FFF TARGET Quad 0x0002
+  FLASH.Create 1. 0x00FC8000--0x00FCBFFF TARGET Quad 0x0003
+  FLASH.Create 1. 0x00FCC000--0x00FCFFFF TARGET Quad 0x0004
+  FLASH.Create 1. 0x0060C000--0x0060FFFF NOP    Quad 0x0005 /INFO "HSM code"
+  FLASH.Create 1. 0x00FD0000--0x00FD7FFF TARGET Quad 0x0006
+  FLASH.Create 1. 0x00FD8000--0x00FDFFFF TARGET Quad 0x0007
+  FLASH.Create 1. 0x00FE0000--0x00FEFFFF TARGET Quad 0x0008
+  FLASH.Create 1. 0x00FF0000--0x00FFFFFF TARGET Quad 0x0009
+  FLASH.Create 1. 0x00610000--0x0061FFFF NOP    Quad 0x000a /INFO "HSM code"
+  FLASH.Create 1. 0x00620000--0x0062FFFF NOP    Quad 0x000b /INFO "HSM code"
+  ; Mid address space
+  FLASH.Create 2. 0x00680000--0x00683FFF NOP    Quad 0x0100 /INFO "HSM data"
+  FLASH.Create 2. 0x00684000--0x00687FFF NOP    Quad 0x0101 /INFO "HSM data"
+  ; High address space
+  FLASH.Create 3. 0x00800000--0x0080FFFF TARGET Quad 0x0200
+  FLASH.Create 3. 0x00810000--0x0081FFFF TARGET Quad 0x0201
+  FLASH.Create 3. 0x00820000--0x0082FFFF TARGET Quad 0x0202
+  FLASH.Create 3. 0x00830000--0x0083FFFF TARGET Quad 0x0203
+  FLASH.Create 3. 0x00840000--0x0084FFFF TARGET Quad 0x0204
+  FLASH.Create 3. 0x00850000--0x0085FFFF TARGET Quad 0x0205
+  FLASH.Create 3. 0x00860000--0x0086FFFF TARGET Quad 0x0206
+  FLASH.Create 3. 0x00870000--0x0087FFFF TARGET Quad 0x0207
+  ; 256k address space
+  FLASH.Create 4. 0x01000000--0x0103FFFF TARGET Quad 0x0300
+  FLASH.Create 5. 0x01040000--0x0107FFFF TARGET Quad 0x0301
+  FLASH.Create 6. 0x01080000--0x010BFFFF TARGET Quad 0x0302
+  FLASH.Create 7. 0x010C0000--0x010FFFFF TARGET Quad 0x0303
+  FLASH.Create 8. 0x01100000--0x0113FFFF TARGET Quad 0x0304
+  FLASH.Create 9. 0x01140000--0x0117FFFF TARGET Quad 0x0305
+  FLASH.Create 10. 0x01180000--0x011BFFFF TARGET Quad 0x0306
+  FLASH.Create 11. 0x011C0000--0x011FFFFF TARGET Quad 0x0307
+  FLASH.Create 12. 0x01200000--0x0123FFFF TARGET Quad 0x0308
+  FLASH.Create 13. 0x01240000--0x0127FFFF TARGET Quad 0x0309
+  FLASH.Create 14. 0x01280000--0x012BFFFF TARGET Quad 0x030a
+  FLASH.Create 15. 0x012C0000--0x012FFFFF TARGET Quad 0x030b
+  FLASH.Create 15. 0x01300000--0x0133FFFF TARGET Quad 0x030c
+  FLASH.Create 15. 0x01340000--0x0137FFFF TARGET Quad 0x030d
+  FLASH.Create 15. 0x01380000--0x013BFFFF TARGET Quad 0x030e
+  FLASH.Create 15. 0x013C0000--0x013FFFFF TARGET Quad 0x030f
+  FLASH.Create 15. 0x01400000--0x0143FFFF TARGET Quad 0x0310
+  FLASH.Create 15. 0x01440000--0x0147FFFF TARGET Quad 0x0311
+  FLASH.Create 15. 0x01480000--0x014BFFFF TARGET Quad 0x0312
+  FLASH.Create 15. 0x014C0000--0x014FFFFF TARGET Quad 0x0313
+  FLASH.Create 15. 0x01500000--0x0153FFFF TARGET Quad 0x0314
+  FLASH.Create 15. 0x01540000--0x0157FFFF TARGET Quad 0x0315
+  FLASH.Create 15. 0x01580000--0x015BFFFF TARGET Quad 0x0316
+  FLASH.Create 15. 0x015C0000--0x015FFFFF TARGET Quad 0x0317
+  FLASH.Create 15. 0x01600000--0x0163FFFF TARGET Quad 0x0318
+  FLASH.Create 15. 0x01640000--0x0167FFFF TARGET Quad 0x0319
+  FLASH.Create 15. 0x01680000--0x016BFFFF TARGET Quad 0x031A
+  FLASH.Create 15. 0x016C0000--0x016FFFFF TARGET Quad 0x031B
+  FLASH.Create 15. 0x01700000--0x0173FFFF TARGET Quad 0x031C
+  FLASH.Create 15. 0x01740000--0x0177FFFF TARGET Quad 0x031D
+
+  ; UTEST address space
+  FLASH.Create 16. 0x00400000--0x00403FFF TARGET Quad 0x0500 /OTP /INFO "UTEST"
+
+  ; Overlay enabled mapping
+  FLASH.CreateALIAS 0x08A00000--0x08FFFFFF 0x00A00000   ; Small & medium flash blocks
+  FLASH.CreateALIAS 0x09000000--0x09FFFFFF 0x01000000   ; Large flash blocks
+
+  FLASH.TARGET E:0x40000000 E:0x40002000 0x1000 ~~/demo/powerpc/flash/quad/c55fm5746m.bin /STACKSIZE 0x0200 &DualPort
+
+  ; Flash script ends here if called with parameter PREPAREONLY
+  IF &param_prepareonly
+    ENDDO
+
+  ; ------------------------------------------------------------------------------
+  ; Flash programming
+
+  DIALOG.YESNO "Flash programming prepared. Program flash memory now?"
+  LOCAL &progflash
+  ENTRY &progflash
+
+  IF &progflash
+  (
+    FLASH.ReProgram ALL /Erase
+    Data.LOAD.auto *
+    FLASH.ReProgram.off
+  )
+  ELSE
+  (
+    FLASH.List
+  )
+
+  ENDDO

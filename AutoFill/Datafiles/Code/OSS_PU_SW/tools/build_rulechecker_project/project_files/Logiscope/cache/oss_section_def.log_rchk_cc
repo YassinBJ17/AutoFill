@@ -1,0 +1,9 @@
+incr::DepCommandLine {log_rchk_cc} {-c} {-cacheon} {-longname} {R:\source\oss\memory\oss_section_def.c} {-c} {-extensions} {*.c;*.C;*.c;*.C} {-o} {R:\tools\build_rulechecker_project\project_files\Logiscope\oss_section_def} {-dial} {ansi} {-ddef} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def} {-ign} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign} {-mac} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.mac}
+incr::DepMainInput {R:\source\oss\memory\oss_section_def.c}
+incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign}
+incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def}
+incr::DepInput {R:\source\oss\memory/oss_section_def_public.h}
+incr::DepInput {R:\source\shared\type/mcp_types.h}
+incr::DepInput {R:\source\shared\memory/shared_memory_public.h}
+incr::DepInput {R:\source\shared\memory/memory_address_public.h}
+incr::DepOutput {R:\tools\build_rulechecker_project\project_files\Logiscope\cache\oss_section_def.log_rchk_cc.dmp}

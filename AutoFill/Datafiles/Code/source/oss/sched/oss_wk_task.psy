@@ -1,0 +1,89 @@
+/* --------------------------------------------------------------------------
+ *                        SAFRAN Electronics & Defense
+ *                   Reproduction and disclosure forbidden.
+ * --------------------------------------------------------------------------
+ * DESCRIPTION : Worker that initializes the OSS and execute it in realtime
+ * -------------------------------------------------------------------------- */
+
+/* ---------- include provided interface: ----------------------------------- */
+#include "sched/clock_data.psyh"
+#include "main/oss_task_public.h"
+
+/* ---------- include required interface: ----------------------------------- */
+
+/* ---------- internal define constants: ------------------------------------ */
+
+/* ---------- internal types: ----------------------------------------------- */
+
+/* ---------- provided constants: ------------------------------------------- */
+
+/* ---------- provided data: ------------------------------------------------ */
+
+/* ---------- internal constants: ------------------------------------------- */
+
+/* ---------- internal data: ------------------------------------------------ */
+
+/* ---------- provided operation bodies: ------------------------------------ */
+
+/* ---------- internal operations: ------------------------------------------ */
+/* Implements REQ_FADEX_OS_SRD-SCHED-0010 */
+/* Implements REQ_FADEX_OS_SRD-SCHED-0020 */
+/* Implements REQ_FADEX_OS_SRD-SCHED-0030 */
+/* Worker for the OSS */
+worker oss_wk_task(uses SOURCE)
+{
+   /* Initialize the OSS */
+   init
+   {
+      /* C function containing all the initialization */
+      oss_init();
+   }
+
+   /* Execute the OSS in realtime for a duration of 4 ms each RTC (10 ms) */
+   output
+   {
+      /* Job in charge of execution */
+      job job_oss(onclock clock_10ms, starttime 1, jitter duration_4ms)
+      {
+         /* Body of the job referencing the budget given to OSS */
+         khibody(timebudget budget_wk_oss_task)
+         {
+            /* Execute the OSS in realtime */
+            oss_task();
+         }
+      }
+      
+//      job job_oss2(onclock clock_10ms_offset_2ms, starttime 2, jitter duration_1ms)
+//      {
+//         /* Body of the job referencing the budget given to OSS */
+//         khibody(timebudget budget_wk_oss_task2)
+//         {
+//            /* Execute the OSS in realtime */
+//            oss_task2();
+//         }
+//      }
+   }
+   input
+   {
+      /* Job in charge of execution */
+//      job job_oss3(onclock clock_10ms_offset_7ms, starttime 2, jitter duration_1ms)
+//      {
+//         /* Body of the job referencing the budget given to OSS */
+//         khibody(timebudget budget_wk_oss_task3)
+//         {
+//            /* Execute the OSS in realtime */
+//            oss_task3();
+//        }
+//      }
+      
+      job job_oss4(onclock clock_10ms, starttime 2, jitter duration_3ms)
+      {
+         /* Body of the job referencing the budget given to OSS */
+         khibody(timebudget budget_wk_oss_task4)
+         {
+            /* Execute the OSS in realtime */
+            oss_task4();
+         }
+      }
+   }
+}

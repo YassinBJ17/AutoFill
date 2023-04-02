@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3" kind="function" name="Ln">
+	<inputs>
+		<Variable name="X">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/f8e0/250C/1B3C/5b9fa144675b"/>
+			</pragmas>
+		</Variable>
+	</inputs>
+	<outputs>
+		<Variable name="LnX">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/f936/250C/1B3C/5b9fa2cc73c3"/>
+			</pragmas>
+		</Variable>
+	</outputs>
+	<locals>
+		<Variable name="_L1">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/f8f5/250C/1B3C/5b9fa1813496"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L2">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="float64"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/f90b/250C/1B3C/5b9fa1a343d0"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L5">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/f931/250C/1B3C/5b9fa2b85d8d"/>
+			</pragmas>
+		</Variable>
+		<Variable name="_L6">
+			<type>
+				<NamedType>
+					<type>
+						<TypeRef name="T_Float_user"/>
+					</type>
+				</NamedType>
+			</type>
+			<pragmas>
+				<ed:Variable oid="!ed/d388/247D/D30/5ba0adec6b89"/>
+			</pragmas>
+		</Variable>
+	</locals>
+	<data>
+		<!-- _L1 = Log2(_L5); -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L1"/>
+			</lefts>
+			<right>
+				<!-- Log2(_L5) -->
+				<CallExpression>
+					<operator>
+						<OpCall name="1">
+							<operator>
+								<OperatorRef name="Log2"/>
+							</operator>
+						</OpCall>
+					</operator>
+					<callParameters>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L5"/>
+							</path>
+						</IdExpression>
+					</callParameters>
+				</CallExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/f8f4/250C/1B3C/5b9fa181387c"/>
+			</pragmas>
+		</Equation>
+		<!-- _L2 = _L1 * _L6; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L2"/>
+			</lefts>
+			<right>
+				<!-- _L1 * _L6 -->
+				<NAryOp name="1" operator="*">
+					<operands>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L1"/>
+							</path>
+						</IdExpression>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L6"/>
+							</path>
+						</IdExpression>
+					</operands>
+				</NAryOp>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/f90a/250C/1B3C/5b9fa1a36898"/>
+			</pragmas>
+		</Equation>
+		<!-- _L5 = X; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L5"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="X"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/f930/250C/1B3C/5b9fa2b85a76"/>
+			</pragmas>
+		</Equation>
+		<!-- LnX = _L2; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="LnX"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="_L2"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/f937/250C/1B3C/5b9fa2d07eab"/>
+			</pragmas>
+		</Equation>
+		<Assertion kind="assume" name="A1">
+			<definition>
+				<!-- X > K_R_zero -->
+				<BinaryOp name="1" operator="&gt;">
+					<operands>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="X"/>
+							</path>
+						</IdExpression>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="K_R_zero"/>
+							</path>
+						</IdExpression>
+					</operands>
+				</BinaryOp>
+			</definition>
+			<pragmas>
+				<ed:Assertion oid="!ed/d386/247D/D30/5ba0ade534cc"/>
+			</pragmas>
+		</Assertion>
+		<!-- _L6 = K_Inv_Ln2; -->
+		<Equation>
+			<lefts>
+				<VariableRef name="_L6"/>
+			</lefts>
+			<right>
+				<IdExpression>
+					<path>
+						<ConstVarRef name="K_Inv_Ln2"/>
+					</path>
+				</IdExpression>
+			</right>
+			<pragmas>
+				<ed:Equation oid="!ed/d387/247D/D30/5ba0adec75fe"/>
+			</pragmas>
+		</Equation>
+	</data>
+	<pragmas>
+		<ed:Operator oid="!ed/f8de/250C/1B3C/5b9fa1322f01" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+			<comment>Computes the natural logarithm (base e) of the input value X</comment>
+			<diagrams>
+				<NetDiagram name="diagram_Ln_1" landscape="true" format="A4 (210 297)" oid="!ed/f8df/250C/1B3C/5b9fa132646c">
+					<comment>Nature:LLR</comment>
+					<presentationElements>
+						<EquationGE presentable="!ed/f8f4/250C/1B3C/5b9fa181387c">
+							<position>
+								<Point x="10028" y="6853"/>
+							</position>
+							<size>
+								<Size width="1772" height="1403"/>
+							</size>
+						</EquationGE>
+						<EquationGE presentable="!ed/f90a/250C/1B3C/5b9fa1a36898">
+							<position>
+								<Point x="13679" y="7752"/>
+							</position>
+							<size>
+								<Size width="1032" height="688"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/f8f4/250C/1B3C/5b9fa181387c" dstEquation="!ed/f90a/250C/1B3C/5b9fa1a36898">
+							<positions>
+								<Point x="11800" y="7567"/>
+								<Point x="12726" y="7567"/>
+								<Point x="12726" y="7990"/>
+								<Point x="13679" y="7990"/>
+							</positions>
+						</Edge>
+						<EquationGE presentable="!ed/f930/250C/1B3C/5b9fa2b85a76">
+							<position>
+								<Point x="7011" y="7197"/>
+							</position>
+							<size>
+								<Size width="265" height="502"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/f930/250C/1B3C/5b9fa2b85a76" dstEquation="!ed/f8f4/250C/1B3C/5b9fa181387c">
+							<positions>
+								<Point x="7276" y="7461"/>
+								<Point x="8652" y="7461"/>
+								<Point x="8652" y="7567"/>
+								<Point x="10028" y="7567"/>
+							</positions>
+						</Edge>
+						<EquationGE presentable="!ed/f937/250C/1B3C/5b9fa2d07eab">
+							<position>
+								<Point x="16351" y="7858"/>
+							</position>
+							<size>
+								<Size width="318" height="502"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/f90a/250C/1B3C/5b9fa1a36898" dstEquation="!ed/f937/250C/1B3C/5b9fa2d07eab">
+							<positions>
+								<Point x="14711" y="8096"/>
+								<Point x="16351" y="8096"/>
+								<Point x="16351" y="8096"/>
+								<Point x="16404" y="8096"/>
+							</positions>
+						</Edge>
+						<AssertionGE presentable="!ed/d386/247D/D30/5ba0ade534cc">
+							<position>
+								<Point x="3836" y="1720"/>
+							</position>
+							<size>
+								<Size width="530" height="529"/>
+							</size>
+						</AssertionGE>
+						<EquationGE kind="OBJ_LIT" presentable="!ed/d387/247D/D30/5ba0adec75fe">
+							<position>
+								<Point x="10478" y="9604"/>
+							</position>
+							<size>
+								<Size width="211" height="318"/>
+							</size>
+						</EquationGE>
+						<Edge leftVarIndex="1" rightExprIndex="2" srcEquation="!ed/d387/247D/D30/5ba0adec75fe" dstEquation="!ed/f90a/250C/1B3C/5b9fa1a36898">
+							<positions>
+								<Point x="10689" y="9763"/>
+								<Point x="12171" y="9763"/>
+								<Point x="12171" y="8202"/>
+								<Point x="13679" y="8202"/>
+							</positions>
+						</Edge>
+					</presentationElements>
+				</NetDiagram>
+			</diagrams>
+		</ed:Operator>
+	</pragmas>
+</Operator>

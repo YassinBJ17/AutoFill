@@ -1,0 +1,26 @@
+LIB_NAME := LIBBSP_ECCMEM
+SCI := LIBBSP
+SOURCES_FILES:=\
+LIBBSP_ECCMEM_InitializeDDR.c\
+LIBBSP_ECCMEM_PostDDR.c\
+LIBBSP_ECCMEM_InitializeL2S.c\
+LIBBSP_ECCMEM_PostL2S.c\
+LIBBSP_ECCMEM_GetCounterL2S.c\
+LIBBSP_ECCMEM_GetCounterDDR.c\
+LIBBSP_ECCMEM_Globals.c
+
+
+
+
+INCLUDE_FILES := ../../LIBBSP_api/LIBBSP_ECCMEM\
+../../LIBBSP_api/LIBBSP_CMN\
+../../LIBBSP_api/LIBBSP_TYPE/inc_gen\
+../../LIBBSP_api/LIBBSP_TYPE/inc_man\
+../../LIBBSP_api/LIBBSP_CCSR
+
+
+include ../../Makefile/MakefileLib.mk
+
+
+
+

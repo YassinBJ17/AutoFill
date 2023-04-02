@@ -1,0 +1,1 @@
+R:/_build_out/obj/oss/middleware/discrete/discrete_init.o: R:/source/oss/middleware/discrete/discrete_init.c R:/source/oss/middleware/discrete/discrete_private.h R:/source/shared/type/common_type.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/discrete/discrete_public.h

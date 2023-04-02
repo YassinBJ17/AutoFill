@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/6" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="function" external="imported" name="LIBBSP_ETSEC_Read">
+			<inputs>
+				<Variable name="network">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_ETSEC_Network"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/40e/729E/4684/5f7498334d6e"/>
+					</pragmas>
+				</Variable>
+			</inputs>
+			<outputs>
+				<Variable name="buffRead">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TS_LIBBSP_ETSEC_EthBuffer"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/40f/729E/4684/5f74983370ca"/>
+					</pragmas>
+				</Variable>
+				<Variable name="size">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="uint32"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/410/729E/4684/5f749833455a"/>
+					</pragmas>
+				</Variable>
+				<Variable name="FrameStatusOut">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_ETSEC_FrameStatus"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/411/729E/4684/5f7498d92631"/>
+					</pragmas>
+				</Variable>
+				<Variable name="ret">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="TE_LIBBSP_ETSEC_NetworkStatus"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/40d/729E/4684/5f7498335a0c"/>
+					</pragmas>
+				</Variable>
+			</outputs>
+			<pragmas>
+				<ed:Operator oid="!ed/40c/729E/4684/5f749833e20"/>
+				<kcg:Pragma>
+					keep
+				</kcg:Pragma>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

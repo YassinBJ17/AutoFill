@@ -1,0 +1,10 @@
+; Patch introduced in order to stub MPU behaviour
+
+IF "&CONF_TGT_MODE"=="SIMU"
+(
+   D.S CASP_E200Z7_MSU_HSI_CLEAR_ALL_MPU_ENTRIES %BE %word 0x0004
+   D.S CASP_E200Z7_MSU_HSI_ENTRY_IS_AVAILABLE %BE %long 0x48130004
+   R.S PIR 2
+)
+ 
+ ENDDO

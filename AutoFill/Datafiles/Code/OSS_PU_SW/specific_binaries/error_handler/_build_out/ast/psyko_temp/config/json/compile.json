@@ -1,0 +1,16 @@
+{
+"compile":
+{
+  "cflags": [
+    "-g",
+    "-j",
+    "-s",
+    "-c",
+    "-W2",
+    "-W:c",
+    "-X115=0",
+    "-Xdebug-local-cie",
+    "-IR:/specific_binaries/error_handler/source"
+  ]
+}
+}

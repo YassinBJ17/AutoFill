@@ -1,0 +1,14 @@
+; ------------------------------------------------------------------------------
+;                        SAFRAN Electronics & Defense
+;                   Reproduction and disclosure forbidden.
+; ------------------------------------------------------------------------------
+; DESCRIPTION : Launch the RSF G1_2_3 with external source
+; ------------------------------------------------------------------------------
+
+; Enable debug
+Data.EPILOG.SEQuence SET 0x24000018 %Long 0x65cda054
+Data.PROLOG.SEQuence SET 0x24000018 %Long 0x1b9d2e5a
+Data.EPILOG.ON
+Data.PROLOG.ON
+
+PRINT "DEBUG MODE IN EXTERNAL SOURCE ENABLED"

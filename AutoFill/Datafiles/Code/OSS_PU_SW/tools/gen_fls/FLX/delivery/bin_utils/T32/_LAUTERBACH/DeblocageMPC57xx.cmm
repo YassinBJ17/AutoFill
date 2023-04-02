@@ -1,0 +1,18 @@
+; --------------------------------------------------------------------------------
+; @Title: 
+;
+; @Description: -
+; @Author: 
+; @Chip: MPC5777M
+; @Copyright: (C) 1989-2014 Lauterbach GmbH, licensed for use with TRACE32(R) only
+; --------------------------------------------------------------------------------
+  SYStem.RESet
+  SYStem.BdmClock 4.0MHz
+  SYStem.CPU MPC5777M
+  SYStem.CONFIG.CORE 3. 1.
+  SYStem.CONFIG.Slave OFF
+  SYStem.Option.WATCHDOG OFF
+  
+  DO ~~/demo/powerpc/etc/standby/haltatpoweronreset.cmm
+ 
+  SYStem.Up

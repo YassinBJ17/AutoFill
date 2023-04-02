@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Package name="SERVICES">
+			<declarations>
+				<Operator name="IsInf" href="IsInf.xscade"/>
+				<Operator name="IsNan" href="IsNan.xscade"/>
+				<Operator name="UnitDelayRst" href="UnitDelayRst.xscade"/>
+				<Operator name="BoolToInteger" href="BoolToInteger.xscade"/>
+				<Operator name="IntegerToBool" href="IntegerToBool.xscade"/>
+				<Operator name="IsZero" href="IsZero.xscade"/>
+				<Operator name="IsSubnormal" href="IsSubnormal.xscade"/>
+				<Operator name="BoolToReal" href="BoolToReal.xscade"/>
+				<Operator name="BooleanSwitch" href="BooleanSwitch.xscade"/>
+				<Operator name="NumericToBool" href="NumericToBool.xscade"/>
+				<Operator name="RealToBool" href="RealToBool.xscade"/>
+				<Operator name="BoolToUint32" href="BoolToUint32.xscade"/>
+			</declarations>
+			<pragmas>
+				<ed:Package oid="!ed/32cde/250C/1B3C/5b9fc9fe33f4" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/7">
+					<diagrams>
+						<TreeDiagram landscape="false" format="A4 (210 297)" oid="!ed/32cdf/250C/1B3C/5b9fc9fe44af" blockKind="constants"/>
+						<TreeDiagram landscape="false" format="A4 (210 297)" oid="!ed/32ce0/250C/1B3C/5b9fc9fe6967" blockKind="types"/>
+						<TreeDiagram landscape="false" format="A4 (210 297)" oid="!ed/32ce1/250C/1B3C/5b9fc9fe3879" blockKind="sensors"/>
+					</diagrams>
+				</ed:Package>
+			</pragmas>
+		</Package>
+	</declarations>
+</File>

@@ -1,0 +1,1 @@
+-R -n .cartridge_init_section,.text_vle,.text,.rodata,.data,.empty,.cartridge_init_section,.copytable,.rodata_runtime_psyslayer,.rodata_runtime_mk,.rodata_module_psyslayer_w_CART,.rodata_module_w_CART,.text_runtime_psyslayer,.text_runtime_mk,.text_module_w_CART,.data_runtime_psyslayer,.data_runtime_mk,.data_module_psyslayer_w_CART,.data_module_w_CART
