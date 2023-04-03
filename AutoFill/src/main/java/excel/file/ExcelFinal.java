@@ -17,13 +17,11 @@ import static excel.file.ExcelModifier.Fill_Cell;
 
 public class ExcelFinal {
 
-    public static final String TEMPLATE0_PATH ="./src/Template/SUTC TEMPLATE0.xls";
-    public static final String TEMPLATE1_PATH ="./src/Template/SUTC TEMPLATE1.xls";
-    public static final String TEMPLATE2_PATH ="./src/Template/SUTC TEMPLATE2.xls";
-    public static final String TEMPLATE3_PATH ="./src/Template/SUTC TEMPLATE3.xls";
-    public static final String TEMPLATE4_PATH ="./src/Template/SUTC TEMPLATE4.xls";
-    public static final String TEMPLATE5_PATH ="./src/Template/SUTC TEMPLATE5.xls";
-    public static final String TEMPLATEx_PATH ="./src/Template/SUTC TEMPLATEx.xls";
+    public static final String TEMPLATE0_PATH ="../AutoFill/src/Template/SUTC TEMPLATE0.xls";
+    public static final String TEMPLATE1_PATH ="../AutoFill/src/Template/SUTC TEMPLATE1.xls";
+    public static final String TEMPLATE2_PATH ="../AutoFill/src/Template/SUTC TEMPLATE2.xls";
+    public static final String TEMPLATE3_PATH ="../AutoFill/src/Template/SUTC TEMPLATE3.xls";
+    public static final String TEMPLATEx_PATH ="../AutoFill/src/Template/SUTC TEMPLATEx.xls";
     public static final int maxUftNumber=8;
     public static final int minUftNumber=1;
     public static final int numberOfUtcPerUft=3;
@@ -44,10 +42,9 @@ public class ExcelFinal {
         ) {if (!Objects.equals(cs, "null"))
             number_of_causes++;
         }
-        System.out.println(number_of_causes);
-        //uft=Math.max(number_of_causes, minUftNumber);
+        uft=number_of_causes+1;
 
-        if (uft > 3)
+        if (uft > 4)
             uft=8;
 
         number_of_UFT =uft+1;
@@ -83,7 +80,9 @@ public class ExcelFinal {
   public static void Excel_Final(String LLR_text, String userName, ArrayList<String> cause_table, ArrayList<String> effect_table, JDialog dialog) throws IOException {
 
       String template;
-        switch (cause_table.size()) {
+      UTC_Number_Filling(cause_table);
+
+        switch (number_of_causes) {
             case 0:
                 template = TEMPLATE0_PATH;
                 System.out.println("TEMPLATE 0");
@@ -107,10 +106,6 @@ public class ExcelFinal {
         }
 
 
-
-
-
-
      FileInputStream inputStream = new FileInputStream(template);
      workbook = WorkbookFactory.create(inputStream);
 
@@ -119,7 +114,7 @@ public class ExcelFinal {
           String file_name=function_name+".c";
           String Code_text= ExtractCode.extract(file_name);
           String[] Code = Code_text.split("\n");
-          UTC_Number_Filling(cause_table);
+
 
           new A0_sheet(LLR);
           new A1_sheet(userName);

@@ -12,17 +12,16 @@ import static excel.file.ExcelModifier.Prototype_Detect;
 
 public class B1_sheet {
 
-    public static final int START_OF_PARAMETERS_TABLE=10+ number_of_UFT;
-    public final int END_OF_SHEET_POSITION =652+ number_of_UFT;
-    public static int STUB_DEFINITION_POSITION=44+ number_of_UFT;
+    public static final int START_OF_PARAMETERS_TABLE=10;
+    public static final int END_OF_SHEET_POSITION =651;
     public static final int END_OF_GLOBAL_DEFINITION=56;
     public final int NUMBER_OF_EMPTY_CELL=25;
     public final int END_OF_SHEET=38;
     public final int DISTANCE_BETWEEN_STUBS =38;
-    public final int STUB_PARAMETERS_TABLE_POSITION =50+ number_of_UFT;
-    public final int STUB_DEFINITION_TABLE_POSITION=43+ number_of_UFT;
-    public final int INTERNAL_DEFINITIONS_POSITION=28+ number_of_UFT;
-    public static int Global_Start=28+ number_of_UFT;
+    public final int STUB_PARAMETERS_TABLE_POSITION =50;
+    public final int STUB_DEFINITION_TABLE_POSITION=43;
+    public final int INTERNAL_DEFINITIONS_POSITION=28;
+    public static int Global_Start=28;
     public static String Prototype;
     public static String[] Globals=new String[20];
     public static String[] Stubs=new String[20];
@@ -37,7 +36,6 @@ public class B1_sheet {
         for (String[] row : Parameters) {
             Arrays.fill(row, "");
         }
-        STUB_DEFINITION_POSITION=48;
         ExcelModifier.Fill_Cell("Unit Test Cases for: " + function_name.toUpperCase(), Excel.SHEET_B1, Excel.CELL_ROW_0, Excel.CELL_COL_2);
 
         Prototype=function_name+"(";
@@ -58,14 +56,14 @@ public class B1_sheet {
         String[] Code_stub;
         int numberOfParameters;
 
-        int distance= STUB_PARAMETERS_TABLE_POSITION -1;
+        int distance= STUB_PARAMETERS_TABLE_POSITION -1 +number_of_UFT;
         for (int i = 0; i <numberOfStubs ; i++) {
 
 
 
             Code_Stub=(ExtractCode.extract(Stubs[i]+".c"));
 
-            ExcelModifier.Fill_Cell(Stubs[i],Excel.SHEET_B1, STUB_DEFINITION_TABLE_POSITION +(i*DISTANCE_BETWEEN_STUBS), Excel.CELL_COL_2);
+            ExcelModifier.Fill_Cell(Stubs[i],Excel.SHEET_B1, STUB_DEFINITION_TABLE_POSITION+number_of_UFT +(i*DISTANCE_BETWEEN_STUBS), Excel.CELL_COL_2);
 
             if(Code_Stub.equals("")){
                 distance=distance+DISTANCE_BETWEEN_STUBS;
@@ -87,8 +85,6 @@ public class B1_sheet {
 
                 Insert_Row(distance+j,Parameters[j]);
 
-
-
                 if ((Parameters[j][Excel.INDEX_OF_ACCESS].contains("out")||Parameters[j][Excel.INDEX_OF_ACCESS].contains("Return"))&&(!(Parameters[j][7].equals("-")))){
                     distance++;
                     Insert_Invalid_Row(distance+j,Parameters[j]);
@@ -100,8 +96,8 @@ public class B1_sheet {
 
         }
 
-        System.out.println(distance);
-        ExcelModifier.Remove_Extra_Rows(Excel.SHEET_B1,distance-6, END_OF_SHEET_POSITION);
+
+        ExcelModifier.Remove_Extra_Rows(Excel.SHEET_B1,distance-6, END_OF_SHEET_POSITION+ number_of_UFT);
         ExcelModifier.Fill_Cell("End of UTC definition",Excel.SHEET_B1,distance-7,1);
     }
     public int Extract_Stubs(String[] LLR){
@@ -407,8 +403,8 @@ public class B1_sheet {
     public void Parameters_Filling(String[] code, String[] LLR) throws IOException{
 
         int numberOfParameters=Extract_Parameters(code,LLR[1]);
-        int normal_parameters_index=START_OF_PARAMETERS_TABLE;// for normal parameters
-        int complex_parameters_index=INTERNAL_DEFINITIONS_POSITION;// for pointer Complex parameters
+        int normal_parameters_index=START_OF_PARAMETERS_TABLE+ number_of_UFT;// for normal parameters
+        int complex_parameters_index=INTERNAL_DEFINITIONS_POSITION+number_of_UFT;// for pointer Complex parameters
         for (int i = 0; i <numberOfParameters ; i++) {
 
             if (Parameters[i][Excel.INDEX_OF_POINTER].equals("isNormal")){
@@ -462,11 +458,7 @@ public class B1_sheet {
                         Parameters[0][Excel.INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(Parameters[0][Excel.INDEX_OF_DOMAIN]);
                     }
 
-
                     Insert_Parameter(43,0,null);
-
-                    STUB_DEFINITION_POSITION--;
-
                     Prototype="RTRT_ret="+Prototype;
 
                 }
@@ -507,7 +499,7 @@ public class B1_sheet {
                 Parameters[i][Excel.INDEX_OF_INVALID_DOMAIN]=Extract_Invalid_Domain(Parameters[i][Excel.INDEX_OF_DOMAIN]);
             }
 
-            Insert_Global_Parameter(Global_Start+i,i,LLR);
+            Insert_Global_Parameter(Global_Start+i+number_of_UFT,i,LLR);
         }
     }
     public int Extract_Global(String [] LLR){
@@ -595,7 +587,7 @@ public class B1_sheet {
 
 
         // A2 filling
-        ExcelModifier.Fill_Cell("Variable",Excel.SHEET_A2,INTERNAL_DEFINITIONS_POSITION+Parameter_number,Excel.CELL_COL_1);
+        ExcelModifier.Fill_Cell("Variable",Excel.SHEET_A2,INTERNAL_DEFINITIONS_POSITION+number_of_UFT+Parameter_number,Excel.CELL_COL_1);
         if (Parameters[Parameter_number][Excel.INDEX_OF_NAME].contains(".")||Parameters[Parameter_number][Excel.INDEX_OF_NAME].contains("->")) {
             int index;
             index=Parameters[Parameter_number][Excel.INDEX_OF_NAME].indexOf("->");
@@ -603,8 +595,8 @@ public class B1_sheet {
                 index=Parameters[Parameter_number][Excel.INDEX_OF_NAME].indexOf(".");
             Parameters[Parameter_number][Excel.INDEX_OF_NAME] = Parameters[Parameter_number][Excel.INDEX_OF_NAME].substring(0,index);
         }
-        ExcelModifier.Fill_Cell(Parameters[Parameter_number][Excel.INDEX_OF_NAME],Excel.SHEET_A2,INTERNAL_DEFINITIONS_POSITION+Parameter_number,Excel.CELL_COL_2);
-        ExcelModifier.Fill_Cell(Parameters[Parameter_number][Excel.INDEX_OF_TYPE],Excel.SHEET_A2,INTERNAL_DEFINITIONS_POSITION+Parameter_number,Excel.CELL_COL_3);
+        ExcelModifier.Fill_Cell(Parameters[Parameter_number][Excel.INDEX_OF_NAME],Excel.SHEET_A2,INTERNAL_DEFINITIONS_POSITION+number_of_UFT+Parameter_number,Excel.CELL_COL_2);
+        ExcelModifier.Fill_Cell(Parameters[Parameter_number][Excel.INDEX_OF_TYPE],Excel.SHEET_A2,INTERNAL_DEFINITIONS_POSITION+number_of_UFT+Parameter_number,Excel.CELL_COL_3);
 
 
 
@@ -621,13 +613,11 @@ public class B1_sheet {
     Sheet A2_sheet= workbook.getSheetAt(Excel.SHEET_A2);
     boolean bool=true;
 
-
     while (bool){
         bool=false;
-        for (int i = START_OF_PARAMETERS_TABLE+2; i <B1_sheet.getLastRowNum() ; i++) {
+    for (int i = START_OF_PARAMETERS_TABLE+1+ number_of_UFT; i <B1_sheet.getLastRowNum() ; i++) {
 
             Row row = B1_sheet.getRow(i);
-
 
             if (row != null) {
                 // Get the second cell in the row
@@ -640,11 +630,12 @@ public class B1_sheet {
                         break;
                     }
                 }
-
+                if(secondCell!=null){
                 if (secondCell.getCellType() == CellType.BLANK && !isMerged) {
                     // If the second cell is empty or null, delete the row
                     B1_sheet.shiftRows(i + 1, B1_sheet.getLastRowNum(), -1);
                     bool=true;
+                }
                 }
             }
         }
@@ -674,7 +665,7 @@ public class B1_sheet {
 
     String function_name=LLR[1];
     System.out.println(function_name+": In progress");
-
+        System.out.println(number_of_UFT);
     Initialize_Data(function_name);
     Stubs_Filling(LLR);
     Parameters_Filling(code,LLR);

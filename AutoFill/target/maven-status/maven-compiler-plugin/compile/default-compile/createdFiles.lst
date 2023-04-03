@@ -9,7 +9,6 @@ Main.class
 c\file\ExtractCode.class
 docx\file\ExtractReq.class
 excel\file\A0_sheet.class
-c\file\SeparateFunctions.class
 docx\file\ExtractText.class
 excel\file\B1_sheet.class
 excel\file\SheetsName.class
