@@ -15,6 +15,7 @@ public class ExtractText {
         // Define a regular expression that matches invisible characters
         return input.replaceAll(PUNCTUATION_MARKS, "");
 
+
     }
 
 

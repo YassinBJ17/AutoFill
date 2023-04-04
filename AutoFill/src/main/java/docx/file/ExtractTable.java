@@ -53,6 +53,8 @@ public class ExtractTable {
                         if (IsNotReq(cell.getText()))
                         {
                             effect.add(removeInvisibleChars(cell.getText().trim()));
+
+
                         }
                     }
                     else

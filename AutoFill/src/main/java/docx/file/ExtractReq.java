@@ -84,9 +84,11 @@ public class ExtractReq {
                     {
                         requirements_with_description = LLR_Text.substring(LLR_Text.lastIndexOf(requirements_without_description) + 1);
                         requirements_with_description = (requirements_with_description.substring(0, requirements_with_description.indexOf("\n[")))+"\n";
-                        final_requirements = final_requirements.replace(requirements_without_description, requirements_with_description);
-                        requirement=requirement.replace(requirements_without_description, "");
-
+                        if(requirements_without_description.contains(requirements_with_description)) {
+                            final_requirements = final_requirements.replace(requirements_without_description, requirements_with_description);
+                            requirement = requirement.replace(requirements_without_description, "");
+                        }else
+                        break;
                     }
                 }
                 else

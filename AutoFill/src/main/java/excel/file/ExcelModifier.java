@@ -54,10 +54,15 @@ public class ExcelModifier {
         }
         s = s.replace("corresponds to the following call", "by calling ");
         s = s.replace("Corresponds to the call", "by calling ");
-        s = s.replace("[", "");
         s = s.replace("]:", "");
         s = s.replace("] :", " ");
-        s = s.replace("]", "");
+
+        if (s.contains("["))
+        {
+        if (s.substring(s.indexOf("["),s.lastIndexOf("]")).trim().split("\\s+").length>1) {
+            s = s.replace("[", "");
+            s = s.replace("]", "");
+        }}
 
         return s;
     }
@@ -76,7 +81,6 @@ public class ExcelModifier {
         s=s.replace("] SET", " by setting");
         s=s.replace(" Set {", "By setting {");
 
-        s=s.replace("[", "");
 
         return s;
     }
