@@ -1,1 +1,0 @@
-R:/_build_out/obj/oss/middleware/sg/sg_get_thresholds.o: R:/source/oss/middleware/sg/sg_get_thresholds.c R:/source/oss/middleware/sg/sg_private.h R:/source/oss/middleware/sg/sg_public.h R:/source/shared/type/mcp_types.h R:/source/shared/memory/shared_memory_public.h R:/source/oss/middleware/sg/sg_get_thresholds.h

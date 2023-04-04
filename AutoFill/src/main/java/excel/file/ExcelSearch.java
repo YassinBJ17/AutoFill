@@ -10,8 +10,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.*;
 
-import javax.swing.*;
-
 public class ExcelSearch {
 
     public static String[] Types_array = {
@@ -88,16 +86,33 @@ public class ExcelSearch {
         return matchingRows;
     }
 
-    public static String main(String searchString,boolean global) throws IOException {
+    public static String SearchFromDD(String ParameterToSearch, boolean global) throws IOException {
         // specify the directory path
-        String directoryPath = "Datafiles/DD";
+        String directoryPath = "../Datafiles/DD";
 
         // search for the string in the Excel files in the directory and print the matching rows
-        String matchingRows = searchExcelFiles(directoryPath, searchString,global);
 
-        if (matchingRows.equals(""))
+        System.out.println("-"+ParameterToSearch+"-");
+
+        if (ParameterToSearch.contains(".")||ParameterToSearch.contains("->")) {
+            int index;
+            index=ParameterToSearch.indexOf("->");
+
+            if (index==-1)
+                index=ParameterToSearch.indexOf(".");
+
+            ParameterToSearch = ParameterToSearch.substring(0,index);
+        }
+
+
+
+
+        String matchingRows = searchExcelFiles(directoryPath, ParameterToSearch,global);
+        System.out.println("-"+ParameterToSearch+"-");
+        if (matchingRows.equals("")) {
+
             return "not exist in the DD";
-
+        }
          return matchingRows;
     }
 }

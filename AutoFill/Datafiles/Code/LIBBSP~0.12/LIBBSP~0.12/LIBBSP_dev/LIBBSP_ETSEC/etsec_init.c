@@ -1,12 +1,0 @@
-#include "LIBMCP_Types.h"
-#include "HW_CONF.h"
-#include "HW_TB.h"
-#include "tbi.h"
-#include "phy.h"
-#include "smi.h"
-#include "Initialize_MACCFG2.h"
-#include "Initialize_ECNTRL.h"
-#include "LIBBSP_ETSEC_InitAddress.h"
-#include "etsec.h"
-
- void etsec_init (const uint32_t device,                  const uint8_t * const txbd_addr,                   const uint8_t * const rxbd_addr,                  const TS_LIBBSP_ETSEC_ConfHostMac * const p_mac) {     volatile t_ETSEC         *p_etsec;      uint32_t          init_value;     uint32_t          interface;     uint32_t          speed;     uint32_t          crc_type;     uint32_t          phy;     uint32_t          duplex;     p_etsec = (t_ETSEC*)((uint32_t)(CONF_CPU.init[device].etsec_base_address) + (uint32_t)V_LIBBSP_ETSEC_ccsr_base_address);      interface = CONF_CPU.init[device].interface;     crc_type  = CONF_CPU.init[device].crc_type;     phy       = CONF_CPU.init[device].phy_device;     speed     = CONF_CPU.init[device].speed;     duplex    = CONF_CPU.init[device].duplex;     if( phy != NO_PHY )     {        speed     = CONF_PHY.init[phy].speed;        duplex    = CONF_PHY.init[phy].duplex;     }     p_etsec->DMACTRL = (ETSEC_DMACTRL_GRS | ETSEC_DMACTRL_GTS) ;               p_etsec->MACCFG1 = ETSEC_MACCFG1_SOFT_RESET;             p_etsec->MACCFG1 = 0ul;                                    Initialize_MACCFG2(&init_value, speed, crc_type, duplex);     p_etsec->MACCFG2 = init_value;       Initialize_ECNTRL(&init_value, interface, speed);     p_etsec->ECNTRL = init_value;     p_etsec->MACSTNADDR2 = (((uint32_t)p_mac->mac_addr[0]) << 16)                             | (((uint32_t)p_mac->mac_addr[1]) << 24);       p_etsec->MACSTNADDR1 = ((uint32_t)p_mac->mac_addr[2])                                   | (((uint32_t)p_mac->mac_addr[3]) << 8)                              | (((uint32_t)p_mac->mac_addr[4]) << 16)                             | (((uint32_t)p_mac->mac_addr[5]) << 24);       p_etsec->TBIPA = (uint32_t)(CONF_CPU.init[device].tbi_base_address);       p_etsec->IEVENTGx = 0ul;                  p_etsec->IMASKGx = 0ul;                   p_etsec->RCTRL = ETSEC_RCTRL_INIT;      p_etsec->RBASE0 = (uint32_t)rxbd_addr;      p_etsec->TBASE0 = (uint32_t)txbd_addr;      p_etsec->MAXFRM = ETSEC_MAXFRM_FRAME_SIZE;     p_etsec->MRBLR = ETSEC_MRBLR_BUFFER_SIZE;     p_etsec->DMACTRL &= ETSEC_DMACTRL_DATA_SNOOP | ETSEC_DMACTRL_TXBD_SNOOP; }

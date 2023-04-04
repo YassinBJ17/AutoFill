@@ -1,1 +1,0 @@
-R:/_build_out/obj/lib_critical_service/libtools/memory/LIB_MEM_MOVE_code.o: R:/source/lib_critical_service/libtools/memory/LIB_MEM_MOVE_code.c R:/source/lib_critical_service/libtools/memory/LIB_MEM_public.h R:/source/shared/type/mcp_types.h

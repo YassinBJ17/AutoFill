@@ -96,7 +96,7 @@ public class ExtractCode {
 
     public static String extract(String filename) {
 
-        String directory="Datafiles\\Code"; // replace with the directory you want to start the search from
+        String directory="..\\Datafiles\\Code"; // replace with the directory you want to start the search from
 
 
         String[] result = searchFunction(new File(directory), filename);

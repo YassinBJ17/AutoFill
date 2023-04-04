@@ -1,1 +1,0 @@
-R:/_build_out/obj/oss/middleware/reset/reset_critical.o: R:/source/oss/middleware/reset/reset_critical.c R:/source/oss/middleware/reset/reset_public.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/reset/reset_private.h R:/source/shared/type/common_type.h R:/source/oss/middleware/mram/mram_public.h R:/source/shared/memory/shared_memory_public.h

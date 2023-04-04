@@ -1,1 +1,0 @@
-R:/_build_out/obj/oss/middleware/logbook/logbook_periodic.o: R:/source/oss/middleware/logbook/logbook_periodic.c R:/source/oss/middleware/logbook/logbook_public.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/logbook/logbook_private.h

@@ -1,3 +1,0 @@
-#include "LIBBSP_MATH_Casts.h"
-
- float64_t LIBBSP_MATH_ConvertUInt64ToFloat64  ( const uint64_t           v_Value_UInt64) {    uint32_t  v_MSBUInt32;    uint32_t  v_LSBUInt32;    uint64_t  v_MSBUInt64;    uint64_t  v_LSBUInt64;    float64_t v_MSBFloat64;    float64_t v_Float64;    v_MSBUInt64 = v_Value_UInt64 & C_LIBMATH_CONST_32_BITS_MSB_MASK;    v_MSBUInt64 = v_MSBUInt64 >> C_LIBMATH_CONST_NB_BIT_WORD32;    v_MSBUInt32 = (uint32_t)v_MSBUInt64;    v_MSBFloat64 = (float64_t)v_MSBUInt32;    v_MSBFloat64 =  v_MSBFloat64 * C_LIBMATH_CONST_FL64_2EXP32;    v_LSBUInt64 = v_Value_UInt64 & C_LIBMATH_CONST_32_BITS_LSB_MASK;    v_LSBUInt32 = (uint32_t)v_LSBUInt64;    v_Float64 = v_MSBFloat64 + ((float64_t)v_LSBUInt32);    return v_Float64; }

@@ -1,7 +1,0 @@
-incr::DepCommandLine {log_rchk_cc} {-c} {-cacheon} {-longname} {R:\source\oss\middleware\rtc\rtc_count.c} {-c} {-extensions} {*.c;*.C;*.c;*.C} {-o} {R:\tools\build_rulechecker_project\project_files\Logiscope\rtc_count} {-dial} {ansi} {-ddef} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def} {-ign} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign} {-mac} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.mac}
-incr::DepMainInput {R:\source\oss\middleware\rtc\rtc_count.c}
-incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign}
-incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def}
-incr::DepInput {R:\source\oss\middleware\rtc/rtc_public.h}
-incr::DepInput {R:\source\shared\type/mcp_types.h}
-incr::DepOutput {R:\tools\build_rulechecker_project\project_files\Logiscope\cache\rtc_count.log_rchk_cc.dmp}

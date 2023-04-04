@@ -1,7 +1,0 @@
-incr::DepCommandLine {log_rchk_cc} {-c} {-cacheon} {-longname} {R:\source\css_wrapper_g1_2_3\memory\css_wrapper_g1_2_3_section_def.c} {-c} {-extensions} {*.c;*.C;*.c;*.C} {-o} {R:\tools\build_rulechecker_project\project_files\Logiscope\css_wrapper_g1_2_3_section_def} {-dial} {ansi} {-ddef} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def} {-ign} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign} {-mac} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.mac}
-incr::DepMainInput {R:\source\css_wrapper_g1_2_3\memory\css_wrapper_g1_2_3_section_def.c}
-incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign}
-incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def}
-incr::DepInput {R:\source\shared\type/mcp_types.h}
-incr::DepInput {R:\source\shared\memory/memory_address_public.h}
-incr::DepOutput {R:\tools\build_rulechecker_project\project_files\Logiscope\cache\css_wrapper_g1_2_3_section_def.log_rchk_cc.dmp}

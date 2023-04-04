@@ -1,1 +1,0 @@
--m6 -Xbranch-islands -Xcheck-input-patterns=2 -Xcheck-overlapping -Xelf -Xremove-unused-sections -Xrescan-libraries -Xrescan-restart -Xunused-sections-list

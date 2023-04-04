@@ -1,1 +1,0 @@
-R:/_build_out/obj/oss/middleware/calres/calres_periodic.o: R:/source/oss/middleware/calres/calres_periodic.c R:/source/oss/middleware/calres/calres_public.h R:/source/shared/type/common_type.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/calres/calres_private.h R:/source/shared/memory/shared_memory_public.h R:/source/oss/driver/adc_over_spi/adc_over_spi_public.h

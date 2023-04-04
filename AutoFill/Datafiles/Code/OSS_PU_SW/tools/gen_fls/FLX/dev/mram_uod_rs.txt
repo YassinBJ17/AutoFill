@@ -1,1 +1,0 @@
-R:\tools\gen_oss_conf_binary\mram_binary_images\mram_uod_rs.bin

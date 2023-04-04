@@ -1,3 +1,0 @@
-REM FLS generator command Line
-CD /D R:\_build_out\gen\fls\oss_conf\g4\
-R:\tools\gen_fls\FLX\dev\bin_utils\createFLS.exe -dp . -lpn SFI57T0181T4403 -c R:\tools\gen_fls\FLX\dev\conf_fls\ -mpn SFI57T0181T4403 -CA R:\tools\gen_fls\FLX\dev\certificates\DEV_ROOT_CERT\\DEV_ROOT_Certificate.pem -CAkey R:\tools\gen_fls\FLX\dev\certificates\DEV_ROOT_CERT\\DEV_ROOT_PrivateKey.pem --sign_luh -D FORCE_SIF_DOWNLOAD

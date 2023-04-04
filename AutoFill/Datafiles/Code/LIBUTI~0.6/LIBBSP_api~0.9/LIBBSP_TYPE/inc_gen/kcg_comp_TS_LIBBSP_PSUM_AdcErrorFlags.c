@@ -1,3 +1,0 @@
-#include "kcg_types.h"
-
- kcg_bool kcg_comp_TS_LIBBSP_PSUM_AdcErrorFlags(   TS_LIBBSP_PSUM_AdcErrorFlags *kcg_c1,   TS_LIBBSP_PSUM_AdcErrorFlags *kcg_c2) {   kcg_bool kcg_equ;   kcg_equ = kcg_true;   kcg_equ = kcg_equ & (kcg_c1->GeneralFailure == kcg_c2->GeneralFailure);   kcg_equ = kcg_equ & (kcg_c1->Vin7NotInRange == kcg_c2->Vin7NotInRange);   kcg_equ = kcg_equ & (kcg_c1->ReferenceVoltageFailure ==       kcg_c2->ReferenceVoltageFailure);   kcg_equ = kcg_equ & (kcg_c1->UnderVoltage == kcg_c2->UnderVoltage);   kcg_equ = kcg_equ & (kcg_c1->OverVoltage == kcg_c2->OverVoltage);   kcg_equ = kcg_equ & (kcg_c1->PresFail_or_Vin6Failure ==       kcg_c2->PresFail_or_Vin6Failure);   return kcg_equ; }

@@ -1,5 +1,0 @@
-#include "RAMBOOT_RamBootEndMarker.h"
-
-#pragma section SECTION_RAMBOOT_CODE_END ".RAMBOOT_CODE_END" ""
-#pragma use_section SECTION_RAMBOOT_CODE_END C_RAMBOOT_CODE_END_MARKER
-const uint32_t C_RAMBOOT_CODE_END_MARKER = 0xAAAAAAAA;

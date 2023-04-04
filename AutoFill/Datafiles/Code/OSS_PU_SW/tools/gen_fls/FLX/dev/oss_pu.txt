@@ -1,9 +1,0 @@
-R:\_build_out\gen\g1_2_3\app_g1_2_3_oss_ext_src.elf
-R:\_build_out\gen\g1_2_3\parto_g1_2_3_oss_ext_src.elf
-R:\_build_out\gen\g4\app_g4_oss_ext_src.elf
-R:\_build_out\gen\g4\parto_g4_oss_ext_src.elf
-R:\_build_out\gen\stub_uod\app_stub_uod_oss_ext_src.elf
-R:\_build_out\gen\stub_uod\parto_stub_uod_oss_ext_src.elf
-R:\specific_binaries\error_handler\_build_out\gen\emo_error_handler.elf
-R:\specific_binaries\k2\k2.elf
-R:\specific_binaries\ext_source\_build_out\gen\xt_source.elf

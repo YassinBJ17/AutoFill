@@ -1,1 +1,0 @@
-R:/_build_out/obj/oss/middleware/vrt/vrt_interpolation.o: R:/source/oss/middleware/vrt/vrt_interpolation.c R:/source/oss/middleware/vrt/vrt_private.h R:/source/shared/memory/shared_memory_public.h R:/source/shared/type/mcp_types.h

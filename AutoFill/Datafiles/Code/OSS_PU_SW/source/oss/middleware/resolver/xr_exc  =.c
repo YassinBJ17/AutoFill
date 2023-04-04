@@ -1,5 +1,0 @@
-#include "middleware/resolver/resolver_public.h"
-#include "middleware/resolver/resolver_private.h"
-#include "libtools/math/LIB_MATH_public.h"
-
-       *xr_exc  = (2 *            sqrt_exc  * XR_GAIN_EXC ) /       REF_TABLE_SIZE ;       xr_vcos_measure = xr_vcos / *xr_exc;       xr_vsin_measure = xr_vsin / *xr_exc;     }     {       float32_t angle_xr = 180. * LIB_MATH_ATAN_CALC(xr_vsin / xr_vcos) / 3.1415926535897932384626433832795;       if(xr_vcos > 0)       {          xr_measure = angle_xr;       }       else if((xr_vcos < 0) && (xr_vsin > 0))       {          xr_measure = 180 + angle_xr;       }       else if((xr_vcos < 0) && (xr_vsin < 0))       {          xr_measure = -180 + angle_xr;       }       else if((xr_vcos == 0) && (xr_vsin > 0))       {          xr_measure = 90;       }       else if((xr_vcos == 0) && (xr_vsin < 0))       {          xr_measure = -90;       }       else if (xr_vsin == 0)       {          xr_measure = -90;       }       else       {          xr_measure = 0;       }     }

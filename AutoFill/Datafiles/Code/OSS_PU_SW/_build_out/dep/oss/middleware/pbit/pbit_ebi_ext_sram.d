@@ -1,1 +1,0 @@
-R:/_build_out/obj/oss/middleware/pbit/pbit_ebi_ext_sram.o: R:/source/oss/middleware/pbit/pbit_ebi_ext_sram.c R:/source/oss/middleware/pbit/pbit_private.h R:/source/shared/type/common_type.h R:/source/shared/type/mcp_types.h

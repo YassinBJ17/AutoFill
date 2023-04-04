@@ -1,1 +1,0 @@
-R:/_build_out/obj/oss/middleware/nfreq/nfreq_maintain_counter.o: R:/source/oss/middleware/nfreq/nfreq_maintain_counter.c R:/source/shared/type/common_type.h R:/source/shared/type/mcp_types.h R:/source/oss/middleware/nfreq/nfreq_private.h R:/source/oss/middleware/nfreq/nfreq_public.h R:/source/oss/middleware/nfreq/nfreq_maintain_counter.h

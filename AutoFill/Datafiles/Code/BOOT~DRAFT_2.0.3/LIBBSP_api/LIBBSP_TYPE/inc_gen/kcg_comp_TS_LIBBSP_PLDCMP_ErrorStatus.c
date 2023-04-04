@@ -1,3 +1,0 @@
-#include "kcg_types.h"
-
- kcg_bool kcg_comp_TS_LIBBSP_PLDCMP_ErrorStatus(   TS_LIBBSP_PLDCMP_ErrorStatus *kcg_c1,   TS_LIBBSP_PLDCMP_ErrorStatus *kcg_c2) {   kcg_bool kcg_equ;   kcg_equ = kcg_true;   kcg_equ = kcg_equ & (kcg_c1->wdg_comp_rst == kcg_c2->wdg_comp_rst);   kcg_equ = kcg_equ & (kcg_c1->overload_error == kcg_c2->overload_error);   kcg_equ = kcg_equ & (kcg_c1->timeout_error == kcg_c2->timeout_error);   kcg_equ = kcg_equ & (kcg_c1->acc_error == kcg_c2->acc_error);   kcg_equ = kcg_equ & (kcg_c1->addr_error == kcg_c2->addr_error);   kcg_equ = kcg_equ & (kcg_c1->parity_error == kcg_c2->parity_error);   kcg_equ = kcg_equ & (kcg_c1->nvm_error == kcg_c2->nvm_error);   return kcg_equ; }

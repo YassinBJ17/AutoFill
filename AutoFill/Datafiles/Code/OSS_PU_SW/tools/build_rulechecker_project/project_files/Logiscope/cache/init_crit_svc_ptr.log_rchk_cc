@@ -1,9 +1,0 @@
-incr::DepCommandLine {log_rchk_cc} {-c} {-cacheon} {-longname} {R:\source\lib_critical_service\memory\init_crit_svc_ptr.c} {-c} {-extensions} {*.c;*.C;*.c;*.C} {-o} {R:\tools\build_rulechecker_project\project_files\Logiscope\init_crit_svc_ptr} {-dial} {ansi} {-ddef} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def} {-ign} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign} {-mac} {R:\tools\build_rulechecker_project\project_files\..\config\mydef.mac}
-incr::DepMainInput {R:\source\lib_critical_service\memory\init_crit_svc_ptr.c}
-incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.ign}
-incr::DepInput {R:\tools\build_rulechecker_project\project_files\..\config\mydef.def}
-incr::DepInput {R:\source\shared\type/mcp_types.h}
-incr::DepInput {R:\source\lib_critical_service\memory/lib_critical_service_section_def_data.h}
-incr::DepInput {R:\source\shared\memory/shared_memory_public.h}
-incr::DepInput {R:\source\lib_critical_service\middleware\tmot/tmot_write_public.h}
-incr::DepOutput {R:\tools\build_rulechecker_project\project_files\Logiscope\cache\init_crit_svc_ptr.log_rchk_cc.dmp}

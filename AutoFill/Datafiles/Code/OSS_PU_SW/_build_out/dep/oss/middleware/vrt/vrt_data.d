@@ -1,1 +1,0 @@
-R:/_build_out/obj/oss/middleware/vrt/vrt_data.o: R:/source/oss/middleware/vrt/vrt_data.c R:/source/oss/middleware/vrt/vrt_public.h R:/source/shared/type/mcp_types.h R:/source/oss/driver/adc_over_spi/ADC_AD7327_CFEX_common.h R:/source/oss/driver/adc_over_spi/ADC_AD7327_HAL_common.h R:/source/shared/type/common_type.h

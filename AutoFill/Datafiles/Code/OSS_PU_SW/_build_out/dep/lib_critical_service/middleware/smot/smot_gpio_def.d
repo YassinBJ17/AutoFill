@@ -1,1 +1,0 @@
-R:/_build_out/obj/lib_critical_service/middleware/smot/smot_gpio_def.o: R:/source/lib_critical_service/middleware/smot/smot_gpio_def.c R:/source/lib_critical_service/middleware/smot/smot_gpio_common.h R:/source/shared/type/mcp_types.h

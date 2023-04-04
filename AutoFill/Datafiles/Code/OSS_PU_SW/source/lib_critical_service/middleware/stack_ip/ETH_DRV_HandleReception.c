@@ -1,8 +1,0 @@
-#include "middleware/stack_ip/ETH_public.h"
-#include "middleware/stack_ip/ETH_private.h"
-#include "middleware/stack_ip/ETH_conf.h"
-#include "middleware/stack_ip/ETH_DEF_HEADER_common.h"
-#include "middleware/ethernet/ETH_porting.h"
-#include "libtools/time/LIB_TIME_public.h"
-
- void ETH_DRV_HandleReception (void) {    ts_ETH_HAL_STATS_TRANSFERT v_stats;    ts_CMN_IOSP_BUFFER         v_buff ;    te_CMN_FLAG_QUESTION       v_DataForMe;    te_CMN_FLAG_QUESTION       v_broadcast; #if (ETH_TIME_CONF_ENABLE != 0)    CMN_SYSTEM_TIME_t    v_start_time;    CMN_SYSTEM_TIME_t    v_end_time; #endif    v_stats.s_len = 0L ; #if (ETH_TIME_CONF_ENABLE != 0 )         LIBT_TIME_GET( &v_start_time ); #endif    hal_get_status_read_pt( &v_stats );    if ( v_stats.s_status == e_CMN_FLAG_COMPLETE )    {       hal_read_pt( &v_buff );       if ( ( v_buff.s_buffer_size <= ( K_ETH_MAX_ENET_PACKET_SIZE ) ) &&                ( v_buff.s_buffer_size >= ( K_ETH_MIN_ENET_PACKET_SIZE ) ) )       {          v_ETH_DRV_ControlETH.s_ETHstats.s_packet_rx.s_handled++ ;          v_DataForMe = ETH_DRV_HandleReception_L_Check( &v_buff, & v_broadcast ) ;          if ( ( v_DataForMe == e_CMN_FLAG_YES ) || ( v_broadcast == e_CMN_FLAG_YES ) )          {             ETH_DRV_OnRecv ( &v_buff , v_broadcast ) ;          }       }       else       {          v_ETH_DRV_ControlETH.s_ETHstats.s_packet_rx.s_dropped++ ;       }       hal_allow_rcv_pt(); #if (ETH_TIME_CONF_ENABLE != 0)       LIBT_TIME_GET( &v_end_time );       v_duration_eth_handle_reception_crc_time = v_end_time - v_start_time; #endif    } }

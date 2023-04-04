@@ -1,3 +1,0 @@
-#include "kcg_types.h"
-
- kcg_bool kcg_comp_TS_LIBBSP_PQRFS_LabelConfig(   TS_LIBBSP_PQRFS_LabelConfig *kcg_c1,   TS_LIBBSP_PQRFS_LabelConfig *kcg_c2) {   kcg_bool kcg_equ;   kcg_equ = kcg_true;   kcg_equ = kcg_equ & (kcg_c1->label_index == kcg_c2->label_index);   kcg_equ = kcg_equ & (kcg_c1->label_id == kcg_c2->label_id);   kcg_equ = kcg_equ & (kcg_c1->q_value == kcg_c2->q_value);   kcg_equ = kcg_equ & (kcg_c1->lsb == kcg_c2->lsb);   kcg_equ = kcg_equ & (kcg_c1->msb == kcg_c2->msb);   kcg_equ = kcg_equ & (kcg_c1->max == kcg_c2->max);   kcg_equ = kcg_equ & (kcg_c1->min == kcg_c2->min);   return kcg_equ; }

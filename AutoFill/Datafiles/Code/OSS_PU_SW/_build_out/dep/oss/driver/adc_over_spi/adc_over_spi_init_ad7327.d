@@ -1,1 +1,0 @@
-R:/_build_out/obj/oss/driver/adc_over_spi/adc_over_spi_init_ad7327.o: R:/source/oss/driver/adc_over_spi/adc_over_spi_init_ad7327.c R:/source/oss/driver/adc_over_spi/ADC_AD7327_CFEX_common.h R:/source/oss/driver/adc_over_spi/ADC_AD7327_HAL_common.h R:/source/shared/type/mcp_types.h R:/source/shared/type/common_type.h R:/source/oss/driver/spi/SPI_HAL_public.h

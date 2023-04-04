@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class ExtractText {
 
-    public static final String PUNCTUATION_MARKS="[^A-Za-z0-9 :\\r\\n_\\-\\+\\ \\<\\> \\/ \\{\\}\\[\\(\\)\\]]+";
+    public static final String PUNCTUATION_MARKS="[^A-Za-z0-9 :\\r\\.\\n_\\-\\+\\ \\<\\> \\/ \\{\\}\\[\\(\\)\\]]+";
 
     public static String removeInvisibleChars(String input) {
         // Define a regular expression that matches invisible characters
