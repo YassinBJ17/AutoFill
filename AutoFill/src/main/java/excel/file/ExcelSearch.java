@@ -92,8 +92,6 @@ public class ExcelSearch {
 
         // search for the string in the Excel files in the directory and print the matching rows
 
-        System.out.println("-"+ParameterToSearch+"-");
-
         if (ParameterToSearch.contains(".")||ParameterToSearch.contains("->")) {
             int index;
             index=ParameterToSearch.indexOf("->");
@@ -108,7 +106,6 @@ public class ExcelSearch {
 
 
         String matchingRows = searchExcelFiles(directoryPath, ParameterToSearch,global);
-        System.out.println("-"+ParameterToSearch+"-");
         if (matchingRows.equals("")) {
 
             return "not exist in the DD";

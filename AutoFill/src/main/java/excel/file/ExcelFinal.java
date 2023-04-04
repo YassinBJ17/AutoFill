@@ -42,6 +42,7 @@ public class ExcelFinal {
         ) {if (!Objects.equals(cs, "null"))
             number_of_causes++;
         }
+
         uft=number_of_causes+1;
 
         if (uft > 4)
@@ -60,7 +61,8 @@ public class ExcelFinal {
                 llr_traceability=LLR[i+1];
                 llr_traceability=llr_traceability.substring(0,llr_traceability.length()-3);
                 Fill_Cell(llr_traceability,Excel.SHEET_B0,Excel.CELL_ROW_3,Excel.CELL_COL_2+ number_of_UFT);
-                Fill_Cell(llr_traceability,Excel.SHEET_B0,Excel.CELL_ROW_4+number_of_causes,Excel.CELL_COL_2+ number_of_UFT);
+                System.out.println(number_of_UFT);
+                Fill_Cell(llr_traceability,Excel.SHEET_B0,Excel.CELL_ROW_4+Math.max(1,number_of_causes),Excel.CELL_COL_2+ number_of_UFT);
 
                 for (int j = 10; j <Excel.CELL_COL_10+ number_of_UTC; j++) {
                     Fill_Cell(llr_traceability, Excel.SHEET_B1, Excel.CELL_ROW_6, j);
@@ -73,8 +75,62 @@ public class ExcelFinal {
     }
 
 
+    private static void WritingFile(String filePath, String function_name) {
 
+        while (true){
+            try {
+                FileOutputStream outputStream = new FileOutputStream(filePath);
+                workbook.write(outputStream);
+                outputStream.close();
+                break;
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), function_name + ".xls", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
 
+    private static boolean FileExisteDialog(String function_name) {
+
+        Object[] options = {"Ok", "Cancel"};
+        int choice = JOptionPane.showOptionDialog(null,
+                "File already exists, Do you want to overwrite it?",
+                function_name + ".xls",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[1]);
+
+        if(choice == JOptionPane.NO_OPTION){
+            JOptionPane.showMessageDialog(null, "Operation cancelled by user.");
+            return true;
+        }else
+            return false;
+    }
+
+    private static void OpenFileDialog(String function_name) {
+
+        try {
+            int result = JOptionPane.showOptionDialog(
+                    null, // Parent component (null for default)
+                    "The excel file have been generated successfully in SUTC folder, Do you want to open it ?", // Message to display
+                    function_name + ".xls", // Dialog title
+                    JOptionPane.YES_NO_OPTION, // Option type
+                    JOptionPane.QUESTION_MESSAGE, // Message type
+                    null, // Icon (null for default)
+                    new String[]{"Yes", "No"}, // Button options
+                    "Yes" // Default button option
+            );
+            if (result == 0)
+                Desktop.getDesktop().open(new File("..\\Datafiles\\SUTC\\" + function_name + ".xls"));
+            Thread.sleep(100);
+        } catch (IOException e) {
+            System.out.println("Error opening file: " + e.getMessage());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
 
   public static void Excel_Final(String LLR_text, String userName, ArrayList<String> cause_table, ArrayList<String> effect_table, JDialog dialog) throws IOException {
@@ -82,7 +138,7 @@ public class ExcelFinal {
       String template;
       UTC_Number_Filling(cause_table);
 
-        switch (number_of_causes) {
+      switch (number_of_causes) {
             case 0:
                 template = TEMPLATE0_PATH;
                 System.out.println("TEMPLATE 0");
@@ -109,19 +165,16 @@ public class ExcelFinal {
      FileInputStream inputStream = new FileInputStream(template);
      workbook = WorkbookFactory.create(inputStream);
 
-          String[] LLR = LLR_text.split("\n");
-          String function_name=LLR[1];
-          String file_name=function_name+".c";
-          String Code_text= ExtractCode.extract(file_name);
-          String[] Code = Code_text.split("\n");
-
+      String[] LLR = LLR_text.split("\n");
+      String function_name=LLR[1];
+      String file_name=function_name+".c";
+      String Code_text= ExtractCode.extract(file_name);
+      String[] Code = Code_text.split("\n");
 
           new A0_sheet(LLR);
           new A1_sheet(userName);
           new SheetsName(LLR,workbook);
           new B0_sheet(LLR,cause_table,effect_table,workbook);
-
-
 
           if (!Code_text.isEmpty()) {
               A2_sheet.A2(Code, function_name);
@@ -129,66 +182,23 @@ public class ExcelFinal {
               }
               LLR_Traceability_Filling(LLR);
 
-                    //disappear Waiting window
-                  dialog.setVisible(false); // hide the dialog
-                  dialog.dispose(); // dispose of the dialog to release resources
+
+      dialog.setVisible(false); // hide the dialog
+      dialog.dispose(); // dispose of the dialog to release resources
 
                 inputStream.close();
                 String filePath = "..\\Datafiles\\SUTC\\" + LLR[1] + ".xls";
                 File file = new File(filePath);
                 if(file.exists()){
-                    Object[] options = {"Ok", "Cancel"};
-
-                    int choice = JOptionPane.showOptionDialog(null,
-                            "File already exists, Do you want to overwrite it?",
-                            LLR[1] + ".xls",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.QUESTION_MESSAGE,
-                            null,
-                            options,
-                            options[1]);
-
-                    if(choice == JOptionPane.NO_OPTION){
-                        JOptionPane.showMessageDialog(null, "Operation cancelled by user.");
+                    if(FileExisteDialog(function_name))
                         return;
-                    }
                 }
-      while (true){
-            try {
-                FileOutputStream outputStream = new FileOutputStream(filePath);
-                workbook.write(outputStream);
-                outputStream.close();
-                break;
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), LLR[1] + ".xls", JOptionPane.ERROR_MESSAGE);
-            }
-        }
 
-
-
-
-
-      try {
-          int result = JOptionPane.showOptionDialog(
-                  null, // Parent component (null for default)
-                  "The excel file have been generated successfully in SUTC folder, Do you want to open it ?", // Message to display
-                  LLR[1] + ".xls", // Dialog title
-                  JOptionPane.YES_NO_OPTION, // Option type
-                  JOptionPane.QUESTION_MESSAGE, // Message type
-                  null, // Icon (null for default)
-                  new String[]{"Yes", "No"}, // Button options
-                  "Yes" // Default button option
-          );
-          if (result == 0)
-              Desktop.getDesktop().open(new File("..\\Datafiles\\SUTC\\" + LLR[1] + ".xls"));
-          Thread.sleep(1000);
-      } catch (IOException e) {
-          System.out.println("Error opening file: " + e.getMessage());
-      } catch (InterruptedException e) {
-          throw new RuntimeException(e);
-      }
+             WritingFile(filePath,function_name);
+             OpenFileDialog(function_name);
 
 
   }
-  }
+
+}
 

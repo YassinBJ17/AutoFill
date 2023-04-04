@@ -64,14 +64,17 @@ public class ExtractTable {
                                 cause.add(causes);
                             else
                             {
-                                while(!Objects.equals(causes, ""))
+                                causes=causes.replaceAll("\\(","");
+                                causes=causes.replaceAll("\\)","");
+
+                                while(!Objects.equals(causes.trim(), ""))
                                 {
                                     String c=causes.substring(causes.indexOf("["),causes.indexOf("]")+1);
                                     c=c.replaceAll("[^\\w\\[\\]]", " ").trim();
                                     cause.add(c);
                                     causes=causes.trim().substring(causes.indexOf("]")+1);
 
-                                    if (!causes.equals(""))
+                                    if (!causes.trim().equals(""))
                                     {
                                         causes=causes.trim().substring(causes.indexOf("[")-1);
                                     }

@@ -517,7 +517,6 @@ public class B1_sheet {
                     if((LLR[j].trim().equalsIgnoreCase("None")))break;
 
                     if((!(LLR[j].trim().isEmpty()))&&(!(ExcelModifier.Search(Globals, LLR[j])))){
-                        System.out.println(LLR[j].trim());
                         Globals[numberOfGlobals]=LLR[j].trim();
                         numberOfGlobals++;
                     }
@@ -684,7 +683,6 @@ public class B1_sheet {
 
     String function_name=LLR[1];
     System.out.println(function_name+": In progress");
-        System.out.println(number_of_UFT);
     Initialize_Data(function_name);
     Stubs_Filling(LLR);
     Parameters_Filling(code,LLR);
