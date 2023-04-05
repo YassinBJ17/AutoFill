@@ -15,7 +15,7 @@ import static excel.file.ExcelModifier.Prototype_Detect;
 public class B1_sheet {
 
     public static final int START_OF_PARAMETERS_TABLE=10;
-    public static final int END_OF_SHEET_POSITION =651;
+    public static final int END_OF_SHEET_POSITION =1944;
     public static final int END_OF_GLOBAL_DEFINITION=56;
     public final int NUMBER_OF_EMPTY_CELL=25;
     public final int END_OF_SHEET=38;
@@ -25,9 +25,9 @@ public class B1_sheet {
     public final int INTERNAL_DEFINITIONS_POSITION=28;
     public static int Global_Start=28;
     public static String Prototype;
-    public static String[] Globals=new String[20];
-    public static String[] Stubs=new String[20];
-    public static String[][] Parameters=new String[40][10];
+    public static String[] Globals=new String[100];
+    public static String[] Stubs=new String[100];
+    public static String[][] Parameters=new String[100][10];
 
 
     //////////////////////////////////////////////INITIALIZE////////////////////////////////////////////////////////////
@@ -170,12 +170,12 @@ public class B1_sheet {
 
 
                     for (int i = Parameters.length-2; i >= 0 ; i--) { // Shift the parameters table
-
-                        System.arraycopy(Parameters[i], 0, Parameters[i + 1], 0, 10);}
+                        System.arraycopy(Parameters[i], 0, Parameters[i + 1], 0, 10);
+                    }
                     if (!(code_line.contains("void ")))  {
 
                         Parameters[0][Excel.INDEX_OF_NAME] = "Return_Function";
-                        Parameters[0][Excel.INDEX_OF_TYPE] = code_line.substring(0, code_line.indexOf(" ") );
+                        Parameters[0][Excel.INDEX_OF_TYPE] = code_line.trim().substring(0, code_line.trim().indexOf(" ") );
                         Parameters[0][Excel.INDEX_OF_ACCESS] = "Return";
                         Parameters[0][Excel.INDEX_OF_DOMAIN] = (Extract_Domain(Parameters[0][Excel.INDEX_OF_TYPE]))[0];
                         Parameters[0][Excel.INDEX_OF_CLASS] = (Extract_Domain(Parameters[0][Excel.INDEX_OF_TYPE]))[0];

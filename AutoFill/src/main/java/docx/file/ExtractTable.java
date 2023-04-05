@@ -49,12 +49,9 @@ public class ExtractTable {
                 for (XWPFTableCell cell : row.getTableCells())
                 { // Check if the cell has a white background
                     if((Objects.equals(cell.getColor(), WHITE_COLOR_HEXA))||Objects.equals(cell.getColor(), "auto")||Objects.equals(cell.getColor(), null)){
-
                         if (IsNotReq(cell.getText()))
                         {
                             effect.add(removeInvisibleChars(cell.getText().trim()));
-
-
                         }
                     }
                     else

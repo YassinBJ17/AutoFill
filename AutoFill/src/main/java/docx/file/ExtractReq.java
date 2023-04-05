@@ -74,6 +74,7 @@ public class ExtractReq {
         for (int i = 0; i <effect.size() ; i++)
         {
             String requirement=effect.get(i);
+
             String final_requirements=requirement;
             while (true)
             {
@@ -84,11 +85,9 @@ public class ExtractReq {
                     {
                         requirements_with_description = LLR_Text.substring(LLR_Text.lastIndexOf(requirements_without_description) + 1);
                         requirements_with_description = (requirements_with_description.substring(0, requirements_with_description.indexOf("\n[")))+"\n";
-                        if(requirements_without_description.contains(requirements_with_description)) {
-                            final_requirements = final_requirements.replace(requirements_without_description, requirements_with_description);
-                            requirement = requirement.replace(requirements_without_description, "");
-                        }else
-                        break;
+                        final_requirements = final_requirements.replace(requirements_without_description, requirements_with_description);
+                        requirement = requirement.replace(requirements_without_description, "");
+
                     }
                 }
                 else
@@ -97,12 +96,17 @@ public class ExtractReq {
                 }
             }
 
-            if (final_requirements.equals(""))
+            if (final_requirements.equals("")) {
+                requirement=requirement.replaceAll("Set","\nSet");
                 effect.set(i, requirement);
-            else
-                effect.set(i,Stub_Modifier(Set_Modifier(final_requirements)));
-        }
 
+            }
+                else {
+                final_requirements=final_requirements.replaceAll("Set","\nSet");
+
+                effect.set(i, Stub_Modifier(Set_Modifier(final_requirements)));
+            }
+        }
     }
 }
 

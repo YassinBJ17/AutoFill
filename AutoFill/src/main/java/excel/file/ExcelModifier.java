@@ -22,19 +22,32 @@ public class ExcelModifier {
     }
     public static void Fill_Cell(String text,int sheet, int row, int cell) {
 
-        Sheet s= ExcelFinal.workbook.getSheetAt(sheet);
-        Cell c = s.getRow(row).getCell(cell);
-        c.setCellValue(text);
-    }
+        Sheet s = ExcelFinal.workbook.getSheetAt(sheet);
+        try {
 
-    public static void Remove_Extra_Rows(int sheet, int start, int end){
-
-        Sheet s= ExcelFinal.workbook.getSheetAt(sheet);
-        for (int i = start; i <end ; i++)
-        {
-            s.removeRow(s.getRow(i));
+            Cell c = s.getRow(row).getCell(cell);
+            c.setCellValue(text);
+        } catch (NullPointerException e) {
+            // handle the exception here
+            e.printStackTrace();
         }
     }
+
+    public static void Remove_Extra_Rows(int sheet, int start, int end) {
+        try {
+            Sheet s = ExcelFinal.workbook.getSheetAt(sheet);
+            for (int i = start; i < end; i++) {
+                Row r = s.getRow(i);
+                if (r != null) {
+                    s.removeRow(r);
+                }
+            }
+        } catch (NullPointerException e) {
+            // handle the exception here
+            e.printStackTrace();
+        }
+    }
+
 
     public static void Merge_Cells(int sheet, int C1_start, int C1_end, int numberOfCell) {
 
