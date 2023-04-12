@@ -45,7 +45,6 @@ public class ExtractReq {
     }
 
 
-
     public static void Extract_Req(String LLR_Text, ArrayList<String> cause, ArrayList<String> effect) {
 
 

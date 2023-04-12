@@ -20,9 +20,10 @@ public class Main {
         return dialog;
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
 
+        long startTime = System.currentTimeMillis();
 
         ArrayList<String> cause = new ArrayList<>();
         ArrayList<String> effect = new ArrayList<>();
@@ -30,7 +31,7 @@ public class Main {
         String LLR_text;
         String path,directory ;
 
-        directory=JOptionPane.showInputDialog(null,"LLR path                                                                                                   ")+"\\";
+        directory=JOptionPane.showInputDialog(null,"LLR path                                                                                                   ","..\\Datafiles\\LLR")+"\\";
 
         File folder = new File(directory);
         File[] listOfFiles = folder.listFiles();
@@ -40,7 +41,8 @@ public class Main {
 
 
 try {
-        for (File listOfFile : listOfFiles) {
+    assert listOfFiles != null;
+    for (File listOfFile : listOfFiles) {
             try {
             if (listOfFile.isFile()) {
                 if (listOfFile.getName().contains(".docx") && (!listOfFile.getName().contains("~"))) {
@@ -71,7 +73,11 @@ try {
                    e.printStackTrace();
                     JOptionPane.showMessageDialog(null, "There is no LLR in this folder !", "Error", JOptionPane.ERROR_MESSAGE);
                                 }
-        System.out.println("Done");
+
+        long endTime = System.currentTimeMillis();
+        long elapsedTime = endTime - startTime;
+        double elapsedSeconds = (double) elapsedTime / 1000.0;
+        System.out.println("Program executed in " + elapsedSeconds + " seconds.");
     }
 
 
