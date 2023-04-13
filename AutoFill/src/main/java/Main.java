@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.Logger;
+
 import static docx.file.ExtractReq.Extract_Req;
 import static docx.file.ExtractTable.Extract_Table;
 import static excel.file.ExcelFinal.Excel_Final;
@@ -30,13 +32,14 @@ public class Main {
 
         String LLR_text;
         String path,directory ;
-
+        String userName = System.getProperty("user.name").toUpperCase();
+        System.out.println("Welcome "+userName);
         directory=JOptionPane.showInputDialog(null,"LLR path                                                                                                   ","..\\Datafiles\\LLR")+"\\";
 
         File folder = new File(directory);
         File[] listOfFiles = folder.listFiles();
 
-        String userName = System.getProperty("user.name").toUpperCase();
+
 
 
 

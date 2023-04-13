@@ -1,5 +1,7 @@
 package excel.file;
 
+import org.apache.logging.log4j.LogManager;
+import java.util.logging.Logger;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import c.file.ExtractCode;
@@ -11,20 +13,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.logging.Level;
+import java.util.logging.*;
+
 
 import static excel.file.ExcelModifier.Fill_Cell;
 
 
 public class ExcelFinal {
+    private static final Logger LOGGER = Logger.getLogger(ExcelFinal.class.getName());
 
-    private static final Logger LOGGER=LogManager.getLogger();
     public static final String TEMPLATE0_PATH ="../AutoFill/src/Template/SUTC TEMPLATE0.xls";
     public static final String TEMPLATE1_PATH ="../AutoFill/src/Template/SUTC TEMPLATE1.xls";
     public static final String TEMPLATE2_PATH ="../AutoFill/src/Template/SUTC TEMPLATE2.xls";
     public static final String TEMPLATE3_PATH ="../AutoFill/src/Template/SUTC TEMPLATE3.xls";
-    public static final String TEMPLATEx_PATH ="../AutoFill/src/Template/SUTC TEMPLATEx.xls";
+    public static final String TEMPLATEn_PATH ="../AutoFill/src/Template/SUTC TEMPLATEn.xls";
     public static final int maxUftNumber=8;
     public static final int minUftNumber=1;
     public static final int numberOfUtcPerUft=3;
@@ -140,29 +143,30 @@ public class ExcelFinal {
 
       String template;
       UTC_Number_Filling(cause_table);
+      LOGGER.setLevel(Level.INFO);
 
       switch (number_of_causes) {
-            case 0:
-                template = TEMPLATE0_PATH;
-                System.out.println("TEMPLATE 0");
-                break;
-            case 1:
-                template = TEMPLATE1_PATH;
-                System.out.println("TEMPLATE 1");
-                break;
-            case 2:
-                template = TEMPLATE2_PATH;
-                System.out.println("TEMPLATE 2");
-                break;
-            case 3:
-                template = TEMPLATE3_PATH;
-                System.out.println("TEMPLATE 3");
-                break;
-            default:
-                template = TEMPLATEx_PATH;
-                System.out.println("TEMPLATE x");
-                break;
-        }
+          case 0 -> {
+              template = TEMPLATE0_PATH;
+              LOGGER.info("TEMPLATE 0");
+          }
+          case 1 -> {
+              template = TEMPLATE1_PATH;
+              LOGGER.info("TEMPLATE 1");
+          }
+          case 2 -> {
+              template = TEMPLATE2_PATH;
+              LOGGER.info("TEMPLATE 2");
+          }
+          case 3 -> {
+              template = TEMPLATE3_PATH;
+              LOGGER.info("TEMPLATE 3");
+          }
+          default -> {
+              template = TEMPLATEn_PATH;
+              LOGGER.info("TEMPLATE n is used");
+          }
+      }
 
 
      FileInputStream inputStream = new FileInputStream(template);
@@ -199,7 +203,6 @@ public class ExcelFinal {
 
              WritingFile(filePath,function_name);
              OpenFileDialog(function_name);
-
 
   }
 

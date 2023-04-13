@@ -111,7 +111,7 @@ public class ExcelModifier {
         s=s.replace("#include \"", "");
         s=s.replace("\"", "");
         s=s.substring(s.lastIndexOf('/')+1);
-        return s;
+        return s.trim();
     }
 
     public static String Req_detect(String[] LLR){
