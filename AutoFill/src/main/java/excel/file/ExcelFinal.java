@@ -11,12 +11,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static excel.file.ExcelModifier.Fill_Cell;
 
 
 public class ExcelFinal {
 
+    private static final Logger LOGGER=LogManager.getLogger();
     public static final String TEMPLATE0_PATH ="../AutoFill/src/Template/SUTC TEMPLATE0.xls";
     public static final String TEMPLATE1_PATH ="../AutoFill/src/Template/SUTC TEMPLATE1.xls";
     public static final String TEMPLATE2_PATH ="../AutoFill/src/Template/SUTC TEMPLATE2.xls";
@@ -90,6 +93,7 @@ public class ExcelFinal {
 
     private static boolean FileExisteDialog(String function_name) {
 
+
         Object[] options = {"Ok", "Cancel"};
         int choice = JOptionPane.showOptionDialog(null,
                 "File already exists, Do you want to overwrite it?",
@@ -101,7 +105,7 @@ public class ExcelFinal {
                 options[1]);
 
         if(choice == JOptionPane.NO_OPTION){
-            JOptionPane.showMessageDialog(null, "Operation cancelled by user.");
+            LOGGER.info("The operation has been canceled by the user");
             return true;
         }else
             return false;
