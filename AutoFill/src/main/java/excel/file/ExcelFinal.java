@@ -61,7 +61,6 @@ public class ExcelFinal {
                 llr_traceability=LLR[i+1];
                 llr_traceability=llr_traceability.substring(0,llr_traceability.length()-3);
                 Fill_Cell(llr_traceability,Excel.SHEET_B0,Excel.CELL_ROW_3,Excel.CELL_COL_2+ number_of_UFT);
-                System.out.println(number_of_UFT);
                 Fill_Cell(llr_traceability,Excel.SHEET_B0,Excel.CELL_ROW_4+Math.max(1,number_of_causes),Excel.CELL_COL_2+ number_of_UFT);
 
                 for (int j = 10; j <Excel.CELL_COL_10+ number_of_UTC; j++) {
