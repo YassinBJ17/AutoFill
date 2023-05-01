@@ -125,8 +125,6 @@ public class ExcelModifier {
     }
 
 
-
-
     public static String[] Param_detect(String str) {
 
         str=str.replace("const","");

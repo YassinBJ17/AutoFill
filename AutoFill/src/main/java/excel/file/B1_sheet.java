@@ -660,11 +660,19 @@ public class B1_sheet {
 
 
         for (int i = 2; i <A2_sheet.getLastRowNum(); i++) {
+
             Row row = A2_sheet.getRow(i);
             Cell secondCell = row.getCell(2);
 
+            boolean isMerged=false;
+            for (CellRangeAddress mergedRegion : A2_sheet.getMergedRegions()) {
+                if (mergedRegion.isInRange(i, 1)) {
+                    isMerged = true;
+                    break;
+                }
+            }
 
-            if (secondCell.getCellType() == CellType.BLANK) {
+            if ((secondCell.getCellType() == CellType.BLANK)&& !isMerged) {
                 // If the second cell is empty or null, delete the row
                 A2_sheet.shiftRows(i + 1, A2_sheet.getLastRowNum(), -1);
             }
