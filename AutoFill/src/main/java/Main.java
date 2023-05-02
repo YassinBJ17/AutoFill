@@ -76,10 +76,7 @@ try {
                     JOptionPane.showMessageDialog(null, "There is no LLR in this folder !", "Error", JOptionPane.ERROR_MESSAGE);
                                 }
 
-        long endTime = System.currentTimeMillis();
-        long elapsedTime = endTime - startTime;
-        double elapsedSeconds = (double) elapsedTime / 1000.0;
-        System.out.println("Program executed in " + elapsedSeconds + " seconds.");
+
     }
 
 

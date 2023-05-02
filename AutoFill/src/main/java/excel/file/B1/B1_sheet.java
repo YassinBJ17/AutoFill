@@ -8,7 +8,6 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
-
 import static excel.file.Services.ExcelFinal.*;
 import static excel.file.Services.ExcelModifier.*;
 
@@ -72,7 +71,6 @@ public class B1_sheet {
             if(Code_Stub.equals("")){
                 ExcelModifier.Fill_Cell("not exist in the Code",Excel.SHEET_B1, STUB_DEFINITION_TABLE_POSITION+number_of_UFT +(i*DISTANCE_BETWEEN_STUBS)+2, Excel.CELL_COL_2);
                 for (int j = 7; j <12 ; j++) { // add empty lines
-                    System.out.println("'");
                     ExcelModifier.Fill_Cell("-",Excel.SHEET_B1, STUB_DEFINITION_TABLE_POSITION+number_of_UFT +(i*DISTANCE_BETWEEN_STUBS)+j, Excel.CELL_COL_1);
                 }
                 distance=distance+DISTANCE_BETWEEN_STUBS;
@@ -239,7 +237,7 @@ public class B1_sheet {
         }
         return ++row;
     }
-    public int Insert_Invalid_Row(int row, String[] parameter){
+    public int Insert_Invalid_Row(int row, final String[] parameter){
 
 
         try {
@@ -287,21 +285,23 @@ public class B1_sheet {
     }
     return 0;
 }
-    public int Insert_Row(int row,String[] parameter){
+    public int Insert_Row(int row,final String[] parameter){
 
         try {
 
-            if ((parameter[Excel.INDEX_OF_NAME].contains("["))&&(parameter[Excel.INDEX_OF_NAME].contains("]")))
-                parameter[Excel.INDEX_OF_NAME]=parameter[Excel.INDEX_OF_NAME].replace("[","[0..").replace("]","-1]");
+
 
 
                 if ((parameter[Excel.INDEX_OF_ACCESS].equalsIgnoreCase("in"))||(parameter[Excel.INDEX_OF_ACCESS].equals("R"))||(Objects.equals(parameter[Excel.INDEX_OF_TYPE], "void"))){
 
             for (int i = 1; i <= 8; i++) {
                 if((i==4)||(i==5)||(i==7)){
-                    continue;}
+                    continue; }
 
-
+                if (i==1) {
+                    if ((parameter[Excel.INDEX_OF_NAME].contains("["))&&(parameter[Excel.INDEX_OF_NAME].contains("]")))
+                        ExcelModifier.Fill_Cell(parameter[Excel.INDEX_OF_NAME].replace("[","[0..").replace("]","-1]"),Excel.SHEET_B1,row,i); // array manipulation
+                }else
                 ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
             }
             return 0;
@@ -312,7 +312,11 @@ public class B1_sheet {
             for (int i = 1; i <= 8; i++) {
                 if((i==4)||(i==5)||(i==7)){
                     continue;}
-                ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
+                if (i==1) {
+                    if ((parameter[Excel.INDEX_OF_NAME].contains("["))&&(parameter[Excel.INDEX_OF_NAME].contains("]")))
+                        ExcelModifier.Fill_Cell(parameter[Excel.INDEX_OF_NAME].replace("[","[0..").replace("]","-1]"),Excel.SHEET_B1,row,i); // array manipulation
+                }else
+                    ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
             }
             for (int i = 1; i <=8 ; i++)
             {
@@ -330,7 +334,6 @@ public class B1_sheet {
     return 0;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     public static String Extract_Invalid_Domain(String domain){
 
@@ -403,8 +406,6 @@ public class B1_sheet {
         }
         return r;
     }
-
-
     public int Extract_Parameters(String[] code,String function_name) throws IOException {
         int start=0,end=0;
         int numberOfParameters=0;
@@ -549,14 +550,12 @@ public class B1_sheet {
         ExcelModifier.Fill_Cell(Prototype,Excel.SHEET_B1, Excel.CELL_ROW_3, Excel.CELL_COL_2);
     }
 
-
     ///////////////////////////////////////////////GLOBAL PARAMETER/////////////////////////////////////////////////////
     public void Global_Parameters_Filling(String[] LLR) {
         int numberOfGlobals=Extract_Global(LLR);
     try {
         for (int i = 0; i < numberOfGlobals; i++) {
 
-            System.out.println(Globals[i]);
             if (Globals[i].contains("{"))
                 Parameters[i][Excel.INDEX_OF_NAME]=Globals[i].substring(Globals[i].indexOf("{")+1,Globals[i].indexOf("}")) ;
             else Parameters[i][Excel.INDEX_OF_NAME]=Globals[i].substring(0,Globals[i].indexOf(" ")) ;
@@ -594,7 +593,6 @@ public class B1_sheet {
 
                     if((!(LLR[j].trim().isEmpty()))&&(!(ExcelModifier.Search(Globals, LLR[j])))){
                         Globals[numberOfGlobals]=LLR[j].trim();
-                        System.out.println(Globals[numberOfGlobals]);
                         numberOfGlobals++;
                     }
                     j++;
@@ -639,6 +637,7 @@ public class B1_sheet {
         return"";
     }
 
+
     public boolean InternalDefinitionsExist(String parameter){
 
         Sheet A2_sheet= workbook.getSheetAt(Excel.SHEET_A2);
@@ -659,6 +658,8 @@ public class B1_sheet {
     public void Insert_Global_Parameter(int row,int Parameter_number,String[] LLR) {
 
 
+        String []parameters;
+
         Parameters[Parameter_number][Excel.INDEX_OF_ACCESS]= Access_Global_Detect(LLR,Parameters[Parameter_number][Excel.INDEX_OF_NAME]);
         Parameters[Parameter_number][Excel.INDEX_OF_NAME]=Parameters[Parameter_number][Excel.INDEX_OF_NAME].replace(":","");
 
@@ -674,6 +675,7 @@ public class B1_sheet {
             Insert_Invalid_Row(row,Parameters[Parameter_number]);
         }
 
+        System.out.println(Parameters[Parameter_number][Excel.INDEX_OF_NAME]);
         // A2 filling
         ExcelModifier.Fill_Cell("Variable",Excel.SHEET_A2,INTERNAL_DEFINITIONS_POSITION+number_of_UFT+Parameter_number,Excel.CELL_COL_1);
         if (Parameters[Parameter_number][Excel.INDEX_OF_NAME].contains(".")||Parameters[Parameter_number][Excel.INDEX_OF_NAME].contains("->")) {
