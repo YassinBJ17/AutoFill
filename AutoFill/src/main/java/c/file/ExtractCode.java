@@ -87,7 +87,7 @@ public class ExtractCode {
             }
 
         } catch (IOException e) {
-            System.err.format("IOException: %s%n", e);
+            e.printStackTrace();
         }
 
 
