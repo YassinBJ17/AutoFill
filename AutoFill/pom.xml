@@ -14,14 +14,12 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>5.2.3</version>
+            <version>4.1.2</version>
         </dependency>
-
-        <!-- Apache POI - OOXML (Office Open XML) format -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>5.2.3</version>
+            <version>4.1.2</version>
         </dependency>
 
 

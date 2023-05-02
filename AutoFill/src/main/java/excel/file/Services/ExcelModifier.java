@@ -1,10 +1,16 @@
-package excel.file;
-
+package excel.file.Services;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.util.CellRangeAddress;
+
+import static excel.file.Services.ExcelFinal.workbook;
+
+
+
 
 public class ExcelModifier {
+
+
 
     public static boolean Search(String[] array, String word) {
         if (array==null)
@@ -20,14 +26,35 @@ public class ExcelModifier {
         }
         return false;
     }
+
+    public static CellStyle Fill_Cell_Red(){
+
+        CellStyle style = workbook.createCellStyle();
+        Font font = workbook.createFont();
+        font.setColor(IndexedColors.RED.getIndex());
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setBorderTop(BorderStyle.THIN);
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setBorderRight(BorderStyle.THIN);
+
+        style.setFont(font);
+        return style;
+    }
     public static void Fill_Cell(String text,int sheet, int row, int cell) {
 
-        Sheet s = ExcelFinal.workbook.getSheetAt(sheet);
+        Sheet s = workbook.getSheetAt(sheet);
+
         try {
 
             Cell c = s.getRow(row).getCell(cell);
             c.setCellValue(text);
-        } catch (NullPointerException e) {
+
+            if ((text.equals("not exist in the DD"))||(text.equals("not exist in the Code")))
+                c.setCellStyle(Fill_Cell_Red());
+
+            } catch (NullPointerException e) {
             // handle the exception here
             e.printStackTrace();
         }
@@ -35,7 +62,7 @@ public class ExcelModifier {
 
     public static void Remove_Extra_Rows(int sheet, int start, int end) {
         try {
-            Sheet s = ExcelFinal.workbook.getSheetAt(sheet);
+            Sheet s = workbook.getSheetAt(sheet);
             for (int i = start; i < end; i++) {
                 Row r = s.getRow(i);
                 if (r != null) {
@@ -49,13 +76,14 @@ public class ExcelModifier {
     }
 
 
-    public static void Merge_Cells(int sheet, int C1_start, int C1_end, int numberOfCell) {
+    public static void Merge_Cells(int sheet, int C1_start, int start_row, int end_row) {
 
-        Sheet s= ExcelFinal.workbook.getSheetAt(sheet);
-
-        String S_range= (char) (C1_start + 65)+""+(C1_end)+":"+(char) (C1_start + 65)+numberOfCell;
-        CellRangeAddress range = CellRangeAddress.valueOf(S_range);
+        Sheet s= workbook.getSheetAt(sheet);
+        String string_range= (char) (C1_start + 65)+""+(start_row)+":"+(char) (C1_start + 65)+end_row;
+      //  System.out.println(string_range);
+        CellRangeAddress range = CellRangeAddress.valueOf(string_range);
         s.addMergedRegion(range);
+
 
     }
 

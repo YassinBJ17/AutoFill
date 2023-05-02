@@ -1,29 +1,31 @@
-package excel.file;
+package excel.file.B1;
 import c.file.ExtractCode;
+import excel.file.Services.Excel;
+import excel.file.Services.ExcelModifier;
+import excel.file.Services.ExcelSearch;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 
-import static excel.file.ExcelFinal.number_of_UFT;
-import static excel.file.ExcelFinal.workbook;
-import static excel.file.ExcelModifier.Param_detect;
-import static excel.file.ExcelModifier.Prototype_Detect;
+import static excel.file.Services.ExcelFinal.*;
+import static excel.file.Services.ExcelModifier.*;
 
 
 public class B1_sheet {
 
     public static final int START_OF_PARAMETERS_TABLE=10;
-    public static final int END_OF_SHEET_POSITION =1944;
+    public static final int END_OF_SHEET_POSITION =3319;
     public static final int END_OF_GLOBAL_DEFINITION=56;
     public final int NUMBER_OF_EMPTY_CELL=25;
     public final int END_OF_SHEET=38;
-    public final int DISTANCE_BETWEEN_STUBS =38;
-    public final int STUB_PARAMETERS_TABLE_POSITION =50;
-    public final int STUB_DEFINITION_TABLE_POSITION=43;
-    public final int INTERNAL_DEFINITIONS_POSITION=28;
-    public static int Global_Start=28;
+    public final int RETURN_FUNCTION_INDEX=71;
+    public final int DISTANCE_BETWEEN_STUBS =59;
+    public final int STUB_PARAMETERS_TABLE_POSITION =80;
+    public final int STUB_DEFINITION_TABLE_POSITION=73;
+    public final int INTERNAL_DEFINITIONS_POSITION=43;
+    public static int Global_Start=43;
     public static String Prototype;
     public static String[] Globals=new String[100];
     public static String[] Stubs=new String[100];
@@ -68,6 +70,11 @@ public class B1_sheet {
             ExcelModifier.Fill_Cell(Stubs[i],Excel.SHEET_B1, STUB_DEFINITION_TABLE_POSITION+number_of_UFT +(i*DISTANCE_BETWEEN_STUBS), Excel.CELL_COL_2);
 
             if(Code_Stub.equals("")){
+                ExcelModifier.Fill_Cell("not exist in the Code",Excel.SHEET_B1, STUB_DEFINITION_TABLE_POSITION+number_of_UFT +(i*DISTANCE_BETWEEN_STUBS)+2, Excel.CELL_COL_2);
+                for (int j = 7; j <12 ; j++) { // add empty lines
+                    System.out.println("'");
+                    ExcelModifier.Fill_Cell("-",Excel.SHEET_B1, STUB_DEFINITION_TABLE_POSITION+number_of_UFT +(i*DISTANCE_BETWEEN_STUBS)+j, Excel.CELL_COL_1);
+                }
                 distance=distance+DISTANCE_BETWEEN_STUBS;
                 continue; // if code not exist.
             }
@@ -85,11 +92,11 @@ public class B1_sheet {
 
             for (int j = 0; j < numberOfParameters; j++) {
 
-                Insert_Row(distance+j,Parameters[j]);
+                distance+=Insert_Row(distance+j,Parameters[j]);
 
                 if ((Parameters[j][Excel.INDEX_OF_ACCESS].contains("out")||Parameters[j][Excel.INDEX_OF_ACCESS].contains("Return"))&&(!(Parameters[j][7].equals("-")))){
                     distance++;
-                    Insert_Invalid_Row(distance+j,Parameters[j]);
+                    distance+=Insert_Invalid_Row(distance+j,Parameters[j]);
                 }
 
             }
@@ -156,6 +163,7 @@ public class B1_sheet {
                 j++;
             } else if ((LLR[i].toUpperCase().contains("IN") || (LLR[i].toUpperCase().contains("IN:")))) {
                 Parameters[j][Excel.INDEX_OF_ACCESS] = "_in";
+                Parameters[j][Excel.INDEX_OF_CLASS] = "-";
                 j++;
             }
 
@@ -215,48 +223,111 @@ public class B1_sheet {
 
         if(LLR!=null)
         Parameters[Parameter_number][Excel.INDEX_OF_ACCESS]= Access_Detect(LLR,Parameters[Parameter_number][Excel.INDEX_OF_NAME]);
-
-
-        if(row<=30) {
+        if(row<=INTERNAL_DEFINITIONS_POSITION+number_of_UFT-2)
             Parameters[Parameter_number][Excel.INDEX_OF_ACCESS] = Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].replace("R", "In").replace("W", "Out");
-        }
 
-        if (((Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].contains("W"))||(Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].contains("Out")))&&(!(Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].contains("/")))){
+
+        if (((Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].contains("W"))||(Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].contains("Out")))&&(!(Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].contains("/"))))
             Parameters[Parameter_number][Excel.INDEX_OF_CLASS]="-";
-        }
 
-        Insert_Row(row,Parameters[Parameter_number]);
+
+        row+=Insert_Row(row,Parameters[Parameter_number]);
 
         if (((Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].contains("R"))||(Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].contains("In")))&&(!(Parameters[Parameter_number][Excel.INDEX_OF_INVALID_DOMAIN].equals("-")))){
             row++;
-            Insert_Invalid_Row(row,Parameters[Parameter_number]);
+            row+=Insert_Invalid_Row(row,Parameters[Parameter_number]);
         }
         return ++row;
     }
-    public void Insert_Invalid_Row(int row, String[] parameter){
+    public int Insert_Invalid_Row(int row, String[] parameter){
 
 
-        for (int i = 6; i <= 8; i++) {
+        try {
+        if ((parameter[Excel.INDEX_OF_ACCESS].equalsIgnoreCase("in"))||(parameter[Excel.INDEX_OF_ACCESS].equals("R"))){
 
-            if(i==7)
-                ExcelModifier.Fill_Cell("I",Excel.SHEET_B1,row,i);
-            else{
-                ExcelModifier.Fill_Cell(parameter[7],Excel.SHEET_B1,row,i);
-        }}
+                for (int i = 6; i <= 8; i++) {
+                    if (i == 7)
+                        ExcelModifier.Fill_Cell("I", Excel.SHEET_B1, row, i);
+                    else {
+                        ExcelModifier.Fill_Cell(parameter[7], Excel.SHEET_B1, row, i);
+                    }
+                }
 
-        for (int i = 1; i <=5 ; i++)
-        ExcelModifier.Merge_Cells(Excel.SHEET_B1,i,row,row+1);
+                for (int i = 1; i <= 5; i++)
+                    ExcelModifier.Merge_Cells(Excel.SHEET_B1, i, row,row+1);
+                return 0;
 
 
+            }else{
+
+
+                for (int i = 6; i <= 8; i++) {
+                    if (i == 7)
+                        ExcelModifier.Fill_Cell("I", Excel.SHEET_B1, row, i);
+                    else {
+                        ExcelModifier.Fill_Cell(parameter[7], Excel.SHEET_B1, row, i);
+                    }
+                }
+
+
+                for (int i = 1; i <= 5; i++)
+                    ExcelModifier.Merge_Cells(Excel.SHEET_B1, i, row-1, row +2);
+
+
+                for (int i = 6; i <= 8; i++)
+                    ExcelModifier.Merge_Cells(Excel.SHEET_B1, i, row+1, row + 2);
+
+
+                return 1;
+
+            }
+    }catch (Exception e)
+    {
+        e.printStackTrace();
     }
-    public void Insert_Row(int row,String[] parameter){
+    return 0;
+}
+    public int Insert_Row(int row,String[] parameter){
 
-        for (int i = 1; i <= 8; i++) {
-            if((i==4)||(i==5)||(i==7)){
-                continue;}
+        try {
 
-            ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
+            if ((parameter[Excel.INDEX_OF_NAME].contains("["))&&(parameter[Excel.INDEX_OF_NAME].contains("]")))
+                parameter[Excel.INDEX_OF_NAME]=parameter[Excel.INDEX_OF_NAME].replace("[","[0..").replace("]","-1]");
+
+
+                if ((parameter[Excel.INDEX_OF_ACCESS].equalsIgnoreCase("in"))||(parameter[Excel.INDEX_OF_ACCESS].equals("R"))||(Objects.equals(parameter[Excel.INDEX_OF_TYPE], "void"))){
+
+            for (int i = 1; i <= 8; i++) {
+                if((i==4)||(i==5)||(i==7)){
+                    continue;}
+
+
+                ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
+            }
+            return 0;
+
         }
+        else{
+
+            for (int i = 1; i <= 8; i++) {
+                if((i==4)||(i==5)||(i==7)){
+                    continue;}
+                ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
+            }
+            for (int i = 1; i <=8 ; i++)
+            {
+                boolean bool=((parameter[Excel.INDEX_OF_ACCESS].contains("W"))||(parameter[Excel.INDEX_OF_ACCESS].contains("Out"))||(parameter[Excel.INDEX_OF_ACCESS].equals("_in")));
+                if((parameter[Excel.INDEX_OF_INVALID_DOMAIN]=="-")||(i>5)||(bool))
+                ExcelModifier.Merge_Cells(Excel.SHEET_B1,i,row+1,row+2);
+
+            }
+            return 1;
+            }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    return 0;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -398,6 +469,7 @@ public class B1_sheet {
                 Parameters[numberOfParameters][Excel.INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(Parameters[numberOfParameters][Excel.INDEX_OF_DOMAIN]);
             }
 
+
             numberOfParameters++;
         }
         return numberOfParameters;
@@ -460,7 +532,7 @@ public class B1_sheet {
                         Parameters[0][Excel.INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(Parameters[0][Excel.INDEX_OF_DOMAIN]);
                     }
 
-                    Insert_Parameter(43,0,null);
+                    Insert_Parameter(RETURN_FUNCTION_INDEX,0,null);
                     Prototype="RTRT_ret="+Prototype;
 
                 }
@@ -479,18 +551,19 @@ public class B1_sheet {
 
 
     ///////////////////////////////////////////////GLOBAL PARAMETER/////////////////////////////////////////////////////
-    public void Global_Parameters_Filling(String[] LLR) throws IOException {
+    public void Global_Parameters_Filling(String[] LLR) {
         int numberOfGlobals=Extract_Global(LLR);
-
+    try {
         for (int i = 0; i < numberOfGlobals; i++) {
 
-
+            System.out.println(Globals[i]);
             if (Globals[i].contains("{"))
                 Parameters[i][Excel.INDEX_OF_NAME]=Globals[i].substring(Globals[i].indexOf("{")+1,Globals[i].indexOf("}")) ;
             else Parameters[i][Excel.INDEX_OF_NAME]=Globals[i].substring(0,Globals[i].indexOf(" ")) ;
 
-            Parameters[i][Excel.INDEX_OF_TYPE]=ExcelSearch.SearchFromDD(Parameters[i][Excel.INDEX_OF_NAME],true) ;
 
+
+            Parameters[i][Excel.INDEX_OF_TYPE]=ExcelSearch.SearchFromDD(Parameters[i][Excel.INDEX_OF_NAME],true) ;
             Parameters[i][Excel.INDEX_OF_DOMAIN]=(Extract_Domain(Parameters[i][Excel.INDEX_OF_TYPE]))[0];
             Parameters[i][Excel.INDEX_OF_CLASS]=(Extract_Domain(Parameters[i][Excel.INDEX_OF_TYPE]))[0];
             Parameters[i][Excel.INDEX_OF_INVALID_DOMAIN]=(Extract_Domain(Parameters[i][Excel.INDEX_OF_TYPE]))[1];
@@ -503,6 +576,9 @@ public class B1_sheet {
 
             Insert_Global_Parameter(Global_Start+i+number_of_UFT,i,LLR);
         }
+    }catch (Exception e){
+        e.printStackTrace();
+    }
     }
     public int Extract_Global(String [] LLR){
 
@@ -514,21 +590,17 @@ public class B1_sheet {
                 int j=i+1;
                 while (!ExcelModifier.Search(Excel.Global_end,LLR[j].trim())){
 
-                    if((LLR[j].trim().equalsIgnoreCase("None")))break;
+                    if((LLR[j].trim().equalsIgnoreCase("None"))||(LLR[j].trim().equalsIgnoreCase("None.")))break;
 
                     if((!(LLR[j].trim().isEmpty()))&&(!(ExcelModifier.Search(Globals, LLR[j])))){
                         Globals[numberOfGlobals]=LLR[j].trim();
+                        System.out.println(Globals[numberOfGlobals]);
                         numberOfGlobals++;
                     }
                     j++;
                 }
             }
         }
-
-
-
-
-
         return numberOfGlobals;
     }
     public String Access_Global_Detect(String [] LLR, String parameter_name){
@@ -594,8 +666,9 @@ public class B1_sheet {
             Parameters[Parameter_number][Excel.INDEX_OF_CLASS]="-";
         }
 
-        Insert_Row(row,Parameters[Parameter_number]);
 
+
+        row+=Insert_Row(row,Parameters[Parameter_number]);
         if (((Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].contains("R")))&&(!(Parameters[Parameter_number][Excel.INDEX_OF_INVALID_DOMAIN].equals("-")))){
             row++;
             Insert_Invalid_Row(row,Parameters[Parameter_number]);
@@ -651,7 +724,12 @@ public class B1_sheet {
                 if(secondCell!=null){
                 if (secondCell.getCellType() == CellType.BLANK && !isMerged) {
                     // If the second cell is empty or null, delete the row
-                    B1_sheet.shiftRows(i + 1, B1_sheet.getLastRowNum(), -1);
+                    try {
+                        B1_sheet.shiftRows(i + 1, B1_sheet.getLastRowNum(), -1);
+                    }catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
                     bool=true;
                 }
                 }

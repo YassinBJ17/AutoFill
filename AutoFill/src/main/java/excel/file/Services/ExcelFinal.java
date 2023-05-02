@@ -1,7 +1,13 @@
-package excel.file;
+package excel.file.Services;
 
-import org.apache.logging.log4j.LogManager;
+import excel.file.A0.A0_sheet;
+
 import java.util.logging.Logger;
+
+import excel.file.A1.A1_sheet;
+import excel.file.A2.A2_sheet;
+import excel.file.B0.B0_sheet;
+import excel.file.B1.B1_sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import c.file.ExtractCode;
@@ -14,10 +20,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.logging.Level;
-import java.util.logging.*;
 
 
-import static excel.file.ExcelModifier.Fill_Cell;
+import static excel.file.Services.ExcelModifier.Fill_Cell;
 
 
 public class ExcelFinal {
@@ -42,7 +47,8 @@ public class ExcelFinal {
 
     public static void UTC_Number_Filling( ArrayList<String> cause_table){
 
-        int uft=0;
+        int uft;
+
         number_of_causes=0;
         for (String cs:cause_table
         ) {if (!Objects.equals(cs, "null"))
@@ -52,9 +58,9 @@ public class ExcelFinal {
         uft=number_of_causes+1;
 
         if (uft > 4)
-            uft=8;
+            uft=maxUftNumber;
 
-        number_of_UFT =uft+1;
+        number_of_UFT =uft+minUftNumber;
         number_of_UTC =(uft*numberOfUtcPerUft);
 
     }
@@ -78,8 +84,6 @@ public class ExcelFinal {
         }
 
     }
-
-
     private static void WritingFile(String filePath, String function_name) {
 
         while (true){
@@ -93,7 +97,6 @@ public class ExcelFinal {
             }
         }
     }
-
     private static boolean FileExisteDialog(String function_name) {
 
 
@@ -113,7 +116,6 @@ public class ExcelFinal {
         }else
             return false;
     }
-
     private static void OpenFileDialog(String function_name) {
 
         try {
@@ -168,7 +170,6 @@ public class ExcelFinal {
           }
       }
 
-
      FileInputStream inputStream = new FileInputStream(template);
      workbook = WorkbookFactory.create(inputStream);
 
@@ -194,8 +195,11 @@ public class ExcelFinal {
       dialog.dispose(); // dispose of the dialog to release resources
 
                 inputStream.close();
+
                 String filePath = "..\\Datafiles\\SUTC\\" + LLR[1] + ".xls";
+
                 File file = new File(filePath);
+
                 if(file.exists()){
                     if(FileExisteDialog(function_name))
                         return;
