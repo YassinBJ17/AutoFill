@@ -15,7 +15,7 @@ public class A1_sheet {
         String strDate= formatter.format(date);
 
         Fill_Cell(strDate, Excel.SHEET_A1,Excel.CELL_ROW_3,Excel.CELL_COL_2);
-        Fill_Cell(userName,Excel.SHEET_A1,Excel.CELL_ROW_3,Excel.CELL_COL_3);
+        Fill_Cell(userName.substring(0, 1) + "." + userName.substring(1),Excel.SHEET_A1,Excel.CELL_ROW_3,Excel.CELL_COL_3);
     }
 
 

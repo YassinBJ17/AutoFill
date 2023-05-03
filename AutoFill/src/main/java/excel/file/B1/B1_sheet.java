@@ -301,6 +301,8 @@ public class B1_sheet {
                 if (i==1) {
                     if ((parameter[Excel.INDEX_OF_NAME].contains("["))&&(parameter[Excel.INDEX_OF_NAME].contains("]")))
                         ExcelModifier.Fill_Cell(parameter[Excel.INDEX_OF_NAME].replace("[","[0..").replace("]","-1]"),Excel.SHEET_B1,row,i); // array manipulation
+                    else
+                        ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
                 }else
                 ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
             }
@@ -315,6 +317,9 @@ public class B1_sheet {
                 if (i==1) {
                     if ((parameter[Excel.INDEX_OF_NAME].contains("["))&&(parameter[Excel.INDEX_OF_NAME].contains("]")))
                         ExcelModifier.Fill_Cell(parameter[Excel.INDEX_OF_NAME].replace("[","[0..").replace("]","-1]"),Excel.SHEET_B1,row,i); // array manipulation
+                    else
+                        ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
+
                 }else
                     ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
             }
@@ -675,7 +680,6 @@ public class B1_sheet {
             Insert_Invalid_Row(row,Parameters[Parameter_number]);
         }
 
-        System.out.println(Parameters[Parameter_number][Excel.INDEX_OF_NAME]);
         // A2 filling
         ExcelModifier.Fill_Cell("Variable",Excel.SHEET_A2,INTERNAL_DEFINITIONS_POSITION+number_of_UFT+Parameter_number,Excel.CELL_COL_1);
         if (Parameters[Parameter_number][Excel.INDEX_OF_NAME].contains(".")||Parameters[Parameter_number][Excel.INDEX_OF_NAME].contains("->")) {

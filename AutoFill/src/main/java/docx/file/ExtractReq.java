@@ -6,44 +6,6 @@ import static excel.file.Services.ExcelModifier.*;
 public class ExtractReq {
 
 
-    public static boolean isVowel(char c) {
-        c = Character.toLowerCase(c);
-        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
-    }
-
-    public static void Delete_Double_causes(ArrayList<String> cause){
-
-        for (int i = 0; i <cause.size() ; i++) {
-
-            String req = cause.get(i).toUpperCase();
-            req=req.replace(" NOT "," ");
-            req=req.replace(" NO "," ");
-            req=req.replace("[ ","[");
-            req=req.replace(" DIFFERENT FROM "," EQUAL TO ");
-
-            if(req.contains("[NO ")){
-            if(isVowel(req.charAt(req.indexOf(" ")+1))){
-                req=req.replace("[NO ","[AN ");
-            }
-                req=req.replace("[NO ","[A ");
-            }
-
-            for (int j = 0; j < cause.size(); j++) {
-
-                String req2=cause.get(j);
-
-                if ((req.equalsIgnoreCase(req2))&&(j!=i)){
-                    {
-
-                        cause.set(i, "null");
-
-                    }
-                }
-            }
-
-        }
-    }
-
 
     public static void Extract_Req(String LLR_Text, ArrayList<String> cause, ArrayList<String> effect) {
 
@@ -53,7 +15,6 @@ public class ExtractReq {
         LLR_Text=LLR_Text.replace("Traceability","[");
 
 
-        Delete_Double_causes(cause);
 
         for (int i = 0; i <cause.size() ; i++) {
 
