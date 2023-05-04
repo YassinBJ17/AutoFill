@@ -15,10 +15,9 @@ public class ExtractTable {
 
     public static final String WHITE_COLOR_HEXA="FFFFFF";
 
-
     public static boolean IsRequirement(String requirement)
     {
-        String[] notReq={"DO NOTHING","EFFECTS","ALL OTHER CASES","ALL OTHER CASE","CAUSES","EXIT FUNCTION","NO EFFECT","EXIT THE FUNCTION","ALWAYS","NO EFFECTS","ALL THE OTHER CASES","NO DATA TO READ"};
+        String[] notReq={"DO NOTHING","EFFECTS","ALL OTHER CASES","ALL OTHER CASE","CAUSES","NO EFFECT","ALWAYS","NO EFFECTS","ALL THE OTHER CASES","NO DATA TO READ"};
         requirement=requirement.toUpperCase();
         requirement=requirement.replaceAll("[^a-zA-Z]", " ");
         requirement=requirement.trim();
