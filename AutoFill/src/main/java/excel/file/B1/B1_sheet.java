@@ -19,12 +19,12 @@ public class B1_sheet {
     public static final int END_OF_GLOBAL_DEFINITION=56;
     public final int NUMBER_OF_EMPTY_CELL=25;
     public final int END_OF_SHEET=38;
-    public final int RETURN_FUNCTION_INDEX=71;
+    public final int RETURN_FUNCTION_INDEX=132;
     public final int DISTANCE_BETWEEN_STUBS =59;
-    public final int STUB_PARAMETERS_TABLE_POSITION =138;
-    public final int STUB_DEFINITION_TABLE_POSITION=131;
+    public final int STUB_PARAMETERS_TABLE_POSITION =140;
+    public final int STUB_DEFINITION_TABLE_POSITION=133;
     public final int INTERNAL_DEFINITIONS_POSITION=30;
-    public final int INTERNAL_VARIABLES_POSITION=69;
+    public final int INTERNAL_VARIABLES_POSITION=71;
     public static int Global_Start=43;
     public static String Prototype;
     public static String[] Globals=new String[100];
@@ -328,7 +328,7 @@ public class B1_sheet {
             for (int i = 1; i <=8 ; i++)
             {
                 boolean bool=((parameter[Excel.INDEX_OF_ACCESS].contains("W"))||(parameter[Excel.INDEX_OF_ACCESS].contains("Out"))||(parameter[Excel.INDEX_OF_ACCESS].equals("_in")));
-               // if((parameter[Excel.INDEX_OF_INVALID_DOMAIN]=="-")||(i>5)||(bool))
+                if((parameter[Excel.INDEX_OF_INVALID_DOMAIN]=="-")||(i>5)||(bool))
 
                 ExcelModifier.Merge_Cells(Excel.SHEET_B1,i,row+1,row+2);
             }
@@ -702,10 +702,43 @@ public class B1_sheet {
 
     private static String[] Classes_Filling(String[] parameter) {
 
+String c;
 
+        if(!parameter[Excel.INDEX_OF_TYPE].contains("int"))
+            return parameter;
 
+        for (int i = 0; i <cause.size() ; i++) {
+
+           c=cause.get(i);
+            if (c.contains(parameter[Excel.INDEX_OF_NAME])) {
+                c=change_Form(c);
+                System.out.println(c);
+
+            }
+        }
         return parameter;
     }
+
+    private static String change_Form(String input) {
+                String result = null;
+                String[] words = input.split(" ");
+                for (int i = 0; i < words.length - 1; i++) {
+                    if (words[i].equalsIgnoreCase("to") || words[i].equalsIgnoreCase("from")) {
+                        result = words[i + 1];
+                        break;
+                    }
+                }
+                //if ()
+
+
+                return result;
+            }
+
+
+
+
+
+
 
 
     ///////////////////////////////////////////////REMOVE EXTRA ROWS/////////////////////////////////////////////////////

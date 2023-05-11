@@ -48,8 +48,8 @@ public class ExcelFinal {
         int uft;
 
         number_of_causes=0;
-        for (String cs:cause_table
-        ) {if (!Objects.equals(cs, "null"))
+        for (String cs:cause_table) {
+            if (!Objects.equals(cs, "null"))
             number_of_causes++;
         }
 
@@ -140,12 +140,16 @@ public class ExcelFinal {
 
     public static String[] Code ;
     public static String[] LLR;
+    public static ArrayList<String> cause;
+
+
 
   public static void Excel_Final(String LLR_text, String userName, ArrayList<String> cause_table, ArrayList<String> effect_table, JDialog dialog) throws IOException {
 
       String template;
       UTC_Number_Filling(cause_table);
       LOGGER.setLevel(Level.INFO);
+      cause=cause_table;
 
       switch (number_of_causes) {
           case 0 -> {

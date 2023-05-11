@@ -82,8 +82,13 @@ public class ExcelModifier {
         String string_range= (char) (C1_start + 65)+""+(start_row)+":"+(char) (C1_start + 65)+end_row;
       //  System.out.println(string_range);
         CellRangeAddress range = CellRangeAddress.valueOf(string_range);
-        s.addMergedRegion(range);
 
+        try {
+            s.addMergedRegion(range);
+        }catch (Exception e)
+        {
+             e.printStackTrace();
+         }
 
     }
 

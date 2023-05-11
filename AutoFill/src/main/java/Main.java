@@ -23,7 +23,6 @@ public class Main {
 
         return dialog;
     }
-
     public static boolean Verification_licences() throws IOException {
 
         Properties props = new Properties();
@@ -46,6 +45,7 @@ public class Main {
 
         return false;
     }
+
 
     public static void main(String[] args) throws IOException {
 
