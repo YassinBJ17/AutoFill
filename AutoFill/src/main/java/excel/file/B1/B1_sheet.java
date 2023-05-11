@@ -15,15 +15,16 @@ import static excel.file.Services.ExcelModifier.*;
 public class B1_sheet {
 
     public static final int START_OF_PARAMETERS_TABLE=10;
-    public static final int END_OF_SHEET_POSITION =3319;
+    public static final int END_OF_SHEET_POSITION =workbook.getSheetAt(Excel.SHEET_B1).getLastRowNum();
     public static final int END_OF_GLOBAL_DEFINITION=56;
     public final int NUMBER_OF_EMPTY_CELL=25;
     public final int END_OF_SHEET=38;
     public final int RETURN_FUNCTION_INDEX=71;
     public final int DISTANCE_BETWEEN_STUBS =59;
-    public final int STUB_PARAMETERS_TABLE_POSITION =80;
-    public final int STUB_DEFINITION_TABLE_POSITION=73;
-    public final int INTERNAL_DEFINITIONS_POSITION=43;
+    public final int STUB_PARAMETERS_TABLE_POSITION =138;
+    public final int STUB_DEFINITION_TABLE_POSITION=131;
+    public final int INTERNAL_DEFINITIONS_POSITION=30;
+    public final int INTERNAL_VARIABLES_POSITION=69;
     public static int Global_Start=43;
     public static String Prototype;
     public static String[] Globals=new String[100];
@@ -221,7 +222,7 @@ public class B1_sheet {
 
         if(LLR!=null)
         Parameters[Parameter_number][Excel.INDEX_OF_ACCESS]= Access_Detect(LLR,Parameters[Parameter_number][Excel.INDEX_OF_NAME]);
-        if(row<=INTERNAL_DEFINITIONS_POSITION+number_of_UFT-2)
+        if(row<=INTERNAL_VARIABLES_POSITION+number_of_UFT-2)
             Parameters[Parameter_number][Excel.INDEX_OF_ACCESS] = Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].replace("R", "In").replace("W", "Out");
 
 
@@ -285,15 +286,13 @@ public class B1_sheet {
     }
     return 0;
 }
-    public int Insert_Row(int row,final String[] parameter){
+    public int Insert_Row(int row, String[] parameter){
 
-        try {
-
-
+        int retrun_Number_Of_Rows=0;
 
 
                 if ((parameter[Excel.INDEX_OF_ACCESS].equalsIgnoreCase("in"))||(parameter[Excel.INDEX_OF_ACCESS].equals("R"))||(Objects.equals(parameter[Excel.INDEX_OF_TYPE], "void"))){
-
+                    parameter=Classes_Filling(parameter);
             for (int i = 1; i <= 8; i++) {
                 if((i==4)||(i==5)||(i==7)){
                     continue; }
@@ -306,12 +305,14 @@ public class B1_sheet {
                 }else
                 ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
             }
-            return 0;
+
+
 
         }
         else{
 
             for (int i = 1; i <= 8; i++) {
+
                 if((i==4)||(i==5)||(i==7)){
                     continue;}
                 if (i==1) {
@@ -323,20 +324,19 @@ public class B1_sheet {
                 }else
                     ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
             }
+
             for (int i = 1; i <=8 ; i++)
             {
                 boolean bool=((parameter[Excel.INDEX_OF_ACCESS].contains("W"))||(parameter[Excel.INDEX_OF_ACCESS].contains("Out"))||(parameter[Excel.INDEX_OF_ACCESS].equals("_in")));
-                if((parameter[Excel.INDEX_OF_INVALID_DOMAIN]=="-")||(i>5)||(bool))
-                ExcelModifier.Merge_Cells(Excel.SHEET_B1,i,row+1,row+2);
+               // if((parameter[Excel.INDEX_OF_INVALID_DOMAIN]=="-")||(i>5)||(bool))
 
+                ExcelModifier.Merge_Cells(Excel.SHEET_B1,i,row+1,row+2);
             }
-            return 1;
+            retrun_Number_Of_Rows++;
             }
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-    return 0;
+            return retrun_Number_Of_Rows;
+
+
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -484,7 +484,7 @@ public class B1_sheet {
 
         int numberOfParameters=Extract_Parameters(code,LLR[1]);
         int normal_parameters_index=START_OF_PARAMETERS_TABLE+ number_of_UFT;// for normal parameters
-        int complex_parameters_index=INTERNAL_DEFINITIONS_POSITION+number_of_UFT;// for pointer Complex parameters
+        int complex_parameters_index=INTERNAL_VARIABLES_POSITION+number_of_UFT;// for pointer Complex parameters
         for (int i = 0; i <numberOfParameters ; i++) {
 
             if (Parameters[i][Excel.INDEX_OF_POINTER].equals("isNormal")){
@@ -578,7 +578,7 @@ public class B1_sheet {
                 Parameters[i][Excel.INDEX_OF_INVALID_DOMAIN]=Extract_Invalid_Domain(Parameters[i][Excel.INDEX_OF_DOMAIN]);
             }
 
-            Insert_Global_Parameter(Global_Start+i+number_of_UFT,i,LLR);
+            Global_Start+=Insert_Global_Parameter(Global_Start+i+number_of_UFT,i,LLR);
         }
     }catch (Exception e){
         e.printStackTrace();
@@ -641,8 +641,6 @@ public class B1_sheet {
 
         return"";
     }
-
-
     public boolean InternalDefinitionsExist(String parameter){
 
         Sheet A2_sheet= workbook.getSheetAt(Excel.SHEET_A2);
@@ -660,7 +658,7 @@ public class B1_sheet {
         }
         return false;
     }
-    public void Insert_Global_Parameter(int row,int Parameter_number,String[] LLR) {
+    public int Insert_Global_Parameter(int row,int Parameter_number,String[] LLR) {
 
 
         String []parameters;
@@ -673,12 +671,14 @@ public class B1_sheet {
         }
 
 
+        int retrun_Number_Of_Rows=Insert_Row(row,Parameters[Parameter_number]);
+        row=row+retrun_Number_Of_Rows;
 
-        row+=Insert_Row(row,Parameters[Parameter_number]);
         if (((Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].contains("R")))&&(!(Parameters[Parameter_number][Excel.INDEX_OF_INVALID_DOMAIN].equals("-")))){
             row++;
             Insert_Invalid_Row(row,Parameters[Parameter_number]);
         }
+
 
         // A2 filling
         ExcelModifier.Fill_Cell("Variable",Excel.SHEET_A2,INTERNAL_DEFINITIONS_POSITION+number_of_UFT+Parameter_number,Excel.CELL_COL_1);
@@ -696,11 +696,16 @@ public class B1_sheet {
             ExcelModifier.Fill_Cell(Parameters[Parameter_number][Excel.INDEX_OF_TYPE], Excel.SHEET_A2, INTERNAL_DEFINITIONS_POSITION + number_of_UFT + Parameter_number, Excel.CELL_COL_3);
         }
 
-
+        return retrun_Number_Of_Rows;
     }
-
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static String[] Classes_Filling(String[] parameter) {
+
+
+
+        return parameter;
+    }
 
 
     ///////////////////////////////////////////////REMOVE EXTRA ROWS/////////////////////////////////////////////////////
@@ -765,25 +770,26 @@ public class B1_sheet {
 
     }
 }
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
-    public B1_sheet(String [] LLR, String[] code, Workbook workbook ) throws IOException {
+    public B1_sheet(Workbook workbook ) throws IOException {
 
     String function_name=LLR[1];
     System.out.println(function_name+": In progress");
     Initialize_Data(function_name);
     Stubs_Filling(LLR);
-    Parameters_Filling(code,LLR);
+    Parameters_Filling(Code,LLR);
     Global_Parameters_Filling(LLR);
-    Function_Return_Filling(code,function_name);
+    Function_Return_Filling(Code,function_name);
     Prototype_Filling();
     Remove_Extra_Row(workbook);
 
     }
+
+
 
 }
 

@@ -20,8 +20,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.logging.Level;
-
-
 import static excel.file.Services.ExcelModifier.Fill_Cell;
 
 
@@ -64,7 +62,7 @@ public class ExcelFinal {
         number_of_UTC =(uft*numberOfUtcPerUft);
 
     }
-    public static void LLR_Traceability_Filling(String[] LLR){
+    public static void LLR_Traceability_Filling(){
 
         String llr_traceability;
         for (int i = 0; i < LLR.length ; i++) {
@@ -140,6 +138,8 @@ public class ExcelFinal {
 
     }
 
+    public static String[] Code ;
+    public static String[] LLR;
 
   public static void Excel_Final(String LLR_text, String userName, ArrayList<String> cause_table, ArrayList<String> effect_table, JDialog dialog) throws IOException {
 
@@ -173,22 +173,21 @@ public class ExcelFinal {
      FileInputStream inputStream = new FileInputStream(template);
      workbook = WorkbookFactory.create(inputStream);
 
-      String[] LLR = LLR_text.split("\n");
+      LLR = LLR_text.split("\n");
       String function_name=LLR[1];
       String file_name=function_name+".c";
       String Code_text= ExtractCode.extract(file_name);
-      String[] Code = Code_text.split("\n");
+      Code = Code_text.split("\n");
 
-          new A0_sheet(LLR);
+          new A0_sheet();
           new A1_sheet(userName);
-          new SheetsName(LLR,workbook);
-          new B0_sheet(LLR,cause_table,effect_table,workbook);
-
+          new SheetsName(workbook);
+          new B0_sheet(cause_table,effect_table,workbook);
           if (!Code_text.isEmpty()) {
-              A2_sheet.A2(Code, function_name);
-              new B1_sheet(LLR,Code,workbook);
+              A2_sheet.A2(function_name);
+              new B1_sheet(workbook);
               }
-              LLR_Traceability_Filling(LLR);
+              LLR_Traceability_Filling();
 
 
       dialog.setVisible(false); // hide the dialog

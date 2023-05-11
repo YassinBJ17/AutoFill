@@ -2,6 +2,8 @@ package excel.file.A0;
 
 
 import excel.file.Services.Excel;
+
+import static excel.file.Services.ExcelFinal.LLR;
 import static excel.file.Services.ExcelModifier.Fill_Cell;
 
 public class A0_sheet {
@@ -10,7 +12,7 @@ public class A0_sheet {
     public final int index_of_CSU_Name=1;
 
 
-    public A0_sheet(String[] LLR){
+    public A0_sheet(){
 
 
         String File_Name=LLR[index_of_CSU_Name] + ".c";

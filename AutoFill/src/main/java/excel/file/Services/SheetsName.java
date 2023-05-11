@@ -2,17 +2,19 @@ package excel.file.Services;
 
 import org.apache.poi.ss.usermodel.Workbook;
 
+import static excel.file.Services.ExcelFinal.LLR;
+
 public class SheetsName {
 
     public final int MAXIMAL_SHEETNAME_LENGTH = 23;
 
 
-    public SheetsName(String[] llr_lines, Workbook workbook){
+    public SheetsName( Workbook workbook){
 
 
-        if (llr_lines[1].length()>MAXIMAL_SHEETNAME_LENGTH)
+        if (LLR[1].length()>MAXIMAL_SHEETNAME_LENGTH)
          {
-                String sheet_name=llr_lines[1].substring(llr_lines[1].lastIndexOf('_')+1);
+                String sheet_name=LLR[1].substring(LLR[1].lastIndexOf('_')+1);
                 String B0_Sheet_name="B0-"+sheet_name+"_UFT";
                 String B1_Sheet_name="B1-"+sheet_name+"_UTC";
 
@@ -25,8 +27,8 @@ public class SheetsName {
 
       else {
 
-                  String B0_Sheet_name="B0-"+llr_lines[1]+"_UFT";
-                  String B1_Sheet_name="B1-"+llr_lines[1]+"_UTC";
+                  String B0_Sheet_name="B0-"+LLR[1]+"_UFT";
+                  String B1_Sheet_name="B1-"+LLR[1]+"_UTC";
 
                   workbook.setSheetName(Excel.SHEET_B0, B0_Sheet_name);
                   workbook.setSheetName(Excel.SHEET_B1, B1_Sheet_name);

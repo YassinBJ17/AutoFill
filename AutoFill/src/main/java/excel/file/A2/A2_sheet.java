@@ -2,6 +2,7 @@ package excel.file.A2;
 
 import excel.file.Services.Excel;
 
+import static excel.file.Services.ExcelFinal.Code;
 import static excel.file.Services.ExcelModifier.*;
 import static excel.file.Services.ExcelModifier.Fill_Cell;
 
@@ -12,14 +13,14 @@ public class A2_sheet {
 
     public static boolean return_function;
 
-    public static void A2(String [] code, String function_name){
+    public static void A2(String function_name){
 
         int number_of_header_file=0;
         
         String header_files;
         String prototype;
         
-        for (String Code_line : code) {
+        for (String Code_line : Code) {
 
 
 
