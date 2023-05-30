@@ -22,7 +22,7 @@ public class B0_sheet{
 
     public B0_sheet(ArrayList<String> causes_table, ArrayList<String> effects_table, Workbook workbook) {
 
-        Fill_Cell("Unit Functional Tests for: " + LLR[1].toUpperCase(), Excel.SHEET_B0, Excel.CELL_ROW_0, Excel.CELL_COL_2);
+        Fill_Cell("Unit Functional Tests for: " + LLR[1], Excel.SHEET_B0, Excel.CELL_ROW_0, Excel.CELL_COL_2);
         Fill_Cell(ExcelModifier.Req_detect(LLR), Excel.SHEET_B0, Excel.CELL_ROW_3, Excel.CELL_COL_4);
         Fill_Cell(ExcelModifier.Req_detect(LLR), Excel.SHEET_B0, EFFECT_TABLE_POSITION + 1, Excel.CELL_COL_4);
 

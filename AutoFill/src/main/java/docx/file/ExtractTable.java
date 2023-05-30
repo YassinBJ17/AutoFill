@@ -5,20 +5,22 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
+
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 import static docx.file.ExtractText.removeInvisibleChars;
+import static excel.file.Services.ExcelFinal.number_of_causes;
+import static excel.file.Services.ExcelFinal.switchArray;
 
 public class ExtractTable {
 
     public static final String WHITE_COLOR_HEXA="FFFFFF";
+    private static int rowNumber=-1;
 
-    public static boolean IsRequirement(String requirement)
-    {
+    public static boolean IsRequirement(String requirement) {
         String[] notReq={"DO NOTHING","EFFECTS","ALL OTHER CASES","ALL OTHER CASE","CAUSES","NO EFFECT","ALWAYS","NO EFFECTS","ALL THE OTHER CASES","NO DATA TO READ"};
-        requirement=requirement.toUpperCase();
         requirement=requirement.replaceAll("[^a-zA-Z]", " ");
         requirement=requirement.trim();
         if( Objects.equals(requirement, ""))
@@ -27,14 +29,14 @@ public class ExtractTable {
         }
         for (String req:notReq)
         {
-            if (requirement.equals(req)) {
+            if (requirement.equalsIgnoreCase(req)) {
                 return false;
             }
         }
         return true;
     }
 
-    public static void AddCause(String cell,ArrayList<String> cause){
+    public static void AddCause(String cell,ArrayList<String> cause) {
 
             String causes = removeInvisibleChars(cell.trim());
 
@@ -57,12 +59,10 @@ public class ExtractTable {
             }
         }
 
-
     public static void ExtractCausesEffects(XWPFTableRow row,ArrayList<String> cause, ArrayList<String> effect) {
 
         XWPFTableCell cell;
         int number_Of_Cause=0;
-
 
         for (int i = 0; i < row.getTableCells().size(); i++) {
             cell = row.getCell(i);
@@ -73,18 +73,41 @@ public class ExtractTable {
             {
                 if(IsRequirement(cell.getText()))
                     number_Of_Cause++;
+                if(number_Of_Cause==1)
+                    rowNumber++; // stored the row
             }
         }
-        for (int i = 0; i <number_Of_Cause ; i++) {
-            cell = row.getCell(i);
-            if(IsRequirement(cell.getText()))
-            AddCause(cell.getText(),cause);
 
+
+        if(number_Of_Cause>=3) { // if the line in cause/effect table is >3
+
+            if (!switchArray[rowNumber]) { // if 'if'
+                for (int i = 1; i <= number_Of_Cause; i +=2) {
+                    cell = row.getCell(i);
+                    if (IsRequirement(cell.getText()))
+                        AddCause(cell.getText(), cause);
+                }
+            } else {
+
+                for (int i = 1; i < number_Of_Cause; i++) { // if 'switch'
+
+                    cell = row.getCell(i);
+                    if (IsRequirement(cell.getText()))
+                        AddCause(cell.getText(), cause);
+                }
+            }
+        }else {
+            for (int i = 1; i <= number_Of_Cause; i +=2) {
+                cell = row.getCell(i);
+                if (IsRequirement(cell.getText()))
+                    AddCause(cell.getText(), cause);
+            }
         }
     }
 
     public static void Extract_Table(String path, ArrayList<String> cause, ArrayList<String> effect) throws IOException {
 
+            rowNumber=-1;
             // Open the docx file
             File file = new File(path);
             FileInputStream fis = new FileInputStream(file);
@@ -94,9 +117,8 @@ public class ExtractTable {
             XWPFTable table = document.getTables().get(0);
             // Loop through each row of the table
              for (int i = 0; i < table.getRows().size(); i++) {
+
                   ExtractCausesEffects( table.getRow(i),cause,effect);
-
-
 
             // Loop through each cell of the row
            /*     for (int j = 0; j < row.getTableCells().size(); j++) {
@@ -120,5 +142,6 @@ public class ExtractTable {
             // Close the document
         document.close();
         }
-    }
+
+}
 

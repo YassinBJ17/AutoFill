@@ -1,9 +1,7 @@
 package excel.file.Services;
 
 import excel.file.A0.A0_sheet;
-
 import java.util.logging.Logger;
-
 import excel.file.A1.A1_sheet;
 import excel.file.A2.A2_sheet;
 import excel.file.B0.B0_sheet;
@@ -20,6 +18,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.logging.Level;
+import static docx.file.ExtractReq.Extract_Req;
+import static docx.file.ExtractTable.Extract_Table;
 import static excel.file.Services.ExcelModifier.Fill_Cell;
 
 
@@ -37,9 +37,7 @@ public class ExcelFinal {
 
     public static Workbook workbook;
     public static int number_of_UFT;
-
     public static int number_of_UTC;
-
     public static int number_of_causes=0;
 
 
@@ -131,7 +129,7 @@ public class ExcelFinal {
                 Desktop.getDesktop().open(new File("..\\Datafiles\\SUTC\\" + function_name + ".xls"));
             Thread.sleep(100);
         } catch (IOException e) {
-            System.out.println("Error opening file: " + e.getMessage());
+            //System.out.println("Error opening file: " + e.getMessage());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -141,13 +139,42 @@ public class ExcelFinal {
     public static String[] Code ;
     public static String[] LLR;
     public static ArrayList<String> cause;
+    public static boolean[] switchArray=new boolean[50];
+    private static void Switch_if_table_filling() {
+
+    int index=0;
 
 
+        for (String line : Code) {
 
-  public static void Excel_Final(String LLR_text, String userName, ArrayList<String> cause_table, ArrayList<String> effect_table, JDialog dialog) throws IOException {
+            if ((line.contains("switch ("))||(line.contains("switch("))) {
+                switchArray[index] = true;
+                index++;
+
+            } else if ((line.contains("if ("))||(line.contains("if(")))  {
+                switchArray[index] = false;
+                index++;
+            }
+
+
+        }
+
+        }
+
+  public static void Excel_Final(String path,String LLR_text, String userName, ArrayList<String> cause_table, ArrayList<String> effect_table, JDialog dialog) throws IOException {
 
       String template;
-      UTC_Number_Filling(cause_table);
+      LLR = LLR_text.split("\n");
+      String function_name=LLR[1];
+      String file_name=function_name+".c";
+      String Code_text= ExtractCode.extract(file_name);
+      Code = Code_text.split("\n");
+
+          Switch_if_table_filling();
+          Extract_Table(path, cause_table, effect_table);
+          Extract_Req(LLR_text, cause_table, effect_table);
+          UTC_Number_Filling(cause_table);
+
       LOGGER.setLevel(Level.INFO);
       cause=cause_table;
 
@@ -173,15 +200,8 @@ public class ExcelFinal {
               LOGGER.info("TEMPLATE n is used");
           }
       }
-
-     FileInputStream inputStream = new FileInputStream(template);
-     workbook = WorkbookFactory.create(inputStream);
-
-      LLR = LLR_text.split("\n");
-      String function_name=LLR[1];
-      String file_name=function_name+".c";
-      String Code_text= ExtractCode.extract(file_name);
-      Code = Code_text.split("\n");
+      FileInputStream inputStream = new FileInputStream(template);
+      workbook = WorkbookFactory.create(inputStream);
 
           new A0_sheet();
           new A1_sheet(userName);
@@ -212,6 +232,7 @@ public class ExcelFinal {
              OpenFileDialog(function_name);
 
   }
+
 
 }
 

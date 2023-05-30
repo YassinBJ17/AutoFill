@@ -40,7 +40,7 @@ public class B1_sheet {
         for (String[] row : Parameters) {
             Arrays.fill(row, "");
         }
-        ExcelModifier.Fill_Cell("Unit Test Cases for: " + function_name.toUpperCase(), Excel.SHEET_B1, Excel.CELL_ROW_0, Excel.CELL_COL_2);
+        ExcelModifier.Fill_Cell("Unit Test Cases for: " + function_name, Excel.SHEET_B1, Excel.CELL_ROW_0, Excel.CELL_COL_2);
 
         Prototype=function_name+"(";
 
@@ -292,19 +292,21 @@ public class B1_sheet {
 
 
                 if ((parameter[Excel.INDEX_OF_ACCESS].equalsIgnoreCase("in"))||(parameter[Excel.INDEX_OF_ACCESS].equals("R"))||(Objects.equals(parameter[Excel.INDEX_OF_TYPE], "void"))){
-                    parameter=Classes_Filling(parameter);
-            for (int i = 1; i <= 8; i++) {
-                if((i==4)||(i==5)||(i==7)){
-                    continue; }
 
-                if (i==1) {
-                    if ((parameter[Excel.INDEX_OF_NAME].contains("["))&&(parameter[Excel.INDEX_OF_NAME].contains("]")))
-                        ExcelModifier.Fill_Cell(parameter[Excel.INDEX_OF_NAME].replace("[","[0..").replace("]","-1]"),Excel.SHEET_B1,row,i); // array manipulation
-                    else
+                    parameter=Classes_Filling(parameter);
+
+                    for (int i = 1; i <= 8; i++) {
+                        if((i==4)||(i==5)||(i==7)){
+                            continue; }
+
+                        if (i==1) {
+                            if ((parameter[Excel.INDEX_OF_NAME].contains("["))&&(parameter[Excel.INDEX_OF_NAME].contains("]")))
+                                ExcelModifier.Fill_Cell(parameter[Excel.INDEX_OF_NAME].replace("[","[0..").replace("]","-1]"),Excel.SHEET_B1,row,i); // array manipulation
+                            else
+                                ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
+                        }else
                         ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
-                }else
-                ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
-            }
+                    }
 
 
 
@@ -700,9 +702,18 @@ public class B1_sheet {
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public static boolean isInteger(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
     private static String[] Classes_Filling(String[] parameter) {
 
-String c;
+        String c;
+        String clas="{ ";
 
         if(!parameter[Excel.INDEX_OF_TYPE].contains("int"))
             return parameter;
@@ -711,32 +722,31 @@ String c;
 
            c=cause.get(i);
             if (c.contains(parameter[Excel.INDEX_OF_NAME])) {
-                c=change_Form(c);
-                System.out.println(c);
 
+                c=change_Form(c);
             }
         }
         return parameter;
     }
 
     private static String change_Form(String input) {
-                String result = null;
-                String[] words = input.split(" ");
-                for (int i = 0; i < words.length - 1; i++) {
-                    if (words[i].equalsIgnoreCase("to") || words[i].equalsIgnoreCase("from")) {
-                        result = words[i + 1];
-                        break;
+                String result = "";
+
+
+                    if (input.contains("equal to")) {
+                        result=input.substring(input.indexOf(":")+1);
+                        result=result+";"+result.replace("equal to" ,"different from");
+
+                    } else if (input.contains("different from")) {
+                        result=input.substring(input.indexOf(":")+1  );
+                        result=result+";"+result.replace("different from" ,"equal to");
                     }
-                }
-                //if ()
+
+                      System.out.println(result);
 
 
                 return result;
             }
-
-
-
-
 
 
 

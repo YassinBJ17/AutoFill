@@ -46,8 +46,8 @@ public class Main {
         return false;
     }
 
-
     public static void main(String[] args) throws IOException {
+/*
 
 
         if(Verification_licences())
@@ -84,10 +84,10 @@ try {
 
                     //filling EXCEL
                     path =directory+ listOfFile.getName();
-                    Extract_Table(path, cause, effect);
+
                     LLR_text = ExtractText.Extract_Text(path);
-                    Extract_Req(LLR_text, cause, effect);
-                    Excel_Final(LLR_text, userName, cause, effect,dialog);
+
+                    Excel_Final(path,LLR_text, userName, cause, effect,dialog);
                     cause= new ArrayList<>();
                     effect= new ArrayList<>();
 
@@ -97,7 +97,7 @@ try {
         }
         catch (Exception e){
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "An error occurred!                                                                ", listOfFile.getName(), JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "", listOfFile.getName(), JOptionPane.ERROR_MESSAGE);
 
         }
     }
@@ -105,8 +105,18 @@ try {
                    e.printStackTrace();
                     JOptionPane.showMessageDialog(null, "There is no LLR in this folder !", "Error", JOptionPane.ERROR_MESSAGE);
                                 }
+*/
+
+
+
+
+
 
     }
+
+
+
+
 
 
 
