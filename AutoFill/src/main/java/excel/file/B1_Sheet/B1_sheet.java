@@ -1,4 +1,4 @@
-package excel.file.B1;
+package excel.file.B1_Sheet;
 import c.file.ExtractCode;
 import excel.file.Services.Excel;
 import excel.file.Services.ExcelModifier;
@@ -329,13 +329,14 @@ public class B1_sheet {
 
             for (int i = 1; i <=8 ; i++)
             {
-                boolean bool=((parameter[Excel.INDEX_OF_ACCESS].contains("W"))||(parameter[Excel.INDEX_OF_ACCESS].contains("Out"))||(parameter[Excel.INDEX_OF_ACCESS].equals("_in")));
+                boolean bool=((parameter[Excel.INDEX_OF_ACCESS].contains("W"))||(parameter[Excel.INDEX_OF_ACCESS].contains("Out"))||(parameter[Excel.INDEX_OF_ACCESS].equals("_in")))&&(!(parameter[Excel.INDEX_OF_ACCESS].contains("/")));
                 if((parameter[Excel.INDEX_OF_INVALID_DOMAIN]=="-")||(i>5)||(bool))
 
                 ExcelModifier.Merge_Cells(Excel.SHEET_B1,i,row+1,row+2);
             }
             retrun_Number_Of_Rows++;
             }
+
             return retrun_Number_Of_Rows;
 
 
@@ -672,9 +673,8 @@ public class B1_sheet {
             Parameters[Parameter_number][Excel.INDEX_OF_CLASS]="-";
         }
 
-
-        int retrun_Number_Of_Rows=Insert_Row(row,Parameters[Parameter_number]);
-        row=row+retrun_Number_Of_Rows;
+        int return_Number_Of_Rows=Insert_Row(row,Parameters[Parameter_number]);
+        row=row+return_Number_Of_Rows;
 
         if (((Parameters[Parameter_number][Excel.INDEX_OF_ACCESS].contains("R")))&&(!(Parameters[Parameter_number][Excel.INDEX_OF_INVALID_DOMAIN].equals("-")))){
             row++;
@@ -698,7 +698,7 @@ public class B1_sheet {
             ExcelModifier.Fill_Cell(Parameters[Parameter_number][Excel.INDEX_OF_TYPE], Excel.SHEET_A2, INTERNAL_DEFINITIONS_POSITION + number_of_UFT + Parameter_number, Excel.CELL_COL_3);
         }
 
-        return retrun_Number_Of_Rows;
+        return return_Number_Of_Rows;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -742,7 +742,7 @@ public class B1_sheet {
                         result=result+";"+result.replace("different from" ,"equal to");
                     }
 
-                      System.out.println(result);
+
 
 
                 return result;
@@ -828,7 +828,7 @@ public class B1_sheet {
     Global_Parameters_Filling(LLR);
     Function_Return_Filling(Code,function_name);
     Prototype_Filling();
-    Remove_Extra_Row(workbook);
+   Remove_Extra_Row(workbook);
 
     }
 

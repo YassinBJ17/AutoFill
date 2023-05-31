@@ -47,7 +47,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-/*
+
 
 
         if(Verification_licences())
@@ -105,7 +105,7 @@ try {
                    e.printStackTrace();
                     JOptionPane.showMessageDialog(null, "There is no LLR in this folder !", "Error", JOptionPane.ERROR_MESSAGE);
                                 }
-*/
+
 
 
 

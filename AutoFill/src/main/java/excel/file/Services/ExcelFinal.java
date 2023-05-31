@@ -1,11 +1,11 @@
 package excel.file.Services;
 
-import excel.file.A0.A0_sheet;
+import excel.file.A0_Sheet.A0_sheet;
 import java.util.logging.Logger;
-import excel.file.A1.A1_sheet;
-import excel.file.A2.A2_sheet;
-import excel.file.B0.B0_sheet;
-import excel.file.B1.B1_sheet;
+import excel.file.A1_Sheet.A1_sheet;
+import excel.file.A2_Sheet.A2_sheet;
+import excel.file.B0_Sheet.B0_sheet;
+import excel.file.B1_Sheet.B1_sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import c.file.ExtractCode;
@@ -58,6 +58,7 @@ public class ExcelFinal {
 
         number_of_UFT =uft+minUftNumber;
         number_of_UTC =(uft*numberOfUtcPerUft);
+        System.out.println(number_of_UFT);
 
     }
     public static void LLR_Traceability_Filling(){
@@ -206,7 +207,7 @@ public class ExcelFinal {
           new A0_sheet();
           new A1_sheet(userName);
           new SheetsName(workbook);
-          new B0_sheet(cause_table,effect_table,workbook);
+          new B0_sheet(cause_table,effect_table);
           if (!Code_text.isEmpty()) {
               A2_sheet.A2(function_name);
               new B1_sheet(workbook);
