@@ -13,6 +13,9 @@ import static excel.file.B1_Sheet.Services.InsertData.Insert_Invalid_Row;
 import static excel.file.B1_Sheet.Services.InsertData.Insert_Row;
 import static excel.file.Services.ExcelFinal.number_of_UFT;
 import static excel.file.Services.ExcelFinal.workbook;
+import static services.GUInterfaces.Error_interface;
+import static services.Logger_init.logger4j;
+
 
 public class GlobalFilling {
 
@@ -41,7 +44,8 @@ public class GlobalFilling {
                 Global_Start+=Insert_Global_Parameter(Global_Start+i+number_of_UFT,i,LLR);
             }
         }catch (Exception e){
-            e.printStackTrace();
+            Error_interface(String.valueOf(e));
+            logger4j.error(e);
         }
     }
     public static int Extract_Global(String [] LLR){

@@ -24,10 +24,11 @@ import static excel.file.B1_Sheet.B1_ExcelSheet.B1_sheet;
 import static excel.file.Services.ExcelModifier.Fill_Cell;
 import static excel.file.Services.SheetsName.Sheets_Name;
 import static excel.file.Services.Template_Choosing.TemplateChoosing;
+import static services.GUInterfaces.*;
+import static services.Logger_init.logger4j;
 
 
 public class ExcelFinal {
-    private static final Logger LOGGER = Logger.getLogger(ExcelFinal.class.getName());
 
     public static final int maxUftNumber=8;
     public static final int minUftNumber=1;
@@ -60,7 +61,7 @@ public class ExcelFinal {
 
         number_of_UFT =uft+minUftNumber;
         number_of_UTC =(uft*numberOfUtcPerUft);
-        System.out.println(number_of_UFT);
+
 
     }
     public static void LLR_Traceability_Filling(){
@@ -92,52 +93,13 @@ public class ExcelFinal {
                 outputStream.close();
                 break;
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), function_name + ".xls", JOptionPane.ERROR_MESSAGE);
+                Error_interface(String.valueOf(e));
+                logger4j.error(e);
+                //JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), function_name + ".xls", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
-    private static boolean FileExisteDialog(String function_name) {
 
-
-        Object[] options = {"Ok", "Cancel"};
-        int choice = JOptionPane.showOptionDialog(null,
-                "File already exists, Do you want to overwrite it?",
-                function_name + ".xls",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                options,
-                options[1]);
-
-        if(choice == JOptionPane.NO_OPTION){
-            LOGGER.info("The operation has been canceled by the user");
-            return true;
-        }else
-            return false;
-    }
-    private static void OpenFileDialog(String function_name) {
-
-        try {
-            int result = JOptionPane.showOptionDialog(
-                    null, // Parent component (null for default)
-                    "The excel file have been generated successfully in SUTC folder, Do you want to open it ?", // Message to display
-                    function_name + ".xls", // Dialog title
-                    JOptionPane.YES_NO_OPTION, // Option type
-                    JOptionPane.QUESTION_MESSAGE, // Message type
-                    null, // Icon (null for default)
-                    new String[]{"Yes", "No"}, // Button options
-                    "Yes" // Default button option
-            );
-            if (result == 0)
-                Desktop.getDesktop().open(new File("..\\Datafiles\\SUTC\\" + function_name + ".xls"));
-            Thread.sleep(100);
-        } catch (IOException e) {
-            //System.out.println("Error opening file: " + e.getMessage());
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
     private static void Switch_if_table_filling() {
 
     int index=0;
@@ -157,10 +119,22 @@ public class ExcelFinal {
       String SUTC_template;
       lowLevelReqDocument = LLR_text.split("\n");
       String functionName= lowLevelReqDocument[1];
+      String newXLS_filePath = "..\\Datafiles\\SUTC\\" + lowLevelReqDocument[1] + ".xls"; // creation of the path
+      File file = new File(newXLS_filePath);
       String cFileName=functionName+".c";
       String Code_text= ExtractCode.extract(cFileName);
       codeOfTheSoftware = Code_text.split("\n");
       cause=cause_table;// used to extract classes
+
+
+      //////////////////////////////////////////////////////////////////////////////////////////
+      //________________________________________________________________________________________
+      if(file.exists()){
+          if(FileExisteDialog(functionName))
+              return; }
+      //________________________________________________________________________________________
+      //////////////////////////////////////////////////////////////////////////////////////////
+
 
       //////////////////////////////////////////////////////////////////////////////////////////
       //________________________________________________________________________________________
@@ -172,7 +146,6 @@ public class ExcelFinal {
       //////////////////////////////////////////////////////////////////////////////////////////
 
 
-      LOGGER.setLevel(Level.INFO);
 
       SUTC_template=TemplateChoosing();
 
@@ -197,18 +170,10 @@ public class ExcelFinal {
 
       dialog.setVisible(false); // hide the dialog
       dialog.dispose(); // dispose of the dialog to release resources
+      templateXLSfile.close();// Close XLS to
+      WritingFile(newXLS_filePath,functionName);// save XLS
+      OpenFileDialog(functionName); // open XLS
 
-                templateXLSfile.close();
-                String newXLS_filePath = "..\\Datafiles\\SUTC\\" + lowLevelReqDocument[1] + ".xls"; // creation of the path
-                File file = new File(newXLS_filePath);
-
-                if(file.exists()){
-                    if(FileExisteDialog(functionName))
-                        return;
-                }
-
-             WritingFile(newXLS_filePath,functionName);
-             OpenFileDialog(functionName);
 
   }
 

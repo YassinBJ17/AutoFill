@@ -31,6 +31,6 @@ public class Template_Choosing {
         }
     }
 
-return TEMPLATEn_PATH ;
+return SUTC_template ;
     }
 }

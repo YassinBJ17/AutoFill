@@ -4,8 +4,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.*;
 
 import static excel.file.Services.ExcelFinal.workbook;
-
-
+import static services.Logger_init.logger4j;
 
 
 public class ExcelModifier {
@@ -63,7 +62,7 @@ public class ExcelModifier {
 
             } catch (NullPointerException e) {
             // handle the exception here
-            e.printStackTrace();
+            logger4j.error(e);
         }
     } // filling simple cell
     public static void Remove_Extra_Rows(int sheet, int start, int end) {
@@ -77,7 +76,7 @@ public class ExcelModifier {
             }
         } catch (NullPointerException e) {
             // handle the exception here
-            e.printStackTrace();
+            logger4j.error(e);
         }
     }
     public static void Merge_Cells(int sheet, int C1_start, int start_row, int end_row) {
@@ -91,7 +90,7 @@ public class ExcelModifier {
             s.addMergedRegion(range);
         }catch (Exception e)
         {
-             e.printStackTrace();
+            logger4j.error(e);
          }
 
     } // merge an interval of cells

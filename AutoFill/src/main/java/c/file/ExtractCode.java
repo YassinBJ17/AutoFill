@@ -4,6 +4,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 
+import static services.Logger_init.logger4j;
+
 
 public class ExtractCode {
 
@@ -39,7 +41,7 @@ public class ExtractCode {
                         return result;
                     } catch (IOException e) {
                         // If there is an error reading the file, print the stack trace and return null.
-                        e.printStackTrace();
+                        logger4j.error(e);
                         return null;
                     }
                 }
@@ -87,7 +89,7 @@ public class ExtractCode {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger4j.error(e);
         }
 
 

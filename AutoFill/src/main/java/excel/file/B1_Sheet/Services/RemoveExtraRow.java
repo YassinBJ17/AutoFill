@@ -6,6 +6,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
 
 import static excel.file.B1_Sheet.B1_ExcelSheet.START_OF_PARAMETERS_TABLE;
 import static excel.file.Services.ExcelFinal.number_of_UFT;
+import static services.Logger_init.logger4j;
 
 public class RemoveExtraRow {
 
@@ -39,7 +40,7 @@ public class RemoveExtraRow {
                                 B1_sheet.shiftRows(i + 1, B1_sheet.getLastRowNum(), -1);
                             }catch (Exception e)
                             {
-                                e.printStackTrace();
+                                logger4j.error(e);
                             }
                             bool=true;
                         }

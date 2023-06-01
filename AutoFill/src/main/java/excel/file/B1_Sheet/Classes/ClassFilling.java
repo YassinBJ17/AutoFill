@@ -3,6 +3,7 @@ package excel.file.B1_Sheet.Classes;
 import excel.file.Services.Excel;
 
 import static excel.file.Services.ExcelFinal.cause;
+import static services.Logger_init.logger4j;
 
 public class ClassFilling {
     public static boolean isInteger(String str) {
@@ -10,6 +11,7 @@ public class ClassFilling {
             Integer.parseInt(str);
             return true;
         } catch (NumberFormatException e) {
+            logger4j.error(e);
             return false;
         }
     }

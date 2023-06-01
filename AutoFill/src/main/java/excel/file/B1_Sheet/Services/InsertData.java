@@ -2,17 +2,18 @@ package excel.file.B1_Sheet.Services;
 
 import excel.file.Services.Excel;
 import excel.file.Services.ExcelModifier;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.Objects;
-
+import java.util.logging.Logger;
 import static excel.file.B1_Sheet.B1_ExcelSheet.INTERNAL_VARIABLES_POSITION;
 import static excel.file.B1_Sheet.B1_ExcelSheet.Parameters;
 import static excel.file.B1_Sheet.Classes.ClassFilling.Classes_Filling;
 import static excel.file.B1_Sheet.Services.ExtractData.Access_Detect;
 import static excel.file.Services.ExcelFinal.number_of_UFT;
+import static services.Logger_init.logger4j;
 
 public class InsertData {
-
 
     public static int Insert_Parameter(int row,int Parameter_number,String[] LLR){
 
@@ -78,7 +79,7 @@ public class InsertData {
             }
         }catch (Exception e)
         {
-            e.printStackTrace();
+            logger4j.error(e);
         }
         return 0;
     }
@@ -96,9 +97,10 @@ public class InsertData {
                     continue; }
 
                 if (i==1) {
-                    if ((parameter[Excel.INDEX_OF_NAME].contains("["))&&(parameter[Excel.INDEX_OF_NAME].contains("]")))
-                        ExcelModifier.Fill_Cell(parameter[Excel.INDEX_OF_NAME].replace("[","[0..").replace("]","-1]"),Excel.SHEET_B1,row,i); // array manipulation
-                    else
+                    if ((parameter[Excel.INDEX_OF_NAME].contains("["))&&(parameter[Excel.INDEX_OF_NAME].contains("]"))) {
+                        ExcelModifier.Fill_Cell(parameter[Excel.INDEX_OF_NAME].replace("[", "[0..").replace("]", "-1]"), Excel.SHEET_B1, row, i); // array manipulation
+                        parameter[Excel.INDEX_OF_TYPE]=parameter[Excel.INDEX_OF_TYPE]+"[ARRAY]";
+                    }else
                         ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);
                 }else
                     ExcelModifier.Fill_Cell(parameter[i],Excel.SHEET_B1,row,i);

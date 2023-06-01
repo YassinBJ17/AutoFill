@@ -74,7 +74,7 @@ public class ExtractTable {
         for (int i = 0; i < row.getTableCells().size(); i++) {
             cell = row.getCell(i);
             if (((Objects.equals(cell.getColor(), WHITE_COLOR_HEXA)) || Objects.equals(cell.getColor(), "auto") || Objects.equals(cell.getColor(), null)) && (IsRequirement(cell.getText())))
-                effect.add(removeInvisibleChars(cell.getText().trim()));
+                effect.add(cell.getText().trim());
 
             else
             {
