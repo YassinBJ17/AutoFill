@@ -7,6 +7,9 @@ public class ExtractReq {
 
 
 
+
+
+
     public static void Extract_Req(String LLR_Text, ArrayList<String> cause, ArrayList<String> effect) {
 
 
@@ -55,16 +58,14 @@ public class ExtractReq {
                     break;
                 }
             }
-
             if (final_requirements.equals("")) {
-                requirement=requirement.replaceAll("Set","\nSet");
+                requirement=Delete_extra_return_line(requirement);
                 effect.set(i, requirement);
-
             }
                 else {
                 final_requirements=final_requirements.replaceAll("Set","\nSet");
-
-                effect.set(i, Stub_Modifier(Set_Modifier(final_requirements)));
+                final_requirements=Delete_extra_return_line(final_requirements);
+                effect.set(i, StubCall_req_Modifier(SettingValue_req_Modifier(final_requirements)));
             }
         }
     }

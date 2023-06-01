@@ -1,14 +1,16 @@
 package excel.file.B0_Sheet;
 import excel.file.Services.Excel;
 import excel.file.Services.ExcelModifier;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
 import static excel.file.Services.ExcelFinal.*;
 import static excel.file.Services.ExcelModifier.Fill_Cell;
 
-public class B0_sheet{
+public class A0_ExcelSheet{
 
     public static final int CAUSES_TABLE_POSITION = 2;
     public static final int EFFECT_TABLE_POSITION = 43;
@@ -17,13 +19,13 @@ public class B0_sheet{
 
     static void LLR_TraceabilityFilling(){
 
-    Fill_Cell(ExcelModifier.Req_detect(LLR), Excel.SHEET_B0, Excel.CELL_ROW_3, Excel.CELL_COL_4);//LLR traceability Filling
-    Fill_Cell(ExcelModifier.Req_detect(LLR), Excel.SHEET_B0, EFFECT_TABLE_POSITION + 1, Excel.CELL_COL_4);//LLR traceability Filling
+    Fill_Cell(ExcelModifier.Req_detect(lowLevelReqDocument), Excel.SHEET_B0, Excel.CELL_ROW_3, Excel.CELL_COL_4);//LLR traceability Filling
+    Fill_Cell(ExcelModifier.Req_detect(lowLevelReqDocument), Excel.SHEET_B0, EFFECT_TABLE_POSITION + 1, Excel.CELL_COL_4);//LLR traceability Filling
     }
-    private void HeaderFilling() {
-        Fill_Cell("Unit Functional Tests for: " + LLR[1], Excel.SHEET_B0, Excel.CELL_ROW_0, Excel.CELL_COL_2);
+    private static void HeaderFilling() {
+        Fill_Cell("Unit Functional Tests for: " + lowLevelReqDocument[1], Excel.SHEET_B0, Excel.CELL_ROW_0, Excel.CELL_COL_2);
     }
-    private int CausesFilling(ArrayList<String> causes_table){
+    private static int CausesFilling(ArrayList<String> causes_table){
         int number_of_causes = 1;
         for (String cause : causes_table) {
             if (!(Objects.equals(cause, "null"))) {
@@ -34,7 +36,7 @@ public class B0_sheet{
         }
         return number_of_causes ;
     }
-    private int EffectFilling(ArrayList<String> effects_table) {
+    private static int EffectFilling(ArrayList<String> effects_table) {
         int number_of_effects = 1;
         for (String effect : effects_table) {
             effect = effect.replace("\n\n", "\n"); // delete extra line return
@@ -43,7 +45,17 @@ public class B0_sheet{
         }
         return number_of_effects ;
     }
-    private void ExtraRowsRemoving(int number_of_effects, int number_of_causes){
+
+    private static boolean isCellMerged(Sheet sheet, int rowIndex, int columnIndex) {
+        for (CellRangeAddress range : sheet.getMergedRegions()) {
+            if (range.isInRange(rowIndex, columnIndex)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void ExtraRowsRemoving(int number_of_effects, int number_of_causes){
 
         ExcelModifier.Remove_Extra_Rows(Excel.SHEET_B0, EFFECT_TABLE_POSITION + number_of_effects, END_OF_SHEET); // Remove Extra Effect Rows
 
@@ -52,8 +64,6 @@ public class B0_sheet{
             workbook.getSheetAt(Excel.SHEET_B0).shiftRows(EFFECT_TABLE_POSITION, END_OF_SHEET, -(NUMBER_OF_EMPTY_CELL - number_of_causes));  // Remove Extra Causes Rows
             Fill_Cell("N/A", Excel.SHEET_B0, Excel.CELL_ROW_3, Excel.CELL_COL_3);
             Fill_Cell("N/A", Excel.SHEET_B0, Excel.CELL_ROW_3, Excel.CELL_COL_2);
-
-
         } else {
             workbook.getSheetAt(Excel.SHEET_B0).shiftRows(EFFECT_TABLE_POSITION, END_OF_SHEET, -(NUMBER_OF_EMPTY_CELL - number_of_causes + 1));
             if (number_of_causes > 2)  // Number of causes is bigger than 1 cause
@@ -66,7 +76,7 @@ public class B0_sheet{
     }
 
 
-    public B0_sheet(ArrayList<String> causes_table, ArrayList<String> effects_table) {
+    public static void B0_sheet(ArrayList<String> causes_table, ArrayList<String> effects_table) {
 
         int number_of_effects = 1;
         int number_of_causes = 1;

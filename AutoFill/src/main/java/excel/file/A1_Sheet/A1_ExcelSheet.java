@@ -6,7 +6,7 @@ import java.util.Date;
 
 import static excel.file.Services.ExcelModifier.Fill_Cell;
 
-public class A1_sheet {
+public class A1_ExcelSheet {
 
 
     private static String documentHistoryDate(){
@@ -16,7 +16,7 @@ public class A1_sheet {
     }
 
 
-    public A1_sheet(String userName){
+    public static void A1_sheet(String userName){
 
         Fill_Cell(documentHistoryDate(), Excel.SHEET_A1,Excel.CELL_ROW_3,Excel.CELL_COL_2); // Date Filling
 

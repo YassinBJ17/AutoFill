@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -38,10 +39,16 @@ public class ExtractTable {
 
     public static void AddCause(String cell,ArrayList<String> cause) {
 
-            String causes = removeInvisibleChars(cell.trim());
+            String causes = cell.trim();
 
-            if ((!(causes.startsWith("["))) && (!(causes.endsWith("]"))))
-                cause.add(causes);
+            if ((!(causes.startsWith("["))) && (!(causes.endsWith("]")))) {
+                if ((causes.toUpperCase().contains("OR"))||(causes.toUpperCase().contains("AND"))) {
+
+                    String[] cause_table = causes.split("\\s+(?i)(or|and)\\s+");
+                    cause.addAll(Arrays.asList(cause_table));
+                }else
+                    cause.add(causes);
+            }
             else {
                 causes = causes.replaceAll("\\(", "");
                 causes = causes.replaceAll("\\)", "");

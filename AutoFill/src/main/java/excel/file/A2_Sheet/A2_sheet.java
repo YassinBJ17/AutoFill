@@ -2,7 +2,7 @@ package excel.file.A2_Sheet;
 
 import excel.file.Services.Excel;
 
-import static excel.file.Services.ExcelFinal.Code;
+import static excel.file.Services.ExcelFinal.codeOfTheSoftware;
 import static excel.file.Services.ExcelModifier.*;
 import static excel.file.Services.ExcelModifier.Fill_Cell;
 
@@ -42,7 +42,7 @@ public class A2_sheet {
 
         int number_of_header_file=0;
         
-        for (String Code_line : Code) {
+        for (String Code_line : codeOfTheSoftware) {
 
             if (Code_line.contains("#include")) {
 

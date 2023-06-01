@@ -27,7 +27,6 @@ public class Excel {
 
 
 
-
     //ROWS CONSTANTS
     public static final int CELL_ROW_0 = 0;
     public static final int CELL_ROW_1 = 1;
@@ -80,23 +79,21 @@ public class Excel {
 
 
     public static String[] Stub_end = {
-            "PRE-CONDITIONS ON DATA", "PRECONDITIONS",
-            "POST-CONDITIONS", "POST-CONDITIONS ON DATA",
-            "PRECONDITIONS:", "POST-CONDITIONS:","Input/Output Data"};
+                                        "PRE-CONDITIONS ON DATA", "PRECONDITIONS",
+                                        "POST-CONDITIONS", "POST-CONDITIONS ON DATA",
+                                        "PRECONDITIONS:", "POST-CONDITIONS:","Input/Output Data"};
 
     public static String[] Stub_start = {
-            "CALLS:","CALLS","CALLED FUNCTIONS"};
+                                         "CALLS:","CALLS","CALLED FUNCTIONS"};
 
     public static String[] Global_end = {
-            "REQUIREMENTS","PRE-CONDITIONS ON DATA:","PRE-CONDITIONS ON DATA","PRE-CONDITIONS ON DATA :","PRECONDITIONS:"};
+                                        "REQUIREMENTS","PRE-CONDITIONS ON DATA:","PRE-CONDITIONS ON DATA","PRE-CONDITIONS ON DATA :","PRECONDITIONS:"};
 
     public static String[] Global_start = {
-            "DATA","DATA :","Data:",};
+                                            "DATA","DATA :","Data:"};
 
     public static String[] Types_array = {
-            "uint8_t", "uint16_t", "uint32_t",
-            "uint64_t", "boolean_t", "float32_t", "float64_t",
-    };
+                                        "uint8_t", "uint16_t", "uint32_t","uint64_t", "boolean_t", "float32_t", "float64_t"};
 
 
 }

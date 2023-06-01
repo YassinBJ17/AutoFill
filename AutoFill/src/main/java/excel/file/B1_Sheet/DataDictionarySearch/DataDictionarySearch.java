@@ -1,16 +1,15 @@
-package excel.file.Services;
+package excel.file.B1_Sheet.DataDictionarySearch;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.*;
 
-public class ExcelSearch {
+public class DataDictionarySearch {
 
     public static String[] Types_array = {
             "uint8_t",
@@ -19,16 +18,8 @@ public class ExcelSearch {
             "uint64_t",
             "boolean_t",
             "float32_t",
-            "float64_t"};
+            "float64_t"   };
 
-    public static boolean searchType(String[] array, String word) {
-        for (String element : array) {
-            if (word.contains(element)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     public static String searchExcelFiles(String directoryPath, String searchString,boolean global) throws IOException {
         // string to store the matching rows
@@ -37,8 +28,6 @@ public class ExcelSearch {
         // get all the files in the directory
         File directory = new File(directoryPath);
         File[] files = directory.listFiles();
-
-
 
         for (File file : files) {
             if (file.isFile() && file.getName().endsWith(".xlsx")) {
@@ -65,11 +54,11 @@ public class ExcelSearch {
 
                                 matchingRows = secondCell.getStringCellValue();
 
-                                    if((matchingRows.equalsIgnoreCase("STRUCT"))||(matchingRows.equalsIgnoreCase("UNION"))) {
-                                        matchingRows= "-";
-                                    }
-                                    else {
-                                        if (!global)
+                                if((matchingRows.equalsIgnoreCase("STRUCT"))||(matchingRows.equalsIgnoreCase("UNION"))) {
+                                    matchingRows= "-";
+                                }
+                                else {
+                                    if (!global)
                                         matchingRows = fourthCell.getStringCellValue();
 
                                 }
@@ -77,7 +66,7 @@ public class ExcelSearch {
                         }
                     }
                 }
-                  workbook.close();
+                workbook.close();
                 fileInputStream.close();
             }
         }
@@ -86,7 +75,7 @@ public class ExcelSearch {
         return matchingRows;
     }
 
-    public static String SearchFromDD(String ParameterToSearch, boolean global) throws IOException {
+    public static String DataDictionarySearch(String ParameterToSearch, boolean global) throws IOException {
         // specify the directory path
         String directoryPath = "../Datafiles/DD";
 
@@ -110,7 +99,7 @@ public class ExcelSearch {
 
             return "not exist in the DD";
         }
-         return matchingRows;
+        return matchingRows;
     }
 }
 

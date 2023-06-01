@@ -10,8 +10,16 @@ import static excel.file.Services.ExcelFinal.workbook;
 
 public class ExcelModifier {
 
+    public static String Delete_extra_return_line(String requirement ){
 
+        while (requirement.startsWith("\n"))  // check if the first character of a string is a newline character (\n).
+            requirement = requirement.substring(1); // remove the first character
 
+        while (requirement.endsWith("\n"))
+            requirement = requirement.substring(0, requirement.length() - 1);
+
+        return requirement;
+    }
     public static boolean Search(String[] array, String word) {
         if (array==null)
             return false;
@@ -25,8 +33,7 @@ public class ExcelModifier {
             }
         }
         return false;
-    }
-
+    } // simple search function
     public static CellStyle Fill_Cell_Red(){
 
         CellStyle style = workbook.createCellStyle();
@@ -41,8 +48,8 @@ public class ExcelModifier {
 
         style.setFont(font);
         return style;
-    }
-    public static void Fill_Cell(String text,int sheet, int row, int cell) {
+    } // format of not found message
+    public static void Fill_Cell(String text,int sheet, int row, int cell) { // filling one specific cell
 
         Sheet s = workbook.getSheetAt(sheet);
 
@@ -58,8 +65,7 @@ public class ExcelModifier {
             // handle the exception here
             e.printStackTrace();
         }
-    }
-
+    } // filling simple cell
     public static void Remove_Extra_Rows(int sheet, int start, int end) {
         try {
             Sheet s = workbook.getSheetAt(sheet);
@@ -74,8 +80,6 @@ public class ExcelModifier {
             e.printStackTrace();
         }
     }
-
-
     public static void Merge_Cells(int sheet, int C1_start, int start_row, int end_row) {
 
         Sheet s= workbook.getSheetAt(sheet);
@@ -90,9 +94,8 @@ public class ExcelModifier {
              e.printStackTrace();
          }
 
-    }
-
-    public static String Stub_Modifier(String s) {
+    } // merge an interval of cells
+    public static String StubCall_req_Modifier(String s) {
 
         for (int i = 0; i < 10; i++) {
             s=s.replace("  "," ");
@@ -111,8 +114,8 @@ public class ExcelModifier {
         }}
 
         return s;
-    }
-    public static String Set_Modifier(String s) {
+    } // formatting STUB
+    public static String SettingValue_req_Modifier(String s) {
 
         for (int i = 0; i < 10; i++) {
             s=s.replace("  "," ");
@@ -130,7 +133,6 @@ public class ExcelModifier {
 
         return s;
     }
-
     public static String Cause_Modifier(String s){
 
         s=s.replaceAll("\n", "");
@@ -138,7 +140,6 @@ public class ExcelModifier {
         s=s.replace("]", "");
         return s;
     }
-
     public static String Include_Modifier(String s){
 
         s=s.replace("#include \"", "");
@@ -146,7 +147,6 @@ public class ExcelModifier {
         s=s.substring(s.lastIndexOf('/')+1);
         return s.trim();
     }
-
     public static String Req_detect(String[] LLR){
 
         for (int i = 0; i < LLR.length ; i++) {
@@ -156,9 +156,7 @@ public class ExcelModifier {
         }
         return "";
     }
-
-
-    public static String[] Param_detect(String str) {
+    public static String[] Parameters_Detect(String str) {
 
         str=str.replace("const","");
         str=str.replace("CONST","");
@@ -172,14 +170,12 @@ public class ExcelModifier {
         }
         return reversed; // Return the reversed array of words
     }
-
     public static boolean Prototype_Detect(String line, String fct_name){
 
 
         return  (line.contains(fct_name))&&(!(line.contains("#")));
 
     }
-
 
 
 }
