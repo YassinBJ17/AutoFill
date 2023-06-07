@@ -1,8 +1,9 @@
-package SUTC.file.Services;
+package SUTC.file;
 import SUTC.file.A0_Sheet.A0_ExcelSheet;
 import SUTC.file.A1_Sheet.A1_ExcelSheet;
 import SUTC.file.A2_Sheet.A2_ExcelSheet;
 import SUTC.file.B1_Sheet.B1_ExcelSheet;
+import SUTC.file.COMMUN.ExcelModifier;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import CODE.file.ExtractCode;
@@ -17,17 +18,17 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static SDDD.file.ExtractReq.Extract_Req;
-import static SDDD.file.ExtractTable.Extract_Table;
-import static SDDD.file.ExtractText.Extract_Text;
+import static SDDD.file.ExtractRequirements.Extract_Req;
+import static SDDD.file.ExtractCausesEffectTable.Extract_Table;
+import static SDDD.file.ExtractTextFromSDDD.Extract_Text;
 import static SUTC.file.B0_Sheet.A0_ExcelSheet.B0_sheet;
-import static SUTC.file.Services.SheetsName.Sheets_Name;
-import static SUTC.file.Services.TemplateChoosing.TemplateChoosing;
+import static SUTC.file.COMMUN.SheetsNamesGenerating.Sheets_Name;
+import static SUTC.file.COMMUN.TemplateChoosing.Template_Choosing;
 import static COMMUN.GraphicUserInterfaces.*;
-import static COMMUN.LoggerInit.logger4j;
+import static COMMUN.LoggerInitialize.*;
+import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
 
-
-public class ExcelFinal {
+public class SutcCreationProccess {
 
     public static final int maxUftNumber=8;
     public static final int minUftNumber=1;
@@ -70,11 +71,11 @@ public class ExcelFinal {
             if (lowLevelReq[i].toUpperCase().contains("REQUIREMENTS")){
                 llr_traceability= lowLevelReq[i+1];
                 llr_traceability=llr_traceability.substring(0,llr_traceability.length()-3);
-                ExcelModifier.Fill_Cell(llr_traceability,Excel.SHEET_B0,Excel.CELL_ROW_3,Excel.CELL_COL_2+ number_of_UFT);
-                ExcelModifier.Fill_Cell(llr_traceability,Excel.SHEET_B0,Excel.CELL_ROW_4+Math.max(1,number_of_causes),Excel.CELL_COL_2+ number_of_UFT);
+                ExcelModifier.Fill_Cell(llr_traceability, SHEET_B0, CELL_ROW_3, CELL_COL_2+ number_of_UFT);
+                ExcelModifier.Fill_Cell(llr_traceability, SHEET_B0, CELL_ROW_4+Math.max(1,number_of_causes), CELL_COL_2+ number_of_UFT);
 
-                for (int j = 10; j <Excel.CELL_COL_10+ number_of_UTC; j++) {
-                    ExcelModifier.Fill_Cell(llr_traceability, Excel.SHEET_B1, Excel.CELL_ROW_6, j);
+                for (int j = 10; j < CELL_COL_10+ number_of_UTC; j++) {
+                    ExcelModifier.Fill_Cell(llr_traceability, SHEET_B1, CELL_ROW_6, j);
                 }
 
             }
@@ -92,7 +93,8 @@ public class ExcelFinal {
                 break;
             } catch (IOException e) {
                 Error_interface(String.valueOf(e));
-                logger4j.error(e);
+                String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+logError(methodName+" : "+e.getMessage() );
             }
         }
     }
@@ -171,26 +173,27 @@ public class ExcelFinal {
           codeOfTheSoftware=ExtractFunctionFromCode(functionName); // input function name
           String newExcel_filePath =PathOfTheNewExcelFile() ; // creation of the path
           cause=cause_table;// used to extract classes
-          logger4j.info(functionName);
+          logInfo(functionName);
           String filePath = "..\\Datafiles\\SUTC\\" +functionName+ ".xls";
           File file = new File(filePath);
 
               // PART I
               //////////////////////////////////////////////////////////////////////////////////////////
               //________________________________________________________________________________________
-                if(file.exists()){ // check if file existe
+               // if(file.exists()){ // check if file existe
                   if(FileExisteDialog(functionName)){
                       dialog.setVisible(false); // hide the dialog
                       dialog.dispose(); // dispose of the dialog to release resources
                       CauseEffectTableOrder++; // increment table order
                       continue;
-                  }}
+                  }
+               // }
+
               //}
               //________________________________________________________________________________________
               //////////////////////////////////////////////////////////////////////////////////////////
 
               // PART II
-
               //////////////////////////////////////////////////////////////////////////////////////////
               //________________________________________________________________________________________
                   Switch_if_table_filling(); // check if the code contains switch statements
@@ -200,7 +203,7 @@ public class ExcelFinal {
               //________________________________________________________________________________________
               //////////////////////////////////////////////////////////////////////////////////////////
 
-                  SUTC_template=TemplateChoosing();
+                  SUTC_template= Template_Choosing();
                   FileInputStream templateXLSfile = new FileInputStream(SUTC_template);// open template
                   workbook = WorkbookFactory.create(templateXLSfile);
 
@@ -218,7 +221,7 @@ public class ExcelFinal {
               //________________________________________________________________________________________
               //////////////////////////////////////////////////////////////////////////////////////////
 
-              logger4j.info("Saving progress");
+              logInfo("Saving progress");
               templateXLSfile.close();// Close XLS to
               WritingFile(newExcel_filePath);// save XLS
               OpenFileDialog(functionName); // open XLS
@@ -229,7 +232,7 @@ public class ExcelFinal {
               CauseEffectTableOrder++; // increment table order
               cause_table= new ArrayList<>(); // initialize cause table
               effect_table= new ArrayList<>(); // initialize effect table
-              logger4j.info(functionName+".xls saved in success");
+              logInfo(functionName+".xls saved in success");
       }
   }
 

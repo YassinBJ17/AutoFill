@@ -3,10 +3,10 @@ package COMMUN;
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
-import static SUTC.file.Services.ExcelFinal.Excel_Final;
+import static SUTC.file.SutcCreationProccess.Excel_Final;
 import static COMMUN.GraphicUserInterfaces.Error_interface;
 import static COMMUN.GraphicUserInterfaces.Waiting_interface;
-import static COMMUN.LoggerInit.logger4j;
+import static COMMUN.LoggerInitialize.*;
 import static COMMUN.UsernameExtract.Username_filling;
 
 public class BrowsingInputFolder {
@@ -23,7 +23,7 @@ public static void Processing(String directory){
     File[] listOfFiles = folder.listFiles();
 
     assert listOfFiles != null;
-    logger4j.info("Process started");
+    logInfo("Process started");
     for (File listOfFile : listOfFiles) {
         try {
             if (listOfFile.isFile()) {
@@ -33,15 +33,16 @@ public static void Processing(String directory){
                     cause= new ArrayList<>(); // initialize cause table
                     effect= new ArrayList<>(); // initialize effect table
                     fileName=listOfFile.getName();
-                    logger4j.info(fileName);
+                    logInfo(fileName);
                     path =directory+ fileName;
                     Excel_Final(path, Username_filling(), cause, effect,dialog); //filling SUTC
-                    logger4j.info("SUTC Creation success");
+                    logInfo("SUTC Creation success");
                 }
             }
         }
         catch (Exception e){
-            logger4j.error(e);
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+logError(methodName+" : "+e.getMessage() );
             Error_interface(String.valueOf(e));
         }
     }

@@ -1,10 +1,10 @@
-package SUTC.file.Services;
+package SUTC.file.COMMUN;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.*;
 
-import static SUTC.file.Services.ExcelFinal.workbook;
-import static COMMUN.LoggerInit.logger4j;
+import static SUTC.file.SutcCreationProccess.workbook;
+import static COMMUN.LoggerInitialize.logger4j;
 
 
 public class ExcelModifier {

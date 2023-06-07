@@ -1,6 +1,5 @@
 package SUTC.file.B1_Sheet;
-import SUTC.file.B1_Sheet.Services.RemoveExtraRow;
-import SUTC.file.Services.Excel;
+import SUTC.file.B1_Sheet.COMMUN.RemoveExtraRow;
 import org.apache.poi.ss.usermodel.*;
 
 import java.io.IOException;
@@ -9,16 +8,16 @@ import static SUTC.file.B1_Sheet.FunctionReturnFilling.FunctionRetrunFilling.Fun
 import static SUTC.file.B1_Sheet.Global.GlobalFilling.Global_Parameters_Filling;
 import static SUTC.file.B1_Sheet.Initialize.InitializeData.Initialize_Data;
 import static SUTC.file.B1_Sheet.PrametersFilling.ParametersFilling.Parameters_Filling;
-import static SUTC.file.B1_Sheet.PrototypeFilling.PrototypeFilling.PrototypeFilling;
+import static SUTC.file.B1_Sheet.PrototypeFilling.PrototypeFilling.Prototype_Filling;
 import static SUTC.file.B1_Sheet.Subs.StubsFilling.Stubs_Filling;
-import static SUTC.file.Services.ExcelFinal.*;
-import static COMMUN.LoggerInit.logger4j;
-
+import static SUTC.file.SutcCreationProccess.*;
+import static COMMUN.LoggerInitialize.*;
+import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
 
 public class B1_ExcelSheet {
 
     public static final int START_OF_PARAMETERS_TABLE=10;
-    public static final int END_OF_SHEET_POSITION =workbook.getSheetAt(Excel.SHEET_B1).getLastRowNum();
+    public static final int END_OF_SHEET_POSITION =workbook.getSheetAt(SHEET_B1).getLastRowNum();
     public static final int RETURN_FUNCTION_INDEX=132;
     public static final int DISTANCE_BETWEEN_STUBS =59;
     public static final int STUB_PARAMETERS_TABLE_POSITION =140;
@@ -46,16 +45,16 @@ public class B1_ExcelSheet {
     public static void B1_sheet(Workbook workbook ) throws IOException {
 
     String function_name= lowLevelReq[1];
-    logger4j.info("B1 Sheet in progress");
+    logInfo("B1 Sheet in progress");
     Initialize_Data(function_name);
     Stubs_Filling(lowLevelReq);
-    logger4j.info("Stubs filling success");
+    logInfo("Stubs filling success");
     Parameters_Filling(codeOfTheSoftware, lowLevelReq);
     Global_Parameters_Filling(lowLevelReq);
     Function_Return_Filling(codeOfTheSoftware,function_name);
-    PrototypeFilling();
+    Prototype_Filling();
     RemoveExtraRow.Remove_Extra_Row(workbook);
-    logger4j.info("B1 Sheet success");
+    logInfo("B1 Sheet success");
 
     }
 

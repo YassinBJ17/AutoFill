@@ -4,7 +4,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 
-import static COMMUN.LoggerInit.logger4j;
+import static COMMUN.LoggerInitialize.*;
 
 
 public class ExtractCode {
@@ -40,7 +40,8 @@ public class ExtractCode {
                         return result;
                     } catch (IOException e) {
                         // If there is an error reading the file, print the stack trace and return null.
-                        logger4j.error(e);
+                        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+logError(methodName+" : "+e.getMessage() );
                         return null;
                     }
                 }
@@ -48,47 +49,6 @@ public class ExtractCode {
         }
         // If the file is not found or if there is an error reading the file, return null.
         return null;
-    }
-    public static String[] searchFunctionFromFile(File directory, String filename) {
-        // Get a list of all the files in the directory.
-        File[] files = directory.listFiles();
-        // If the list is not null, loop through each file in the list.
-        if (files != null) {
-            for (File file : files) {
-                // If the current file is a directory, call this method recursively with the directory as the parameter.
-                if (file.isDirectory()) {
-                    String[] result = searchFunction(file, filename);
-                    // If the method call returns a non-null result, return that result.
-                    if (result != null) {
-                        return result;
-                    }
-                    // If the current file is not a directory and has the same name as the filename parameter, read the contents of the file.
-                } else if (file.getName().equals(filename)) {
-
-
-                }
-            }
-        }
-        // If the file is not found or if there is an error reading the file, return null.
-        return null;
-    }
-    public static String getTextFromFile(String fileName) {
-
-        StringBuilder sb = new StringBuilder();
-        String line = null;
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-
-            while ((line = reader.readLine()) != null) {
-                sb.append(line).append(System.lineSeparator());
-            }
-
-        } catch (IOException e) {
-            logger4j.error(e);
-        }
-
-
-        return sb.toString().replace("\n","");
     }
     public static String extract(String filename) {
 

@@ -1,10 +1,10 @@
 package SDDD.file;
 import java.util.ArrayList;
 
-import static COMMUN.LoggerInit.logger4j;
-import static SUTC.file.Services.ExcelModifier.*;
+import static COMMUN.LoggerInitialize.*;
+import static SUTC.file.COMMUN.ExcelModifier.*;
 
-public class ExtractReq {
+public class ExtractRequirements {
 
 
 
@@ -18,7 +18,7 @@ public class ExtractReq {
        // LLR_Text=LLR_Text.replace("\n\n","\n");
         LLR_Text=LLR_Text.replace("Traceability","[");
 
-        logger4j.info("Extract requirements progress");
+        logInfo("Extract requirements progress");
 
         for (int i = 0; i <cause.size() ; i++) {
 

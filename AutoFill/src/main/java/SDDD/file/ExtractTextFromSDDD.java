@@ -7,9 +7,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import static COMMUN.GraphicUserInterfaces.Error_interface;
-import static COMMUN.LoggerInit.logger4j;
+import static COMMUN.LoggerInitialize.*;
 
-public class ExtractText {
+public class ExtractTextFromSDDD {
 
    // public static final String PUNCTUATION_MARKS = "[^A-Za-z0-9 :\\r.\\n_\\-+<>\\/{}\\[\\]()\\*]";
 
@@ -32,7 +32,8 @@ public class ExtractText {
             text = extractor.getText();
             fis.close();
         } catch (IOException e) {
-            logger4j.error(e);
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+logError(methodName+" : "+e.getMessage() );
             Error_interface(String.valueOf(e));
         }
         assert text != null;

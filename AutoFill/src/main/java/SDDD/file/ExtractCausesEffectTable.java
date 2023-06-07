@@ -12,10 +12,10 @@ import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
-import static SUTC.file.Services.ExcelFinal.switchArray;
-import static COMMUN.LoggerInit.logger4j;
+import static SUTC.file.SutcCreationProccess.switchArray;
+import static COMMUN.LoggerInitialize.*;
 
-public class ExtractTable {
+public class ExtractCausesEffectTable {
 
     public static final String WHITE_COLOR_HEXA="FFFFFF";
     private static int rowNumber=-1;
@@ -123,7 +123,7 @@ public class ExtractTable {
         // Get the first table in the document
         XWPFTable table = document.getTables().get(CauseEffectTableOrder);
         // Loop through each row of the table
-        logger4j.info("Extract Cause/Effect Table progress");
+        logInfo("Extract Cause/Effect Table progress");
         for (int i = 0; i < table.getRows().size(); i++) {
 
             ExtractCausesEffects( table.getRow(i),cause,effect);

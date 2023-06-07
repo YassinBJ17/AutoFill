@@ -5,7 +5,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-import static COMMUN.LoggerInit.logger4j;
+import static COMMUN.LoggerInitialize.*;
 
 public class GraphicUserInterfaces {
     public static JDialog Waiting_interface() {
@@ -37,7 +37,7 @@ public class GraphicUserInterfaces {
                 options[1]);
 
         if(choice == JOptionPane.NO_OPTION){
-            logger4j.info("The operation has been canceled by the user");
+            logInfo("The operation has been canceled by the user");
             return true;
         }else
             return false;
@@ -58,7 +58,8 @@ public class GraphicUserInterfaces {
             if (result == 0)
                 Desktop.getDesktop().open(new File("..\\Datafiles\\SUTC\\" + function_name + ".xls"));
         } catch (IOException e) {
-            logger4j.error(e);
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+logError(methodName+" : "+e.getMessage() );
 
         }
 

@@ -1,4 +1,6 @@
-package SUTC.file.Services;
+package SUTC.file.COMMUN;
+
+import SUTC.file.SutcCreationProccess;
 
 public class TemplateChoosing {
 
@@ -9,24 +11,23 @@ public class TemplateChoosing {
     public static final String TEMPLATEn_PATH ="../AutoFill/src/Template/SUTC TEMPLATEn.xls";
 
 
-    public static String  TemplateChoosing(){
+    public static String Template_Choosing(){
     String SUTC_template;
-    switch (ExcelFinal.number_of_causes) {
-        case 0 -> {
+    switch (SutcCreationProccess.number_of_causes) {
+        case 0 ->
             SUTC_template = TEMPLATE0_PATH;
-        }
-        case 1 -> {
+
+        case 1 ->
             SUTC_template = TEMPLATE1_PATH;
-        }
-        case 2 -> {
+
+        case 2 ->
             SUTC_template = TEMPLATE2_PATH;
-        }
-        case 3 -> {
+
+        case 3 ->
             SUTC_template = TEMPLATE3_PATH;
-        }
-        default -> {
+
+        default ->
             SUTC_template = TEMPLATEn_PATH;
-        }
     }
 
 return SUTC_template ;

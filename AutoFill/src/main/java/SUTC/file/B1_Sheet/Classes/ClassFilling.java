@@ -1,9 +1,9 @@
 package SUTC.file.B1_Sheet.Classes;
 
-import SUTC.file.Services.Excel;
-import SUTC.file.Services.ExcelFinal;
 
-import static COMMUN.LoggerInit.logger4j;
+import SUTC.file.SutcCreationProccess;
+import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
+import static COMMUN.LoggerInitialize.*;
 
 public class ClassFilling {
     public static boolean isInteger(String str) {
@@ -11,7 +11,8 @@ public class ClassFilling {
             Integer.parseInt(str);
             return true;
         } catch (NumberFormatException e) {
-            logger4j.error(e);
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+logError(methodName+" : "+e.getMessage() );
             return false;
         }
     }
@@ -20,13 +21,13 @@ public class ClassFilling {
         String c;
         String clas="{ ";
 
-        if(!parameter[Excel.INDEX_OF_TYPE].contains("int"))
+        if(!parameter[INDEX_OF_TYPE].contains("int"))
             return parameter;
 
-        for (int i = 0; i < ExcelFinal.cause.size() ; i++) {
+        for (int i = 0; i < SutcCreationProccess.cause.size() ; i++) {
 
-            c= ExcelFinal.cause.get(i);
-            if (c.contains(parameter[Excel.INDEX_OF_NAME])) {
+            c= SutcCreationProccess.cause.get(i);
+            if (c.contains(parameter[INDEX_OF_NAME])) {
 
                 c=change_Form(c);
             }

@@ -1,6 +1,7 @@
 import static COMMUN.BrowsingInputFolder.Processing;
 import static COMMUN.GraphicUserInterfaces.Path_interface;
-import static COMMUN.LoggerInit.logger4j;
+import static COMMUN.LoggerInitialize.*;
+
 //import static services.Logger_init.loger4j;
 
 
@@ -14,10 +15,11 @@ public class Main {
 
         // if(Verification_licences())
         //    System.exit(0);
+        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+        logError(methodName+" : START" );
 
         Processing(directory);
-
-        logger4j.info("Success");
+        logInfo("Success");
 
     }
 

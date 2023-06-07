@@ -1,6 +1,6 @@
-package SUTC.file.Services;
+package SUTC.file.COMMUN;
 
-public class Excel {
+public class ExcelRowsAndColsConstants {
 
 
 

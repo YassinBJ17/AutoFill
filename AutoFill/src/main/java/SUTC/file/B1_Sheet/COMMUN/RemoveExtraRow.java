@@ -1,19 +1,18 @@
-package SUTC.file.B1_Sheet.Services;
+package SUTC.file.B1_Sheet.COMMUN;
 
-import SUTC.file.Services.Excel;
+import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
-
 import static SUTC.file.B1_Sheet.B1_ExcelSheet.START_OF_PARAMETERS_TABLE;
-import static SUTC.file.Services.ExcelFinal.number_of_UFT;
-import static COMMUN.LoggerInit.logger4j;
+import static SUTC.file.SutcCreationProccess.number_of_UFT;
+import static COMMUN.LoggerInitialize.*;
 
 public class RemoveExtraRow {
 
     public static void  Remove_Extra_Row( Workbook workbook){
 
-        Sheet B1_sheet= workbook.getSheetAt(Excel.SHEET_B1);
-        Sheet A2_sheet= workbook.getSheetAt(Excel.SHEET_A2);
+        Sheet B1_sheet= workbook.getSheetAt(SHEET_B1);
+        Sheet A2_sheet= workbook.getSheetAt(SHEET_A2);
         boolean bool=true;
 
         while (bool){
@@ -40,7 +39,8 @@ public class RemoveExtraRow {
                                 B1_sheet.shiftRows(i + 1, B1_sheet.getLastRowNum(), -1);
                             }catch (Exception e)
                             {
-                                logger4j.error(e);
+                                String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+logError(methodName+" : "+e.getMessage() );
                             }
                             bool=true;
                         }
