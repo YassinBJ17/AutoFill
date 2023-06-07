@@ -40,7 +40,7 @@ public class ExtractCausesEffectTable {
     public static void AddCause(String cell,ArrayList<String> cause) {
 
         String causes = cell.trim();
-
+        logError(causes);
         if ((!(causes.startsWith("["))) && (!(causes.endsWith("]")))) {
             if ((causes.toUpperCase().contains("OR"))||(causes.toUpperCase().contains("AND"))) {
 
@@ -55,7 +55,7 @@ public class ExtractCausesEffectTable {
 
             while (!Objects.equals(causes.trim(), "")) {
                 String c = causes.substring(causes.indexOf("["), causes.indexOf("]") + 1);
-                c = c.replaceAll("[^\\w\\[\\]]", " ").trim();
+                //c = c.replaceAll("[^\\w\\[\\]]", " ").trim();  // WHYYYYYYYYYYYYYY
                 cause.add(c);
                 causes = causes.trim().substring(causes.indexOf("]") + 1);
 
@@ -73,6 +73,7 @@ public class ExtractCausesEffectTable {
 
         for (int i = 0; i < row.getTableCells().size(); i++) {
             cell = row.getCell(i);
+
             if (((Objects.equals(cell.getColor(), WHITE_COLOR_HEXA)) || Objects.equals(cell.getColor(), "auto") || Objects.equals(cell.getColor(), null)) && (IsRequirement(cell.getText())))
                 effect.add(cell.getText().trim());
 
@@ -93,6 +94,7 @@ public class ExtractCausesEffectTable {
                     cell = row.getCell(i);
                     if (IsRequirement(cell.getText()))
                         AddCause(cell.getText(), cause);
+                        logError(cell.getText());
                 }
             } else {
 
@@ -110,6 +112,8 @@ public class ExtractCausesEffectTable {
                     AddCause(cell.getText(), cause);
             }
         }
+
+
     }
 
     public static void Extract_Table(String path, ArrayList<String> cause, ArrayList<String> effect,int CauseEffectTableOrder) throws IOException {

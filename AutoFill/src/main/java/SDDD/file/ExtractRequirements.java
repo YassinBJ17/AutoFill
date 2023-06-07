@@ -23,7 +23,6 @@ public class ExtractRequirements {
         for (int i = 0; i <cause.size() ; i++) {
 
             if (cause.get(i).startsWith("[")){
-
                 requirements_with_description=LLR_Text.substring(LLR_Text.lastIndexOf(cause.get(i))+1);// extract description
                 requirements_with_description=requirements_with_description.replace(" [","[");// delete space
                 requirements_with_description=requirements_with_description.substring(0,requirements_with_description.indexOf("\n["));//end of description
