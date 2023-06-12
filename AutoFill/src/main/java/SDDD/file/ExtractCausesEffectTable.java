@@ -12,6 +12,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
+import static SDDD.file.ExtractTextFromSDDD.removeInvisibleChars;
 import static SUTC.file.SutcCreationProccess.switchArray;
 import static COMMUN.LoggerInitialize.*;
 
@@ -21,7 +22,7 @@ public class ExtractCausesEffectTable {
     private static int rowNumber=-1;
 
     public static boolean IsRequirement(String requirement) {
-        String[] notReq={"DO NOTHING","EFFECTS","ALL OTHER CASES","ALL OTHER CASE","CAUSES","NO EFFECT","ALWAYS","NO EFFECTS","ALL THE OTHER CASES","NO DATA TO READ"};
+        String[] notReq={"DO NOTHING","EFFECTS","ALL OTHER CASE","CAUSES","NO EFFECT","ALWAYS","NO EFFECTS","ALL THE OTHER CASES","NO DATA TO READ"};
         requirement=requirement.replaceAll("[^a-zA-Z]", " ");
         requirement=requirement.trim();
         if( Objects.equals(requirement, ""))
@@ -40,7 +41,7 @@ public class ExtractCausesEffectTable {
     public static void AddCause(String cell,ArrayList<String> cause) {
 
         String causes = cell.trim();
-        logError(causes);
+        //logDebug(causes);
         if ((!(causes.startsWith("["))) && (!(causes.endsWith("]")))) {
             if ((causes.toUpperCase().contains("OR"))||(causes.toUpperCase().contains("AND"))) {
 
@@ -55,7 +56,7 @@ public class ExtractCausesEffectTable {
 
             while (!Objects.equals(causes.trim(), "")) {
                 String c = causes.substring(causes.indexOf("["), causes.indexOf("]") + 1);
-                //c = c.replaceAll("[^\\w\\[\\]]", " ").trim();  // WHYYYYYYYYYYYYYY
+                c = removeInvisibleChars(c);
                 cause.add(c);
                 causes = causes.trim().substring(causes.indexOf("]") + 1);
 
@@ -87,20 +88,22 @@ public class ExtractCausesEffectTable {
         }
 
 
-        if(number_Of_Cause>=3) { // if the line in cause/effect table is >3
+        if(number_Of_Cause>=2) { // if the line in cause/effect table is >3
+
 
             if (!switchArray[rowNumber]) { // if 'if'
                 for (int i = 1; i <= number_Of_Cause; i +=2) {
                     cell = row.getCell(i);
+                    logDebug(cell.getText());
                     if (IsRequirement(cell.getText()))
                         AddCause(cell.getText(), cause);
-                        logError(cell.getText());
                 }
             } else {
 
                 for (int i = 1; i < number_Of_Cause; i++) { // if 'switch'
 
                     cell = row.getCell(i);
+                    logDebug(cell.getText());
                     if (IsRequirement(cell.getText()))
                         AddCause(cell.getText(), cause);
                 }

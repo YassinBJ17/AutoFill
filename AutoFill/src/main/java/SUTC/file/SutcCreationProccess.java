@@ -105,9 +105,11 @@ logError(methodName+" : "+e.getMessage() );
         for (String line : codeOfTheSoftware) {
             if ((line.contains("switch ("))||(line.contains("switch("))) {
                 switchArray[index] = true;
+                logDebug("Condition n°"+index+"= Switch ");
                 index++;
             } else if ((line.contains("if ("))||(line.contains("if(")))  {
                 switchArray[index] = false;
+                logDebug("Condition n°"+index+"= If ");
                 index++;
             }
         }

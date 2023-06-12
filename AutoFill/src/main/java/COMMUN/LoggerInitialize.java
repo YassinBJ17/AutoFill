@@ -17,4 +17,8 @@ public class LoggerInitialize {
         logger4j.error("\u001B[31m" + logging + "\u001B[0m");
     }
 
+    public static void logDebug(String logging) {
+        logger4j.debug("\u001B[93m" + logging + "\u001B[0m");
+    }
+
     }

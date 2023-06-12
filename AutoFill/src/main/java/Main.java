@@ -12,6 +12,7 @@ public class Main {
 
 
         String directory=Path_interface();
+        System.setProperty("log4j2.enableStackWalker", "true");
 
         // if(Verification_licences())
         //    System.exit(0);
