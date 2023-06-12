@@ -2,7 +2,6 @@ package SDDD.file;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -12,6 +11,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
+import static COMMUN.GraphicUserInterfaces.Error_interface;
 import static SDDD.file.ExtractTextFromSDDD.removeInvisibleChars;
 import static SUTC.file.SutcCreationProccess.switchArray;
 import static COMMUN.LoggerInitialize.*;
@@ -94,7 +94,7 @@ public class ExtractCausesEffectTable {
             if (!switchArray[rowNumber]) { // if 'if'
                 for (int i = 1; i <= number_Of_Cause; i +=2) {
                     cell = row.getCell(i);
-                    logDebug(cell.getText());
+                    log4Debug(cell.getText());
                     if (IsRequirement(cell.getText()))
                         AddCause(cell.getText(), cause);
                 }
@@ -103,7 +103,7 @@ public class ExtractCausesEffectTable {
                 for (int i = 1; i < number_Of_Cause; i++) { // if 'switch'
 
                     cell = row.getCell(i);
-                    logDebug(cell.getText());
+                    log4Debug(cell.getText());
                     if (IsRequirement(cell.getText()))
                         AddCause(cell.getText(), cause);
                 }
@@ -119,9 +119,11 @@ public class ExtractCausesEffectTable {
 
     }
 
-    public static void Extract_Table(String path, ArrayList<String> cause, ArrayList<String> effect,int CauseEffectTableOrder) throws IOException {
+    public static void Extract_Table(String path, ArrayList<String> cause, ArrayList<String> effect,int CauseEffectTableOrder) {
 
         rowNumber=-1;
+        try {
+
         // Open the docx file
         File file = new File(path);
         FileInputStream fis = new FileInputStream(file);
@@ -130,7 +132,7 @@ public class ExtractCausesEffectTable {
         // Get the first table in the document
         XWPFTable table = document.getTables().get(CauseEffectTableOrder);
         // Loop through each row of the table
-        logInfo("Extract Cause/Effect Table progress");
+        log4Info("Extract Cause/Effect Table progress");
         for (int i = 0; i < table.getRows().size(); i++) {
 
             ExtractCausesEffects( table.getRow(i),cause,effect);
@@ -139,7 +141,11 @@ public class ExtractCausesEffectTable {
         // Close the document
         document.close();
 
+    }  catch (Exception e){
+        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+        log4Error(methodName+" : "+e.getMessage() );
+        Error_interface(String.valueOf(e));
     }
-
+    }
 }
 

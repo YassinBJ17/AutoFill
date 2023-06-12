@@ -40,12 +40,15 @@ public class RemoveExtraRow {
                             }catch (Exception e)
                             {
                                 String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-logError(methodName+" : "+e.getMessage() );
+                                log4Error(methodName+" : "+e.getMessage() );
                             }
                             bool=true;
                         }
                     }
                 }
+
+
+
             }
 
 

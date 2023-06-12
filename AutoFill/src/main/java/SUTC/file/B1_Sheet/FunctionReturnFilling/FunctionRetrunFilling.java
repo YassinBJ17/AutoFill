@@ -12,7 +12,7 @@ import static SUTC.file.B1_Sheet.COMMUN.InsertData.Insert_Parameter;
 
 public class FunctionRetrunFilling {
 
-    public static void Function_Return_Filling(String[] Code, String function_name) throws IOException {
+    public static void Function_Return_Filling(String[] Code, String function_name){
 
         String prototype;
         String type;

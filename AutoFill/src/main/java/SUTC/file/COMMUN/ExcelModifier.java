@@ -3,6 +3,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.*;
 
+import static COMMUN.LoggerInitialize.log4Error;
 import static SUTC.file.SutcCreationProccess.workbook;
 import static COMMUN.LoggerInitialize.logger4j;
 
@@ -94,7 +95,7 @@ public class ExcelModifier {
          }
 
     } // merge an interval of cells
-    public static String StubCall_req_Modifier(String s) {
+    public static String StubCall_Requirements_Modifier(String s) {
 
         for (int i = 0; i < 10; i++) {
             s=s.replace("  "," ");

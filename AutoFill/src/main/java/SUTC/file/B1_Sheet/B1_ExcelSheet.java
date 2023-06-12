@@ -2,8 +2,6 @@ package SUTC.file.B1_Sheet;
 import SUTC.file.B1_Sheet.COMMUN.RemoveExtraRow;
 import org.apache.poi.ss.usermodel.*;
 
-import java.io.IOException;
-
 import static SUTC.file.B1_Sheet.FunctionReturnFilling.FunctionRetrunFilling.Function_Return_Filling;
 import static SUTC.file.B1_Sheet.Global.GlobalFilling.Global_Parameters_Filling;
 import static SUTC.file.B1_Sheet.Initialize.InitializeData.Initialize_Data;
@@ -32,29 +30,19 @@ public class B1_ExcelSheet {
 
 
 
-
-
-    ///////////////////////////////////////////////REMOVE EXTRA ROWS/////////////////////////////////////////////////////
-
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-    public static void B1_sheet(Workbook workbook ) throws IOException {
+    public static void B1_sheet(Workbook workbook ) {
 
     String function_name= lowLevelReq[1];
-    logInfo("B1 Sheet in progress");
+    log4Info("B1 Sheet in progress");
     Initialize_Data(function_name);
     Stubs_Filling(lowLevelReq);
-    logInfo("Stubs filling success");
+    log4Info("Stubs filling success");
     Parameters_Filling(codeOfTheSoftware, lowLevelReq);
     Global_Parameters_Filling(lowLevelReq);
     Function_Return_Filling(codeOfTheSoftware,function_name);
     Prototype_Filling();
     RemoveExtraRow.Remove_Extra_Row(workbook);
-    logInfo("B1 Sheet success");
+    log4Info("B1 Sheet success");
 
     }
 

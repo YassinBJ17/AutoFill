@@ -79,7 +79,7 @@ public class A0_ExcelSheet{
 
         int number_of_effects ;
         int number_of_causes ;
-        logInfo("B0 Sheet in progress");
+        log4Info("B0 Sheet in progress");
         HeaderFilling();
         LLR_TraceabilityFilling();
         number_of_causes=CausesFilling(causes_table);

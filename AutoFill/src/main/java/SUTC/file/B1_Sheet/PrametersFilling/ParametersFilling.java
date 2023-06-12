@@ -15,7 +15,7 @@ import static SUTC.file.B1_Sheet.COMMUN.InsertData.Insert_Parameter;
 public class ParametersFilling {
 
 
-    public static int Extract_Parameters(String[] code,String function_name) throws IOException {
+    public static int Extract_Parameters(String[] code,String function_name){
         int start=0,end=0;
         int numberOfParameters=0;
         String parameter;
@@ -84,7 +84,7 @@ public class ParametersFilling {
         }
         return numberOfParameters;
     }
-    public static void Parameters_Filling(String[] code, String[] LLR) throws IOException{
+    public static void Parameters_Filling(String[] code, String[] LLR) {
 
         int numberOfParameters=Extract_Parameters(code,LLR[1]);
         int normal_parameters_index= B1_ExcelSheet.START_OF_PARAMETERS_TABLE+ SutcCreationProccess.number_of_UFT;// for normal parameters

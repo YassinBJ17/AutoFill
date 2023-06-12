@@ -10,7 +10,7 @@ public class A0_ExcelSheet {
 
     public static void A0_sheet(){
 
-        logInfo("A0 Sheet in progress");
+        log4Info("A0 Sheet in progress");
         String File_Name= lowLevelReq[index_of_CSU_Name] + ".c";
         Fill_Cell(File_Name, SHEET_A0, CELL_ROW_2, CELL_COL_3);// File Name Filling
 

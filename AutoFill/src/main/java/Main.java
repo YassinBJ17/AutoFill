@@ -17,10 +17,10 @@ public class Main {
         // if(Verification_licences())
         //    System.exit(0);
         String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        logError(methodName+" : START" );
+        log4Error(methodName+" : START" );
 
         Processing(directory);
-        logInfo("Success");
+        log4Info("Success");
 
     }
 

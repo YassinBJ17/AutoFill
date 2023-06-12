@@ -37,7 +37,7 @@ public class GraphicUserInterfaces {
                 options[1]);
 
         if(choice == JOptionPane.NO_OPTION){
-            logInfo("The operation has been canceled by the user");
+            log4Info("The operation has been canceled by the user");
             return true;
         }else
             return false;
@@ -59,7 +59,7 @@ public class GraphicUserInterfaces {
                 Desktop.getDesktop().open(new File("..\\Datafiles\\SUTC\\" + function_name + ".xls"));
         } catch (IOException e) {
             String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-logError(methodName+" : "+e.getMessage() );
+log4Error(methodName+" : "+e.getMessage() );
 
         }
 

@@ -9,15 +9,15 @@ public class LoggerInitialize {
 
 
 
-    public static void logInfo(String logging) {
+    public static void log4Info(String logging) {
         logger4j.info("\u001B[34m" + logging + "\u001B[0m");
     }
 
-    public static void logError(String logging) {
+    public static void log4Error(String logging) {
         logger4j.error("\u001B[31m" + logging + "\u001B[0m");
     }
 
-    public static void logDebug(String logging) {
+    public static void log4Debug(String logging) {
         logger4j.debug("\u001B[93m" + logging + "\u001B[0m");
     }
 

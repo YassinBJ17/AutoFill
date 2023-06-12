@@ -77,7 +77,7 @@ public class InsertData {
         }catch (Exception e)
         {
             String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-logError(methodName+" : "+e.getMessage() );
+log4Error(methodName+" : "+e.getMessage() );
         }
         return 0;
     }

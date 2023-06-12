@@ -46,7 +46,7 @@ public class GlobalFilling {
         }catch (Exception e){
             Error_interface(String.valueOf(e));
             String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-logError(methodName+" : "+e.getMessage() );
+log4Error(methodName+" : "+e.getMessage() );
         }
     }
     public static int Extract_Global(String [] LLR){

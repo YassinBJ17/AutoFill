@@ -94,7 +94,7 @@ public class SutcCreationProccess {
             } catch (IOException e) {
                 Error_interface(String.valueOf(e));
                 String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-logError(methodName+" : "+e.getMessage() );
+log4Error(methodName+" : "+e.getMessage() );
             }
         }
     }
@@ -105,11 +105,11 @@ logError(methodName+" : "+e.getMessage() );
         for (String line : codeOfTheSoftware) {
             if ((line.contains("switch ("))||(line.contains("switch("))) {
                 switchArray[index] = true;
-                logDebug("Condition n°"+index+"= Switch ");
+                log4Debug("Condition n°"+index+"= Switch ");
                 index++;
             } else if ((line.contains("if ("))||(line.contains("if(")))  {
                 switchArray[index] = false;
-                logDebug("Condition n°"+index+"= If ");
+                log4Debug("Condition n°"+index+"= If ");
                 index++;
             }
         }
@@ -134,10 +134,11 @@ logError(methodName+" : "+e.getMessage() );
 
        return  "..\\Datafiles\\SUTC\\" + lowLevelReq[1] + ".xls";
     }
-    private static int getTheFirstCauseEffectTable(String document_path) throws IOException {
+    private static int getTheFirstCauseEffectTable(String document_path){
 
         XWPFTableCell cell;
         XWPFTable table;
+        try {
         File file = new File(document_path);
         FileInputStream fis = new FileInputStream(file);
         XWPFDocument document = new XWPFDocument(fis);
@@ -152,10 +153,15 @@ logError(methodName+" : "+e.getMessage() );
                 }
         }
         document.close();
+        } catch (Exception e){
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            log4Error(methodName+" : "+e.getMessage() );
+            Error_interface(String.valueOf(e));
+        }
         return -1 ;
     }
 
-  public static void Excel_Final(String path, String userName, ArrayList<String> cause_table, ArrayList<String> effect_table, JDialog dialog) throws IOException {
+  public static void Excel_Final(String path, String userName, ArrayList<String> cause_table, ArrayList<String> effect_table, JDialog dialog) {
 
       String functionName,SUTC_template,lowLevelReqText;
 
@@ -175,7 +181,7 @@ logError(methodName+" : "+e.getMessage() );
           codeOfTheSoftware=ExtractFunctionFromCode(functionName); // input function name
           String newExcel_filePath =PathOfTheNewExcelFile() ; // creation of the path
           cause=cause_table;// used to extract classes
-          logInfo(functionName);
+          log4Info(functionName);
           String filePath = "..\\Datafiles\\SUTC\\" +functionName+ ".xls";
           File file = new File(filePath);
 
@@ -206,8 +212,12 @@ logError(methodName+" : "+e.getMessage() );
               //////////////////////////////////////////////////////////////////////////////////////////
 
                   SUTC_template= Template_Choosing();
+                  try {
+
+
                   FileInputStream templateXLSfile = new FileInputStream(SUTC_template);// open template
                   workbook = WorkbookFactory.create(templateXLSfile);
+
 
               //////////////////////////////////////////////////////////////////////////////////////////
               //________________________________________________________________________________________
@@ -223,18 +233,24 @@ logError(methodName+" : "+e.getMessage() );
               //________________________________________________________________________________________
               //////////////////////////////////////////////////////////////////////////////////////////
 
-              logInfo("Saving progress");
+              log4Info("Saving progress");
+
               templateXLSfile.close();// Close XLS to
+                  } catch (Exception e){
+                      String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+                      log4Error(methodName+" : "+e.getMessage() );
+                      Error_interface(String.valueOf(e));
+                  }
+
               WritingFile(newExcel_filePath);// save XLS
               OpenFileDialog(functionName); // open XLS
-
               dialog.setVisible(false); // hide the dialog
               dialog.dispose(); // dispose of the dialog to release resourcesC:\Projets\Fadex\dev\work\LLR\OVSP\Lot1\CSC_OVSP\After QC
 
               CauseEffectTableOrder++; // increment table order
               cause_table= new ArrayList<>(); // initialize cause table
               effect_table= new ArrayList<>(); // initialize effect table
-              logInfo(functionName+".xls saved in success");
+              log4Info(functionName+".xls saved in success");
       }
   }
 

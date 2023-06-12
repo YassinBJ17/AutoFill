@@ -18,7 +18,7 @@ public class ExtractRequirements {
        // LLR_Text=LLR_Text.replace("\n\n","\n");
         LLR_Text=LLR_Text.replace("Traceability","[");
 
-        logInfo("Extract requirements progress");
+        log4Info("Extract requirements progress");
 
         for (int i = 0; i <cause.size() ; i++) {
 
@@ -46,6 +46,7 @@ public class ExtractRequirements {
                     if (LLR_Text.contains(requirements_without_description))
                     {
                         requirements_with_description = LLR_Text.substring(LLR_Text.lastIndexOf(requirements_without_description) + 1); // 5dhina a partir mel requirements_with_description 7ata e5er l document LLR
+                        requirements_with_description = requirements_with_description.replaceAll("\n ","\n");
                         requirements_with_description = (requirements_with_description.substring(0, requirements_with_description.indexOf("\n[")))+"\n"; // 5dhina description 7ata lin nouslou l awel accolade
                         final_requirements = final_requirements.replace(requirements_without_description, requirements_with_description); // nremplaciw description li 5dhinha
                         requirement = requirement.replace(requirements_without_description, "");
@@ -62,7 +63,8 @@ public class ExtractRequirements {
                 else {
 
                 final_requirements=Delete_extra_return_line(final_requirements);
-                effect.set(i, StubCall_req_Modifier(SettingValue_req_Modifier(final_requirements)));
+                log4Debug(final_requirements);
+                effect.set(i, StubCall_Requirements_Modifier(SettingValue_req_Modifier(final_requirements)));
             }
         }
     }

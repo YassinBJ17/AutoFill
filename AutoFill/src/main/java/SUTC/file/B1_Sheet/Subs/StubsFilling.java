@@ -18,7 +18,7 @@ import static SUTC.file.B1_Sheet.COMMUN.InsertData.Insert_Row;
 /////////////////////////////////////////////////////STUBS//////////////////////////////////////////////////////////
 public class StubsFilling {
 
-    public static void Stubs_Filling(String[] LLR) throws IOException {
+    public static void Stubs_Filling(String[] LLR) {
 
         int numberOfStubs= Extract_Stubs(LLR);
 
@@ -133,7 +133,7 @@ public class StubsFilling {
 
         }
     }
-    public static int Stub_Return_Filling(String[] Code, String function_name, int numberOfParameters) throws IOException {
+    public static int Stub_Return_Filling(String[] Code, String function_name, int numberOfParameters) {
 
 
         for (String code_line  : Code) {

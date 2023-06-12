@@ -1,13 +1,15 @@
 package SUTC.file.B1_Sheet.DataDictionarySearch;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Iterator;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.*;
+
+import static COMMUN.GraphicUserInterfaces.Error_interface;
+import static COMMUN.LoggerInitialize.log4Error;
 
 public class DataDictionarySearch {
 
@@ -21,13 +23,15 @@ public class DataDictionarySearch {
             "float64_t"   };
 
 
-    public static String searchExcelFiles(String directoryPath, String searchString,boolean global) throws IOException {
+    public static String searchExcelFiles(String directoryPath, String searchString,boolean global){
         // string to store the matching rows
         String matchingRows = "";
 
         // get all the files in the directory
         File directory = new File(directoryPath);
         File[] files = directory.listFiles();
+    try {
+
 
         for (File file : files) {
             if (file.isFile() && file.getName().endsWith(".xlsx")) {
@@ -73,9 +77,16 @@ public class DataDictionarySearch {
 
         // return the matching rows
         return matchingRows;
+    } catch (Exception e){
+
+        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+        log4Error(methodName+" : "+e.getMessage() );
+        Error_interface(String.valueOf(e));
+    }
+    return "";
     }
 
-    public static String DataDictionarySearch(String ParameterToSearch, boolean global) throws IOException {
+    public static String DataDictionarySearch(String ParameterToSearch, boolean global){
         // specify the directory path
         String directoryPath = "../Datafiles/DD";
 

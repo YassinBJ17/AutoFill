@@ -33,7 +33,7 @@ public class ExtractTextFromSDDD {
             fis.close();
         } catch (IOException e) {
             String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-logError(methodName+" : "+e.getMessage() );
+log4Error(methodName+" : "+e.getMessage() );
             Error_interface(String.valueOf(e));
         }
         assert text != null;
