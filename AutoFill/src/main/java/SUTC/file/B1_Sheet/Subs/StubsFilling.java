@@ -1,8 +1,7 @@
 package SUTC.file.B1_Sheet.Subs;
 
 import SUTC.file.B1_Sheet.B1_ExcelSheet;
-import SUTC.file.B1_Sheet.DataDictionarySearch.DataDictionarySearch;
-import SUTC.file.B1_Sheet.PrametersFilling.ParametersFilling;
+import SUTC.file.B1_Sheet.DataDictionarySearch.DataDictionary;
 import SUTC.file.SutcCreationProccess;
 import SUTC.file.COMMUN.ExcelModifier;
 import CODE.file.ExtractCode;
@@ -13,7 +12,6 @@ import static SUTC.file.B1_Sheet.PrametersFilling.ParametersFilling.Extract_Para
 import static SUTC.file.COMMUN.ExcelModifier.Fill_Cell;
 import static SUTC.file.COMMUN.ExcelModifier.Search;
 import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
-import java.io.IOException;
 
 import static SUTC.file.B1_Sheet.COMMUN.ExtractData.Extract_Domain;
 import static SUTC.file.B1_Sheet.COMMUN.ExtractData.Extract_Invalid_Domain;
@@ -165,8 +163,8 @@ public class StubsFilling {
                     Parameters[0][INDEX_OF_INVALID_DOMAIN] = (Extract_Domain(Parameters[0][INDEX_OF_TYPE]))[1];
 
                     if (Parameters[0][INDEX_OF_DOMAIN].equals("-")) {
-                        Parameters[0][INDEX_OF_DOMAIN] = DataDictionarySearch.DataDictionarySearch(Parameters[0][INDEX_OF_TYPE], false);
-                        Parameters[0][INDEX_OF_CLASS] = DataDictionarySearch.DataDictionarySearch(Parameters[0][INDEX_OF_TYPE], false);
+                        Parameters[0][INDEX_OF_DOMAIN] = DataDictionary.DataDictionarySearch(Parameters[0][INDEX_OF_TYPE], false);
+                        Parameters[0][INDEX_OF_CLASS] = DataDictionary.DataDictionarySearch(Parameters[0][INDEX_OF_TYPE], false);
                         Parameters[0][INDEX_OF_INVALID_DOMAIN] = Extract_Invalid_Domain(Parameters[0][INDEX_OF_DOMAIN]);
                     }
 

@@ -11,7 +11,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import java.util.Objects;
 
-import static SUTC.file.B1_Sheet.DataDictionarySearch.DataDictionarySearch.DataDictionarySearch;
+import static SUTC.file.B1_Sheet.DataDictionarySearch.DataDictionary.DataDictionarySearch;
 import static SUTC.file.B1_Sheet.COMMUN.ExtractData.Extract_Domain;
 import static SUTC.file.B1_Sheet.COMMUN.ExtractData.Extract_Invalid_Domain;
 import static SUTC.file.B1_Sheet.COMMUN.InsertData.Insert_Invalid_Row;

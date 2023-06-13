@@ -25,9 +25,8 @@ public class A2_ExcelSheet {
         String prototype = Code_line;
 
         if (!(prototype.contains("void "))) { // the function return a value
-            log4Error("RTRT_Ret");
             Fill_Cell("Variable", SHEET_A2, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_1);
-            Fill_Cell("RTRT_Ret", SHEET_A2, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_2);
+            Fill_Cell("RTRT_Ret_"+function_name, SHEET_A2, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_2);
 
             String type = prototype.substring(0, prototype.indexOf(function_name) - 1);// type of the return value
             Fill_Cell(type, SHEET_A2, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_3);

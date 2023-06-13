@@ -1,12 +1,10 @@
 package SUTC.file.B1_Sheet.PrametersFilling;
 
 import SUTC.file.B1_Sheet.B1_ExcelSheet;
-import SUTC.file.B1_Sheet.DataDictionarySearch.DataDictionarySearch;
+import SUTC.file.B1_Sheet.DataDictionarySearch.DataDictionary;
 import SUTC.file.SutcCreationProccess;
 import SUTC.file.COMMUN.ExcelModifier;
 import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
-
-import java.io.IOException;
 
 import static SUTC.file.B1_Sheet.COMMUN.ExtractData.Extract_Domain;
 import static SUTC.file.B1_Sheet.COMMUN.ExtractData.Extract_Invalid_Domain;
@@ -74,8 +72,8 @@ public class ParametersFilling {
 
             if(B1_ExcelSheet.Parameters[numberOfParameters][INDEX_OF_DOMAIN].equals("-"))
             {
-                B1_ExcelSheet.Parameters[numberOfParameters][INDEX_OF_DOMAIN]= DataDictionarySearch.DataDictionarySearch(B1_ExcelSheet.Parameters[numberOfParameters][INDEX_OF_TYPE],false);
-                B1_ExcelSheet.Parameters[numberOfParameters][INDEX_OF_CLASS]= DataDictionarySearch.DataDictionarySearch(B1_ExcelSheet.Parameters[numberOfParameters][INDEX_OF_TYPE],false);
+                B1_ExcelSheet.Parameters[numberOfParameters][INDEX_OF_DOMAIN]= DataDictionary.DataDictionarySearch(B1_ExcelSheet.Parameters[numberOfParameters][INDEX_OF_TYPE],false);
+                B1_ExcelSheet.Parameters[numberOfParameters][INDEX_OF_CLASS]= DataDictionary.DataDictionarySearch(B1_ExcelSheet.Parameters[numberOfParameters][INDEX_OF_TYPE],false);
                 B1_ExcelSheet.Parameters[numberOfParameters][INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(B1_ExcelSheet.Parameters[numberOfParameters][INDEX_OF_DOMAIN]);
             }
 

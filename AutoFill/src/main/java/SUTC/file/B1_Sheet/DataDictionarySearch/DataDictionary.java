@@ -9,9 +9,10 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.*;
 
 import static COMMUN.GraphicUserInterfaces.Error_interface;
+import static COMMUN.LoggerInitialize.log4Debug;
 import static COMMUN.LoggerInitialize.log4Error;
 
-public class DataDictionarySearch {
+public class DataDictionary {
 
     public static String[] Types_array = {
             "uint8_t",
@@ -53,9 +54,7 @@ public class DataDictionarySearch {
                                 // find the 4th cell in the row and print its value
                                 Cell fourthCell = row.getCell(3);
                                 Cell secondCell = row.getCell(1);
-                                //   System.out.println(searchString + " in file " + file.getName() + ", sheet " + sheet.getSheetName() +", type:\n" + fourthCell.getStringCellValue());
-
-
+                                log4Debug(searchString + " in file " + file.getName() + ", sheet " + sheet.getSheetName() +", type:\n" + fourthCell.getStringCellValue());
                                 matchingRows = secondCell.getStringCellValue();
 
                                 if((matchingRows.equalsIgnoreCase("STRUCT"))||(matchingRows.equalsIgnoreCase("UNION"))) {
@@ -102,12 +101,8 @@ public class DataDictionarySearch {
             ParameterToSearch = ParameterToSearch.substring(0,index);
         }
 
-
-
-
         String matchingRows = searchExcelFiles(directoryPath, ParameterToSearch,global);
         if (matchingRows.equals("")) {
-
             return "not exist in the DD";
         }
         return matchingRows;
