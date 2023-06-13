@@ -37,7 +37,7 @@ public class GraphicUserInterfaces {
                 options[1]);
 
         if(choice == JOptionPane.NO_OPTION){
-            log4Info("The operation has been canceled by the user");
+            log4Error("The operation has been canceled by the user");
             return true;
         }else
             return false;

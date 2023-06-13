@@ -1,7 +1,7 @@
 package SUTC.file.A0_Sheet;
 import static SUTC.file.SutcCreationProccess.lowLevelReq;
 import static SUTC.file.COMMUN.ExcelModifier.Fill_Cell;
-import static COMMUN.BrowsingInputFolder.fileName;
+import static COMMUN.BrowsingInputFolder.SDDDfileName;
 import static COMMUN.LoggerInitialize.*;
 import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
 public class A0_ExcelSheet {
@@ -21,11 +21,11 @@ public class A0_ExcelSheet {
         String CSC_Name=CSU_Name.substring(0,CSU_Name.indexOf("_"));
         Fill_Cell(CSC_Name, SHEET_A0, CELL_ROW_3, CELL_COL_3);//CSC Name Filling
 
-
-
-        Fill_Cell(fileName, SHEET_A0, CELL_ROW_8, CELL_COL_2);//Reference Documents Filling
+        Fill_Cell(SDDDfileName, SHEET_A0, CELL_ROW_8, CELL_COL_2);//Reference Documents Filling
         Fill_Cell("1C", SHEET_A0, CELL_ROW_8, CELL_COL_3);//Version of Documents Filling
 
+        Fill_Cell("FADEX-OVSP_SDDD-DD.xlsx", SHEET_A0, CELL_ROW_9, CELL_COL_2);//Reference Documents Filling
+        Fill_Cell("2", SHEET_A0, CELL_ROW_9, CELL_COL_3);//Version of Documents Filling
 
     }
 

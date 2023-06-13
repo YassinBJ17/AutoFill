@@ -10,7 +10,7 @@ import static COMMUN.UsernameExtract.Username_filling;
 
 public class BrowsingInputFolder {
 
-public static String fileName;
+public static String SDDDfileName;
 
 public static void Processing(String directory){
 
@@ -31,9 +31,9 @@ public static void Processing(String directory){
                     JDialog dialog = Waiting_interface();
                     cause= new ArrayList<>(); // initialize cause table
                     effect= new ArrayList<>(); // initialize effect table
-                    fileName=listOfFile.getName();
-                    log4Info(fileName);
-                    path =directory+ fileName;
+                    SDDDfileName =listOfFile.getName();
+                    log4Info(SDDDfileName);
+                    path =directory+ SDDDfileName;
                     Excel_Final(path, Username_filling(), cause, effect,dialog); //filling SUTC
                     log4Info("SUTC Creation success");
                 }

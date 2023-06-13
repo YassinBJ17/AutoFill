@@ -1,8 +1,6 @@
 package SUTC.file;
 import SUTC.file.A0_Sheet.A0_ExcelSheet;
 import SUTC.file.A1_Sheet.A1_ExcelSheet;
-import SUTC.file.A2_Sheet.A2_ExcelSheet;
-import SUTC.file.B1_Sheet.B1_ExcelSheet;
 import SUTC.file.COMMUN.ExcelModifier;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -21,7 +19,11 @@ import java.util.regex.Pattern;
 import static SDDD.file.ExtractRequirements.Extract_Req;
 import static SDDD.file.ExtractCausesEffectTable.Extract_Table;
 import static SDDD.file.ExtractTextFromSDDD.Extract_Text;
+import static SUTC.file.A0_Sheet.A0_ExcelSheet.A0_sheet;
+import static SUTC.file.A1_Sheet.A1_ExcelSheet.A1_sheet;
+import static SUTC.file.A2_Sheet.A2_ExcelSheet.A2_sheet;
 import static SUTC.file.B0_Sheet.A0_ExcelSheet.B0_sheet;
+import static SUTC.file.B1_Sheet.B1_ExcelSheet.B1_sheet;
 import static SUTC.file.COMMUN.SheetsNamesGenerating.Sheets_Name;
 import static SUTC.file.COMMUN.TemplateChoosing.Template_Choosing;
 import static COMMUN.GraphicUserInterfaces.*;
@@ -212,6 +214,7 @@ log4Error(methodName+" : "+e.getMessage() );
               //////////////////////////////////////////////////////////////////////////////////////////
 
                   SUTC_template= Template_Choosing();
+                  log4Info(SUTC_template);
                   try {
 
 
@@ -221,13 +224,13 @@ log4Error(methodName+" : "+e.getMessage() );
 
               //////////////////////////////////////////////////////////////////////////////////////////
               //________________________________________________________________________________________
-                  A0_ExcelSheet.A0_sheet(); // Filling A0
-                  A1_ExcelSheet.A1_sheet(userName); // Filling A0
+                  A0_sheet(); // Filling A0
+                  A1_sheet(userName); // Filling A0
                   Sheets_Name(workbook); // Filling A0
                   B0_sheet(cause_table,effect_table); // Filling A0
-                  if (codeOfTheSoftware!=null) { // if conde not existe dont fill A2 and B1
-                      A2_ExcelSheet.A2(functionName);
-                      B1_ExcelSheet.B1_sheet(workbook);
+                  if (codeOfTheSoftware!=null) { // if code not existe dont fill A2 and B1
+                      A2_sheet(functionName);
+                      B1_sheet(workbook);
                       }
                   LLR_Traceability_Filling();
               //________________________________________________________________________________________

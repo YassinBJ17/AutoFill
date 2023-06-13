@@ -1,5 +1,6 @@
 package SUTC.file.A2_Sheet;
 
+import static COMMUN.LoggerInitialize.log4Error;
 import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
 import static SUTC.file.SutcCreationProccess.codeOfTheSoftware;
 import static SUTC.file.COMMUN.ExcelModifier.*;
@@ -9,7 +10,7 @@ import static SUTC.file.COMMUN.ExcelModifier.Fill_Cell;
 public class A2_ExcelSheet {
 
     public static boolean return_function;
-
+    public static final int INTERNAL_DEFINITIONS_FIRST_LINE = 32;
 
 
     public static void extractHeaderFiles(String Code_line, int number_of_header_file){
@@ -19,17 +20,17 @@ public class A2_ExcelSheet {
 
     }
 
-    public static void extractFunctionRetrun(String Code_line, String function_name){
+    public static void extractFunctionReturn(String Code_line, String function_name){
 
         String prototype = Code_line;
 
         if (!(prototype.contains("void "))) { // the function return a value
-
-            Fill_Cell("Variable", SHEET_A2, CELL_ROW_30, CELL_COL_1);
-            Fill_Cell("RTRT_Ret", SHEET_A2, CELL_ROW_30, CELL_COL_2);
+            log4Error("RTRT_Ret");
+            Fill_Cell("Variable", SHEET_A2, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_1);
+            Fill_Cell("RTRT_Ret", SHEET_A2, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_2);
 
             String type = prototype.substring(0, prototype.indexOf(function_name) - 1);// type of the return value
-            Fill_Cell(type, SHEET_A2, CELL_ROW_30, CELL_COL_3);
+            Fill_Cell(type, SHEET_A2, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_3);
 
             return_function=true;
         }
@@ -37,7 +38,7 @@ public class A2_ExcelSheet {
     }
 
 
-    public static void A2(String function_name){
+    public static void A2_sheet(String function_name){
 
         int number_of_header_file=0;
         
@@ -50,7 +51,7 @@ public class A2_ExcelSheet {
             }
             else if (Prototype_Detect(Code_line, function_name)) { // detect function prototype
 
-                extractFunctionRetrun(Code_line,function_name);
+                extractFunctionReturn(Code_line,function_name);
                 break;
             }
         }

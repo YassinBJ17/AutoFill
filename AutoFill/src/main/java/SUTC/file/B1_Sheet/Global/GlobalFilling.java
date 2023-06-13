@@ -2,6 +2,9 @@ package SUTC.file.B1_Sheet.Global;
 import SUTC.file.B1_Sheet.B1_ExcelSheet;
 import SUTC.file.SutcCreationProccess;
 import SUTC.file.COMMUN.ExcelModifier;
+
+import static SUTC.file.B1_Sheet.B1_ExcelSheet.INTERNAL_DEFINITIONS_POSITION;
+import static SUTC.file.B1_Sheet.B1_ExcelSheet.Parameters;
 import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -15,6 +18,7 @@ import static SUTC.file.B1_Sheet.COMMUN.InsertData.Insert_Invalid_Row;
 import static SUTC.file.B1_Sheet.COMMUN.InsertData.Insert_Row;
 import static COMMUN.GraphicUserInterfaces.Error_interface;
 import static COMMUN.LoggerInitialize.*;
+import static SUTC.file.SutcCreationProccess.number_of_UFT;
 
 
 public class GlobalFilling {
@@ -25,23 +29,23 @@ public class GlobalFilling {
             for (int i = 0; i < numberOfGlobals; i++) {
 
                 if (B1_ExcelSheet.Globals[i].contains("{"))
-                    B1_ExcelSheet.Parameters[i][INDEX_OF_NAME]= B1_ExcelSheet.Globals[i].substring(B1_ExcelSheet.Globals[i].indexOf("{")+1, B1_ExcelSheet.Globals[i].indexOf("}")) ;
-                else B1_ExcelSheet.Parameters[i][INDEX_OF_NAME]= B1_ExcelSheet.Globals[i].substring(0, B1_ExcelSheet.Globals[i].indexOf(" ")) ;
+                    Parameters[i][INDEX_OF_NAME]= B1_ExcelSheet.Globals[i].substring(B1_ExcelSheet.Globals[i].indexOf("{")+1, B1_ExcelSheet.Globals[i].indexOf("}")) ;
+                else Parameters[i][INDEX_OF_NAME]= B1_ExcelSheet.Globals[i].substring(0, B1_ExcelSheet.Globals[i].indexOf(" ")) ;
 
 
 
-                B1_ExcelSheet.Parameters[i][INDEX_OF_TYPE]= DataDictionarySearch(B1_ExcelSheet.Parameters[i][INDEX_OF_NAME],true) ;
-                B1_ExcelSheet.Parameters[i][INDEX_OF_DOMAIN]=(Extract_Domain(B1_ExcelSheet.Parameters[i][INDEX_OF_TYPE]))[0];
-                B1_ExcelSheet.Parameters[i][INDEX_OF_CLASS]=(Extract_Domain(B1_ExcelSheet.Parameters[i][INDEX_OF_TYPE]))[0];
-                B1_ExcelSheet.Parameters[i][INDEX_OF_INVALID_DOMAIN]=(Extract_Domain(B1_ExcelSheet.Parameters[i][INDEX_OF_TYPE]))[1];
+                Parameters[i][INDEX_OF_TYPE]= DataDictionarySearch(Parameters[i][INDEX_OF_NAME],true) ;
+                Parameters[i][INDEX_OF_DOMAIN]=(Extract_Domain(Parameters[i][INDEX_OF_TYPE]))[0];
+                Parameters[i][INDEX_OF_CLASS]=(Extract_Domain(Parameters[i][INDEX_OF_TYPE]))[0];
+                Parameters[i][INDEX_OF_INVALID_DOMAIN]=(Extract_Domain(Parameters[i][INDEX_OF_TYPE]))[1];
 
-                if(B1_ExcelSheet.Parameters[i][INDEX_OF_DOMAIN].equals("-")) {
-                    B1_ExcelSheet.Parameters[i][INDEX_OF_DOMAIN] = DataDictionarySearch(B1_ExcelSheet.Parameters[i][INDEX_OF_TYPE], false);
-                    B1_ExcelSheet.Parameters[i][INDEX_OF_CLASS] = DataDictionarySearch(B1_ExcelSheet.Parameters[i][INDEX_OF_TYPE], false);
-                    B1_ExcelSheet.Parameters[i][INDEX_OF_INVALID_DOMAIN]=Extract_Invalid_Domain(B1_ExcelSheet.Parameters[i][INDEX_OF_DOMAIN]);
+                if(Parameters[i][INDEX_OF_DOMAIN].equals("-")) {
+                    Parameters[i][INDEX_OF_DOMAIN] = DataDictionarySearch(Parameters[i][INDEX_OF_TYPE], false);
+                    Parameters[i][INDEX_OF_CLASS] = DataDictionarySearch(Parameters[i][INDEX_OF_TYPE], false);
+                    Parameters[i][INDEX_OF_INVALID_DOMAIN]=Extract_Invalid_Domain(Parameters[i][INDEX_OF_DOMAIN]);
                 }
 
-                B1_ExcelSheet.Global_Start+=Insert_Global_Parameter(B1_ExcelSheet.Global_Start+i+ SutcCreationProccess.number_of_UFT,i,LLR);
+                B1_ExcelSheet.Global_Start+=Insert_Global_Parameter(B1_ExcelSheet.Global_Start+i+ number_of_UFT,i,LLR);
             }
         }catch (Exception e){
             Error_interface(String.valueOf(e));
@@ -126,36 +130,36 @@ log4Error(methodName+" : "+e.getMessage() );
     public static int Insert_Global_Parameter(int row,int Parameter_number,String[] LLR) {
 
 
-        B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_ACCESS]= Access_Global_Detect(LLR, B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_NAME]);
-        B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_NAME]= B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_NAME].replace(":","");
+        Parameters[Parameter_number][INDEX_OF_ACCESS]= Access_Global_Detect(LLR, Parameters[Parameter_number][INDEX_OF_NAME]);
+        Parameters[Parameter_number][INDEX_OF_NAME]= Parameters[Parameter_number][INDEX_OF_NAME].replace(":","");
 
-        if ((B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_ACCESS].contains("W"))&&(!(B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_ACCESS].contains("/")))){
-            B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_CLASS]="-";
+        if ((Parameters[Parameter_number][INDEX_OF_ACCESS].contains("W"))&&(!(Parameters[Parameter_number][INDEX_OF_ACCESS].contains("/")))){
+            Parameters[Parameter_number][INDEX_OF_CLASS]="-";
         }
 
-        int return_Number_Of_Rows=Insert_Row(row, B1_ExcelSheet.Parameters[Parameter_number]);
+        int return_Number_Of_Rows=Insert_Row(row, Parameters[Parameter_number]);
         row=row+return_Number_Of_Rows;
 
-        if (((B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_ACCESS].contains("R")))&&(!(B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_INVALID_DOMAIN].equals("-")))){
+        if (((Parameters[Parameter_number][INDEX_OF_ACCESS].contains("R")))&&(!(Parameters[Parameter_number][INDEX_OF_INVALID_DOMAIN].equals("-")))){
             row++;
-            Insert_Invalid_Row(row, B1_ExcelSheet.Parameters[Parameter_number]);
+            Insert_Invalid_Row(row, Parameters[Parameter_number]);
         }
 
 
         // A2 filling
-        ExcelModifier.Fill_Cell("Variable", SHEET_A2, B1_ExcelSheet.INTERNAL_DEFINITIONS_POSITION+ SutcCreationProccess.number_of_UFT+Parameter_number, CELL_COL_1);
-        if (B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_NAME].contains(".")|| B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_NAME].contains("->")) {
+        ExcelModifier.Fill_Cell("Variable", SHEET_A2, INTERNAL_DEFINITIONS_POSITION+Parameter_number, CELL_COL_1);
+        if (Parameters[Parameter_number][INDEX_OF_NAME].contains(".")|| Parameters[Parameter_number][INDEX_OF_NAME].contains("->")) {
             int index;
-            index= B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_NAME].indexOf("->");
+            index= Parameters[Parameter_number][INDEX_OF_NAME].indexOf("->");
 
             if (index==-1)
-                index= B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_NAME].indexOf(".");
+                index= Parameters[Parameter_number][INDEX_OF_NAME].indexOf(".");
 
-            B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_NAME] = B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_NAME].substring(0,index);
+            Parameters[Parameter_number][INDEX_OF_NAME] = Parameters[Parameter_number][INDEX_OF_NAME].substring(0,index);
         }
-        if (!InternalDefinitionsExist(B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_NAME])) {
-            ExcelModifier.Fill_Cell(B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_NAME], SHEET_A2, B1_ExcelSheet.INTERNAL_DEFINITIONS_POSITION + SutcCreationProccess.number_of_UFT + Parameter_number, CELL_COL_2);
-            ExcelModifier.Fill_Cell(B1_ExcelSheet.Parameters[Parameter_number][INDEX_OF_TYPE], SHEET_A2, B1_ExcelSheet.INTERNAL_DEFINITIONS_POSITION + SutcCreationProccess.number_of_UFT + Parameter_number, CELL_COL_3);
+        if (!InternalDefinitionsExist(Parameters[Parameter_number][INDEX_OF_NAME])) {
+            ExcelModifier.Fill_Cell(Parameters[Parameter_number][INDEX_OF_NAME], SHEET_A2, INTERNAL_DEFINITIONS_POSITION +  Parameter_number, CELL_COL_2);
+            ExcelModifier.Fill_Cell(Parameters[Parameter_number][INDEX_OF_TYPE], SHEET_A2, INTERNAL_DEFINITIONS_POSITION +  Parameter_number, CELL_COL_3);
         }
 
         return return_Number_Of_Rows;

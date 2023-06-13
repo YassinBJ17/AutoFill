@@ -2,6 +2,7 @@ package SUTC.file.B1_Sheet;
 import SUTC.file.B1_Sheet.COMMUN.RemoveExtraRow;
 import org.apache.poi.ss.usermodel.*;
 
+import static SUTC.file.B1_Sheet.COMMUN.RemoveExtraRow.Remove_Extra_Row;
 import static SUTC.file.B1_Sheet.FunctionReturnFilling.FunctionRetrunFilling.Function_Return_Filling;
 import static SUTC.file.B1_Sheet.Global.GlobalFilling.Global_Parameters_Filling;
 import static SUTC.file.B1_Sheet.Initialize.InitializeData.Initialize_Data;
@@ -20,7 +21,7 @@ public class B1_ExcelSheet {
     public static final int DISTANCE_BETWEEN_STUBS =59;
     public static final int STUB_PARAMETERS_TABLE_POSITION =140;
     public static final int STUB_DEFINITION_TABLE_POSITION=133;
-    public static final int INTERNAL_DEFINITIONS_POSITION=30;
+    public static final int INTERNAL_DEFINITIONS_POSITION=34;
     public static final int INTERNAL_VARIABLES_POSITION=71;
     public static int Global_Start=43;
     public static String Prototype;
@@ -41,8 +42,8 @@ public class B1_ExcelSheet {
     Global_Parameters_Filling(lowLevelReq);
     Function_Return_Filling(codeOfTheSoftware,function_name);
     Prototype_Filling();
-    RemoveExtraRow.Remove_Extra_Row(workbook);
-    log4Info("B1 Sheet success");
+    Remove_Extra_Row(workbook);
+
 
     }
 
