@@ -37,7 +37,6 @@ public class ExtractRequirements {
             String requirement=effect.get(i);
 
             String final_requirements=requirement;
-
                 while (requirement.contains("["))
                 {
                     String requirements_without_description = requirement.substring(requirement.indexOf("["), requirement.indexOf("]")+1);
@@ -49,19 +48,22 @@ public class ExtractRequirements {
                         final_requirements = final_requirements.replace(requirements_without_description, requirements_with_description); // nremplaciw description li 5dhinha
                         requirement = requirement.replace(requirements_without_description, "");
 
+                    }else {
+                        break;
                     }
                 }
 
 
             if (final_requirements.equals("")) {
                 requirement=Delete_extra_return_line(requirement);
-                effect.set(i, requirement);
                 //System.err.println(requirement);
+                effect.set(i, requirement);
+
             }
                 else {
 
                 final_requirements=Delete_extra_return_line(final_requirements);
-                log4Debug(final_requirements);
+                //System.err.println(final_requirements);
                 effect.set(i, StubCall_Requirements_Modifier(SettingValue_req_Modifier(final_requirements)));
             }
         }
