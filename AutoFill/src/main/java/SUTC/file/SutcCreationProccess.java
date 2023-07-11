@@ -1,10 +1,7 @@
 package SUTC.file;
-import SUTC.file.A0_Sheet.A0_ExcelSheet;
-import SUTC.file.A1_Sheet.A1_ExcelSheet;
 import SUTC.file.COMMUN.ExcelModifier;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import CODE.file.ExtractCode;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
@@ -16,14 +13,16 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static CODE.file.ExtractCode.extractFunctionCode;
 import static SDDD.file.ExtractRequirements.Extract_Req;
 import static SDDD.file.ExtractCausesEffectTable.Extract_Table;
 import static SDDD.file.ExtractTextFromSDDD.Extract_Text;
 import static SUTC.file.A0_Sheet.A0_ExcelSheet.A0_sheet;
 import static SUTC.file.A1_Sheet.A1_ExcelSheet.A1_sheet;
 import static SUTC.file.A2_Sheet.A2_ExcelSheet.A2_sheet;
-import static SUTC.file.B0_Sheet.A0_ExcelSheet.B0_sheet;
-import static SUTC.file.B1_Sheet.B1_ExcelSheet.B1_sheet;
+import static SUTC.file.B0_Sheet.B0_ExcelSheet.B0_sheet;
+import static SUTC.file.B1_Sheet.B1_ExcelSheet.*;
+
 import static SUTC.file.COMMUN.SheetsNamesGenerating.Sheets_Name;
 import static SUTC.file.COMMUN.TemplateChoosing.Template_Choosing;
 import static COMMUN.GraphicUserInterfaces.*;
@@ -36,6 +35,7 @@ public class SutcCreationProccess {
     public static final int minUftNumber=1;
     public static final int numberOfUtcPerUft=3;
     public static Workbook workbook;
+    public static FileInputStream templateXLSfile;
     public static int number_of_UFT;
     public static int number_of_UTC;
     public static int number_of_causes=0;
@@ -48,7 +48,8 @@ public class SutcCreationProccess {
     public static void UTC_Number_Filling( ArrayList<String> cause_table){
 
         int uft;
-
+        number_of_UFT=0;
+        number_of_UTC=0;
         number_of_causes=0;
         for (String cs:cause_table) {
             if (!Objects.equals(cs, "null"))
@@ -63,6 +64,9 @@ public class SutcCreationProccess {
         number_of_UFT =uft+minUftNumber;
         number_of_UTC =(uft*numberOfUtcPerUft);
 
+        INTERNAL_VARIABLES_POSITION=73+number_of_UFT;
+        START_OF_PARAMETERS_TABLE=10+number_of_UFT;
+        STUB_PARAMETERS_TABLE_POSITION= 139 + number_of_UFT;
 
     }
     public static void LLR_Traceability_Filling(){
@@ -96,7 +100,7 @@ public class SutcCreationProccess {
             } catch (IOException e) {
                 Error_interface(String.valueOf(e));
                 String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-log4Error(methodName+" : "+e.getMessage() );
+                log4Error(methodName+" : "+e.getMessage() );
             }
         }
     }
@@ -104,6 +108,9 @@ log4Error(methodName+" : "+e.getMessage() );
     private static void Switch_if_table_filling() {
 
     int index=0;
+
+    if(codeOfTheSoftware==null) return;
+
         for (String line : codeOfTheSoftware) {
             if ((line.contains("switch ("))||(line.contains("switch("))) {
                 switchArray[index] = true;
@@ -119,15 +126,15 @@ log4Error(methodName+" : "+e.getMessage() );
 
     private static String ExtractFunctionFromLRRDocument(String llr_to_treatment){
 
-        llr_to_treatment=llr_to_treatment.substring(0,llr_to_treatment.indexOf("[END_REQ"));
+        llr_to_treatment=llr_to_treatment.substring(0,llr_to_treatment.indexOf("Rationale"));
         llr_to_treatment=" \n"+llr_to_treatment;
 
         return llr_to_treatment;
     }
     private static String[] ExtractFunctionFromCode(String functionName){
 
-        String codeFileName=functionName+".c";
-        String Code_text= ExtractCode.extract(codeFileName);
+        String codeFileName=functionName.trim()+".c";
+        String Code_text= extractFunctionCode(codeFileName);
         if (Code_text.isEmpty())
             return null;
         return Code_text.split("\n");
@@ -163,11 +170,46 @@ log4Error(methodName+" : "+e.getMessage() );
         return -1 ;
     }
 
-  public static void Excel_Final(String path, String userName, ArrayList<String> cause_table, ArrayList<String> effect_table, JDialog dialog) {
+    private static void openExcelTemplate(){
 
-      String functionName,SUTC_template,lowLevelReqText;
+        String SUTC_template= Template_Choosing();
+
+
+        log4Info(SUTC_template);
+        try {
+            templateXLSfile = new FileInputStream(SUTC_template);// open template
+            workbook = WorkbookFactory.create(templateXLSfile);
+            END_OF_SHEET_POSITION =workbook.getSheetAt(SHEET_B1).getLastRowNum();
+        } catch (Exception e){
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            log4Error(methodName+" : "+e.getMessage() );
+            Error_interface(String.valueOf(e));
+
+        }
+    }
+
+    private static void closeExcelTemplate(){
+
+
+        log4Info("Saving progress");
+        try {
+            templateXLSfile.close();// Close XLS to
+
+        } catch (Exception e){
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            log4Error(methodName+" : "+e.getMessage() );
+            Error_interface(String.valueOf(e));
+
+        }
+
+    }
+
+  public static void Excel_Final(String path, String userName, ArrayList<String> cause_table, ArrayList<String> effect_table) {
+
+      String functionName,lowLevelReqText;
 
       String llr_text = Extract_Text(path);
+
       int CauseEffectTableOrder=getTheFirstCauseEffectTable(path);
 
       Pattern pattern = Pattern.compile("\\b.*\nThis function"); // key word in SDDD is "This function" should be existed in every function
@@ -175,11 +217,15 @@ log4Error(methodName+" : "+e.getMessage() );
 
       while (matcher.find()) {
 
-          dialog.setModal(false);
-          dialog.setVisible(true);
           lowLevelReqText =ExtractFunctionFromLRRDocument(llr_text.substring(matcher.start()));
           lowLevelReq=lowLevelReqText.split("\n");
+
+
           functionName= lowLevelReq[1];// extract the name of the function
+
+          JDialog dialog = Waiting_interface(functionName+" Waiting..");
+          dialog.setModal(false);
+          dialog.setVisible(true);
           codeOfTheSoftware=ExtractFunctionFromCode(functionName); // input function name
           String newExcel_filePath =PathOfTheNewExcelFile() ; // creation of the path
           cause=cause_table;// used to extract classes
@@ -191,14 +237,14 @@ log4Error(methodName+" : "+e.getMessage() );
               //////////////////////////////////////////////////////////////////////////////////////////
               //________________________________________________________________________________________
                // if(file.exists()){ // check if file existe
-                  if(FileExisteDialog(functionName)){
+                 /* if(FileExisteDialog(functionName)){
                       dialog.setVisible(false); // hide the dialog
                       dialog.dispose(); // dispose of the dialog to release resources
                       CauseEffectTableOrder++; // increment table order
                       continue;
                   }
                // }
-
+                    */
               //}
               //________________________________________________________________________________________
               //////////////////////////////////////////////////////////////////////////////////////////
@@ -212,16 +258,7 @@ log4Error(methodName+" : "+e.getMessage() );
                   UTC_Number_Filling(cause_table);
               //________________________________________________________________________________________
               //////////////////////////////////////////////////////////////////////////////////////////
-
-                  SUTC_template= Template_Choosing();
-                  log4Info(SUTC_template);
-                  try {
-
-
-                  FileInputStream templateXLSfile = new FileInputStream(SUTC_template);// open template
-                  workbook = WorkbookFactory.create(templateXLSfile);
-
-
+             openExcelTemplate();
               //////////////////////////////////////////////////////////////////////////////////////////
               //________________________________________________________________________________________
                   A0_sheet(); // Filling A0
@@ -236,19 +273,10 @@ log4Error(methodName+" : "+e.getMessage() );
               //________________________________________________________________________________________
               //////////////////////////////////////////////////////////////////////////////////////////
 
-              log4Info("Saving progress");
-
-              templateXLSfile.close();// Close XLS to
-                  } catch (Exception e){
-                      String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-                      log4Error(methodName+" : "+e.getMessage() );
-                      Error_interface(String.valueOf(e));
-                  }
-
+              closeExcelTemplate();
               WritingFile(newExcel_filePath);// save XLS
-              OpenFileDialog(functionName); // open XLS
+              //OpenFileDialog(functionName); // open XLS
               dialog.setVisible(false); // hide the dialog
-              dialog.dispose(); // dispose of the dialog to release resourcesC:\Projets\Fadex\dev\work\LLR\OVSP\Lot1\CSC_OVSP\After QC
 
               CauseEffectTableOrder++; // increment table order
               cause_table= new ArrayList<>(); // initialize cause table

@@ -2,6 +2,7 @@ package SDDD.file;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -20,6 +21,8 @@ public class ExtractCausesEffectTable {
 
     public static final String WHITE_COLOR_HEXA="FFFFFF";
     private static int rowNumber=-1;
+
+    private static XWPFDocument document;
 
     public static boolean IsRequirement(String requirement) {
         String[] notReq={"DO NOTHING","EFFECTS","ALL OTHER CASE","CAUSES","NO EFFECT","ALWAYS","NO EFFECTS","ALL THE OTHER CASES","NO DATA TO READ"};
@@ -42,15 +45,15 @@ public class ExtractCausesEffectTable {
 
         String causes = cell.trim();
         //logDebug(causes);
+
         if ((!(causes.startsWith("["))) && (!(causes.endsWith("]")))) {
-            if ((causes.toUpperCase().contains("OR"))||(causes.toUpperCase().contains("AND"))) {
+            if ((causes.toUpperCase().contains("OR")) || (causes.toUpperCase().contains("AND"))) {
 
                 String[] cause_table = causes.split("\\s+(?i)(or|and)\\s+");
                 cause.addAll(Arrays.asList(cause_table));
-            }else
+            } else
                 cause.add(causes);
-        }
-        else {
+        } else {
             causes = causes.replaceAll("\\(", "");
             causes = causes.replaceAll("\\)", "");
 
@@ -59,9 +62,16 @@ public class ExtractCausesEffectTable {
                 c = removeInvisibleChars(c);
                 cause.add(c);
                 causes = causes.trim().substring(causes.indexOf("]") + 1);
-
                 if (!causes.trim().equals("")) {
-                    causes = causes.trim().substring(causes.indexOf("[") - 1);
+                    try {
+
+
+                        causes = causes.trim().substring(causes.indexOf("[") - 1);
+                    } catch (Exception e) {
+                        // If there is an error reading the file, print the stack trace and return null.
+                        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+                        log4Error(methodName + " : " + e.getMessage());
+                    }
                 }
             }
         }
@@ -71,6 +81,7 @@ public class ExtractCausesEffectTable {
 
         XWPFTableCell cell;
         int number_Of_Cause=0;
+        int start_Of_Cause=0;
 
         for (int i = 0; i < row.getTableCells().size(); i++) {
             cell = row.getCell(i);
@@ -80,19 +91,25 @@ public class ExtractCausesEffectTable {
 
             else
             {
-                if(IsRequirement(cell.getText()))
+
+                if(IsRequirement(cell.getText())) {
+
+                    if (start_Of_Cause==0)
+                    {
+                        start_Of_Cause=i;
+                    }
+
                     number_Of_Cause++;
-                if(number_Of_Cause==1)
+                }if(number_Of_Cause==1)
                     rowNumber++; // stored the row
             }
         }
-
 
         if(number_Of_Cause>=2) { // if the line in cause/effect table is >3
 
 
             if (!switchArray[rowNumber]) { // if 'if'
-                for (int i = 1; i <= number_Of_Cause; i +=2) {
+                for (int i = start_Of_Cause; i <= start_Of_Cause+number_Of_Cause-1; i +=2) {
                     cell = row.getCell(i);
                     log4Debug(cell.getText());
                     if (IsRequirement(cell.getText()))
@@ -100,16 +117,17 @@ public class ExtractCausesEffectTable {
                 }
             } else {
 
-                for (int i = 1; i < number_Of_Cause; i++) { // if 'switch'
+                for (int i = start_Of_Cause; i < start_Of_Cause+number_Of_Cause-1; i++) { // if 'switch'
 
                     cell = row.getCell(i);
+
                     log4Debug(cell.getText());
                     if (IsRequirement(cell.getText()))
                         AddCause(cell.getText(), cause);
                 }
             }
         }else {
-            for (int i = 1; i <= number_Of_Cause; i +=2) {
+            for (int i = start_Of_Cause; i <= start_Of_Cause+number_Of_Cause-1; i +=2) {
                 cell = row.getCell(i);
                 if (IsRequirement(cell.getText()))
                     AddCause(cell.getText(), cause);
@@ -119,33 +137,52 @@ public class ExtractCausesEffectTable {
 
     }
 
+    private static void openWordFile(String path){
+        try {
+
+            // Open the docx file
+            File file = new File(path);
+            FileInputStream fis = new FileInputStream(file);
+            document = new XWPFDocument(fis);
+
+            }  catch (Exception e){
+                String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+                log4Error(methodName+" : "+e.getMessage() );
+                Error_interface(String.valueOf(e));
+            }
+
+    }
+
+    private static void closeWordFile(){
+
+
+        try {
+            document.close();
+        }   catch (Exception e){
+        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+        log4Error(methodName+" : "+e.getMessage() );
+        Error_interface(String.valueOf(e));
+    }
+
+    }
     public static void Extract_Table(String path, ArrayList<String> cause, ArrayList<String> effect,int CauseEffectTableOrder) {
 
         rowNumber=-1;
-        try {
-
-        // Open the docx file
-        File file = new File(path);
-        FileInputStream fis = new FileInputStream(file);
-        XWPFDocument document = new XWPFDocument(fis);
+        // Open the document
+        openWordFile(path);
 
         // Get the first table in the document
         XWPFTable table = document.getTables().get(CauseEffectTableOrder);
         // Loop through each row of the table
-        log4Info("Extract Cause/Effect Table progress");
+      //  log4Info("Extract Cause/Effect Table progress");
         for (int i = 0; i < table.getRows().size(); i++) {
 
             ExtractCausesEffects( table.getRow(i),cause,effect);
 
         }
         // Close the document
-        document.close();
+        closeWordFile();
 
-    }  catch (Exception e){
-        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        log4Error(methodName+" : "+e.getMessage() );
-        Error_interface(String.valueOf(e));
-    }
     }
 }
 

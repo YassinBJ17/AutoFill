@@ -8,9 +8,9 @@ import java.io.IOException;
 import static COMMUN.LoggerInitialize.*;
 
 public class GraphicUserInterfaces {
-    public static JDialog Waiting_interface() {
+    public static JDialog Waiting_interface(String message) {
 
-        String message = "Waiting..";
+
         JOptionPane pane = new JOptionPane(message, JOptionPane.INFORMATION_MESSAGE);
         pane.setForeground(Color.WHITE);
         JDialog dialog = pane.createDialog(null, "Message");

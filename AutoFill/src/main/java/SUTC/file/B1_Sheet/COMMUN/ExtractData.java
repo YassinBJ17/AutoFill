@@ -1,5 +1,12 @@
 package SUTC.file.B1_Sheet.COMMUN;
 
+import static COMMUN.GraphicUserInterfaces.Error_interface;
+import static COMMUN.LoggerInitialize.log4Error;
+import static SUTC.file.B1_Sheet.B1_ExcelSheet.Parameters;
+import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.INDEX_OF_NAME;
+import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.INDEX_OF_TYPE;
+import static SUTC.file.SutcCreationProccess.lowLevelReq;
+
 public class ExtractData {
 
     public static String Extract_Invalid_Domain(String domain){
@@ -17,7 +24,8 @@ public class ExtractData {
         max=max.replace("}"," ");
         max=max.substring(0,max.indexOf(" "));
 
-        invalid="[0x80000000.."+min+"-1] U ["+max+" +1..0x7FFFFFFF]";
+        //invalid="[0x80000000.."+min+"-1] U ["+max+" +1..0x7FFFFFFF]";
+        invalid="[0x80000000.."+min+"[ # ]"+max+"..0x7FFFFFFF]";
         return invalid;
     }
     public static String[] Extract_Domain(String type) {
@@ -28,7 +36,7 @@ public class ExtractData {
                 {"uint16_t", "[0..0xFFFF]","-"},
                 {"uint32_t", "[0..0xFFFFFFFF]","-"},
                 {"uint64_t", "[0..0xFFFFFFFFFFFFFFFF]","-"},
-                {"boolean_t", "{FALSE,TRUE}","[0x2..0xFFFFFFFF]"},
+                {"boolean_t", "{FALSE,TRUE}","[0x70000000..FALSE[ # ]TRUE..0x8FFFFFFF]"},
                 {"float32_t", "[-3.4E38..3.4E38]","-"},
                 {"float64_t", "[2.2E-308..1.7E308]","-"}
         };
@@ -46,26 +54,44 @@ public class ExtractData {
         }
         return tab;
     }
-    public static String Access_Detect(String[] LLR, String p) {
+    public static String Access_Detect( int p) {
         String r="";
-        int pos=0;
+        int pos_start=0,pos_end=0;
 
-        for (int i = 0; i <LLR.length ; i++) {
-            if(LLR[i].toUpperCase().contains("PARAMETERS"))
+        for (int i = 0; i <lowLevelReq.length ; i++) {
+            if(lowLevelReq[i].toUpperCase().contains("PARAMETERS"))
             {
-                pos=i;
+                pos_start=i;
                 break;
-            }}
+            }
+        }
+        for (int i = 0; i <lowLevelReq.length ; i++) {
+            if(lowLevelReq[i].toUpperCase().contains("[COV.REQ"))
+            {
+                pos_end=i;
+                break;
+            }
+        }
 
-        for (int i = pos; i <LLR.length ; i++) {
 
-            if(LLR[i].contains(p)){
-                r= (LLR[i].substring(LLR[i].indexOf("(")+1,LLR[i].indexOf(")")));
 
-                if ((!r.equals("R"))&&(!r.equals("W"))&&(!r.equals("R/W")))
+        for (int i = pos_start; i <pos_end ; i++) {
+
+
+            if(lowLevelReq[i].contains( Parameters[p][INDEX_OF_NAME])||lowLevelReq[i].contains( Parameters[p][INDEX_OF_TYPE])){
+
+                r= (lowLevelReq[i].substring(lowLevelReq[i].indexOf("(")+1,lowLevelReq[i].indexOf(")")));
+
+                if ((!r.equals("R"))&&(!r.equals("W"))&&(!r.equals("R/W"))&&(!r.equals("R\\W")))
                 {
-                    r=LLR[i].substring(LLR[i].indexOf(")")+1);
-                    r= r.substring(r.indexOf("(")+1,r.indexOf(")"));
+                    try {
+                        r=lowLevelReq[i].substring(lowLevelReq[i].indexOf(")")+1);
+                        r= r.substring(r.indexOf("(")+1,r.indexOf(")"));
+                    } catch (IndexOutOfBoundsException e) {
+                        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+                        log4Error(methodName+" : "+e.getMessage() );
+                        Error_interface(String.valueOf(e));
+                    }
                 }
 
                 return r;

@@ -28,13 +28,13 @@ public static void Processing(String directory){
             if (listOfFile.isFile()) {
                 if ((listOfFile.getName().contains(".docm")||(listOfFile.getName().contains(".docx"))) && (!listOfFile.getName().contains("~"))) {
 
-                    JDialog dialog = Waiting_interface();
+
                     cause= new ArrayList<>(); // initialize cause table
                     effect= new ArrayList<>(); // initialize effect table
                     SDDDfileName =listOfFile.getName();
                     log4Info(SDDDfileName);
                     path =directory+ SDDDfileName;
-                    Excel_Final(path, Username_filling(), cause, effect,dialog); //filling SUTC
+                    Excel_Final(path, Username_filling(), cause, effect); //filling SUTC
                     log4Info("SUTC Creation success");
                 }
             }

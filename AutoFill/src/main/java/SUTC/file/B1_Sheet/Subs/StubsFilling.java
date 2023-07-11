@@ -2,21 +2,21 @@ package SUTC.file.B1_Sheet.Subs;
 
 import SUTC.file.B1_Sheet.B1_ExcelSheet;
 import SUTC.file.B1_Sheet.DataDictionarySearch.DataDictionary;
-import SUTC.file.SutcCreationProccess;
 import SUTC.file.COMMUN.ExcelModifier;
 import CODE.file.ExtractCode;
+
+import static CODE.file.ExtractCode.extractFunctionCode;
 import static COMMUN.LoggerInitialize.*;
-import static SUTC.file.B1_Sheet.B1_ExcelSheet.Parameters;
-import static SUTC.file.B1_Sheet.B1_ExcelSheet.Stubs;
+import static SUTC.file.B1_Sheet.B1_ExcelSheet.*;
 import static SUTC.file.B1_Sheet.PrametersFilling.ParametersFilling.Extract_Parameters;
-import static SUTC.file.COMMUN.ExcelModifier.Fill_Cell;
-import static SUTC.file.COMMUN.ExcelModifier.Search;
+import static SUTC.file.COMMUN.ExcelModifier.*;
 import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
 
 import static SUTC.file.B1_Sheet.COMMUN.ExtractData.Extract_Domain;
 import static SUTC.file.B1_Sheet.COMMUN.ExtractData.Extract_Invalid_Domain;
 import static SUTC.file.B1_Sheet.COMMUN.InsertData.Insert_Invalid_Row;
 import static SUTC.file.B1_Sheet.COMMUN.InsertData.Insert_Row;
+import static SUTC.file.SutcCreationProccess.number_of_UFT;
 
 
 /////////////////////////////////////////////////////STUBS//////////////////////////////////////////////////////////
@@ -27,24 +27,30 @@ public class StubsFilling {
         int numberOfStubs= Extract_Stubs(LLR);
 
 
-
         String Code_Stub;
         String[] Code_stub;
         int numberOfParameters;
 
-        int distance= B1_ExcelSheet.STUB_PARAMETERS_TABLE_POSITION -1 + SutcCreationProccess.number_of_UFT;
+        int distance= STUB_PARAMETERS_TABLE_POSITION;
+
+        if (numberOfStubs==0){
+        for (int j = 7; j <10 ; j++) { // add empty lines
+            Fill_Cell(" ", SHEET_B1, STUB_DEFINITION_TABLE_POSITION+ number_of_UFT, CELL_COL_1);
+        }
+        }
+
         for (int i = 0; i <numberOfStubs ; i++) {
 
-            Code_Stub=(ExtractCode.extract(Stubs[i]+".c"));
+            Code_Stub=(extractFunctionCode(Stubs[i].trim()+".c"));
 
-            Fill_Cell(Stubs[i], SHEET_B1, B1_ExcelSheet.STUB_DEFINITION_TABLE_POSITION+ SutcCreationProccess.number_of_UFT +(i* B1_ExcelSheet.DISTANCE_BETWEEN_STUBS), CELL_COL_2);
+            Fill_Cell(Stubs[i], SHEET_B1, STUB_DEFINITION_TABLE_POSITION+ number_of_UFT +(i* DISTANCE_BETWEEN_STUBS), CELL_COL_2);
 
             if(Code_Stub.equals("")){
-                //ExcelModifier.Fill_Cell("not exist in the Code", SHEET_B1, B1_ExcelSheet.STUB_DEFINITION_TABLE_POSITION+ SutcCreationProccess.number_of_UFT +(i* B1_ExcelSheet.DISTANCE_BETWEEN_STUBS)+2, CELL_COL_2);
+                //ExcelModifier.Fill_Cell("not exist in the Code", SHEET_B1, B1_ExcelSheet.STUB_DEFINITION_TABLE_POSITION+ SutcCreation Proccess.number_of_UFT +(i* B1_ExcelSheet.DISTANCE_BETWEEN_STUBS)+2, CELL_COL_2);
                 for (int j = 7; j <10 ; j++) { // add empty lines
-                    Fill_Cell("'", SHEET_B1, B1_ExcelSheet.STUB_DEFINITION_TABLE_POSITION+ SutcCreationProccess.number_of_UFT +(i* B1_ExcelSheet.DISTANCE_BETWEEN_STUBS)+j, CELL_COL_1);
+                    Fill_Cell(" ", SHEET_B1, STUB_DEFINITION_TABLE_POSITION+ number_of_UFT +(i* DISTANCE_BETWEEN_STUBS)+j, CELL_COL_1);
                 }
-                distance=distance+ B1_ExcelSheet.DISTANCE_BETWEEN_STUBS;
+                distance=distance+ DISTANCE_BETWEEN_STUBS;
                 continue; // if code not exist.
             }
             Code_stub=Code_Stub.split("\n"); // split code in table
@@ -59,22 +65,34 @@ public class StubsFilling {
 
             for (int j = 0; j < numberOfParameters; j++) {
 
-                distance+=Insert_Row(distance+j, Parameters[j]);
 
-                if ((Parameters[j][INDEX_OF_ACCESS].contains("out")|| Parameters[j][INDEX_OF_ACCESS].contains("Return"))&&(!(Parameters[j][7].equals("-")))){
+
+                if ((Parameters[j][INDEX_OF_ACCESS].contains("out")|| Parameters[j][INDEX_OF_ACCESS].contains("Return"))&&(!(Parameters[j][INDEX_OF_INVALID_DOMAIN].equals("-")))){
+
+                    int fist_row=distance;
+                    distance+=Insert_Invalid_Row(distance, Parameters[j]);
+                    distance+=Insert_Row(distance, Parameters[j]);
                     distance++;
-                    distance+=Insert_Invalid_Row(distance+j, Parameters[j]);
+                    distance+=Insert_Invalid_Row(distance, Parameters[j]);
+
+                    // merge cells
+                    for (int k = 1; k <= 5; k++)
+                        Merge_Cells(SHEET_B1, k, fist_row+1, distance );
+
+                }else {
+
+                    distance+=Insert_Row(distance+j, Parameters[j]);
                 }
 
             }
-
-            distance=d+ B1_ExcelSheet.DISTANCE_BETWEEN_STUBS;
-
+            distance=d+ DISTANCE_BETWEEN_STUBS;
         }
 
+        if(numberOfStubs==0)
+            distance=distance+ DISTANCE_BETWEEN_STUBS;
 
-        ExcelModifier.Remove_Extra_Rows(SHEET_B1,distance-6, B1_ExcelSheet.END_OF_SHEET_POSITION+ SutcCreationProccess.number_of_UFT);
-        Fill_Cell("End of UTC definition", SHEET_B1,distance-7,1);
+        ExcelModifier.Remove_Extra_Rows(SHEET_B1,distance-6, B1_ExcelSheet.END_OF_SHEET_POSITION+ number_of_UFT);
+        //Fill_Cell("End of UTC definition", SHEET_B1,distance-7,1);
     }
     public static int Extract_Stubs(String[] LLR){
 
@@ -83,10 +101,11 @@ public class StubsFilling {
 
         for (int i = 0; i < LLR.length; i++) {
 
+
             if (Search(Stub_start,LLR[i])){
                 start=i+1;
             }
-            if (Search(Stub_end,LLR[i]))
+            if (Search(Stub_end,LLR[i].trim()))
             {
                 end=i-1;
                 break;
@@ -95,9 +114,11 @@ public class StubsFilling {
 
         for (int j = start; j <= end ; j++) {
 
-            if((LLR[j].trim().isEmpty())||(LLR[j].equalsIgnoreCase("none"))||(LLR[j].equalsIgnoreCase("none.")))
+            if((LLR[j].trim().isEmpty()))//||(LLR[j].trim().equalsIgnoreCase("none"))||(LLR[j].trim().equalsIgnoreCase("none."))) // en cas ou supprimer le stub vide
                 continue;
+
             Stubs[numberOfStubs]=LLR[j].trim();
+            log4Debug("Stub n° "+numberOfStubs+" "+Stubs[numberOfStubs]);
             numberOfStubs++;
         }
         return numberOfStubs;
@@ -110,6 +131,7 @@ public class StubsFilling {
             String llr_line=LLR[i].trim().toLowerCase();
             if((llr_line.contains(stub_name.toLowerCase()))||(llr_line.contains(stub_name.toLowerCase()+":")))
             {
+                System.out.println("llr_line"+llr_line);
                 position_of_stub=i+1;
                 break;
 
@@ -119,8 +141,10 @@ public class StubsFilling {
         int end = position_of_stub+numberOfParameters;
         int j=0;
 
+
         for (int i = position_of_stub; i <end; i++) {
 
+            System.out.println("LLR[i]"+LLR[i]);
             if (LLR[i].toUpperCase().contains("FUNCTION RETURN"))
                 end++;
             else
@@ -155,7 +179,7 @@ public class StubsFilling {
                 }
                 if (!(code_line.contains("void ")))  {
 
-                    Parameters[0][INDEX_OF_NAME] = "Return_Function";
+                    Parameters[0][INDEX_OF_NAME] = "Return_"+function_name;
                     Parameters[0][INDEX_OF_TYPE] = code_line.trim().substring(0, code_line.trim().indexOf(" ") );
                     Parameters[0][INDEX_OF_ACCESS] = "Return";
                     Parameters[0][INDEX_OF_DOMAIN] = (Extract_Domain(Parameters[0][INDEX_OF_TYPE]))[0];
@@ -170,7 +194,7 @@ public class StubsFilling {
 
                     break;
                 } else {
-                    Parameters[0][INDEX_OF_NAME] = "Return_Function";
+                    Parameters[0][INDEX_OF_NAME] = "Return_"+function_name;
                     Parameters[0][INDEX_OF_TYPE] = "void";
                     Parameters[0][INDEX_OF_ACCESS] = "Return";
                     Parameters[0][INDEX_OF_DOMAIN] = "-";

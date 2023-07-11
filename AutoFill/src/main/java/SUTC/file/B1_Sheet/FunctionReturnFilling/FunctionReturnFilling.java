@@ -4,6 +4,7 @@ import SUTC.file.B1_Sheet.B1_ExcelSheet;
 import SUTC.file.COMMUN.ExcelModifier;
 
 import static SUTC.file.B1_Sheet.B1_ExcelSheet.Parameters;
+import static SUTC.file.B1_Sheet.B1_ExcelSheet.RETURN_FUNCTION_INDEX;
 import static SUTC.file.B1_Sheet.DataDictionarySearch.DataDictionary.DataDictionarySearch;
 import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
 import static SUTC.file.B1_Sheet.COMMUN.ExtractData.Extract_Domain;
@@ -24,7 +25,6 @@ public class FunctionReturnFilling {
 
                 prototype = cLine;
 
-
                 if (!(prototype.contains("void "))) {
 
 
@@ -44,7 +44,7 @@ public class FunctionReturnFilling {
                         Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN]);
                     }
 
-                    Insert_Parameter(B1_ExcelSheet.RETURN_FUNCTION_INDEX,INDEX_RESERVED_FOR_FUNCTION_RETURN,null);
+                    Insert_Parameter(RETURN_FUNCTION_INDEX,INDEX_RESERVED_FOR_FUNCTION_RETURN,null);
                     B1_ExcelSheet.Prototype="RTRT_Ret_"+function_name+"="+ B1_ExcelSheet.Prototype;
 
                 }

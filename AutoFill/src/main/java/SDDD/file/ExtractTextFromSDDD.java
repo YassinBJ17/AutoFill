@@ -16,9 +16,12 @@ public class ExtractTextFromSDDD {
 
     public static String removeInvisibleChars(String input) {
         // Define a regular expression that matches invisible characters
+        // String pattern1= "[^a-zA-Z0-9!\"#$%&'()*+,\\-./;<=>?@[\\[\\\\]^_`{|}~\\s\\n]]";
 
-        String pattern = "[^a-zA-Z0-9!\"#$%&'()*+,\\-./:;<=>?@[\\[\\\\]^_`{|}~\\s\\r.\\n]¶]";
+         String pattern = "[^a-zA-Z0-9!\\[\\]\\s\\n\\-#$%&\"'’:()*+,./;<=>?@^_`{|}~]" ;
+
         return input.replaceAll(pattern, "");
+       // return input.replaceAll(pattern1, "");
 
     }
 

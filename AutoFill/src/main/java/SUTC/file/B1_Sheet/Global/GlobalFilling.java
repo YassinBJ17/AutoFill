@@ -3,8 +3,11 @@ import SUTC.file.B1_Sheet.B1_ExcelSheet;
 import SUTC.file.SutcCreationProccess;
 import SUTC.file.COMMUN.ExcelModifier;
 
+import static SUTC.file.A2_Sheet.A2_ExcelSheet.Insert_Global_ParameterInA2;
 import static SUTC.file.B1_Sheet.B1_ExcelSheet.INTERNAL_DEFINITIONS_POSITION;
-import static SUTC.file.B1_Sheet.B1_ExcelSheet.Parameters;
+import static SUTC.file.B1_Sheet.B1_ExcelSheet.*;
+import static SUTC.file.COMMUN.ExcelModifier.Fill_Cell;
+import static SUTC.file.COMMUN.ExcelModifier.Merge_Cells;
 import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -32,8 +35,6 @@ public class GlobalFilling {
                     Parameters[i][INDEX_OF_NAME]= B1_ExcelSheet.Globals[i].substring(B1_ExcelSheet.Globals[i].indexOf("{")+1, B1_ExcelSheet.Globals[i].indexOf("}")) ;
                 else Parameters[i][INDEX_OF_NAME]= B1_ExcelSheet.Globals[i].substring(0, B1_ExcelSheet.Globals[i].indexOf(" ")) ;
 
-
-
                 Parameters[i][INDEX_OF_TYPE]= DataDictionarySearch(Parameters[i][INDEX_OF_NAME],true) ;
                 Parameters[i][INDEX_OF_DOMAIN]=(Extract_Domain(Parameters[i][INDEX_OF_TYPE]))[0];
                 Parameters[i][INDEX_OF_CLASS]=(Extract_Domain(Parameters[i][INDEX_OF_TYPE]))[0];
@@ -45,7 +46,7 @@ public class GlobalFilling {
                     Parameters[i][INDEX_OF_INVALID_DOMAIN]=Extract_Invalid_Domain(Parameters[i][INDEX_OF_DOMAIN]);
                 }
 
-                B1_ExcelSheet.Global_Start+=Insert_Global_Parameter(B1_ExcelSheet.Global_Start+i+ number_of_UFT,i,LLR);
+                Global_Start+=Insert_Global_Parameter(Global_Start+i,i,LLR);
             }
         }catch (Exception e){
             Error_interface(String.valueOf(e));
@@ -66,7 +67,7 @@ log4Error(methodName+" : "+e.getMessage() );
                     if((LLR[j].trim().equalsIgnoreCase("None"))||(LLR[j].trim().equalsIgnoreCase("None.")))break;
 
                     if((!(LLR[j].trim().isEmpty()))&&(!(ExcelModifier.Search(B1_ExcelSheet.Globals, LLR[j])))){
-                        B1_ExcelSheet.Globals[numberOfGlobals]=LLR[j].trim();
+                        Globals[numberOfGlobals]=LLR[j].trim();
                         numberOfGlobals++;
                     }
                     j++;
@@ -81,7 +82,7 @@ log4Error(methodName+" : "+e.getMessage() );
         for (int i = 0; i < LLR.length; i++) {
 
             if(LLR[i].contains(parameter_name)){
-
+                LLR[i]=LLR[i].replace("\\","/");
                 if((LLR[i].toUpperCase().contains("IN:"))||(LLR[i].toUpperCase().contains("IN :")))
                     return "R";
                 else  if((LLR[i].toUpperCase().contains("IN/OUT:"))||(LLR[i].toUpperCase().contains("IN/OUT :")))
@@ -97,19 +98,12 @@ log4Error(methodName+" : "+e.getMessage() );
                         else if(LLR[j].toUpperCase().contains("INPUT DATA"))
                             return "R";
                     }
-
-
                 }
-
-
-
-
             }
-
         }
-
         return"";
     }
+
     public static boolean InternalDefinitionsExist(String parameter){
 
         Sheet A2_sheet= SutcCreationProccess.workbook.getSheetAt(SHEET_A2);
@@ -128,40 +122,35 @@ log4Error(methodName+" : "+e.getMessage() );
         return false;
     }
     public static int Insert_Global_Parameter(int row,int Parameter_number,String[] LLR) {
-
-
+        int return_Number_Of_Rows=0;
         Parameters[Parameter_number][INDEX_OF_ACCESS]= Access_Global_Detect(LLR, Parameters[Parameter_number][INDEX_OF_NAME]);
         Parameters[Parameter_number][INDEX_OF_NAME]= Parameters[Parameter_number][INDEX_OF_NAME].replace(":","");
 
         if ((Parameters[Parameter_number][INDEX_OF_ACCESS].contains("W"))&&(!(Parameters[Parameter_number][INDEX_OF_ACCESS].contains("/")))){
             Parameters[Parameter_number][INDEX_OF_CLASS]="-";
-        }
+            Insert_Row(row, Parameters[Parameter_number]);
+            return_Number_Of_Rows=1;
 
-        int return_Number_Of_Rows=Insert_Row(row, Parameters[Parameter_number]);
-        row=row+return_Number_Of_Rows;
+        }else if (((Parameters[Parameter_number][INDEX_OF_ACCESS].contains("R")))&&(!(Parameters[Parameter_number][INDEX_OF_INVALID_DOMAIN].equals("-")))){
 
-        if (((Parameters[Parameter_number][INDEX_OF_ACCESS].contains("R")))&&(!(Parameters[Parameter_number][INDEX_OF_INVALID_DOMAIN].equals("-")))){
+            int fist_row=row;
+            row+=Insert_Invalid_Row(row, Parameters[Parameter_number]);
+            row+=Insert_Row(row, Parameters[Parameter_number]);
             row++;
-            Insert_Invalid_Row(row, Parameters[Parameter_number]);
-        }
+            row+=Insert_Invalid_Row(row, Parameters[Parameter_number]);
 
+            // merge cells
+            for (int i = 1; i <= 5; i++)
+            Merge_Cells(SHEET_B1, i, fist_row+1, row );
+
+            return_Number_Of_Rows=5;
+
+        }else {
+            Insert_Row(row, Parameters[Parameter_number]);
+        }
 
         // A2 filling
-        ExcelModifier.Fill_Cell("Variable", SHEET_A2, INTERNAL_DEFINITIONS_POSITION+Parameter_number, CELL_COL_1);
-        if (Parameters[Parameter_number][INDEX_OF_NAME].contains(".")|| Parameters[Parameter_number][INDEX_OF_NAME].contains("->")) {
-            int index;
-            index= Parameters[Parameter_number][INDEX_OF_NAME].indexOf("->");
-
-            if (index==-1)
-                index= Parameters[Parameter_number][INDEX_OF_NAME].indexOf(".");
-
-            Parameters[Parameter_number][INDEX_OF_NAME] = Parameters[Parameter_number][INDEX_OF_NAME].substring(0,index);
-        }
-        if (!InternalDefinitionsExist(Parameters[Parameter_number][INDEX_OF_NAME])) {
-            ExcelModifier.Fill_Cell(Parameters[Parameter_number][INDEX_OF_NAME], SHEET_A2, INTERNAL_DEFINITIONS_POSITION +  Parameter_number, CELL_COL_2);
-            ExcelModifier.Fill_Cell(Parameters[Parameter_number][INDEX_OF_TYPE], SHEET_A2, INTERNAL_DEFINITIONS_POSITION +  Parameter_number, CELL_COL_3);
-        }
-
+        Insert_Global_ParameterInA2( Parameter_number);
         return return_Number_Of_Rows;
     }
 

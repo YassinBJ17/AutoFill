@@ -77,7 +77,8 @@ public class ExcelModifier {
             }
         } catch (NullPointerException e) {
             // handle the exception here
-            logger4j.error(e);
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            log4Error(methodName+" : "+e.getMessage() );
         }
     }
     public static void Merge_Cells(int sheet, int C1_start, int start_row, int end_row) {
@@ -91,7 +92,8 @@ public class ExcelModifier {
             s.addMergedRegion(range);
         }catch (Exception e)
         {
-            logger4j.error(e);
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            log4Error(methodName+" : "+e.getMessage() );
          }
 
     } // merge an interval of cells

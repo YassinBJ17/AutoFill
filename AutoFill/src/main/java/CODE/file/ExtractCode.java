@@ -1,6 +1,4 @@
 package CODE.file;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 
@@ -9,7 +7,6 @@ import static COMMUN.LoggerInitialize.*;
 
 public class ExtractCode {
 
-    private static final Logger LOGGER=LogManager.getLogger(ExtractCode.class.getName());
     public static String[] searchFunction(File directory, String filename) {
         // Get a list of all the files in the directory.
         File[] files = directory.listFiles();
@@ -24,7 +21,7 @@ public class ExtractCode {
                         return result;
                     }
                     // If the current file is not a directory and has the same name as the filename parameter, read the contents of the file.
-                } else if (file.getName().equals(filename)) {
+                } else if (file.getName().equalsIgnoreCase(filename)) {
                     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                         StringBuilder sb = new StringBuilder();
                         String line;
@@ -50,7 +47,7 @@ log4Error(methodName+" : "+e.getMessage() );
         // If the file is not found or if there is an error reading the file, return null.
         return null;
     }
-    public static String extract(String filename) {
+    public static String extractFunctionCode(String filename) {
 
         String directory="..\\Datafiles\\Code"; // replace with the directory you want to start the search from
 
@@ -82,7 +79,7 @@ log4Error(methodName+" : "+e.getMessage() );
         } else {
 
 
-            LOGGER.error("File not found: "+filename);
+            log4Error("File not found: "+filename);
 
         }
         return "" ;

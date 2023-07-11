@@ -18,7 +18,7 @@ public class ExtractRequirements {
        // LLR_Text=LLR_Text.replace("\n\n","\n");
         LLR_Text=LLR_Text.replace("Traceability","[");
 
-        log4Info("Extract requirements progress");
+
 
         for (int i = 0; i <cause.size() ; i++) {
 
@@ -31,8 +31,6 @@ public class ExtractRequirements {
             }
 
         }
-
-
 
         for (int i = 0; i <effect.size() ; i++)
         {
@@ -58,7 +56,7 @@ public class ExtractRequirements {
             if (final_requirements.equals("")) {
                 requirement=Delete_extra_return_line(requirement);
                 effect.set(i, requirement);
-                System.err.println(requirement);
+                //System.err.println(requirement);
             }
                 else {
 
@@ -67,6 +65,7 @@ public class ExtractRequirements {
                 effect.set(i, StubCall_Requirements_Modifier(SettingValue_req_Modifier(final_requirements)));
             }
         }
+        log4Info("Extract requirements success");
     }
 }
 

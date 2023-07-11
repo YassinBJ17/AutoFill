@@ -17,7 +17,7 @@ public class RemoveExtraRow {
 
         while (bool){
             bool=false;
-            for (int i = START_OF_PARAMETERS_TABLE+1+ number_of_UFT; i <B1_sheet.getLastRowNum() ; i++) {
+            for (int i = START_OF_PARAMETERS_TABLE+1; i <B1_sheet.getLastRowNum() ; i++) {
 
                 Row row = B1_sheet.getRow(i);
 
@@ -32,6 +32,7 @@ public class RemoveExtraRow {
                             break;
                         }
                     }
+
                     if(secondCell!=null){
                         if (secondCell.getCellType() == CellType.BLANK && !isMerged) {
                             // If the second cell is empty or null, delete the row
@@ -71,6 +72,9 @@ public class RemoveExtraRow {
                 }
 
             }
+
+
+
 
         }
     }

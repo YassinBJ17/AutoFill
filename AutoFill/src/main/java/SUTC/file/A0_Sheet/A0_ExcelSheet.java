@@ -18,7 +18,7 @@ public class A0_ExcelSheet {
         Fill_Cell(CSU_Name, SHEET_A0, CELL_ROW_4, CELL_COL_3);//CSU Name Filling
         Fill_Cell(CSU_Name, SHEET_A0, CELL_ROW_15, CELL_COL_2);//CSU Name Filling
 
-        String CSC_Name=CSU_Name.substring(0,CSU_Name.indexOf("_"));
+        String CSC_Name="CSC_"+CSU_Name.substring(0,CSU_Name.indexOf("_"));
         Fill_Cell(CSC_Name, SHEET_A0, CELL_ROW_3, CELL_COL_3);//CSC Name Filling
 
         Fill_Cell(SDDDfileName, SHEET_A0, CELL_ROW_8, CELL_COL_2);//Reference Documents Filling
