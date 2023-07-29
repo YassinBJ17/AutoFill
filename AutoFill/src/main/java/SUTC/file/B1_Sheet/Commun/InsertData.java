@@ -1,25 +1,22 @@
-package SUTC.file.B1_Sheet.COMMUN;
-import SUTC.file.B1_Sheet.B1_ExcelSheet;
-import SUTC.file.SutcCreationProccess;
-import SUTC.file.COMMUN.ExcelModifier;
+package SUTC.file.B1_Sheet.Commun;
 import java.util.Objects;
 import static SUTC.file.B1_Sheet.B1_ExcelSheet.INTERNAL_VARIABLES_POSITION;
 import static SUTC.file.B1_Sheet.B1_ExcelSheet.Parameters;
-import static SUTC.file.B1_Sheet.Classes.ClassFilling.Classes_Filling;
-import static SUTC.file.B1_Sheet.COMMUN.ExtractData.Access_Detect;
-import static COMMUN.LoggerInitialize.*;
-import static SUTC.file.COMMUN.ExcelModifier.Fill_Cell;
-import static SUTC.file.COMMUN.ExcelModifier.Merge_Cells;
-import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
-import static SUTC.file.SutcCreationProccess.number_of_UFT;
+import static SUTC.file.B1_Sheet.Commun.ExtractData.Access_Detect;
+import static Commun.LoggerInitialize.*;
+import static SUTC.file.B1_Sheet.FunctionReturnFilling.FunctionReturnFilling.INDEX_RESERVED_FOR_FUNCTION_RETURN;
+import static SUTC.file.Commun.ExcelManipulation.Fill_Cell;
+import static SUTC.file.Commun.ExcelManipulation.MergeRows;
+import static SUTC.file.Commun.ExcelRowsAndColsConstants.*;
 
 
 public class InsertData {
 
-    public static int Insert_Parameter(int row,int Parameter_number,String[] LLR){
+    public static int Insert_Parameter(int row,int Parameter_number){
 
-        if(LLR!=null)
+        if(Parameter_number!=INDEX_RESERVED_FOR_FUNCTION_RETURN)
             Parameters[Parameter_number][INDEX_OF_ACCESS]= Access_Detect(Parameter_number);
+
         if(row<= INTERNAL_VARIABLES_POSITION-2)
             Parameters[Parameter_number][INDEX_OF_ACCESS] = Parameters[Parameter_number][INDEX_OF_ACCESS].replace("R", "In").replace("W", "Out");
 
@@ -56,7 +53,7 @@ public class InsertData {
                 parameter[INDEX_OF_INVALID_DOMAIN]=Insert_Invalide_Manipulation(row, parameter);
 
                for (int i = 6; i <= 8; i++)
-                    Merge_Cells(SHEET_B1, i, row+1, row +2);
+                    MergeRows(SHEET_B1_INDEX, i, row+1, row +2);
 
                 return 2; // two line added
 
@@ -87,7 +84,7 @@ public class InsertData {
                 // Check if variable
                 if((Objects.equals(parameter[INDEX_OF_INVALID_DOMAIN], "-"))||(i>5)||(bool))
 
-                    Merge_Cells(SHEET_B1,i,row+1,row+2);
+                    MergeRows(SHEET_B1_INDEX,i,row+1,row+2);
             }
             return_Number_Of_Rows++;
         }
@@ -112,9 +109,9 @@ public class InsertData {
 
     for (int i = 6; i <= 8; i++) {
         if (i == 7)
-            Fill_Cell("I", SHEET_B1, row, i);
+            Fill_Cell("I", SHEET_B1_INDEX, row, i);
         else {
-            Fill_Cell(firstInterval, SHEET_B1, row, i);
+            Fill_Cell(firstInterval, SHEET_B1_INDEX, row, i);
         }
     }
     return secondInterval;
@@ -127,12 +124,12 @@ public class InsertData {
 
             if (i==1) {
                 if ((parameter[INDEX_OF_NAME].contains("["))&&(parameter[INDEX_OF_NAME].contains("]"))) {
-                    Fill_Cell(parameter[INDEX_OF_NAME].replace("[", "[0..").replace("]", "-1]"), SHEET_B1, row, i); // array manipulation
+                    Fill_Cell(parameter[INDEX_OF_NAME].replace("[", "[0..").replace("]", "-1]"), SHEET_B1_INDEX, row, i); // array manipulation
                     parameter[INDEX_OF_TYPE]=parameter[INDEX_OF_TYPE]+"[ARRAY]";
                 }else
-                    Fill_Cell(parameter[i], SHEET_B1,row,i);
+                    Fill_Cell(parameter[i], SHEET_B1_INDEX,row,i);
             }else
-                Fill_Cell(parameter[i], SHEET_B1,row,i);
+                Fill_Cell(parameter[i], SHEET_B1_INDEX,row,i);
         }
     }
 

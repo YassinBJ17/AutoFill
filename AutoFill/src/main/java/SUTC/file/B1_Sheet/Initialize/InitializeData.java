@@ -1,23 +1,25 @@
 package SUTC.file.B1_Sheet.Initialize;
 
 import SUTC.file.B1_Sheet.B1_ExcelSheet;
-import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
-import SUTC.file.COMMUN.ExcelModifier;
+import static SUTC.file.Commun.ExcelRowsAndColsConstants.*;
+import static SUTC.file.SutcCreationProcess.functionName;
+
+import SUTC.file.Commun.ExcelManipulation;
 
 import java.util.Arrays;
 
 public class InitializeData {
 
-public static void Initialize_Data(String function_name) {
+public static void Initialize_Data() {
         Arrays.fill(B1_ExcelSheet.Globals, "");
         Arrays.fill(B1_ExcelSheet.Stubs, "");
 
         for (String[] row : B1_ExcelSheet.Parameters) {
         Arrays.fill(row, "");
         }
-        ExcelModifier.Fill_Cell("Unit Test Cases for: " + function_name, SHEET_B1, CELL_ROW_0, CELL_COL_2);
+        ExcelManipulation.Fill_Cell("Unit Test Cases for: " + functionName, SHEET_B1_INDEX, CELL_ROW_0, CELL_COL_2);
 
-        B1_ExcelSheet.Prototype=function_name+"(";
+        B1_ExcelSheet.prototypeOfTheFunction =functionName+"(";
 
         }
 }

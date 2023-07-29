@@ -1,11 +1,11 @@
-package SUTC.file.B1_Sheet.COMMUN;
+package SUTC.file.B1_Sheet.Commun;
 
-import static COMMUN.GraphicUserInterfaces.Error_interface;
-import static COMMUN.LoggerInitialize.log4Error;
+import static Commun.GraphicUserInterfaces.Error_interface;
+import static Commun.LoggerInitialize.log4Error;
 import static SUTC.file.B1_Sheet.B1_ExcelSheet.Parameters;
-import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.INDEX_OF_NAME;
-import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.INDEX_OF_TYPE;
-import static SUTC.file.SutcCreationProccess.lowLevelReq;
+import static SUTC.file.Commun.ExcelRowsAndColsConstants.INDEX_OF_NAME;
+import static SUTC.file.Commun.ExcelRowsAndColsConstants.INDEX_OF_TYPE;
+import static SUTC.file.SutcCreationProcess.llrOfTheFunction;
 
 public class ExtractData {
 
@@ -15,6 +15,7 @@ public class ExtractData {
             return "-";
 
         String max,min,invalid;
+
         domain=domain.substring(domain.indexOf("{")+1);
         domain=domain.trim();
         min=domain.substring(0,domain.indexOf(" "));
@@ -58,15 +59,15 @@ public class ExtractData {
         String r="";
         int pos_start=0,pos_end=0;
 
-        for (int i = 0; i <lowLevelReq.length ; i++) {
-            if(lowLevelReq[i].toUpperCase().contains("PARAMETERS"))
+        for (int i = 0; i < llrOfTheFunction.length ; i++) {
+            if(llrOfTheFunction[i].toUpperCase().contains("PARAMETERS"))
             {
                 pos_start=i;
                 break;
             }
         }
-        for (int i = 0; i <lowLevelReq.length ; i++) {
-            if(lowLevelReq[i].toUpperCase().contains("[COV.REQ"))
+        for (int i = 0; i < llrOfTheFunction.length ; i++) {
+            if(llrOfTheFunction[i].toUpperCase().contains("[COV.REQ"))
             {
                 pos_end=i;
                 break;
@@ -78,14 +79,14 @@ public class ExtractData {
         for (int i = pos_start; i <pos_end ; i++) {
 
 
-            if(lowLevelReq[i].contains( Parameters[p][INDEX_OF_NAME])||lowLevelReq[i].contains( Parameters[p][INDEX_OF_TYPE])){
+            if(llrOfTheFunction[i].contains( Parameters[p][INDEX_OF_NAME])|| llrOfTheFunction[i].contains( Parameters[p][INDEX_OF_TYPE])){
 
-                r= (lowLevelReq[i].substring(lowLevelReq[i].indexOf("(")+1,lowLevelReq[i].indexOf(")")));
+                r= (llrOfTheFunction[i].substring(llrOfTheFunction[i].indexOf("(")+1, llrOfTheFunction[i].indexOf(")")));
 
                 if ((!r.equals("R"))&&(!r.equals("W"))&&(!r.equals("R/W"))&&(!r.equals("R\\W")))
                 {
                     try {
-                        r=lowLevelReq[i].substring(lowLevelReq[i].indexOf(")")+1);
+                        r= llrOfTheFunction[i].substring(llrOfTheFunction[i].indexOf(")")+1);
                         r= r.substring(r.indexOf("(")+1,r.indexOf(")"));
                     } catch (IndexOutOfBoundsException e) {
                         String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();

@@ -2,7 +2,6 @@ package SDDD.file;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -12,17 +11,46 @@ import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
-import static COMMUN.GraphicUserInterfaces.Error_interface;
-import static SDDD.file.ExtractTextFromSDDD.removeInvisibleChars;
-import static SUTC.file.SutcCreationProccess.switchArray;
-import static COMMUN.LoggerInitialize.*;
+import static Commun.GraphicUserInterfaces.Error_interface;
+import static SDDD.file.ExtractText.removeInvisibleChars;
+import static Commun.LoggerInitialize.*;
+import static SUTC.file.Commun.switchOrIfCalled.CheckIfSwitchExistInCode;
+import static SUTC.file.Commun.switchOrIfCalled.switchArray;
 
 public class ExtractCausesEffectTable {
 
     public static final String WHITE_COLOR_HEXA="FFFFFF";
     private static int rowNumber=-1;
-
+    public static int causeEffectTableOrder;
     private static XWPFDocument document;
+
+
+    public static int getTheFirstCauseEffectTable(String document_path){
+
+        XWPFTableCell cell;
+        XWPFTable table;
+        try {
+            File file = new File(document_path);
+            FileInputStream fis = new FileInputStream(file);
+            XWPFDocument document = new XWPFDocument(fis);
+
+            for (int i = 0; i < document.getTables().size(); i++) {
+                table = document.getTables().get(i);
+                cell = table.getRow(0).getCell(1);
+                if (cell!=null)
+                    if(cell.getText().equalsIgnoreCase("causes")){
+                        document.close();
+                        return i;
+                    }
+            }
+            document.close();
+        } catch (Exception e){
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            log4Error(methodName+" : "+e.getMessage() );
+            Error_interface(String.valueOf(e));
+        }
+        return -1 ;
+    }
 
     public static boolean IsRequirement(String requirement) {
         String[] notReq={"DO NOTHING","EFFECTS","ALL OTHER CASE","CAUSES","NO EFFECT","ALWAYS","NO EFFECTS","ALL THE OTHER CASES","NO DATA TO READ"};
@@ -47,9 +75,9 @@ public class ExtractCausesEffectTable {
         //logDebug(causes);
 
         if ((!(causes.startsWith("["))) && (!(causes.endsWith("]")))) {
-            if ((causes.toUpperCase().contains("OR")) || (causes.toUpperCase().contains("AND"))) {
+            if ((causes.contains("OR")) || (causes.contains("AND"))) { // OR , AND are required uppercase
 
-                String[] cause_table = causes.split("\\s+(?i)(or|and)\\s+");
+                String[] cause_table = causes.split("\\s+(OR|AND)\\s+");
                 cause.addAll(Arrays.asList(cause_table));
             } else
                 cause.add(causes);
@@ -165,14 +193,17 @@ public class ExtractCausesEffectTable {
     }
 
     }
-    public static void Extract_Table(String path, ArrayList<String> cause, ArrayList<String> effect,int CauseEffectTableOrder) {
+    public static void Extract_Table(String path, ArrayList<String> cause, ArrayList<String> effect ) {
 
+
+
+        CheckIfSwitchExistInCode(); // check if the code contains switch statements
         rowNumber=-1;
         // Open the document
         openWordFile(path);
 
         // Get the first table in the document
-        XWPFTable table = document.getTables().get(CauseEffectTableOrder);
+        XWPFTable table = document.getTables().get(causeEffectTableOrder);
         // Loop through each row of the table
       //  log4Info("Extract Cause/Effect Table progress");
         for (int i = 0; i < table.getRows().size(); i++) {
@@ -182,6 +213,7 @@ public class ExtractCausesEffectTable {
         }
         // Close the document
         closeWordFile();
+        causeEffectTableOrder++;
 
     }
 }

@@ -1,4 +1,4 @@
-package COMMUN;
+package Commun;
 
 public class UsernameExtract {
 

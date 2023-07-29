@@ -8,9 +8,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.*;
 
-import static COMMUN.GraphicUserInterfaces.Error_interface;
-import static COMMUN.LoggerInitialize.log4Debug;
-import static COMMUN.LoggerInitialize.log4Error;
+import static Commun.GraphicUserInterfaces.Error_interface;
+import static Commun.LoggerInitialize.log4Debug;
+import static Commun.LoggerInitialize.log4Error;
 
 public class DataDictionary {
 
@@ -34,6 +34,7 @@ public class DataDictionary {
     try {
 
 
+        assert files != null;
         for (File file : files) {
             if (file.isFile() && file.getName().endsWith(".xlsx")) {
 

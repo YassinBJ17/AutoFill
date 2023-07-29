@@ -3,10 +3,12 @@ package SUTC.file.B1_Sheet.PrametersFilling;
 import SUTC.file.B1_Sheet.B1_ExcelSheet;
 import static SUTC.file.B1_Sheet.B1_ExcelSheet.*;
 import static SUTC.file.B1_Sheet.DataDictionarySearch.DataDictionary.DataDictionarySearch;
-import static SUTC.file.COMMUN.ExcelModifier.Parameters_Detect;
-import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
-import static SUTC.file.B1_Sheet.COMMUN.ExtractData.*;
-import static SUTC.file.B1_Sheet.COMMUN.InsertData.Insert_Parameter;
+import static SUTC.file.Commun.ExcelManipulation.Parameters_Detect;
+import static SUTC.file.Commun.ExcelRowsAndColsConstants.*;
+import static SUTC.file.B1_Sheet.Commun.ExtractData.*;
+import static SUTC.file.B1_Sheet.Commun.InsertData.Insert_Parameter;
+import static SUTC.file.SutcCreationProcess.codeOfTheFunction;
+import static SUTC.file.SutcCreationProcess.functionName;
 
 
 public class ParametersFilling {
@@ -81,26 +83,25 @@ public class ParametersFilling {
         }
         return numberOfParameters;
     }
-    public static void Parameters_Filling(String[] code, String[] LLR) {
+    public static void Parameters_Filling() {
 
-        int numberOfParameters=Extract_Parameters(code,LLR[1]);
+        Parameters=new String[100][10];
+        int numberOfParameters=Extract_Parameters(codeOfTheFunction,functionName);
         int normal_parameters_index= START_OF_PARAMETERS_TABLE;// for normal parameters
         int complex_parameters_index= INTERNAL_VARIABLES_POSITION;// for pointer Complex parameters
         for (int i = 0; i <numberOfParameters ; i++) {
 
             if (Parameters[i][INDEX_OF_POINTER].equals("isNormal")){
-                normal_parameters_index=Insert_Parameter(normal_parameters_index,i, LLR);
-                Prototype+= Parameters[i][INDEX_OF_NAME]+", ";
+                normal_parameters_index=Insert_Parameter(normal_parameters_index,i);
+                prototypeOfTheFunction += Parameters[i][INDEX_OF_NAME]+", ";
             }
             else
             {
-                B1_ExcelSheet.Prototype+= "&"+ Parameters[i][INDEX_OF_NAME]+", ";
+                B1_ExcelSheet.prototypeOfTheFunction += "&"+ Parameters[i][INDEX_OF_NAME]+", ";
                 if(Parameters[i][INDEX_OF_DOMAIN].equals("-"))
-                    complex_parameters_index=Insert_Parameter(complex_parameters_index,i, LLR);
+                    complex_parameters_index=Insert_Parameter(complex_parameters_index,i);
                 else
-                    normal_parameters_index=Insert_Parameter(normal_parameters_index,i, LLR);
-
-
+                    normal_parameters_index=Insert_Parameter(normal_parameters_index,i);
 
             }
 

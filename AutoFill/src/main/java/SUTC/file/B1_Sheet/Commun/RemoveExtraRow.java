@@ -1,19 +1,24 @@
-package SUTC.file.B1_Sheet.COMMUN;
+package SUTC.file.B1_Sheet.Commun;
 
-import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
+import static SUTC.file.B1_Sheet.B1_ExcelSheet.MAXIMUM_UFT_NUMBER;
+import static SUTC.file.Commun.ExcelManipulation.MergeCols;
+import static SUTC.file.Commun.ExcelRowsAndColsConstants.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import static SUTC.file.B1_Sheet.B1_ExcelSheet.START_OF_PARAMETERS_TABLE;
-import static SUTC.file.SutcCreationProccess.number_of_UFT;
-import static COMMUN.LoggerInitialize.*;
+import static Commun.LoggerInitialize.*;
+import static SUTC.file.SutcCreationProcess.*;
 
 public class RemoveExtraRow {
 
-    public static void  Remove_Extra_Row( Workbook workbook){
+    public static void RemoveExtraRows(){
 
-        Sheet B1_sheet= workbook.getSheetAt(SHEET_B1);
-        Sheet A2_sheet= workbook.getSheetAt(SHEET_A2);
+        Sheet B1_sheet= workbook.getSheetAt(SHEET_B1_INDEX);
+        Sheet A2_sheet= workbook.getSheetAt(SHEET_A2_INDEX);
         boolean bool=true;
+
+
+
 
         while (bool){
             bool=false;
@@ -77,5 +82,25 @@ public class RemoveExtraRow {
 
 
         }
+
+
+        if (numberOfUFT<MAXIMUM_UFT_NUMBER)
+        {
+            try {
+                B1_sheet.shiftRows(START_OF_PARAMETERS_TABLE-1, B1_sheet.getLastRowNum(), numberOfUFT-(MAXIMUM_UFT_NUMBER));
+
+                for (int i = 0; i <numberOfUFT ; i++) {
+                    MergeCols(SHEET_B1_INDEX,1,10+i,9);
+                }
+
+            }catch (Exception e)
+            {
+                String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+                log4Error(methodName+" : "+e.getMessage() );
+            }
+
+        }
+
+
     }
 }

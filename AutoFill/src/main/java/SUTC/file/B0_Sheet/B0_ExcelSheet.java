@@ -1,18 +1,16 @@
 package SUTC.file.B0_Sheet;
-import SUTC.file.SutcCreationProccess;
-import SUTC.file.COMMUN.ExcelModifier;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 
-import static SUTC.file.COMMUN.ExcelModifier.Fill_Cell;
-import static SUTC.file.COMMUN.ExcelModifier.Remove_Extra_Rows;
-import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
-import java.util.ArrayList;
+import static SUTC.file.B1_Sheet.Commun.RemoveExtraColumn.removeExtraCols;
+import static SUTC.file.Commun.ExcelManipulation.*;
+import static SUTC.file.Commun.ExcelRowsAndColsConstants.*;
+
 import java.util.Objects;
 
-import static COMMUN.LoggerInitialize.*;
-import static SUTC.file.SutcCreationProccess.number_of_UFT;
-import static SUTC.file.SutcCreationProccess.workbook;
+import static Commun.LoggerInitialize.*;
+import static SUTC.file.Commun.utcUftNumberCounter.numberOfCauses;
+import static SUTC.file.SutcCreationProcess.*;
 
 public class B0_ExcelSheet {
 
@@ -23,36 +21,35 @@ public class B0_ExcelSheet {
 
     static void LLR_TraceabilityFilling(){
 
-    Fill_Cell(ExcelModifier.Req_detect(SutcCreationProccess.lowLevelReq), SHEET_B0, CELL_ROW_3, CELL_COL_4);//LLR traceability Filling
-    Fill_Cell(ExcelModifier.Req_detect(SutcCreationProccess.lowLevelReq), SHEET_B0, EFFECT_TABLE_POSITION + 1, CELL_COL_4);//LLR traceability Filling
+    Fill_Cell(llrTraceability(llrOfTheFunction), SHEET_B0_INDEX, CELL_ROW_3, CELL_COL_4);//LLR traceability Filling
+    Fill_Cell(llrTraceability(llrOfTheFunction), SHEET_B0_INDEX, EFFECT_TABLE_POSITION + 1, CELL_COL_4);//LLR traceability Filling
     }
     private static void HeaderFilling() {
-        Fill_Cell("Unit Functional Tests for: " + SutcCreationProccess.lowLevelReq[1], SHEET_B0, CELL_ROW_0, CELL_COL_2);
+        Fill_Cell("Unit Functional Tests for: " + functionName, SHEET_B0_INDEX, CELL_ROW_0, CELL_COL_2);
     }
-    private static int CausesFilling(ArrayList<String> causes_table){
+    private static int CausesFilling(){
         int number_of_causes = 1;
-        for (String cause : causes_table) {
+        for (String cause : causesTable) {
             if (!(Objects.equals(cause, "null"))) {
-                cause = cause.replace("\n\n", "\n"); // delete extra line return
-                Fill_Cell(cause, SHEET_B0, number_of_causes + CAUSES_TABLE_POSITION, CELL_COL_2);
+                cause = cause.replace("\n\n", "\n"); // delete extra line-return
+                Fill_Cell(cause, SHEET_B0_INDEX, number_of_causes + CAUSES_TABLE_POSITION, CELL_COL_2);
                 number_of_causes++;
             }
         }
         return number_of_causes ;
     }
-    private static int EffectFilling(ArrayList<String> effects_table) {
+    private static int EffectFilling() {
         int number_of_effects = 1;
-        for (String effect : effects_table) {
+        for (String effect : effectsTable) {
             effect = effect.replace("CALL ","\nCALL ");
             effect = effect.replace("Set ","\nSet ");
             effect =effect.replaceFirst("^\\n", "");// delete the first character from a string if it is equal to a newline character (\n)
             effect = effect.replace("\n\n", "\n"); // delete extra line return
-            Fill_Cell(effect, SHEET_B0, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
+            Fill_Cell(effect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
             number_of_effects++;
         }
         return number_of_effects ;
     }
-
     private static boolean isCellMerged(Sheet sheet, int rowIndex, int columnIndex) {
         for (CellRangeAddress range : sheet.getMergedRegions()) {
             if (range.isInRange(rowIndex, columnIndex)) {
@@ -61,39 +58,63 @@ public class B0_ExcelSheet {
         }
         return false;
     }
+        private static void removeExtraCells(int number_of_effects){
 
-    private static void ExtraRowsRemoving(int number_of_effects, int number_of_causes){
 
-        number_of_effects = (number_of_effects == 1) ? 2 : number_of_effects;
-        Remove_Extra_Rows(SHEET_B0, EFFECT_TABLE_POSITION + number_of_effects, END_OF_SHEET); // Remove Extra Effect Rows
+            if (numberOfCauses == 1)
+                for (int i = 1; i < number_of_effects; i++) {
+                    Fill_Cell("T", SHEET_B0_INDEX, EFFECT_TABLE_POSITION+i, CELL_COL_3);
+                }
 
-        if (number_of_causes == 1)   // Number of causes is 0
-        {
-            workbook.getSheetAt(SHEET_B0).shiftRows(EFFECT_TABLE_POSITION, END_OF_SHEET, -(NUMBER_OF_EMPTY_CELL - number_of_causes));  // Remove Extra Causes Rows
-            Fill_Cell("N/A", SHEET_B0, CELL_ROW_3, CELL_COL_3);
-            Fill_Cell("N/A", SHEET_B0, CELL_ROW_3, CELL_COL_2);
-        } else {
-            workbook.getSheetAt(SHEET_B0).shiftRows(EFFECT_TABLE_POSITION, END_OF_SHEET, -(NUMBER_OF_EMPTY_CELL - number_of_causes + 1));
-            if (number_of_causes > 2)  // Number of causes is bigger than 1 cause
-                ExcelModifier.Merge_Cells(SHEET_B0, CELL_COL_2+ number_of_UFT, CELL_COL_4, 2 + number_of_causes);// Merge LLR traceability
+            if (number_of_effects==1)
+            {
+                Fill_Cell("N/A", SHEET_B0_INDEX, EFFECT_TABLE_POSITION+1, CELL_COL_2);
+                number_of_effects=2;
+            }
+
+            removeExtraRows(SHEET_B0_INDEX, EFFECT_TABLE_POSITION + number_of_effects, END_OF_SHEET); // Remove Extra Effect Rows
+
+            for (int i=0;i<20-numberOfUFT;i++)
+                removeExtraCols(SHEET_B0_INDEX,numberOfUFT+CELL_COL_3);
+            MergeCols(SHEET_B0_INDEX, CELL_COL_2, CELL_ROW_1, numberOfUFT+CELL_COL_6 );// Merge Header
+            for (int i=2;i<=numberOfUFT+CELL_COL_6;i++)
+                addThickOutsideBorder(SHEET_B0_INDEX, CELL_ROW_0, i);
+
+
+            if (numberOfCauses == 1)   // Number of causes is 0
+            {
+                workbook.getSheetAt(SHEET_B0_INDEX).shiftRows(EFFECT_TABLE_POSITION, END_OF_SHEET, -(NUMBER_OF_EMPTY_CELL - numberOfCauses));  // Remove Extra Causes Rows
+                Fill_Cell("N/A", SHEET_B0_INDEX, CELL_ROW_3, CELL_COL_3);
+                Fill_Cell("N/A", SHEET_B0_INDEX, CELL_ROW_3, CELL_COL_2);
+
+
+
+            } else {
+                workbook.getSheetAt(SHEET_B0_INDEX).shiftRows(EFFECT_TABLE_POSITION, END_OF_SHEET, -(NUMBER_OF_EMPTY_CELL - numberOfCauses + 1));
+
+                if (numberOfCauses > 2)  // Number of causes is bigger than 1 cause
+                    MergeRows(SHEET_B0_INDEX, CELL_COL_3 + numberOfUFT, CELL_COL_4, CELL_COL_2 + numberOfCauses);// Merge LLR traceability
+            }
+
+            if (number_of_effects > 2)
+                MergeRows(SHEET_B0_INDEX, CELL_COL_3 + numberOfUFT, CELL_ROW_4 + numberOfCauses, CELL_COL_2 + numberOfCauses + number_of_effects);// Merge LLR traceability
+
+            workbook.getSheetAt(SHEET_B0_INDEX).setColumnWidth(CELL_COL_3 + numberOfUFT,9000);
+
+
         }
 
-        if (number_of_effects > 2)
-            ExcelModifier.Merge_Cells(SHEET_B0, CELL_COL_2+ number_of_UFT, 4 + number_of_causes, 2 + number_of_causes + number_of_effects);// Merge LLR traceability
 
-    }
-
-
-    public static void B0_sheet(ArrayList<String> causes_table, ArrayList<String> effects_table) {
+    public static void fillingB0Sheet() {
 
         int number_of_effects ;
-        int number_of_causes ;
+
         log4Info("B0 Sheet in progress");
         HeaderFilling();
         LLR_TraceabilityFilling();
-        number_of_causes=CausesFilling(causes_table);
-        number_of_effects=EffectFilling(effects_table);
-        ExtraRowsRemoving(number_of_effects,number_of_causes);
+        numberOfCauses=CausesFilling();
+        number_of_effects=EffectFilling();
+        removeExtraCells(number_of_effects);
 
     }
 

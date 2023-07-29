@@ -1,8 +1,6 @@
-import static COMMUN.BrowsingInputFolder.Processing;
-import static COMMUN.GraphicUserInterfaces.Path_interface;
-import static COMMUN.LoggerInitialize.*;
-
-//import static services.Logger_init.loger4j;
+import static Commun.BrowsingInputFolder.Processing;
+import static Commun.GraphicUserInterfaces.Path_interface;
+import static Commun.LoggerInitialize.*;
 
 
 public class Main {
@@ -10,17 +8,20 @@ public class Main {
 
     public static void main(String[] args){
 
+        try {
 
-        String directory=Path_interface();
-        System.setProperty("log4j2.enableStackWalker", "true");
+            String directory=Path_interface();
+            System.setProperty("log4j2.enableStackWalker", "true");
 
-        // if(Verification_licences())
-        //    System.exit(0);
-        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-        log4Error(methodName+" : START" );
+            // if(Verification_licences())
+            //    System.exit(0);
 
-        Processing(directory);
-        log4Info("Success");
+            Processing(directory);
+            log4Info("Process finished");
+            System.exit(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

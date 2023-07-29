@@ -2,7 +2,7 @@ package CODE.file;
 
 import java.io.*;
 
-import static COMMUN.LoggerInitialize.*;
+import static Commun.LoggerInitialize.*;
 
 
 public class ExtractCode {

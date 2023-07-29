@@ -1,8 +1,6 @@
 package SDDD.file;
 import java.util.ArrayList;
-
-import static COMMUN.LoggerInitialize.*;
-import static SUTC.file.COMMUN.ExcelModifier.*;
+import static SUTC.file.Commun.ExcelManipulation.*;
 
 public class ExtractRequirements {
 
@@ -67,7 +65,6 @@ public class ExtractRequirements {
                 effect.set(i, StubCall_Requirements_Modifier(SettingValue_req_Modifier(final_requirements)));
             }
         }
-        log4Info("Extract requirements success");
     }
 }
 

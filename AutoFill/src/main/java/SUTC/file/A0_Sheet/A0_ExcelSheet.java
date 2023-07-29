@@ -1,31 +1,32 @@
 package SUTC.file.A0_Sheet;
-import static SUTC.file.SutcCreationProccess.lowLevelReq;
-import static SUTC.file.COMMUN.ExcelModifier.Fill_Cell;
-import static COMMUN.BrowsingInputFolder.SDDDfileName;
-import static COMMUN.LoggerInitialize.*;
-import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
+import static SUTC.file.Commun.OpenCloseExcelTemplate.openExcelTemplate;
+import static SUTC.file.SutcCreationProcess.functionName;
+import static SUTC.file.Commun.ExcelManipulation.Fill_Cell;
+import static Commun.BrowsingInputFolder.designFileName;
+import static SUTC.file.Commun.ExcelRowsAndColsConstants.*;
 public class A0_ExcelSheet {
 
-    public static final int index_of_CSU_Name=1;
 
-    public static void A0_sheet(){
+    public static void fillingA0Sheet(){
 
-        log4Info("A0 Sheet in progress");
-        String File_Name= lowLevelReq[index_of_CSU_Name] + ".c";
-        Fill_Cell(File_Name, SHEET_A0, CELL_ROW_2, CELL_COL_3);// File Name Filling
 
-        String CSU_Name= lowLevelReq[index_of_CSU_Name];
-        Fill_Cell(CSU_Name, SHEET_A0, CELL_ROW_4, CELL_COL_3);//CSU Name Filling
-        Fill_Cell(CSU_Name, SHEET_A0, CELL_ROW_15, CELL_COL_2);//CSU Name Filling
+        openExcelTemplate();
+
+        String File_Name= functionName + ".c";
+        Fill_Cell(File_Name, SHEET_A0_INDEX, CELL_ROW_2, CELL_COL_3);// File Name Filling
+
+        String CSU_Name= functionName;
+        Fill_Cell(CSU_Name, SHEET_A0_INDEX, CELL_ROW_4, CELL_COL_3);//CSU Name Filling
+        Fill_Cell(CSU_Name, SHEET_A0_INDEX, CELL_ROW_15, CELL_COL_2);//CSU Name Filling
 
         String CSC_Name="CSC_"+CSU_Name.substring(0,CSU_Name.indexOf("_"));
-        Fill_Cell(CSC_Name, SHEET_A0, CELL_ROW_3, CELL_COL_3);//CSC Name Filling
+        Fill_Cell(CSC_Name, SHEET_A0_INDEX, CELL_ROW_3, CELL_COL_3);//CSC Name Filling
 
-        Fill_Cell(SDDDfileName, SHEET_A0, CELL_ROW_8, CELL_COL_2);//Reference Documents Filling
-        Fill_Cell("1C", SHEET_A0, CELL_ROW_8, CELL_COL_3);//Version of Documents Filling
+        Fill_Cell(designFileName, SHEET_A0_INDEX, CELL_ROW_8, CELL_COL_2);//Reference Documents Filling
+        Fill_Cell("1C", SHEET_A0_INDEX, CELL_ROW_8, CELL_COL_3);//Version of Documents Filling
 
-        Fill_Cell("FADEX-OVSP_SDDD-DD.xlsx", SHEET_A0, CELL_ROW_9, CELL_COL_2);//Reference Documents Filling
-        Fill_Cell("2", SHEET_A0, CELL_ROW_9, CELL_COL_3);//Version of Documents Filling
+        Fill_Cell("FADEX-OVSP_SDDD-DD.xlsx", SHEET_A0_INDEX, CELL_ROW_9, CELL_COL_2);//Reference Documents Filling
+        Fill_Cell("2", SHEET_A0_INDEX, CELL_ROW_9, CELL_COL_3);//Version of Documents Filling
 
     }
 

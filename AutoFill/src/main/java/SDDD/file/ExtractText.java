@@ -6,10 +6,10 @@ import org.apache.poi.xwpf.usermodel.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import static COMMUN.GraphicUserInterfaces.Error_interface;
-import static COMMUN.LoggerInitialize.*;
+import static Commun.GraphicUserInterfaces.Error_interface;
+import static Commun.LoggerInitialize.*;
 
-public class ExtractTextFromSDDD {
+public class ExtractText {
 
    // public static final String PUNCTUATION_MARKS = "[^A-Za-z0-9 :\\r.\\n_\\-+<>\\/{}\\[\\]()\\*]";
 
@@ -26,7 +26,7 @@ public class ExtractTextFromSDDD {
     }
 
 
-    public static String Extract_Text(String path) {
+    public static String ExtractTextFromSDDD(String path) {
         String text = null;
         try {
             FileInputStream fis = new FileInputStream(path);

@@ -1,4 +1,4 @@
-package SUTC.file.COMMUN;
+package SUTC.file.Commun;
 
 public class ExcelRowsAndColsConstants {
 
@@ -70,12 +70,11 @@ public class ExcelRowsAndColsConstants {
 
 
     //SHEETS CONSTANTS
-    public static final int SHEET_A0 = 0;
-    public static final int SHEET_A1 = 1;
-    public static final int SHEET_A2 = 2;
-
-    public static final int SHEET_B0 = 3;
-    public static final int SHEET_B1 = 4;
+    public static final int SHEET_A0_INDEX = 0;
+    public static final int SHEET_A1_INDEX = 1;
+    public static final int SHEET_A2_INDEX = 2;
+    public static final int SHEET_B0_INDEX = 3;
+    public static final int SHEET_B1_INDEX = 4;
 
 
     public static String[] Stub_end = {

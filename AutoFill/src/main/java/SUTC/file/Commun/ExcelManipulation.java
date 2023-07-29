@@ -1,14 +1,13 @@
-package SUTC.file.COMMUN;
+package SUTC.file.Commun;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.*;
 
-import static COMMUN.LoggerInitialize.log4Error;
-import static SUTC.file.SutcCreationProccess.workbook;
-import static COMMUN.LoggerInitialize.logger4j;
+import static Commun.LoggerInitialize.log4Error;
+import static SUTC.file.SutcCreationProcess.workbook;
 
 
-public class ExcelModifier {
+public class ExcelManipulation {
 
     public static String Delete_extra_return_line(String requirement ){
 
@@ -49,6 +48,22 @@ public class ExcelModifier {
         style.setFont(font);
         return style;
     } // format of not found message
+
+    public  static void CorrectAlign(int sheet, int row, int cel){
+
+
+        Sheet s = workbook.getSheetAt(sheet);
+        Cell cell = s.getRow(row).getCell(cel);
+        CellStyle existingStyle = cell.getCellStyle();
+        CellStyle newStyle = workbook.createCellStyle();
+        newStyle.cloneStyleFrom(existingStyle); // Copy the existing style to the new style
+
+        newStyle.setAlignment(HorizontalAlignment.LEFT); // Set the desired alignment
+
+        cell.setCellStyle(newStyle); // Apply the new style to the cell
+
+    }
+
     public static void Fill_Cell(String text,int sheet, int row, int cell) { // filling one specific cell
 
         Sheet s = workbook.getSheetAt(sheet);
@@ -57,16 +72,15 @@ public class ExcelModifier {
 
             Cell c = s.getRow(row).getCell(cell);
             c.setCellValue(text);
-
             if ((text.equals("not exist in the DD"))||(text.equals("not exist in the Code")))
                 c.setCellStyle(Fill_Cell_Red());
 
             } catch (NullPointerException e) {
-            // handle the exception here
-            logger4j.error(e);
+                String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+                log4Error(methodName+" : "+e.getMessage() +" ["+row+","+cell+"] Sheet: "+sheet );
         }
     } // filling simple cell
-    public static void Remove_Extra_Rows(int sheet, int start, int end) {
+    public static void removeExtraRows(int sheet, int start, int end) {
         try {
             Sheet s = workbook.getSheetAt(sheet);
             for (int i = start; i < end; i++) {
@@ -81,10 +95,28 @@ public class ExcelModifier {
             log4Error(methodName+" : "+e.getMessage() );
         }
     }
-    public static void Merge_Cells(int sheet, int C1_start, int start_row, int end_row) {
+
+    public static void addThickOutsideBorder(int sheet,int row,int col){
+
+        Cell cell=workbook.getSheetAt(sheet).getRow(row).getCell(col);
+        CellStyle originalStyle = cell.getCellStyle();
+
+        // Create a new style based on the original style
+        CellStyle newStyle = workbook.createCellStyle();
+        newStyle.cloneStyleFrom(originalStyle);
+
+        // Set the thick border for the new style
+        newStyle.setBorderTop(BorderStyle.MEDIUM);
+        newStyle.setBorderBottom(BorderStyle.MEDIUM);
+        newStyle.setBorderLeft(BorderStyle.MEDIUM);
+        newStyle.setBorderRight(BorderStyle.MEDIUM);
+
+        cell.setCellStyle(newStyle);
+    }
+    public static void MergeRows(int sheet, int start_col, int start_row, int end_row) {
 
         Sheet s= workbook.getSheetAt(sheet);
-        String string_range= (char) (C1_start + 65)+""+(start_row)+":"+(char) (C1_start + 65)+end_row;
+        String string_range= (char) (start_col + 65)+""+(start_row)+":"+(char) (start_col + 65)+end_row;
       //  System.out.println(string_range);
         CellRangeAddress range = CellRangeAddress.valueOf(string_range);
 
@@ -97,6 +129,22 @@ public class ExcelModifier {
          }
 
     } // merge an interval of cells
+    public static void MergeCols(int sheet, int start_col, int start_row, int end_cols) {
+
+        Sheet s= workbook.getSheetAt(sheet);
+        String string_range= (char) (start_col + 65)+""+(start_row)+":"+(char) (end_cols + 65)+start_row;
+        CellRangeAddress range = CellRangeAddress.valueOf(string_range);
+
+        try {
+            s.addMergedRegion(range);
+        }catch (Exception e)
+        {
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            log4Error(methodName+" : "+e.getMessage() );
+        }
+
+    } // merge an interval of cells
+
     public static String StubCall_Requirements_Modifier(String s) {
 
         for (int i = 0; i < 10; i++) {
@@ -111,10 +159,12 @@ public class ExcelModifier {
 
         if (s.contains("["))
         {
-        if (s.substring(s.indexOf("["),s.lastIndexOf("]")).trim().split("\\s+").length>1) {
-            s = s.replace("[", "");
-            s = s.replace("]", "");
-        }}
+            String s1=s.substring(s.indexOf("["),s.lastIndexOf("]"));
+            if ((s1.trim().split("\\s+").length>1)||(s1.equalsIgnoreCase("index i"))) {
+               s = s.replace("[", "");
+                s = s.replace("]", "");
+            }
+        }
 
         return s;
     } // formatting STUB
@@ -150,7 +200,7 @@ public class ExcelModifier {
         s=s.substring(s.lastIndexOf('/')+1);
         return s.trim();
     }
-    public static String Req_detect(String[] LLR){
+    public static String llrTraceability(String[] LLR){
 
         for (int i = 0; i < LLR.length ; i++) {
         if (LLR[i].contains("REQUIREMENTS")){
@@ -175,6 +225,8 @@ public class ExcelModifier {
     }
     public static boolean Prototype_Detect(String line, String fct_name){
 
+        line=line.toLowerCase();
+        fct_name=fct_name.toLowerCase().trim();
 
         return  (line.contains(fct_name))&&(!(line.contains("#")));
 

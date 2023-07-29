@@ -1,9 +1,9 @@
 package SUTC.file.B1_Sheet.Classes;
 
 
-import SUTC.file.SutcCreationProccess;
-import static SUTC.file.COMMUN.ExcelRowsAndColsConstants.*;
-import static COMMUN.LoggerInitialize.*;
+import SUTC.file.SutcCreationProcess;
+import static SUTC.file.Commun.ExcelRowsAndColsConstants.*;
+import static Commun.LoggerInitialize.*;
 
 public class ClassFilling {
     public static boolean isInteger(String str) {
@@ -24,9 +24,9 @@ log4Error(methodName+" : "+e.getMessage() );
         if(!parameter[INDEX_OF_TYPE].contains("int"))
             return parameter;
 
-        for (int i = 0; i < SutcCreationProccess.cause.size() ; i++) {
+        for (int i = 0; i < SutcCreationProcess.cause.size() ; i++) {
 
-            c= SutcCreationProccess.cause.get(i);
+            c= SutcCreationProcess.cause.get(i);
             if (c.contains(parameter[INDEX_OF_NAME])) {
 
                 c=change_Form(c);

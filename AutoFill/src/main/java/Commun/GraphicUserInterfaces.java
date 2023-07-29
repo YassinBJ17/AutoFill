@@ -1,11 +1,11 @@
-package COMMUN;
+package Commun;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-import static COMMUN.LoggerInitialize.*;
+import static Commun.LoggerInitialize.*;
 
 public class GraphicUserInterfaces {
     public static JDialog Waiting_interface(String message) {
@@ -41,6 +41,19 @@ public class GraphicUserInterfaces {
             return true;
         }else
             return false;
+
+
+        /* Copied FROM SutcCreationProcess /*
+        // if(file.exists()){ // check if file existe
+                 /* if(FileExisteDialog(functionName)){
+                      dialog.setVisible(false); // hide the dialog
+                      dialog.dispose(); // dispose of the dialog to release resources
+                      causeEffectTableOrder++; // increment table order
+                      continue; }
+               // }
+              //}*/
+
+
     }
     public static void OpenFileDialog(String function_name) {
 
