@@ -25,9 +25,14 @@ public class InsertData {
             Parameters[Parameter_number][INDEX_OF_CLASS]="-";
 
         if (((Parameters[Parameter_number][INDEX_OF_ACCESS].contains("R"))||(Parameters[Parameter_number][INDEX_OF_ACCESS].contains("In")))&&(!(Parameters[Parameter_number][INDEX_OF_INVALID_DOMAIN].equals("-")))){
+            int fist_row=row;
             row+=Insert_Invalid_Row(row, Parameters[Parameter_number]);
             row+=Insert_Row(row, Parameters[Parameter_number]);
             row+=Insert_Invalid_Row(row, Parameters[Parameter_number]);
+
+            for (int i = 1; i <= 5; i++)
+                MergeRows(SHEET_B1_INDEX, i, fist_row+1, row );
+
         }else {
             row += Insert_Row(row, Parameters[Parameter_number]);
         }
@@ -35,7 +40,7 @@ public class InsertData {
     }
     public static int Insert_Invalid_Row(int row, String[] parameter){
 
-        try {
+
 
             Insert_Manipulation(row,parameter);
 
@@ -58,16 +63,11 @@ public class InsertData {
                 return 2; // two line added
 
             }
-        }catch (Exception e)
-        {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            log4Error(methodName+" : "+e.getMessage() );
-        }
-        return 0;
+
     }
     public static int Insert_Row(int row, String[] parameter){
 
-        int return_Number_Of_Rows=0;
+        int return_Number_Of_Rows=1;
 
 
         if ((parameter[INDEX_OF_ACCESS].equalsIgnoreCase("in"))||(parameter[INDEX_OF_ACCESS].equals("R"))||(Objects.equals(parameter[INDEX_OF_TYPE], "void"))){

@@ -18,9 +18,10 @@ public class ExtractText {
         // Define a regular expression that matches invisible characters
         // String pattern1= "[^a-zA-Z0-9!\"#$%&'()*+,\\-./;<=>?@[\\[\\\\]^_`{|}~\\s\\n]]";
 
-         String pattern = "[^a-zA-Z0-9!\\[\\]\\s\\n\\-#$%&\"'’:()*+,./;<=>?@^_`{|}~]" ;
-
+         String pattern = "[^a-zA-Z0-9!\\[\\]\\s\\n \\-#$%&\"'’:()*+,./;<=>?@^_`{|}~]" ;
+         input=input.replaceAll("\t"," ");
         return input.replaceAll(pattern, "");
+
        // return input.replaceAll(pattern1, "");
 
     }

@@ -1,6 +1,7 @@
 package SUTC.file.B1_Sheet.Commun;
 
 import static SUTC.file.B1_Sheet.B1_ExcelSheet.MAXIMUM_UFT_NUMBER;
+import static SUTC.file.B1_Sheet.Commun.RemoveExtraColumn.removeExtraCols;
 import static SUTC.file.Commun.ExcelManipulation.MergeCols;
 import static SUTC.file.Commun.ExcelRowsAndColsConstants.*;
 import org.apache.poi.ss.usermodel.*;
@@ -18,11 +19,13 @@ public class RemoveExtraRow {
         boolean bool=true;
 
 
+        for (int i=0;i<40-numberOfUTC;i++)
+            removeExtraCols(SHEET_B1_INDEX,numberOfUTC+CELL_COL_10);
 
 
         while (bool){
             bool=false;
-            for (int i = START_OF_PARAMETERS_TABLE+1; i <B1_sheet.getLastRowNum() ; i++) {
+            for (int i = START_OF_PARAMETERS_TABLE; i <B1_sheet.getLastRowNum() ; i++) {
 
                 Row row = B1_sheet.getRow(i);
 
@@ -87,7 +90,7 @@ public class RemoveExtraRow {
         if (numberOfUFT<MAXIMUM_UFT_NUMBER)
         {
             try {
-                B1_sheet.shiftRows(START_OF_PARAMETERS_TABLE-1, B1_sheet.getLastRowNum(), numberOfUFT-(MAXIMUM_UFT_NUMBER));
+                B1_sheet.shiftRows(START_OF_PARAMETERS_TABLE-2, B1_sheet.getLastRowNum(), numberOfUFT-(MAXIMUM_UFT_NUMBER));
 
                 for (int i = 0; i <numberOfUFT ; i++) {
                     MergeCols(SHEET_B1_INDEX,1,10+i,9);

@@ -61,23 +61,23 @@ public class StubsFilling {
 
                 if ((Parameters[j][INDEX_OF_ACCESS].contains("out")|| Parameters[j][INDEX_OF_ACCESS].contains("Return"))&&(!(Parameters[j][INDEX_OF_INVALID_DOMAIN].equals("-")))){
 
-                    int fist_row=distance;
+                    int first_row=distance;
                     distance+=Insert_Invalid_Row(distance, Parameters[j]);
                     distance+=Insert_Row(distance, Parameters[j]);
-                    distance++;
                     distance+=Insert_Invalid_Row(distance, Parameters[j]);
-
                     // merge cells
                     for (int k = 1; k <= 5; k++)
-                    MergeRows(SHEET_B1_INDEX, k, fist_row+1, distance );
+                    MergeRows(SHEET_B1_INDEX, k, first_row+1, distance );
 
                 }else {
 
-                    distance+=Insert_Row(distance+j, Parameters[j]);
+                    distance+=Insert_Row(distance, Parameters[j]);
                 }
 
             }
+
             distance=d+ DISTANCE_BETWEEN_STUBS;
+
         }
 
         if(numberOfStubs==0) {
@@ -139,11 +139,9 @@ public class StubsFilling {
 
         for (int i = position_of_stub; i <end; i++) {
 
-       //     System.out.println("LLR[i]"+LLR[i]);
             if (llrOfTheFunction[i].toUpperCase().contains("FUNCTION RETURN"))
                 end++;
-            else
-            if ((llrOfTheFunction[i].toUpperCase().contains("IN/OUT:")) || (llrOfTheFunction[i].toUpperCase().contains("IN/OUT ")))  {
+            else if ((llrOfTheFunction[i].toUpperCase().contains("IN/OUT:")) || (llrOfTheFunction[i].toUpperCase().contains("IN/OUT "))||(llrOfTheFunction[i].toUpperCase().contains("IN/OUT \t")))  {
 
                 log4Debug(Parameters[j][INDEX_OF_NAME]+ " Access_IN_OUT :"+llrOfTheFunction[i]);
                 Parameters[j][INDEX_OF_ACCESS] = "_inout";

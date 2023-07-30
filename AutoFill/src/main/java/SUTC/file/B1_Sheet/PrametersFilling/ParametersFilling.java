@@ -89,7 +89,12 @@ public class ParametersFilling {
         int numberOfParameters=Extract_Parameters(codeOfTheFunction,functionName);
         int normal_parameters_index= START_OF_PARAMETERS_TABLE;// for normal parameters
         int complex_parameters_index= INTERNAL_VARIABLES_POSITION;// for pointer Complex parameters
-        for (int i = 0; i <numberOfParameters ; i++) {
+
+        for (int i = Parameters.length-2; i >= 0 ; i--) { // Shift the parameters table
+            System.arraycopy(Parameters[i], 0, Parameters[i + 1], 0, 10);
+        }
+
+        for (int i = 1; i <numberOfParameters+1 ; i++) {
 
             if (Parameters[i][INDEX_OF_POINTER].equals("isNormal")){
                 normal_parameters_index=Insert_Parameter(normal_parameters_index,i);

@@ -74,12 +74,9 @@ public class ExtractData {
             }
         }
 
-
-
         for (int i = pos_start; i <pos_end ; i++) {
 
-
-            if(llrOfTheFunction[i].contains( Parameters[p][INDEX_OF_NAME])|| llrOfTheFunction[i].contains( Parameters[p][INDEX_OF_TYPE])){
+            if(llrOfTheFunction[i].contains( Parameters[p][INDEX_OF_NAME])){
 
                 r= (llrOfTheFunction[i].substring(llrOfTheFunction[i].indexOf("(")+1, llrOfTheFunction[i].indexOf(")")));
 

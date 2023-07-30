@@ -12,7 +12,7 @@ import static Commun.LoggerInitialize.*;
 public class B1_ExcelSheet {
 
     public static int END_OF_SHEET_POSITION ;
-    public static int START_OF_PARAMETERS_TABLE=30;
+    public static int START_OF_PARAMETERS_TABLE=31;
     public static final int MAXIMUM_UFT_NUMBER=20;
     public static final int STUB_DEFINITION_TABLE_POSITION=194;
     public static final int RETURN_FUNCTION_INDEX=STUB_DEFINITION_TABLE_POSITION-5;

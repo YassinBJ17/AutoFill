@@ -18,6 +18,9 @@ public class FunctionReturnFilling {
 
         String prototype;
         String type;
+
+
+
         for (String cLine : codeOfTheFunction) {
 
             if (Prototype_Detect(cLine, functionName)) {

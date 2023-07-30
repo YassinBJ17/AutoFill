@@ -119,14 +119,9 @@ public class ExcelManipulation {
         String string_range= (char) (start_col + 65)+""+(start_row)+":"+(char) (start_col + 65)+end_row;
       //  System.out.println(string_range);
         CellRangeAddress range = CellRangeAddress.valueOf(string_range);
+        s.addMergedRegion(range);
 
-        try {
-            s.addMergedRegion(range);
-        }catch (Exception e)
-        {
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            log4Error(methodName+" : "+e.getMessage() );
-         }
+
 
     } // merge an interval of cells
     public static void MergeCols(int sheet, int start_col, int start_row, int end_cols) {
