@@ -13,7 +13,7 @@ import static SUTC.file.SutcCreationProcess.functionName;
 public class A2_ExcelSheet {
 
     public static boolean return_function;
-    public static final int INTERNAL_DEFINITIONS_FIRST_LINE = 32;
+    public static final int INTERNAL_DEFINITIONS_FIRST_LINE = 30;
 
 
     public static void Insert_Global_ParameterInA2(int Parameter_number) {

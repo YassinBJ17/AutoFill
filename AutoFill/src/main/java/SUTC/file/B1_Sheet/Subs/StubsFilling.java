@@ -1,10 +1,12 @@
 package SUTC.file.B1_Sheet.Subs;
 
 import static CODE.file.ExtractCode.extractFunctionCode;
+import static CODE.file.ExtractFunction.ExtractFunctionFromCode;
 import static Commun.LoggerInitialize.*;
 import static SUTC.file.B1_Sheet.B1_ExcelSheet.*;
 import static SUTC.file.B1_Sheet.DataDictionarySearch.DataDictionary.DataDictionarySearch;
-import static SUTC.file.B1_Sheet.PrametersFilling.ParametersFilling.Extract_Parameters;
+import static SUTC.file.B1_Sheet.FunctionReturnFilling.FunctionReturnFilling.INDEX_RESERVED_FOR_FUNCTION_RETURN;
+import static SUTC.file.B1_Sheet.PrametersFilling.ParametersFilling.ExtractParameters;
 import static SUTC.file.Commun.ExcelManipulation.*;
 import static SUTC.file.Commun.ExcelRowsAndColsConstants.*;
 
@@ -31,11 +33,11 @@ public class StubsFilling {
 
         for (int i = 0; i <numberOfStubs ; i++) {
 
-            codeOfTheStub=extractFunctionCode(Stubs[i].trim()+".c");
+            Code_stub=ExtractFunctionFromCode(Stubs[i].trim());
 
             Fill_Cell(Stubs[i], SHEET_B1_INDEX, STUB_DEFINITION_TABLE_POSITION +(i* DISTANCE_BETWEEN_STUBS), CELL_COL_2);
 
-            if(codeOfTheStub.equals("")){
+            if(Code_stub==null){
                 //ExcelModifier.Fill_Cell("not exist in the Code", SHEET_B1, B1_ExcelSheet.STUB_DEFINITION_TABLE_POSITION+ SutcCreation Proccess.number_of_UFT +(i* B1_ExcelSheet.DISTANCE_BETWEEN_STUBS)+2, CELL_COL_2);
 
                 for (int j = 0; j <3 ; j++)  // add empty lines
@@ -45,11 +47,10 @@ public class StubsFilling {
                 continue; // if code not exist.
             }
 
-            Code_stub=codeOfTheStub.split("\n"); // split code in table
 
-            numberOfParameters= Extract_Parameters(Code_stub, Stubs[i]);
+            numberOfParameters= ExtractParameters(Code_stub, Stubs[i]);
             log4Debug(Stubs[i]+" numberOfParameters="+numberOfParameters);
-            Stub_Access_Detect(Stubs[i],numberOfParameters);
+            stubAccessDetect(Stubs[i],numberOfParameters);
 
             numberOfParameters=Stub_Return_Filling(Code_stub, Stubs[i],numberOfParameters);
 
@@ -118,7 +119,7 @@ public class StubsFilling {
         }
         return numberOfStubs;
     }
-    public static void Stub_Access_Detect( String stub_name, int numberOfParameters) {
+    public static void stubAccessDetect(String stub_name, int numberOfParameters) {
         int position_of_stub=0;
 
 
@@ -208,28 +209,28 @@ public class StubsFilling {
 
                 if (!(code_line.contains("void ")))  {
 
-                    Parameters[0][INDEX_OF_NAME] = "Return_"+function_name;
-                    Parameters[0][INDEX_OF_TYPE] = code_line.trim().substring(0, code_line.trim().indexOf(" ") );
-                    Parameters[0][INDEX_OF_ACCESS] = "Return";
-                    Parameters[0][INDEX_OF_DOMAIN] = (Extract_Domain(Parameters[0][INDEX_OF_TYPE]))[0];
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_NAME] = "Return_"+function_name;
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE] = code_line.trim().substring(0, code_line.trim().indexOf(" ") );
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_ACCESS] = "Return";
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN] = (Extract_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]))[0];
 
-                    Parameters[0][INDEX_OF_CLASS] = (Extract_Domain(Parameters[0][INDEX_OF_TYPE]))[0];
-                    Parameters[0][INDEX_OF_INVALID_DOMAIN] = (Extract_Domain(Parameters[0][INDEX_OF_TYPE]))[1];
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_CLASS] = (Extract_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]))[0];
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_INVALID_DOMAIN] = (Extract_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]))[1];
 
-                    if (Parameters[0][INDEX_OF_DOMAIN].equals("-")) {
-                        Parameters[0][INDEX_OF_DOMAIN] = DataDictionarySearch(Parameters[0][INDEX_OF_TYPE], false);
-                        Parameters[0][INDEX_OF_CLASS] = DataDictionarySearch(Parameters[0][INDEX_OF_TYPE], false);
-                        Parameters[0][INDEX_OF_INVALID_DOMAIN] = Extract_Invalid_Domain(Parameters[0][INDEX_OF_DOMAIN]);
+                    if (Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN].equals("-")) {
+                        Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN] = DataDictionarySearch(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE], false);
+                        Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_CLASS] = DataDictionarySearch(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE], false);
+                        Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_INVALID_DOMAIN] = Extract_Invalid_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN]);
                     }
 
                     break;
                 } else {
-                    Parameters[0][INDEX_OF_NAME] = "Return_"+function_name;
-                    Parameters[0][INDEX_OF_TYPE] = "void";
-                    Parameters[0][INDEX_OF_ACCESS] = "Return";
-                    Parameters[0][INDEX_OF_DOMAIN] = "-";
-                    Parameters[0][INDEX_OF_CLASS] = "-";
-                    Parameters[0][INDEX_OF_INVALID_DOMAIN] = "-";
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_NAME] = "Return_"+function_name;
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE] = "void";
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_ACCESS] = "Return";
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN] = "-";
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_CLASS] = "-";
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_INVALID_DOMAIN] = "-";
 
                     break;
                 }

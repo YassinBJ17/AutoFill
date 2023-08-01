@@ -16,6 +16,8 @@ import static SDDD.file.ExtractText.removeInvisibleChars;
 import static Commun.LoggerInitialize.*;
 import static SUTC.file.Commun.switchOrIfCalled.CheckIfSwitchExistInCode;
 import static SUTC.file.Commun.switchOrIfCalled.switchArray;
+import static SUTC.file.SutcCreationProcess.causesTable;
+import static SUTC.file.SutcCreationProcess.effectsTable;
 
 public class ExtractCausesEffectTable {
 
@@ -105,7 +107,7 @@ public class ExtractCausesEffectTable {
         }
     }
 
-    public static void ExtractCausesEffects(XWPFTableRow row,ArrayList<String> cause, ArrayList<String> effect) {
+    public static void ExtractCausesEffects(XWPFTableRow row) {
 
         XWPFTableCell cell;
         int number_Of_Cause=0;
@@ -114,9 +116,9 @@ public class ExtractCausesEffectTable {
         for (int i = 0; i < row.getTableCells().size(); i++) {
             cell = row.getCell(i);
 
-            if (((Objects.equals(cell.getColor(), WHITE_COLOR_HEXA)) || Objects.equals(cell.getColor(), "auto") || Objects.equals(cell.getColor(), null)) && (IsRequirement(cell.getText())))
-                effect.add(cell.getText().trim());
-
+            if (((Objects.equals(cell.getColor(), WHITE_COLOR_HEXA)) || Objects.equals(cell.getColor(), "auto") || Objects.equals(cell.getColor(), null)) && (IsRequirement(cell.getText()))) {
+                effectsTable.add(cell.getText());
+            }
             else
             {
 
@@ -141,7 +143,7 @@ public class ExtractCausesEffectTable {
                     cell = row.getCell(i);
                     log4Debug(cell.getText());
                     if (IsRequirement(cell.getText()))
-                        AddCause(cell.getText(), cause);
+                        AddCause(cell.getText(), causesTable);
                 }
             } else {
 
@@ -151,14 +153,14 @@ public class ExtractCausesEffectTable {
 
                     log4Debug(cell.getText());
                     if (IsRequirement(cell.getText()))
-                        AddCause(cell.getText(), cause);
+                        AddCause(cell.getText(), causesTable);
                 }
             }
         }else {
             for (int i = start_Of_Cause; i <= start_Of_Cause+number_Of_Cause-1; i +=2) {
                 cell = row.getCell(i);
                 if (IsRequirement(cell.getText()))
-                    AddCause(cell.getText(), cause);
+                    AddCause(cell.getText(), causesTable);
             }
         }
 
@@ -193,7 +195,7 @@ public class ExtractCausesEffectTable {
     }
 
     }
-    public static void Extract_Table(String path, ArrayList<String> cause, ArrayList<String> effect ) {
+    public static void Extract_Table(String path) {
 
 
 
@@ -208,7 +210,7 @@ public class ExtractCausesEffectTable {
       //  log4Info("Extract Cause/Effect Table progress");
         for (int i = 0; i < table.getRows().size(); i++) {
 
-            ExtractCausesEffects( table.getRow(i),cause,effect);
+            ExtractCausesEffects( table.getRow(i));
 
         }
         // Close the document

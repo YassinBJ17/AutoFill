@@ -2,6 +2,7 @@ package CODE.file;
 
 import java.io.*;
 
+import static CODE.file.ExtractPrototype.searchHeader;
 import static Commun.LoggerInitialize.*;
 
 
@@ -47,42 +48,43 @@ log4Error(methodName+" : "+e.getMessage() );
         // If the file is not found or if there is an error reading the file, return null.
         return null;
     }
-    public static String extractFunctionCode(String filename) {
+    public static String extractFunctionCode(String functionName) {
 
+        String returnedCode;
         String directory="..\\Datafiles\\Code"; // replace with the directory you want to start the search from
-
-
-        String[] result = searchFunction(new File(directory), filename);
+        String codeFileName=functionName.trim()+".c";
+        String[] result = searchFunction(new File(directory), codeFileName);
 
         if (result != null) {
             String fileContents = result[0];
 
             //delete comments
-            String cCode = fileContents.replaceAll("//.*", "");
+            returnedCode = fileContents.replaceAll("//.*", "");
 
             // Remove multi-line comments
-            int commentStart = cCode.indexOf("/*");
+            int commentStart = returnedCode.indexOf("/*");
             while (commentStart != -1) {
-                int commentEnd = cCode.indexOf("*/", commentStart + 2);
+                int commentEnd = returnedCode.indexOf("*/", commentStart + 2);
                 if (commentEnd == -1) {
                     // The multi-line comment continues to the end of the code
-                    cCode = cCode.substring(0, commentStart);
+                    returnedCode = returnedCode.substring(0, commentStart);
                 } else {
                     // Remove the multi-line comment
-                    cCode = cCode.substring(0, commentStart) + cCode.substring(commentEnd + 2);
+                    returnedCode = returnedCode.substring(0, commentStart) + returnedCode.substring(commentEnd + 2);
                 }
-                commentStart = cCode.indexOf("/*");
+                commentStart = returnedCode.indexOf("/*");
             }
 
-            cCode=cCode.replaceAll("(?m)^[ \t]*\r?\n", "");
-            return cCode ;
-        } else {
+            returnedCode=returnedCode.replaceAll("(?m)^[ \t]*\r?\n", "");
+            return returnedCode ;
+        } else
+
+            returnedCode =searchHeader(functionName,directory);
+            if (returnedCode==null)
+                log4Error(functionName+" Not found");
+            return returnedCode;
 
 
-            log4Error("File not found: "+filename);
-
-        }
-        return "" ;
     }
 
 }

@@ -14,7 +14,7 @@ import static SUTC.file.SutcCreationProcess.functionName;
 public class ParametersFilling {
 
 
-    public static int Extract_Parameters(String[] code,String function_name){
+    public static int ExtractParameters(String[] code, String function_name){
         int start=0,end=0;
         int numberOfParameters=0;
         String parameter;
@@ -32,13 +32,14 @@ public class ParametersFilling {
                 end = i+1;
             }
 
-            if ((code[i].contains(function_name+"("))||(code[i].contains(function_name+" (")))break;
+            if ((code[i].contains(function_name+"("))||(code[i].contains(function_name+" (")))
+                break;
         }
 
 
         for (int j = start; j <= end; j++) {
-            param.append(code[j]);
 
+            param.append(code[j]);
         }
         parameter=param.toString();
 
@@ -67,6 +68,7 @@ public class ParametersFilling {
             Parameters[numberOfParameters][INDEX_OF_NAME]= Parameters_Detect(p)[0];
             Parameters[numberOfParameters][INDEX_OF_TYPE]= Parameters_Detect(p)[1];
             Parameters[numberOfParameters][INDEX_OF_DOMAIN]=(Extract_Domain(Parameters[numberOfParameters][INDEX_OF_TYPE]))[0];
+
             Parameters[numberOfParameters][INDEX_OF_CLASS]=(Extract_Domain(Parameters[numberOfParameters][INDEX_OF_TYPE]))[0];
             Parameters[numberOfParameters][INDEX_OF_INVALID_DOMAIN]=(Extract_Domain(Parameters[numberOfParameters][INDEX_OF_TYPE]))[1];
 
@@ -78,7 +80,6 @@ public class ParametersFilling {
                 Parameters[numberOfParameters][INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(Parameters[numberOfParameters][INDEX_OF_DOMAIN]);
             }
 
-
             numberOfParameters++;
         }
         return numberOfParameters;
@@ -86,7 +87,7 @@ public class ParametersFilling {
     public static void Parameters_Filling() {
 
         Parameters=new String[100][10];
-        int numberOfParameters=Extract_Parameters(codeOfTheFunction,functionName);
+        int numberOfParameters= ExtractParameters(codeOfTheFunction,functionName);
         int normal_parameters_index= START_OF_PARAMETERS_TABLE;// for normal parameters
         int complex_parameters_index= INTERNAL_VARIABLES_POSITION;// for pointer Complex parameters
 

@@ -33,6 +33,7 @@ public class ExtractData {
         String [] tab = new String[3];
         tab[0]="";
         String[][] domain = {
+                {"", "",""},
                 {"uint8_t", "[0..0xFF]","-"},
                 {"uint16_t", "[0..0xFFFF]","-"},
                 {"uint32_t", "[0..0xFFFFFFFF]","-"},
@@ -47,7 +48,7 @@ public class ExtractData {
 
         for (int i = 0; i <= 6; i++) {
 
-            if(domain[i][0].contains(type.trim())){
+            if(domain[i][0].equals(type.trim())){
                 tab[0]=domain[i][1];
                 tab[1]=domain[i][2];
                 return tab;

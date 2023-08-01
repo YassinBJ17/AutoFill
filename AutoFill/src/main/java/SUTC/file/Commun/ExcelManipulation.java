@@ -3,6 +3,8 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.*;
 
+import java.util.Objects;
+
 import static Commun.LoggerInitialize.log4Error;
 import static SUTC.file.SutcCreationProcess.workbook;
 
@@ -67,18 +69,16 @@ public class ExcelManipulation {
     public static void Fill_Cell(String text,int sheet, int row, int cell) { // filling one specific cell
 
         Sheet s = workbook.getSheetAt(sheet);
-
-        try {
-
             Cell c = s.getRow(row).getCell(cell);
             c.setCellValue(text);
+
             if ((text.equals("not exist in the DD"))||(text.equals("not exist in the Code")))
                 c.setCellStyle(Fill_Cell_Red());
 
-            } catch (NullPointerException e) {
+          /*  } catch (NullPointerException e) {
                 String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
                 log4Error(methodName+" : "+e.getMessage() +" ["+row+","+cell+"] Sheet: "+sheet );
-        }
+        }*/
     } // filling simple cell
     public static void removeExtraRows(int sheet, int start, int end) {
         try {
@@ -170,14 +170,8 @@ public class ExcelManipulation {
         }
 
         //s=s.replaceAll("\\n\\s*\\n", "\n");
-        s=s.replace("]: Set", " by setting");
-        s=s.replace("]: SET", " by setting");
-        s=s.replace("]: set", " by setting");
-        s=s.replace("] set", " by setting");
-        s=s.replace("] Set", " by setting");
-        s=s.replace("] SET", " by setting");
-        s=s.replace(" Set {", "By setting {");
-
+      //  s = s.replaceAll("(?i)\\]:? ?(?:set|Set)( \\{|$)", " by setting$1");
+          s = s.replaceAll("(?i)\\]:? ?(?:Set|set)( \\{|$)", " by setting$1");
 
         return s;
     }

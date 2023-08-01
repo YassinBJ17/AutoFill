@@ -3,9 +3,12 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 
 import static SUTC.file.B1_Sheet.Commun.RemoveExtraColumn.removeExtraCols;
+
+import static SUTC.file.Commun.LongTextDivider.*;
 import static SUTC.file.Commun.ExcelManipulation.*;
 import static SUTC.file.Commun.ExcelRowsAndColsConstants.*;
 
+import java.util.List;
 import java.util.Objects;
 
 import static Commun.LoggerInitialize.*;
@@ -43,12 +46,22 @@ public class B0_ExcelSheet {
         for (String effect : effectsTable) {
             effect = effect.replace("CALL ","\nCALL ");
             effect = effect.replace("Set ","\nSet ");
-            effect =effect.replaceFirst("^\\n", "");// delete the first character from a string if it is equal to a newline character (\n)
+            effect = effect.replaceFirst("^\\n", "");// delete the first character from a string if it is equal to a newline character (\n)
             effect = effect.replace("\n\n", "\n"); // delete extra line return
-            Fill_Cell(effect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
-            number_of_effects++;
+
+
+            if (effect.length() < 32767) {
+                Fill_Cell(effect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
+                number_of_effects++;
+            } else {
+                List<String> effects = divideLongText(effect, 5000);
+                for (String dividedEffect : effects) {
+                    Fill_Cell(dividedEffect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
+                    number_of_effects++;
+                }
+            }
         }
-        return number_of_effects ;
+        return number_of_effects;
     }
     private static boolean isCellMerged(Sheet sheet, int rowIndex, int columnIndex) {
         for (CellRangeAddress range : sheet.getMergedRegions()) {

@@ -1,6 +1,10 @@
 package SDDD.file;
 import java.util.ArrayList;
+
+import static SDDD.file.ExtractText.removeInvisibleChars;
 import static SUTC.file.Commun.ExcelManipulation.*;
+import static SUTC.file.SutcCreationProcess.causesTable;
+import static SUTC.file.SutcCreationProcess.effectsTable;
 
 public class ExtractRequirements {
 
@@ -9,30 +13,31 @@ public class ExtractRequirements {
 
 
 
-    public static void Extract_Req(String LLR_Text, ArrayList<String> cause, ArrayList<String> effect) {
+    public static void Extract_Req(String LLR_Text) {
 
 
         String requirements_with_description ;
        // LLR_Text=LLR_Text.replace("\n\n","\n");
-        LLR_Text=LLR_Text.replace("Traceability","[");
 
 
 
-        for (int i = 0; i <cause.size() ; i++) {
 
-            if (cause.get(i).startsWith("[")){
-                requirements_with_description=LLR_Text.substring(LLR_Text.lastIndexOf(cause.get(i))+1);// extract description
+
+        for (int i = 0; i <causesTable.size() ; i++) {
+
+            if (causesTable.get(i).startsWith("[")){
+                requirements_with_description=LLR_Text.substring(LLR_Text.lastIndexOf(causesTable.get(i))+1);// extract description
                 requirements_with_description=requirements_with_description.replace(" [","[");// delete space
                 requirements_with_description=requirements_with_description.substring(0,requirements_with_description.indexOf("\n["));//end of description
                 requirements_with_description=Cause_Modifier(requirements_with_description);
-                cause.set(i,Cause_Modifier( requirements_with_description));
+                causesTable.set(i,Cause_Modifier( requirements_with_description));
             }
 
         }
 
-        for (int i = 0; i <effect.size() ; i++)
+        for (int i = 0; i <effectsTable.size() ; i++)
         {
-            String requirement=effect.get(i);
+            String requirement=effectsTable.get(i);
 
             String final_requirements=requirement;
                 while (requirement.contains("["))
@@ -55,16 +60,37 @@ public class ExtractRequirements {
             if (final_requirements.equals("")) {
                 requirement=Delete_extra_return_line(requirement);
                 //System.err.println(requirement);
-                effect.set(i, requirement);
+                effectsTable.set(i, requirement);
 
             }
                 else {
 
                 final_requirements=Delete_extra_return_line(final_requirements);
-                //System.err.println(final_requirements);
-                effect.set(i, StubCall_Requirements_Modifier(SettingValue_req_Modifier(final_requirements)));
+               // System.err.println(final_requirements);
+                effectsTable.set(i, StubCall_Requirements_Modifier(SettingValue_req_Modifier(final_requirements)));
             }
         }
+    }
+
+    public static String cleanLllrText(String llrText) {
+
+        llrText= llrText.replace("Traceability","[");
+        llrText=removeInvisibleChars(llrText);
+
+        for (String s : effectsTable) {
+            s=s.replaceAll("Set"," Set");
+            llrText = llrText.replace(s, "");
+        }
+
+        for (String s : causesTable) {
+
+            llrText = llrText.replace(s, "");
+        }
+
+
+        return llrText;
+
+
     }
 }
 

@@ -9,6 +9,7 @@ import static CODE.file.ExtractFunction.ExtractFunctionFromCode;
 import static SDDD.file.ExtractCausesEffectTable.*;
 import static SDDD.file.ExtractFunction.ExtractFunctionFromSDDD;
 import static SDDD.file.ExtractRequirements.Extract_Req;
+import static SDDD.file.ExtractRequirements.cleanLllrText;
 import static SDDD.file.ExtractText.ExtractTextFromSDDD;
 import static SUTC.file.A0_Sheet.A0_ExcelSheet.fillingA0Sheet;
 import static SUTC.file.A1_Sheet.A1_ExcelSheet.fillingA1Sheet;
@@ -83,6 +84,7 @@ public class SutcCreationProcess {
 
 
           functionTextFromLlrFile =ExtractFunctionFromSDDD(textFromSDDD.substring(matcher.start()));
+
           llrOfTheFunction =functionTextFromLlrFile.split("\n"); //split each LLR line of the function in a table lowLevelReq
           functionName=llrOfTheFunction[1].trim();
           log4Info(functionName); // extract the name of the function
@@ -99,8 +101,9 @@ public class SutcCreationProcess {
          // dialog.setVisible(true);
 
           String newExcelFilePath = pathOfTheNewExcelFile() ; // creation of the path
-          Extract_Table(path, causesTable, effectsTable); // extract cause/effect table
-          Extract_Req(functionTextFromLlrFile, causesTable, effectsTable);// extract all requirements
+          Extract_Table(path); // extract cause/effect table
+          functionTextFromLlrFile=cleanLllrText(functionTextFromLlrFile);
+          Extract_Req(functionTextFromLlrFile);// extract all requirements
           utcUftCounter();
 
 
