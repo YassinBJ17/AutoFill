@@ -58,7 +58,7 @@ public class DataDictionary {
                                 log4Debug(searchString + " in file " + file.getName() + ", sheet " + sheet.getSheetName() +", type:\n" + fourthCell.getStringCellValue());
                                 matchingRows = secondCell.getStringCellValue();
 
-                                if((matchingRows.equalsIgnoreCase("STRUCT"))||(matchingRows.equalsIgnoreCase("UNION"))) {
+                                if((matchingRows.equalsIgnoreCase("STRUCTURE"))||(matchingRows.equalsIgnoreCase("STRUCT"))||(matchingRows.equalsIgnoreCase("UNION"))) {
                                     matchingRows= "-";
                                 }
                                 else {

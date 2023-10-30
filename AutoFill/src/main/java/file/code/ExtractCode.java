@@ -39,7 +39,7 @@ public class ExtractCode {
                     } catch (IOException e) {
                         // If there is an error reading the file, print the stack trace and return null.
                         String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-log4Error(methodName+" : "+e.getMessage() );
+                        log4Error(methodName+" : "+e.getMessage() );
                         return null;
                     }
                 }
