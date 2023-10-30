@@ -1,33 +1,30 @@
 package customisedMacro;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Objects;
 
-import static Commun.GraphicUserInterfaces.Error_interface;
-import static Commun.LoggerInitialize.log4Error;
-import static SUTC.file.Commun.ExcelManipulation.Fill_Cell;
-import static SUTC.file.Commun.ExcelRowsAndColsConstants.*;
-import static SUTC.file.SutcCreationProcess.workbook;
+import static file.commun.GraphicUserInterfaces.*;
+import static file.commun.LoggerInitialize.log4Error;
+import static file.sutc.Commun.ExcelManipulation.Fill_Cell;
+import static file.sutc.SutcCreationProcess.workbook;
 
 public class CustoMacro {
 
 
 
-    public static void customisedMacro(String directoryPath) throws IOException {
+    public static void customisedMacro(String directoryPath,String version,String date) throws IOException {
 
         File directory = new File(directoryPath);
         if (!directory.exists() || !directory.isDirectory()) {
-            log4Error("Invalid directory path.");
+            System.err.println("Invalid directory path.");
             return ;
         }
+
+
 
         File[] files = directory.listFiles();
 
@@ -35,13 +32,13 @@ public class CustoMacro {
         for (File file : files) {
             if (file.isDirectory()) {
                 // Recursively search in subdirectories
-                customisedMacro(file.getAbsolutePath());
+                customisedMacro(file.getAbsolutePath(),version,date);
 
             } else {
-                if (file.getName().endsWith(".xls")) {
+                if (file.getName().endsWith(".xlsm")) {
                     // If the file is a .h file, search for the function prototype
                     System.out.println(file.getAbsolutePath());
-                    Update(file);
+                    Update(file,version,date);
 
                 }
             }
@@ -49,7 +46,7 @@ public class CustoMacro {
 
     }
 
-    private static void Update(File file) throws IOException {
+    private static void Update(File file,String version , String date) throws IOException {
         FileInputStream XLSfile ;
 
         try {
@@ -63,13 +60,19 @@ public class CustoMacro {
 
         }
 
-        Sheet s = workbook.getSheetAt(SHEET_A0_INDEX);
+        /*Sheet s = workbook.getSheetAt(SHEET_A0_INDEX);
         Cell c = s.getRow(2).getCell(3);
         if (c.getCellType() == CellType.BLANK)
-            return;
+            return;*/
 
-        Fill_Cell("1E", SHEET_A0_INDEX,8 ,3 );
-        Fill_Cell("17/07/2023", SHEET_A1_INDEX,3 ,2 );
+
+
+
+        Fill_Cell("DD",5 ,8 ,1 );
+
+        Fill_Cell("FADEX-OVSP_SDDD-DD.xlsx",5 ,8 ,2 );
+
+        Fill_Cell("1", 5,8 ,3 );
 
 
         FileOutputStream outputStream = new FileOutputStream(file);

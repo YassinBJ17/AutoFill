@@ -1,0 +1,57 @@
+package file.sutc.B1_Sheet.Classes;
+
+
+import file.sutc.SutcCreationProcess;
+import static file.sutc.Commun.ExcelRowsAndColsConstants.*;
+import static file.commun.LoggerInitialize.*;
+
+public class ClassFilling {
+    public static boolean isInteger(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+log4Error(methodName+" : "+e.getMessage() );
+            return false;
+        }
+    }
+    public static String[] Classes_Filling(String[] parameter) {
+
+        String c;
+        String clas="{ ";
+
+        if(!parameter[INDEX_OF_TYPE].contains("int"))
+            return parameter;
+
+        for (int i = 0; i < SutcCreationProcess.cause.size() ; i++) {
+
+            c= SutcCreationProcess.cause.get(i);
+            if (c.contains(parameter[INDEX_OF_NAME])) {
+
+                c=change_Form(c);
+            }
+        }
+        return parameter;
+    }
+
+    private static String change_Form(String input) {
+        String result = "";
+
+
+        if (input.contains("equal to")) {
+            result=input.substring(input.indexOf(":")+1);
+            result=result+";"+result.replace("equal to" ,"different from");
+
+        } else if (input.contains("different from")) {
+            result=input.substring(input.indexOf(":")+1  );
+            result=result+";"+result.replace("different from" ,"equal to");
+        }
+
+
+
+
+        return result;
+    }
+
+}
