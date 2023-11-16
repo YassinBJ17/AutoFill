@@ -14,25 +14,12 @@ import static file.commun.LoggerInitialize.log4Error;
 
 public class DataDictionary {
 
-    public static String[] Types_array = {
-            "uint8_t",
-            "uint16_t",
-            "uint32_t",
-            "uint64_t",
-            "boolean_t",
-            "float32_t",
-            "float64_t"   };
-
-
     public static String searchExcelFiles(String directoryPath, String searchString,boolean global){
-        // string to store the matching rows
-        String matchingRows = "";
 
-        // get all the files in the directory
+        String matchingRows = "";         // string to store the matching rows
         File directory = new File(directoryPath);
         File[] files = directory.listFiles();
     try {
-
 
         assert files != null;
         for (File file : files) {
@@ -85,7 +72,6 @@ public class DataDictionary {
     }
     return "";
     }
-
     public static String DataDictionarySearch(String ParameterToSearch, boolean global){
         // specify the directory path
         String directoryPath = "../Datafiles/DD";

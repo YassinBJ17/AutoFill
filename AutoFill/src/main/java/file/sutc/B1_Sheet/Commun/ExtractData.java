@@ -17,6 +17,7 @@ public class ExtractData {
 
         domain=domain.substring(domain.indexOf("{")+1);
         domain=domain.trim();
+        System.out.println(domain);
         min=domain.substring(0,domain.indexOf(" "));
 
         max=domain.substring(domain.lastIndexOf(",")+1);
@@ -25,7 +26,7 @@ public class ExtractData {
         max=max.substring(0,max.indexOf(" "));
 
         //invalid="[0x80000000.."+min+"-1] U ["+max+" +1..0x7FFFFFFF]";
-        invalid="[0x80000000.."+min+"[ # ]"+max+"..0x7FFFFFFF]";
+        invalid="[-2147483648.."+min+"[ # ]"+max+"..2147483648]";
         return invalid;
     }
     public static String[] Extract_Domain(String type) {
@@ -33,6 +34,10 @@ public class ExtractData {
         tab[0]="";
         String[][] domain = {
                 {"", "",""},
+                {"int8_t", "[0x80..0x7F]","-"},
+                {"int16_t", "[0x8000..0x7FFF]","-"},
+                {"int32_t", "[0x80000000..0x7FFFFFFF]","-"},
+                {"int64_t", "[0x8000000000000000..0x7FFFFFFFFFFFFFFF]","-"},
                 {"uint8_t", "[0..0xFF]","-"},
                 {"uint16_t", "[0..0xFFFF]","-"},
                 {"uint32_t", "[0..0xFFFFFFFF]","-"},

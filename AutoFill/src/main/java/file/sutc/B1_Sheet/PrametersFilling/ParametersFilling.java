@@ -85,6 +85,7 @@ public class ParametersFilling {
             {
                 Parameters[numberOfParameters][INDEX_OF_DOMAIN]= DataDictionarySearch(Parameters[numberOfParameters][INDEX_OF_TYPE],false);
                 Parameters[numberOfParameters][INDEX_OF_CLASS]= DataDictionarySearch(Parameters[numberOfParameters][INDEX_OF_TYPE],false);
+                System.out.println(Parameters[numberOfParameters][INDEX_OF_TYPE]);
                 Parameters[numberOfParameters][INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(Parameters[numberOfParameters][INDEX_OF_DOMAIN]);
             }
 

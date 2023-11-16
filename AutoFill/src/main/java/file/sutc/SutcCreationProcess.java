@@ -86,7 +86,7 @@ public class SutcCreationProcess {
           TextFromLlrFile =ExtractFunctionFromSDDD(textFromSDDD.substring(matcher.start()));
           llrOfTheFunction =TextFromLlrFile.split("\n"); //split each LLR line of the function in a table lowLevelReq
 
-          functionName=llrOfTheFunction[1].trim();
+          functionName=llrOfTheFunction[1].trim().toLowerCase();
           log4Info(functionName); // extract the name of the function
           codeOfTheFunction =ExtractFunctionFromCode(functionName);
 

@@ -47,7 +47,8 @@ public class A2_ExcelSheet {
         if (!(Code_line.contains("void "))) { // the function return a value
             Fill_Cell("Variable", SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_1);
             Fill_Cell("RTRT_Ret_"+function_name, SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_2);
-            String type = Code_line.substring(0, Code_line.indexOf(function_name) - 1); // type of the return value
+            System.out.println(Code_line);
+            String type = Code_line.substring(0, Code_line.indexOf(function_name.toLowerCase()) - 1); // type of the return value
             Fill_Cell(type, SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_3);
 
             return_function=true;
