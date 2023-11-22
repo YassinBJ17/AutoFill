@@ -28,18 +28,18 @@ public class DataDictionary {
                 FileInputStream fileInputStream = new FileInputStream(file);
                 XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
                 int numberOfSheets = workbook.getNumberOfSheets();
-                // iterate through all sheets in the workbook
                 for (int i = 0; i < numberOfSheets; i++) {
                     Sheet sheet = workbook.getSheetAt(i);
-                    // iterate through all rows in the sheet
+
                     for (Row row : sheet) {
                         Iterator<Cell> cellIterator = row.cellIterator();
-                        // iterate through all cells in the row
+
                         while (cellIterator.hasNext()) {
                             Cell cell = cellIterator.next();
-                            // check if the cell contains the search string
+
+                            searchString=searchString.replace("[","").replace("]","");
                             if (cell.getCellType() == CellType.STRING && cell.getStringCellValue().trim().equalsIgnoreCase(searchString.trim())) {
-                                // find the 4th cell in the row and print its value
+
                                 Cell fourthCell = row.getCell(3);
                                 Cell secondCell = row.getCell(1);
                                 log4Debug(searchString + " in file " + file.getName() + ", sheet " + sheet.getSheetName() +", type:\n" + fourthCell.getStringCellValue());
@@ -87,6 +87,8 @@ public class DataDictionary {
 
             ParameterToSearch = ParameterToSearch.substring(0,index);
         }
+
+
 
         String matchingRows = searchExcelFiles(directoryPath, ParameterToSearch,global);
         if (matchingRows.equals("")) {

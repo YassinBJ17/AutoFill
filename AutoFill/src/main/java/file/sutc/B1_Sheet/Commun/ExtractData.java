@@ -10,14 +10,13 @@ public class ExtractData {
 
     public static String Extract_Invalid_Domain(String domain){
 
-        if (domain.equals("-")||domain.equals("not exist in the DD"))
+        if (domain.equals("-")||domain.equals("not exist in the DD")||domain.equals("N.A."))
             return "-";
 
         String max,min,invalid;
 
         domain=domain.substring(domain.indexOf("{")+1);
         domain=domain.trim();
-        System.out.println(domain);
         min=domain.substring(0,domain.indexOf(" "));
 
         max=domain.substring(domain.lastIndexOf(",")+1);
@@ -34,25 +33,25 @@ public class ExtractData {
         tab[0]="";
         String[][] domain = {
                 {"", "",""},
-                {"int8_t", "[0x80..0x7F]","-"},
-                {"int16_t", "[0x8000..0x7FFF]","-"},
-                {"int32_t", "[0x80000000..0x7FFFFFFF]","-"},
-                {"int64_t", "[0x8000000000000000..0x7FFFFFFFFFFFFFFF]","-"},
-                {"uint8_t", "[0..0xFF]","-"},
-                {"uint16_t", "[0..0xFFFF]","-"},
-                {"uint32_t", "[0..0xFFFFFFFF]","-"},
-                {"uint64_t", "[0..0xFFFFFFFFFFFFFFFF]","-"},
-                {"boolean_t", "{FALSE,TRUE}","[0x80000000..FALSE[ # ]TRUE..0x7FFFFFFF]"},
+                {"int8_t", "[-128..127]","-"},
+                {"int16_t", "[-32768..32767]","-"},
+                {"int32_t", "[-2147483648..2147483647]","-"},
+                {"int64_t", "[-9223372036854775808..9223372036854775807]","-"},
+                {"uint8_t", "[0x00..0xFF]","-"},
+                {"uint16_t", "[0x0000..0xFFFF]","-"},
+                {"uint32_t", "[0x00000000..0xFFFFFFFF]","-"},
+                {"uint64_t", "[0x0000000000000000..0xFFFFFFFFFFFFFFFF]","-"},
+                {"boolean_t", "{FALSE,TRUE}","[-2147483648..FALSE[ # ]TRUE..2147483647]"},
                 {"float32_t", "[-3.4E38..3.4E38]","-"},
                 {"float64_t", "[2.2E-308..1.7E308]","-"}
-        };
+                };
 
-        tab[0]="-";
-        tab[1]="-";
+        tab[0]="-"; tab[1]="-";
+        type = type.replace("*","").trim();
 
-        for (int i = 0; i <= 6; i++) {
+        for (int i = 0; i <= domain.length-1; i++) {
 
-            if(domain[i][0].equals(type.trim())){
+            if(domain[i][0].equals(type)){
                 tab[0]=domain[i][1];
                 tab[1]=domain[i][2];
                 return tab;

@@ -58,8 +58,7 @@ public class ExtractRequirements {
 
         try {
 
-
-        while (requirement.contains("[")) {
+        while (requirement.startsWith("[")) {
             String requirementsWithoutDescription = requirement.substring(requirement.indexOf("["), requirement.indexOf("]") + 1);
 
             if (TextFromLlrFile.contains(requirementsWithoutDescription)) {

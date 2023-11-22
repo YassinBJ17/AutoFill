@@ -26,14 +26,14 @@ public class InsertData {
         if (((Parameters[Parameter_number][INDEX_OF_ACCESS].contains("R"))||(Parameters[Parameter_number][INDEX_OF_ACCESS].contains("In")))&&(!(Parameters[Parameter_number][INDEX_OF_INVALID_DOMAIN].equals("-")))){
             int fist_row=row;
             row+=Insert_Invalid_Row(row, Parameters[Parameter_number]);
-            row+=Insert_Row(row, Parameters[Parameter_number]);
+            row+=Insert_Row(row, Parameters[Parameter_number],false);
             row+=Insert_Invalid_Row(row, Parameters[Parameter_number]);
 
             for (int i = 1; i <= 5; i++)
                 MergeRows(SHEET_B1_INDEX, i, fist_row+1, row );
 
         }else {
-            row += Insert_Row(row, Parameters[Parameter_number]);
+            row += Insert_Row(row, Parameters[Parameter_number],false);
         }
         return ++row;
     }
@@ -64,7 +64,7 @@ public class InsertData {
             }
 
     }
-    public static int Insert_Row(int row, String[] parameter){
+    public static int Insert_Row(int row, String[] parameter,boolean stubParameter){
 
         int return_Number_Of_Rows=1;
 
@@ -82,7 +82,7 @@ public class InsertData {
                 boolean bool=((parameter[INDEX_OF_ACCESS].contains("W"))||(parameter[INDEX_OF_ACCESS].contains("Out"))||(parameter[INDEX_OF_ACCESS].equals("_in")))&&(!(parameter[INDEX_OF_ACCESS].contains("/")));
                 // Check if variable
                 if((Objects.equals(parameter[INDEX_OF_INVALID_DOMAIN], "-"))||(i>5)||(bool))
-
+                    if ((i!=4 && i!=5 ) && stubParameter )
                     MergeRows(SHEET_B1_INDEX,i,row+1,row+2);
             }
             return_Number_Of_Rows++;
@@ -92,6 +92,8 @@ public class InsertData {
 
 
     }
+
+
 
 
     public static String Insert_Invalide_Manipulation(int row,final String[] parameter){
@@ -124,6 +126,7 @@ public class InsertData {
             if (i==1) {
                 if ((parameter[INDEX_OF_NAME].contains("["))&&(parameter[INDEX_OF_NAME].contains("]"))) {
                     Fill_Cell(parameter[INDEX_OF_NAME].replace("[", "[0..").replace("]", "-1]"), SHEET_B1_INDEX, row, i); // array manipulation
+                    if (!parameter[INDEX_OF_TYPE].equals("not exist in the DD"))
                     parameter[INDEX_OF_TYPE]=parameter[INDEX_OF_TYPE]+"[ARRAY]";
                 }else
                     Fill_Cell(parameter[i], SHEET_B1_INDEX,row,i);

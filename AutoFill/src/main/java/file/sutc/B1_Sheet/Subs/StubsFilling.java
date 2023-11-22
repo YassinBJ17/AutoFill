@@ -1,6 +1,7 @@
 package file.sutc.B1_Sheet.Subs;
 
 import static file.code.ExtractFunction.ExtractFunctionFromCode;
+import static file.commun.GraphicUserInterfaces.Error_interface;
 import static file.commun.LoggerInitialize.*;
 import static file.sutc.B1_Sheet.B1_ExcelSheet.*;
 import static file.sutc.B1_Sheet.DataDictionarySearch.DataDictionary.DataDictionarySearch;
@@ -22,7 +23,7 @@ public class StubsFilling {
 
     public static void Stubs_Filling() {
 
-        int numberOfParameters,numberOfStubs,distance;
+        int numberOfParameters,distance;
         String codeOfTheStub;
         String[] Code_stub;
 
@@ -66,15 +67,15 @@ public class StubsFilling {
 
                     int first_row=distance;
                     distance+=Insert_Invalid_Row(distance, Parameters[j]);
-                    distance+=Insert_Row(distance, Parameters[j]);
+                    distance+=Insert_Row(distance, Parameters[j],true);
                     distance+=Insert_Invalid_Row(distance, Parameters[j]);
                     // merge cells
-                    for (int k = 1; k <= 5; k++)
+                    for (int k = 1; k <= 3; k++)
                     MergeRows(SHEET_B1_INDEX, k, first_row+1, distance );
 
                 }else {
 
-                    distance+=Insert_Row(distance, Parameters[j]);
+                    distance+=Insert_Row(distance, Parameters[j],true);
                 }
 
             }
@@ -166,7 +167,8 @@ public class StubsFilling {
 
             }
         }catch (Exception e){
-
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            log4Error(methodName+" : "+e.getMessage() );
         }
     }
 

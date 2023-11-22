@@ -35,15 +35,15 @@ public class ExcelManipulation {
 
         CellStyle style = workbook.createCellStyle();
         Font font = workbook.createFont();
-        font.setColor(IndexedColors.RED.getIndex());
+        //font.setColor(IndexedColors.RED.getIndex());
         style.setVerticalAlignment(VerticalAlignment.CENTER);
         style.setAlignment(HorizontalAlignment.CENTER);
         style.setBorderBottom(BorderStyle.THIN);
         style.setBorderTop(BorderStyle.THIN);
         style.setBorderLeft(BorderStyle.THIN);
         style.setBorderRight(BorderStyle.THIN);
-
         style.setFont(font);
+
         return style;
     } // format of not found message
 
@@ -138,7 +138,6 @@ public class ExcelManipulation {
 
     public static String stubCallRequirementsModifier(String s) {
         log4Debug(s);
-        System.out.println("___________________");
         for (int i = 0; i < 10; i++) {
             s=s.replace("  "," ");
             s=s.replace("\n\n","\n");

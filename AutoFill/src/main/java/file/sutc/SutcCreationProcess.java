@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import static file.code.ExtractFunction.ExtractFunctionFromCode;
+import static file.commun.ExcelFormatMaintenance.excelFormatMaintenance;
 import static file.s3d.ExtractCausesEffectTable.*;
 import static file.s3d.ExtractFunction.ExtractFunctionFromSDDD;
 import static file.s3d.ExtractRequirements.ExtractDescriptionOfRequirements;
@@ -108,14 +109,14 @@ public class SutcCreationProcess {
 
 
           fillingA0Sheet(); // Filling A0
-          fillingA1Sheet(userName); // Filling A1
+          //fillingA1Sheet(userName); // Filling A1
           fillingA2Sheet(); // Filling A2
           fillingB0Sheet(); // Filling B0
           fillingB1Sheet(); // Filling B1
           fillingSheetsName(); // Filling SheetsName
           llrTraceabilityFilling(); // Filling Traceability
 
-
+          excelFormatMaintenance();
           WritingFile(newExcelFilePath);// save XLS
           dialog.setVisible(false); // hide the dialog
           log4Info(functionName+".xls was saved successfully.");

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import static file.commun.GraphicUserInterfaces.Error_interface;
 import static file.commun.LoggerInitialize.log4Error;
 
 public class ExtractPrototype {
@@ -54,7 +55,8 @@ public class ExtractPrototype {
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+                log4Error(methodName+" : "+e.getMessage() );
             }
 
             return null;

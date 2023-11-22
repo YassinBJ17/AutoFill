@@ -20,6 +20,7 @@ public class ParametersFilling {
     public static int ExtractParameters(String[] code, String function_name){
         int start=0,end=0;
         int numberOfParameters=0;
+        String[] domainClass ;
         String parameter;
         StringBuilder param= new StringBuilder();
 
@@ -75,17 +76,16 @@ public class ParametersFilling {
 
             Parameters[numberOfParameters][INDEX_OF_NAME]= Parameters_Detect(p)[0];
             Parameters[numberOfParameters][INDEX_OF_TYPE]= Parameters_Detect(p)[1];
-            Parameters[numberOfParameters][INDEX_OF_DOMAIN]=(Extract_Domain(Parameters[numberOfParameters][INDEX_OF_TYPE]))[0];
-
-            Parameters[numberOfParameters][INDEX_OF_CLASS]=(Extract_Domain(Parameters[numberOfParameters][INDEX_OF_TYPE]))[0];
-            Parameters[numberOfParameters][INDEX_OF_INVALID_DOMAIN]=(Extract_Domain(Parameters[numberOfParameters][INDEX_OF_TYPE]))[1];
+            domainClass=Extract_Domain(Parameters[numberOfParameters][INDEX_OF_TYPE]);
+            Parameters[numberOfParameters][INDEX_OF_DOMAIN]=domainClass[0];
+            Parameters[numberOfParameters][INDEX_OF_CLASS]=domainClass[0];
+            Parameters[numberOfParameters][INDEX_OF_INVALID_DOMAIN]=domainClass[1];
 
 
             if(Parameters[numberOfParameters][INDEX_OF_DOMAIN].equals("-"))
             {
                 Parameters[numberOfParameters][INDEX_OF_DOMAIN]= DataDictionarySearch(Parameters[numberOfParameters][INDEX_OF_TYPE],false);
-                Parameters[numberOfParameters][INDEX_OF_CLASS]= DataDictionarySearch(Parameters[numberOfParameters][INDEX_OF_TYPE],false);
-                System.out.println(Parameters[numberOfParameters][INDEX_OF_TYPE]);
+                Parameters[numberOfParameters][INDEX_OF_CLASS]= Parameters[numberOfParameters][INDEX_OF_DOMAIN];
                 Parameters[numberOfParameters][INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(Parameters[numberOfParameters][INDEX_OF_DOMAIN]);
             }
 
@@ -96,7 +96,7 @@ public class ParametersFilling {
     public static void Parameters_Filling() {
 
         Parameters=new String[100][10];
-        int numberOfParameters= ExtractParameters(codeOfTheFunction,functionName);
+        numberOfParameters= ExtractParameters(codeOfTheFunction,functionName);
         int normal_parameters_index= START_OF_PARAMETERS_TABLE;// for normal parameters
         int complex_parameters_index= INTERNAL_VARIABLES_POSITION;// for pointer Complex parameters
 

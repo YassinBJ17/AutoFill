@@ -18,13 +18,14 @@ public class B1_ExcelSheet {
     public static final int RETURN_FUNCTION_INDEX=STUB_DEFINITION_TABLE_POSITION-5;
     public static final int DISTANCE_BETWEEN_STUBS =69;
     public static int STUB_PARAMETERS_TABLE_POSITION=200 ;
-    public static final int INTERNAL_DEFINITIONS_POSITION=32;
     public static int INTERNAL_VARIABLES_POSITION=113;
     public static int Global_Start;
     public static String prototypeOfTheFunction;
     public static String[] Globals=new String[100];
     public static String[] Stubs=new String[100];
     public static String[][] Parameters=new String[100][10];
+    public static int numberOfStubs;
+    public static int numberOfParameters;
 
 
 

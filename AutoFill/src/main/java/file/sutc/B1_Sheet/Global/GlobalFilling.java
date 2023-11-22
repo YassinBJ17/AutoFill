@@ -132,14 +132,14 @@ public class GlobalFilling {
 
         if ((Parameters[parameterNumber][INDEX_OF_ACCESS].contains("W"))&&(!(Parameters[parameterNumber][INDEX_OF_ACCESS].contains("/")))){
             Parameters[parameterNumber][INDEX_OF_CLASS]="-";
-            Insert_Row(row, Parameters[parameterNumber]);
+            Insert_Row(row, Parameters[parameterNumber],false);
             return_Number_Of_Rows=1;
 
         }else if (((Parameters[parameterNumber][INDEX_OF_ACCESS].contains("R")))&&(!(Parameters[parameterNumber][INDEX_OF_INVALID_DOMAIN].equals("-")))){
 
             int fist_row=row;
             row+=Insert_Invalid_Row(row, Parameters[parameterNumber]);
-            row+=Insert_Row(row, Parameters[parameterNumber]);
+            row+=Insert_Row(row, Parameters[parameterNumber],false);
             //row++;
             row+=Insert_Invalid_Row(row, Parameters[parameterNumber]);
             // merge cells
@@ -149,7 +149,7 @@ public class GlobalFilling {
             return_Number_Of_Rows=5;
 
         }else {
-            Insert_Row(row, Parameters[parameterNumber]);
+            Insert_Row(row, Parameters[parameterNumber],false);
             return_Number_Of_Rows=1;
         }
 

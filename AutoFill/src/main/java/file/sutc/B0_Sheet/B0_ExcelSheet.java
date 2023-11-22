@@ -49,13 +49,13 @@ public class B0_ExcelSheet {
             effect = effect.replaceFirst("^\\n", "");// delete the first character from a string if it is equal to a newline character (\n)
             effect = effect.replace("\n\n", "\n"); // delete extra line return
 
-
             if (effect.length() < 32767) {
                 Fill_Cell(effect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
                 number_of_effects++;
             } else {
                 List<String> effects = divideLongText(effect, 5000);
                 for (String dividedEffect : effects) {
+                    //System.out.println(dividedEffect);
                     Fill_Cell(dividedEffect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
                     number_of_effects++;
                 }
@@ -100,6 +100,9 @@ public class B0_ExcelSheet {
                 Fill_Cell("N/A", SHEET_B0_INDEX, CELL_ROW_3, CELL_COL_3);
                 Fill_Cell("N/A", SHEET_B0_INDEX, CELL_ROW_3, CELL_COL_2);
 
+                if (number_of_effects > 2)
+                    MergeRows(SHEET_B0_INDEX, CELL_COL_3 + numberOfUFT, CELL_ROW_4 + 2, CELL_COL_2 + 2 + number_of_effects);// Merge LLR traceability
+
 
 
             } else {
@@ -107,10 +110,12 @@ public class B0_ExcelSheet {
 
                 if (numberOfCauses > 2)  // Number of causes is bigger than 1 cause
                     MergeRows(SHEET_B0_INDEX, CELL_COL_3 + numberOfUFT, CELL_COL_4, CELL_COL_2 + numberOfCauses);// Merge LLR traceability
+
+                if (number_of_effects > 2)
+                    MergeRows(SHEET_B0_INDEX, CELL_COL_3 + numberOfUFT, CELL_ROW_4 + numberOfCauses, CELL_COL_2 + numberOfCauses + number_of_effects);// Merge LLR traceability
+
             }
 
-            if (number_of_effects > 2)
-                MergeRows(SHEET_B0_INDEX, CELL_COL_3 + numberOfUFT, CELL_ROW_4 + numberOfCauses, CELL_COL_2 + numberOfCauses + number_of_effects);// Merge LLR traceability
 
             workbook.getSheetAt(SHEET_B0_INDEX).setColumnWidth(CELL_COL_3 + numberOfUFT,9000);
 

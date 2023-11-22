@@ -1,6 +1,5 @@
 package file.sutc.A2_Sheet;
 
-import static file.sutc.B1_Sheet.B1_ExcelSheet.INTERNAL_DEFINITIONS_POSITION;
 import static file.sutc.B1_Sheet.B1_ExcelSheet.Parameters;
 import static file.sutc.B1_Sheet.Global.GlobalFilling.InternalDefinitionsExist;
 import static file.sutc.Commun.ExcelRowsAndColsConstants.*;
@@ -29,8 +28,8 @@ public class A2_ExcelSheet {
             Parameters[Parameter_number][INDEX_OF_NAME] = Parameters[Parameter_number][INDEX_OF_NAME].substring(0, index);
         }
         if (!InternalDefinitionsExist(Parameters[Parameter_number][INDEX_OF_NAME])) {
-            Fill_Cell(Parameters[Parameter_number][INDEX_OF_NAME], SHEET_A2_INDEX, INTERNAL_DEFINITIONS_POSITION + Parameter_number, CELL_COL_2);
-            Fill_Cell(Parameters[Parameter_number][INDEX_OF_TYPE].replace("[ARRAY]",""), SHEET_A2_INDEX, INTERNAL_DEFINITIONS_POSITION + Parameter_number, CELL_COL_3);
+            Fill_Cell(Parameters[Parameter_number][INDEX_OF_NAME], SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE+ Parameter_number + 1, CELL_COL_2);
+            Fill_Cell(Parameters[Parameter_number][INDEX_OF_TYPE].replace("[ARRAY]",""), SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE+ Parameter_number + 1, CELL_COL_3);
         }
 
     }
@@ -39,7 +38,6 @@ public class A2_ExcelSheet {
 
         String header_files = Include_Modifier(Code_line); // extract the name of the header file
         Fill_Cell(header_files, SHEET_A2_INDEX, number_of_header_file + SHEET_B1_INDEX, CELL_COL_2);
-
     }
 
     public static void extractFunctionReturn(String Code_line, String function_name){
@@ -47,13 +45,29 @@ public class A2_ExcelSheet {
         if (!(Code_line.contains("void "))) { // the function return a value
             Fill_Cell("Variable", SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_1);
             Fill_Cell("RTRT_Ret_"+function_name, SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_2);
-            System.out.println(Code_line);
             String type = Code_line.substring(0, Code_line.indexOf(function_name.toLowerCase()) - 1); // type of the return value
             Fill_Cell(type, SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_3);
 
             return_function=true;
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public static void fillingA2Sheet(){
