@@ -55,7 +55,7 @@ public class ExtractCausesEffectTable {
     }
 
     public static boolean IsRequirement(String requirement) {
-        String[] notReq={"DO NOTHING","EFFECTS","ALL OTHER CASE","CAUSES","NO EFFECT","ALWAYS","NO EFFECTS","ALL THE OTHER CASES","NO DATA TO READ"};
+        String[] notReq={"DO NOTHING","EFFECTS","ALL OTHER CASES","ALL OTHER CASE","CAUSES","NO EFFECT","ALWAYS","NO EFFECTS","ALL THE OTHER CASES","NO DATA TO READ"};
         requirement=requirement.replaceAll("[^a-zA-Z]", " ");
         requirement=requirement.trim();
         if( Objects.equals(requirement, ""))

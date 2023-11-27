@@ -18,6 +18,8 @@ public class ExcelFormatMaintenance {
     static String[] inputOutput = {"In", "Out", "In/Out"};
     static String[] access = {"R", "W", "R/W"};
     static String[] stubInputOutput = {"_in","_inout", "_out", "_no"};
+
+    static String[] valideInvalide = {"V","I"};
     static String[] stubReturn = {"Return"};
 
 
@@ -52,9 +54,10 @@ public class ExcelFormatMaintenance {
         DataValidationConstraint accessList = validationHelper.createExplicitListConstraint(access);
         dataValidation = validationHelper.createValidation(accessList, accessObject);
         sheet.addValidationData(dataValidation);
+        startRange=numberOfUFT+11;
 
         setStubInputOutput(sheet,endRange+5);
-
+        setValideInvalide(sheet,startRange);
         mergeGreyCells(sheet,endRange+5);
 
 
@@ -109,21 +112,24 @@ public class ExcelFormatMaintenance {
         }
     }
 
-    private static int getEndOfUtcDefinition(Sheet sheet) {
+    private static void setValideInvalide(Sheet sheet,int start){
 
+        System.out.println(start);
+        DataValidationHelper validationHelper = sheet.getDataValidationHelper();
 
-        for (int i = numberOfUFT+11; i <= sheet.getLastRowNum(); i++) {
-            Cell cell = sheet.getRow(i).getCell(1); // Assuming column index 1 (column D)
-            if (cell != null) {
-                if (cell.getStringCellValue().equals("End of UTC definition")) {
-                    return i;
+        for (int i = start; i <= sheet.getLastRowNum(); i++) {
+            Cell cell = sheet.getRow(i).getCell(7); // Assuming column index 1 (column D)
+            if (cell!=null)
+                if (!cell.getStringCellValue().isEmpty()){
+                    CellRangeAddressList valideInvalideObject = new CellRangeAddressList(i,i , 7, 7); // Cell A1 for example
+                    DataValidationConstraint valideInvalideList = validationHelper.createExplicitListConstraint(valideInvalide);
+                    DataValidation dataValidation = validationHelper.createValidation(valideInvalideList, valideInvalideObject);
+                    sheet.addValidationData(dataValidation);
                 }
-            }
         }
-        return 0;
-
 
     }
+
     private static int getStubDefinitionPosition(Sheet sheet) {
 
 
@@ -171,6 +177,8 @@ public class ExcelFormatMaintenance {
         }
         return 0;
     }
+
+
 }
 
 

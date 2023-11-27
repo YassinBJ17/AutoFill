@@ -18,11 +18,6 @@ public class B0_ExcelSheet {
     public static final int NUMBER_OF_EMPTY_CELL = 40;
     public static final int END_OF_SHEET = 84;
 
-    static void LLR_TraceabilityFilling(){
-
-    Fill_Cell(llrTraceability(llrOfTheFunction), SHEET_B0_INDEX, CELL_ROW_3, CELL_COL_4);//LLR traceability Filling
-    Fill_Cell(llrTraceability(llrOfTheFunction), SHEET_B0_INDEX, EFFECT_TABLE_POSITION + 1, CELL_COL_4);//LLR traceability Filling
-    }
     private static void HeaderFilling() {
         Fill_Cell("Unit Functional Tests for: " + functionName, SHEET_B0_INDEX, CELL_ROW_0, CELL_COL_2);
     }
@@ -116,7 +111,6 @@ public class B0_ExcelSheet {
 
         log4Info("B0 Sheet in progress");
         HeaderFilling();
-        LLR_TraceabilityFilling();
         numberOfCauses=CausesFilling();
         number_of_effects=EffectFilling();
         removeExtraCells(number_of_effects);

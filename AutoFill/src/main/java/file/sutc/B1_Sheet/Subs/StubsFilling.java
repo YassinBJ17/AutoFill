@@ -214,7 +214,7 @@ public class StubsFilling {
 
                 if (!(code_line.contains("void ")))  {
 
-                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_NAME] = "Return_"+function_name;
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_NAME] = "ret_"+function_name;
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE] = code_line.trim().substring(0, code_line.trim().indexOf(" ") );
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_ACCESS] = "Return";
                     domainClass = Extract_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]);
@@ -231,7 +231,7 @@ public class StubsFilling {
 
                     break;
                 } else {
-                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_NAME] = "Return_"+function_name;
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_NAME] = "ret_"+function_name;
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE] = "void";
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_ACCESS] = "Return";
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN] = "-";
