@@ -1,7 +1,6 @@
 package file.sutc.B1_Sheet.Subs;
 
 import static file.code.ExtractFunction.ExtractFunctionFromCode;
-import static file.commun.GraphicUserInterfaces.Error_interface;
 import static file.commun.LoggerInitialize.*;
 import static file.sutc.B1_Sheet.B1_ExcelSheet.*;
 import static file.sutc.B1_Sheet.DataDictionarySearch.DataDictionary.DataDictionarySearch;
@@ -24,7 +23,6 @@ public class StubsFilling {
     public static void Stubs_Filling() {
 
         int numberOfParameters,distance;
-        String codeOfTheStub;
         String[] Code_stub;
 
         Parameters=new String[100][10];
@@ -39,7 +37,7 @@ public class StubsFilling {
             Fill_Cell(Stubs[i], SHEET_B1_INDEX, STUB_DEFINITION_TABLE_POSITION +(i* DISTANCE_BETWEEN_STUBS), CELL_COL_2);
 
             if(Code_stub==null){
-                //ExcelModifier.Fill_Cell("not exist in the Code", SHEET_B1, B1_ExcelSheet.STUB_DEFINITION_TABLE_POSITION+ SutcCreation Proccess.number_of_UFT +(i* B1_ExcelSheet.DISTANCE_BETWEEN_STUBS)+2, CELL_COL_2);
+                //ExcelModifier.Fill_Cell("not exist in the Code", SHEET_B1, B1_ExcelSheet.STUB_DEFINITION_TABLE_POSITION+ SutcCreation Process.number_of_UFT +(i* B1_ExcelSheet.DISTANCE_BETWEEN_STUBS)+2, CELL_COL_2);
 
                 for (int j = 0; j <3 ; j++)  // add empty lines
                     Fill_Cell(" ", SHEET_B1_INDEX, STUB_PARAMETERS_TABLE_POSITION +(i* DISTANCE_BETWEEN_STUBS)+j, CELL_COL_1);
@@ -203,7 +201,7 @@ public class StubsFilling {
 
     public static int Stub_Return_Filling(String[] Code, String function_name, int numberOfParameters) {
 
-
+        String[] domainClass;
         for (int i = Parameters.length-2; i >= 0 ; i--) { // Shift the parameters table
             System.arraycopy(Parameters[i], 0, Parameters[i + 1], 0, 10);
         }
@@ -219,14 +217,15 @@ public class StubsFilling {
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_NAME] = "Return_"+function_name;
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE] = code_line.trim().substring(0, code_line.trim().indexOf(" ") );
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_ACCESS] = "Return";
-                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN] = (Extract_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]))[0];
-
-                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_CLASS] = (Extract_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]))[0];
-                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_INVALID_DOMAIN] = (Extract_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]))[1];
+                    domainClass = Extract_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]);
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN] = domainClass[0];
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_CLASS] = domainClass[0];
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_INVALID_DOMAIN] = domainClass[1];
 
                     if (Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN].equals("-")) {
-                        Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN] = DataDictionarySearch(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE], false);
-                        Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_CLASS] = DataDictionarySearch(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE], false);
+                        domainClass[0]=DataDictionarySearch(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE], false);
+                        Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN] = domainClass[0];
+                        Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_CLASS] =domainClass[0];
                         Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_INVALID_DOMAIN] = Extract_Invalid_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN]);
                     }
 

@@ -127,7 +127,7 @@ public class InsertData {
                 if ((parameter[INDEX_OF_NAME].contains("["))&&(parameter[INDEX_OF_NAME].contains("]"))) {
                     Fill_Cell(parameter[INDEX_OF_NAME].replace("[", "[0..").replace("]", "-1]"), SHEET_B1_INDEX, row, i); // array manipulation
                     if (!parameter[INDEX_OF_TYPE].equals("not exist in the DD"))
-                    parameter[INDEX_OF_TYPE]=parameter[INDEX_OF_TYPE]+"[ARRAY]";
+                    parameter[INDEX_OF_TYPE]=parameter[INDEX_OF_TYPE].replace("Array of","")+"[ARRAY]";
                 }else
                     Fill_Cell(parameter[i], SHEET_B1_INDEX,row,i);
             }else

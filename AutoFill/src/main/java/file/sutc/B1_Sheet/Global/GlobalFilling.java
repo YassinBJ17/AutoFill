@@ -39,19 +39,20 @@ public class GlobalFilling {
                     Parameters[i][INDEX_OF_NAME]=Globals[i].substring(0, Globals[i].indexOf(" ")) ;
 
                     } catch (Exception e){
-                        Error_interface(String.valueOf(e)+" : "+Globals[i]);
+                        Error_interface(e+" : "+Globals[i]);
                         String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
                         log4Error(methodName+" : "+e.getMessage() );
                     }
 
                 Parameters[i][INDEX_OF_TYPE]= DataDictionarySearch(Parameters[i][INDEX_OF_NAME],true) ;
-                Parameters[i][INDEX_OF_DOMAIN]=(Extract_Domain(Parameters[i][INDEX_OF_TYPE]))[0];
-                Parameters[i][INDEX_OF_CLASS]=(Extract_Domain(Parameters[i][INDEX_OF_TYPE]))[0];
-                Parameters[i][INDEX_OF_INVALID_DOMAIN]=(Extract_Domain(Parameters[i][INDEX_OF_TYPE]))[1];
+                String[] domainClass = Extract_Domain(Parameters[i][INDEX_OF_TYPE].replace("Array of",""));
+                Parameters[i][INDEX_OF_DOMAIN]=domainClass[0];
+                Parameters[i][INDEX_OF_CLASS]=domainClass[0];
+                Parameters[i][INDEX_OF_INVALID_DOMAIN]=domainClass[1];
 
                 if(Parameters[i][INDEX_OF_DOMAIN].equals("-")) {
                     Parameters[i][INDEX_OF_DOMAIN] = DataDictionarySearch(Parameters[i][INDEX_OF_TYPE], false);
-                    Parameters[i][INDEX_OF_CLASS] = DataDictionarySearch(Parameters[i][INDEX_OF_TYPE], false);
+                    Parameters[i][INDEX_OF_CLASS] = Parameters[i][INDEX_OF_DOMAIN];
                     Parameters[i][INDEX_OF_INVALID_DOMAIN]=Extract_Invalid_Domain(Parameters[i][INDEX_OF_DOMAIN]);
                 }
 

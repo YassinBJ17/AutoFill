@@ -21,11 +21,12 @@ public class B1_ExcelSheet {
     public static int INTERNAL_VARIABLES_POSITION=113;
     public static int Global_Start;
     public static String prototypeOfTheFunction;
+    public static int numberOfStubs;
+    public static int numberOfParameters;
     public static String[] Globals=new String[100];
     public static String[] Stubs=new String[100];
     public static String[][] Parameters=new String[100][10];
-    public static int numberOfStubs;
-    public static int numberOfParameters;
+
 
 
 

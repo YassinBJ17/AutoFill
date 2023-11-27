@@ -11,8 +11,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 
-            System.setProperty("log4j2.enableStackWalker", "true");
-
+             System.setProperty("log4j2.enableStackWalker", "true");
 
              String directory=Path_interface();
              //String version=Version_interface();
@@ -27,11 +26,6 @@ public class Main {
             log4Info("Process finished");
             System.exit(0);
 
-
-
     }
-
-
-
 
 }

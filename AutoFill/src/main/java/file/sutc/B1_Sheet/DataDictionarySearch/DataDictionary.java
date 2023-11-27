@@ -14,7 +14,7 @@ import static file.commun.LoggerInitialize.log4Error;
 
 public class DataDictionary {
 
-    public static String searchExcelFiles(String directoryPath, String searchString,boolean global){
+    public static String searchExcelFiles(String directoryPath, String searchString,boolean searchForType){
 
         String matchingRows = "";         // string to store the matching rows
         File directory = new File(directoryPath);
@@ -37,21 +37,17 @@ public class DataDictionary {
                         while (cellIterator.hasNext()) {
                             Cell cell = cellIterator.next();
 
-                            searchString=searchString.replace("[","").replace("]","");
                             if (cell.getCellType() == CellType.STRING && cell.getStringCellValue().trim().equalsIgnoreCase(searchString.trim())) {
-
                                 Cell fourthCell = row.getCell(3);
                                 Cell secondCell = row.getCell(1);
-                                log4Debug(searchString + " in file " + file.getName() + ", sheet " + sheet.getSheetName() +", type:\n" + fourthCell.getStringCellValue());
-                                matchingRows = secondCell.getStringCellValue();
+                                  matchingRows = secondCell.getStringCellValue();
 
                                 if((matchingRows.equalsIgnoreCase("STRUCTURE"))||(matchingRows.equalsIgnoreCase("STRUCT"))||(matchingRows.equalsIgnoreCase("UNION"))) {
                                     matchingRows= "-";
                                 }
                                 else {
-                                    if (!global)
-                                        matchingRows = fourthCell.getStringCellValue();
-
+                                    if (!searchForType)
+                                        matchingRows = fourthCell.getStringCellValue(); // return Domain
                                 }
                             }
                         }
@@ -72,11 +68,22 @@ public class DataDictionary {
     }
     return "";
     }
-    public static String DataDictionarySearch(String ParameterToSearch, boolean global){
+    public static String DataDictionarySearch(String ParameterToSearch, boolean searchForType){
         // specify the directory path
         String directoryPath = "../Datafiles/DD";
 
         // search for the string in the Excel files in the directory and print the matching rows
+
+        ParameterToSearch=removeExtraCharacters(ParameterToSearch); // like * [ ]
+
+        String matchingRows = searchExcelFiles(directoryPath, ParameterToSearch,searchForType);
+        if (matchingRows.equals("")) {
+            return "not exist in the DD";
+        }
+        return matchingRows;
+    }
+
+    private static String removeExtraCharacters(String ParameterToSearch) {
 
         if (ParameterToSearch.contains(".")||ParameterToSearch.contains("->")) {
             int index;
@@ -87,14 +94,13 @@ public class DataDictionary {
 
             ParameterToSearch = ParameterToSearch.substring(0,index);
         }
+            ParameterToSearch=ParameterToSearch.replace("Array of ","");
+            ParameterToSearch=ParameterToSearch.replace("[","");
+            ParameterToSearch=ParameterToSearch.replace("]","");
+            ParameterToSearch=ParameterToSearch.replace("*","");
 
+            return ParameterToSearch.trim();
 
-
-        String matchingRows = searchExcelFiles(directoryPath, ParameterToSearch,global);
-        if (matchingRows.equals("")) {
-            return "not exist in the DD";
-        }
-        return matchingRows;
     }
 }
 
