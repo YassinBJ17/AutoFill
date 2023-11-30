@@ -55,7 +55,6 @@ public class GlobalFilling {
                     Parameters[i][INDEX_OF_CLASS] = Parameters[i][INDEX_OF_DOMAIN];
                     Parameters[i][INDEX_OF_INVALID_DOMAIN]=Extract_Invalid_Domain(Parameters[i][INDEX_OF_DOMAIN]);
                 }
-
                 Global_Start+=Insert_Global_Parameter(Global_Start+i,i);
             }
 
@@ -113,7 +112,7 @@ public class GlobalFilling {
 
         Sheet A2_sheet= workbook.getSheetAt(SHEET_A2_INDEX);
 
-        for (int i = 3; i <60 ; i++) {
+        for (int i = 3; i <A2_sheet.getLastRowNum() ; i++) {
             Row row = A2_sheet.getRow(i);
 
             if (row != null) {
@@ -133,30 +132,28 @@ public class GlobalFilling {
 
         if ((Parameters[parameterNumber][INDEX_OF_ACCESS].contains("W"))&&(!(Parameters[parameterNumber][INDEX_OF_ACCESS].contains("/")))){
             Parameters[parameterNumber][INDEX_OF_CLASS]="-";
-            Insert_Row(row, Parameters[parameterNumber],false);
-            return_Number_Of_Rows=1;
-
-        }else if (((Parameters[parameterNumber][INDEX_OF_ACCESS].contains("R")))&&(!(Parameters[parameterNumber][INDEX_OF_INVALID_DOMAIN].equals("-")))){
+            return_Number_Of_Rows=Insert_Row(row, Parameters[parameterNumber],false);
+        }
+        else if (((Parameters[parameterNumber][INDEX_OF_ACCESS].contains("R")))&&(!(Parameters[parameterNumber][INDEX_OF_INVALID_DOMAIN].equals("-")))){
 
             int fist_row=row;
             row+=Insert_Invalid_Row(row, Parameters[parameterNumber]);
             row+=Insert_Row(row, Parameters[parameterNumber],false);
-            //row++;
             row+=Insert_Invalid_Row(row, Parameters[parameterNumber]);
-            // merge cells
+
             for (int i = 1; i <= 5; i++)
             MergeRows(SHEET_B1_INDEX, i, fist_row+1, row );
 
-            return_Number_Of_Rows=5;
+            return_Number_Of_Rows=6;
+        }
+        else {
+            return_Number_Of_Rows=Insert_Row(row, Parameters[parameterNumber],false);
 
-        }else {
-            Insert_Row(row, Parameters[parameterNumber],false);
-            return_Number_Of_Rows=1;
         }
 
         // A2 filling
         Insert_Global_ParameterInA2( parameterNumber);
-        return return_Number_Of_Rows;
+        return return_Number_Of_Rows-1;
     }
 
 

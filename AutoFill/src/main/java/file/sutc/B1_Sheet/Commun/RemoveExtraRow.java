@@ -1,5 +1,6 @@
 package file.sutc.B1_Sheet.Commun;
 
+import static file.sutc.A2_Sheet.A2_ExcelSheet.numberOfHeaderFiles;
 import static file.sutc.B1_Sheet.B1_ExcelSheet.MAXIMUM_UFT_NUMBER;
 import static file.sutc.B1_Sheet.Commun.RemoveExtraColumn.removeExtraCols;
 import static file.sutc.Commun.ExcelManipulation.MergeCols;
@@ -11,7 +12,6 @@ import static file.commun.LoggerInitialize.*;
 import static file.sutc.SutcCreationProcess.*;
 
 public class RemoveExtraRow {
-
     public static void RemoveExtraRows(){
 
         Sheet B1_sheet= workbook.getSheetAt(SHEET_B1_INDEX);
@@ -55,13 +55,10 @@ public class RemoveExtraRow {
                         }
                     }
                 }
-
-
-
             }
 
 
-            for (int i = 2; i <A2_sheet.getLastRowNum(); i++) {
+            for (int i = numberOfHeaderFiles+3; i <A2_sheet.getLastRowNum(); i++) {
 
                 Row row = A2_sheet.getRow(i);
                 Cell secondCell = row.getCell(2);

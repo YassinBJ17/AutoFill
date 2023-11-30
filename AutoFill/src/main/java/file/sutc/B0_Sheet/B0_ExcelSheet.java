@@ -109,11 +109,12 @@ public class B0_ExcelSheet {
 
         int number_of_effects ;
 
-        log4Info("B0 Sheet in progress");
+
         HeaderFilling();
         numberOfCauses=CausesFilling();
         number_of_effects=EffectFilling();
         removeExtraCells(number_of_effects);
+        log4Info("B0 Sheet done");
 
     }
 

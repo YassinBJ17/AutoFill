@@ -82,7 +82,9 @@ public class InsertData {
                 boolean bool=((parameter[INDEX_OF_ACCESS].contains("W"))||(parameter[INDEX_OF_ACCESS].contains("Out"))||(parameter[INDEX_OF_ACCESS].equals("_in")))&&(!(parameter[INDEX_OF_ACCESS].contains("/")));
                 // Check if variable
                 if((Objects.equals(parameter[INDEX_OF_INVALID_DOMAIN], "-"))||(i>5)||(bool))
-                    if ((i!=4 && i!=5 ) && stubParameter )
+                    if ((i==4 || i==5 ) && stubParameter )
+                    continue;
+
                     MergeRows(SHEET_B1_INDEX,i,row+1,row+2);
             }
             return_Number_Of_Rows++;

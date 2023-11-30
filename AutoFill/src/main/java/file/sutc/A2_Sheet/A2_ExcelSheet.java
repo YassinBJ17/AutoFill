@@ -12,6 +12,7 @@ import static file.sutc.SutcCreationProcess.functionName;
 public class A2_ExcelSheet {
 
     public static boolean return_function;
+    public static int numberOfHeaderFiles =0;
     public static final int INTERNAL_DEFINITIONS_FIRST_LINE = 30;
 
 
@@ -36,7 +37,9 @@ public class A2_ExcelSheet {
 
     public static void extractHeaderFiles(String Code_line, int number_of_header_file){
 
+
         String header_files = Include_Modifier(Code_line); // extract the name of the header file
+        System.out.println(header_files+"-"+number_of_header_file);
         Fill_Cell(header_files, SHEET_A2_INDEX, number_of_header_file + SHEET_B1_INDEX, CELL_COL_2);
     }
 
@@ -53,32 +56,15 @@ public class A2_ExcelSheet {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static void fillingA2Sheet(){
 
-        int number_of_header_file=0;
-        
+
+        numberOfHeaderFiles=0;
         for (String Code_line : codeOfTheFunction) {
 
             if (Code_line.contains("#include")) {
-                extractHeaderFiles(Code_line,number_of_header_file); // Files to be included filling
-                number_of_header_file++;
+                extractHeaderFiles(Code_line, numberOfHeaderFiles); // Files to be included filling
+                numberOfHeaderFiles++;
             }
             else if (Prototype_Detect(Code_line, functionName)) { // detect function prototype
 

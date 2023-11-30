@@ -5,6 +5,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.CellRangeAddressList;
 
 import static file.commun.LoggerInitialize.log4Error;
+import static file.sutc.A2_Sheet.A2_ExcelSheet.numberOfHeaderFiles;
 import static file.sutc.Commun.ExcelManipulation.MergeCols;
 import static file.sutc.Commun.ExcelManipulation.MergeRows;
 import static file.sutc.Commun.ExcelRowsAndColsConstants.SHEET_B1_INDEX;
@@ -49,7 +50,6 @@ public class ExcelFormatMaintenance {
 
         startRange=endRange+1;
         endRange=getStubDefinitionPosition(sheet);
-
         CellRangeAddressList accessObject = new CellRangeAddressList(startRange, endRange, 3, 3); // Cell A1 for example
         DataValidationConstraint accessList = validationHelper.createExplicitListConstraint(access);
         dataValidation = validationHelper.createValidation(accessList, accessObject);
@@ -75,7 +75,6 @@ public class ExcelFormatMaintenance {
                     mergeEnd=i;
 
                     String string_range= (char) (69)+""+(mergeStart)+":"+(char) (70)+mergeEnd;
-
                     CellRangeAddress range = CellRangeAddress.valueOf(string_range);
                     sheet.addMergedRegion(range);
 
@@ -114,7 +113,7 @@ public class ExcelFormatMaintenance {
 
     private static void setValideInvalide(Sheet sheet,int start){
 
-        System.out.println(start);
+
         DataValidationHelper validationHelper = sheet.getDataValidationHelper();
 
         for (int i = start; i <= sheet.getLastRowNum(); i++) {
@@ -156,7 +155,7 @@ public class ExcelFormatMaintenance {
     }
     private static int getObjectTypeLine(Sheet sheet) {
 
-        for (int i = 3; i < 60; i++) {
+        for (int i = 3; i < sheet.getLastRowNum(); i++) {
             Cell cell = sheet.getRow(i).getCell(1); // Assuming column index 1 (column B)
             if (cell != null) {
                 if (cell.getStringCellValue().equals("Object type")) {
@@ -167,7 +166,7 @@ public class ExcelFormatMaintenance {
         return 0;
     }
     private static int getObjectTypeEnd(Sheet sheet) {
-        for (int i = 3; i < 60; i++) {
+        for (int i = numberOfHeaderFiles+3; i < sheet.getLastRowNum(); i++) {
             Cell cell = sheet.getRow(i).getCell(1); // Assuming column index 1 (column B)
             if (cell != null) {
                 if (cell.getStringCellValue().equals("End of Global Definition")) {
