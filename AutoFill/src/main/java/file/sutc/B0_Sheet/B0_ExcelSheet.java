@@ -40,11 +40,11 @@ public class B0_ExcelSheet {
             effect = effect.replaceFirst("^\\n", "");// delete the first character from a string if it is equal to a newline character (\n)
             effect = effect.replace("\n\n", "\n"); // delete extra line return
 
-            if (effect.length() < 32767) {
+            if (effect.split("\n").length  < 30) {
                 Fill_Cell(effect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
                 number_of_effects++;
             } else {
-                List<String> effects = divideLongText(effect, 5000);
+                List<String> effects = divideLongText(effect);
                 for (String dividedEffect : effects) {
                     Fill_Cell(dividedEffect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
                     number_of_effects++;

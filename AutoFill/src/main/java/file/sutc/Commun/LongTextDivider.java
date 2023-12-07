@@ -1,26 +1,30 @@
 package file.sutc.Commun;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
     public class LongTextDivider{
-        public static List<String> divideLongText(String longText, int maxLength) {
-            List<String> result = new ArrayList<>();
-            int start = 0;
-            int end = maxLength;
-            while (start < longText.length()) {
-                if (end < longText.length() && !Character.isWhitespace(longText.charAt(end)) &&
-                        !Character.isWhitespace(longText.charAt(end - 1))) {
-                    while (end > start && !Character.isWhitespace(longText.charAt(end - 1))) {
-                        end--;
-                    }
-                }
-                result.add(longText.substring(start, end));
-                start = end;
-                end = Math.min(start + maxLength, longText.length());
+
+
+        public static final int MAX_LINE_PER_EFFECT_CELL=31;
+
+        public static List<String> divideLongText(String text) {
+            String[] lines = text.split("\n");
+
+            int numOfChunks = (int) Math.ceil((double) lines.length / MAX_LINE_PER_EFFECT_CELL);
+            String[] chunks = new String[numOfChunks];
+
+            for (int i = 0; i < numOfChunks; i++) {
+                int start = i * MAX_LINE_PER_EFFECT_CELL;
+                int length = Math.min(lines.length - start, MAX_LINE_PER_EFFECT_CELL);
+                String[] chunkLines = Arrays.copyOfRange(lines, start, start + length);
+                chunks[i] = String.join("\n", chunkLines);
             }
-            return result;
+
+            return List.of(chunks);
+
         }
     }
 
