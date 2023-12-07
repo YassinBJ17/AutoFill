@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
-import static file.commun.GraphicUserInterfaces.Error_interface;
 import static file.commun.LoggerInitialize.log4Error;
 
 public class ExtractPrototype {
@@ -21,19 +19,18 @@ public class ExtractPrototype {
                 return null;
             }
 
-            String prototype = null;
+            String prototype ;
             File[] files = directory.listFiles();
 
+            assert files != null;
             for (File file : files) {
                 if (file.isDirectory()) {
-                    // Recursively search in subdirectories
                     prototype = searchHeader(functionName, file.getAbsolutePath());
                     if (prototype != null) {
                         return prototype;
                     }
                 } else {
                     if (file.getName().endsWith(".h")) {
-                        // If the file is a .h file, search for the function prototype
                         prototype = searchFunctionInHeader(file, functionName);
                         if (prototype != null) {
                             return prototype;
@@ -49,7 +46,6 @@ public class ExtractPrototype {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     if ((line.contains(functionName+" ("))||(line.contains(functionName+"( "))) {
-                        // Assuming the function prototype is on the same line and not spanning multiple lines
                         line=line.replace("extern","");
                         return line.trim();
                     }

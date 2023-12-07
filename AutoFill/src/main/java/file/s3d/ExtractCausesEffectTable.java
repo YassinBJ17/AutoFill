@@ -55,19 +55,20 @@ public class ExtractCausesEffectTable {
     }
 
     public static boolean IsRequirement(String requirement) {
-        String[] notReq={"DO NOTHING","EFFECTS","ALL OTHER CASES","ALL OTHER CASE","CAUSES","NO EFFECT","ALWAYS","NO EFFECTS","ALL THE OTHER CASES","NO DATA TO READ"};
+
+        String[] notReq={"DO NOTHING","EFFECTS","EFFECT","ALL OTHER CASES","ALL OTHER CASE","CAUSES","CAUSE","NO EFFECT","ALWAYS","NO EFFECTS","ALL THE OTHER CASES","NO DATA TO READ"};
+
         requirement=requirement.replaceAll("[^a-zA-Z]", " ");
         requirement=requirement.trim();
-        if( Objects.equals(requirement, ""))
-        {
+
+        if( requirement.isEmpty())
             return false;
-        }
+
         for (String req:notReq)
-        {
-            if (requirement.equalsIgnoreCase(req)) {
+            if (requirement.equalsIgnoreCase(req))
                 return false;
-            }
-        }
+
+
         return true;
     }
 
@@ -94,17 +95,10 @@ public class ExtractCausesEffectTable {
                 c = removeInvisibleChars(c);
                 cause.add(c);
                 causes = causes.trim().substring(causes.indexOf("]") + 1);
-                if (!causes.trim().equals("")) {
-                    try {
-
+                if (!causes.trim().equals(""))
 
                         causes = causes.trim().substring(causes.indexOf("[") - 1);
-                    } catch (Exception e) {
-                        // If there is an error reading the file, print the stack trace and return null.
-                        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-                        log4Error(methodName + " : " + e.getMessage());
-                    }
-                }
+
             }
         }
     }
@@ -118,21 +112,20 @@ public class ExtractCausesEffectTable {
         for (int i = 0; i < row.getTableCells().size(); i++) {
             cell = row.getCell(i);
 
-            if (((Objects.equals(cell.getColor(), WHITE_COLOR_HEXA)) || Objects.equals(cell.getColor(), "auto") || Objects.equals(cell.getColor(), null)) && (IsRequirement(cell.getText()))) {
+            if (((Objects.equals(cell.getColor(), WHITE_COLOR_HEXA)) || Objects.equals(cell.getColor(), "auto") ||
+                    Objects.equals(cell.getColor(), null)) && (IsRequirement(cell.getText()))) {
                 effectsTable.add(cell.getText());
             }
             else
             {
-
                 if(IsRequirement(cell.getText())) {
 
                     if (start_Of_Cause==0)
-                    {
                         start_Of_Cause=i;
-                    }
 
                     number_Of_Cause++;
-                }if(number_Of_Cause==1)
+                }
+                if(number_Of_Cause==1)
                     rowNumber++; // stored the row
             }
         }
@@ -184,7 +177,6 @@ public class ExtractCausesEffectTable {
             }
 
     }
-
     private static void closeWordFile(){
 
 
@@ -205,16 +197,15 @@ public class ExtractCausesEffectTable {
         // Open the document
         openWordFile(path);
 
-        // Get the first table in the document
+
         XWPFTable table = document.getTables().get(causeEffectTableOrder);
-        // Loop through each row of the table
+
         //  log4Info("Extract Cause/Effect Table progress");
         for (int i = 0; i < table.getRows().size(); i++)
             ExtractCausesEffects( table.getRow(i));
 
-        // Close the document
+
         closeWordFile();
-        // Increment table order
         causeEffectTableOrder++;
 
     }

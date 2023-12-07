@@ -13,6 +13,7 @@ import static file.s3d.ExtractRequirements.ExtractDescriptionOfRequirements;
 import static file.s3d.ExtractRequirements.cleanLlrText;
 import static file.s3d.ExtractText.ExtractTextFromSDDD;
 import static file.sutc.A0_Sheet.A0_ExcelSheet.fillingA0Sheet;
+import static file.sutc.A0_Sheet.A0_ExcelSheet.getSDDD_Version;
 import static file.sutc.A1_Sheet.A1_ExcelSheet.fillingA1Sheet;
 import static file.sutc.A2_Sheet.A2_ExcelSheet.fillingA2Sheet;
 import static file.sutc.B0_Sheet.B0_ExcelSheet.fillingB0Sheet;
@@ -37,7 +38,7 @@ public class SutcCreationProcess {
     public static String[] codeOfTheFunction;
     public static String[] llrOfTheFunction;
     public static ArrayList<String> cause;
-
+    public static String SDDD_Version;
 
 
 
@@ -60,18 +61,19 @@ public class SutcCreationProcess {
     }
 
     private static String pathOfTheNewExcelFile(){
-       return  "..\\Datafiles\\SUTC\\" + functionName + ".xls";
+       return  "..\\Datafiles\\SUTC\\" + functionName + "_SUTC.xls";
     }
 
 
 
 
-  public static void excelFinalManipulation(String path, String userName) {
+  public static void excelFinalManipulation(String path) {
 
       String TextFromLlrFile,textFromSDDD;
 
 
       textFromSDDD = ExtractTextFromSDDD(path);
+      SDDD_Version= getSDDD_Version(textFromSDDD);
       Pattern pattern = Pattern.compile("\\b.*\nThis function"); // key word in SDDD is "This function" should be existed in every function
       Matcher matcher = pattern.matcher(textFromSDDD);
       causeEffectTableOrder=getTheFirstCauseEffectTable(path);// used to locate the first Cause Effect Table in the SDDD

@@ -1,5 +1,7 @@
 import file.sutc.Commun.ExcelManipulation;
 import org.junit.jupiter.api.Test;
+
+import static file.sutc.A0_Sheet.A0_ExcelSheet.getSDDD_Version;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MyStringUtilsTest {
@@ -90,5 +92,41 @@ public class MyStringUtilsTest {
         assertEquals(expected4, result4);
     }
 
+
+    @Test
+    public void testGetSDDD_Version() {
+        // Arrange
+        String input = "FADEX-OSS_PU_SDDD-A429.docm~1E:word_doc:fadex#1  Page 16/27\n" +
+                " (\n" +
+                "ATTENTION\n" +
+                "Cette page est un dos de couverture.\n" +
+                "Ne pas supprimer\n" +
+                ")\n" +
+                "FADEX SDDD\n" +
+                "\n" +
+                "FADEX-OSS_PU_SDDD-A429.docm~1E:word_doc:fadex#1  Page 27/27\n" +
+                "FADEX SDDD\n" +
+                "\n" +
+                " Titre Long25 Titre Long25 Titre Long25 Rf Titre Long25 Titre Long25 Titre Long25 Titre Long25 Titre Long25 Titre Long25 Titre Long25 Titre Long25 Titre Long25 Titre Long25 Titre Long25 Titre Long25    Titre Long25 Titre Long25      Titre Long25 Titre Long25      Titre Long25 Titre Long25      Titre Long25 Titre Long25      Titre Long25 Titre Long25       Titre Long25 Titre Long25      Titre Long25 Titre Long25      Titre Long25 Titre Long25      Titre Long25 Titre Long25      Titre Long25 Titre Long25      Titre Long25 Titre Long25      Titre Long25 Titre Long25   Titre Long25 Titre Long25 Titre Long25 \n" +
+                " Titre Long25 Titre Long25 Titre Long25 Titre Long25  Titre Long25  Titre Long25 Titre Long25  Titre Long25  Titre Long25  Titre Long25  Titre Long25           Erreur! Signet non dfini.  \n" +
+                "FADEX SDDD  OSS_PU - A429  Software Detailed Design Description         FADEX-OSS_PU_SDDD-A429.docm~1E:word_doc:fadex#1     \n" +
+                "       \n" +
+                "\n" +
+                "   \n" +
+                "\n" +
+                "       \n" +
+                "\n" +
+                "   \n" +
+                "\n" +
+                "FADEX-OSS_PU_SDDD-A429.docm~1E:word_doc:fadex#1  Page 12/27\n" +
+                "FADEX SDDD";
+        String expectedOutput = "1E";
+
+        // Act
+        String result = getSDDD_Version(input);
+
+        // Assert
+        assertEquals(expectedOutput, result);
+    }
 
 }

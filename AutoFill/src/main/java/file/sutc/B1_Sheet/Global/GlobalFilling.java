@@ -126,34 +126,36 @@ public class GlobalFilling {
         return false;
     }
     public static int Insert_Global_Parameter(int row, int parameterNumber) {
-        int return_Number_Of_Rows;
+        int return_Number_Of_Rows=0;
         Parameters[parameterNumber][INDEX_OF_ACCESS]= Access_Global_Detect(llrOfTheFunction, Parameters[parameterNumber][INDEX_OF_NAME]);
         Parameters[parameterNumber][INDEX_OF_NAME]= Parameters[parameterNumber][INDEX_OF_NAME].replace(":","");
 
         if ((Parameters[parameterNumber][INDEX_OF_ACCESS].contains("W"))&&(!(Parameters[parameterNumber][INDEX_OF_ACCESS].contains("/")))){
             Parameters[parameterNumber][INDEX_OF_CLASS]="-";
-            return_Number_Of_Rows=Insert_Row(row, Parameters[parameterNumber],false);
+            Insert_Row(row, Parameters[parameterNumber]);
         }
         else if (((Parameters[parameterNumber][INDEX_OF_ACCESS].contains("R")))&&(!(Parameters[parameterNumber][INDEX_OF_INVALID_DOMAIN].equals("-")))){
 
-            int fist_row=row;
-            row+=Insert_Invalid_Row(row, Parameters[parameterNumber]);
-            row+=Insert_Row(row, Parameters[parameterNumber],false);
-            row+=Insert_Invalid_Row(row, Parameters[parameterNumber]);
+            int first_row=row;
+            Insert_Invalid_Row(row, Parameters[parameterNumber]);
+            row++;
+            Insert_Row(row, Parameters[parameterNumber]);
+            row++;
+            Insert_Invalid_Row(row, Parameters[parameterNumber]);
 
             for (int i = 1; i <= 5; i++)
-            MergeRows(SHEET_B1_INDEX, i, fist_row+1, row );
+            MergeRows(SHEET_B1_INDEX, i, first_row+1, row+1 );
 
             return_Number_Of_Rows=6;
         }
         else {
-            return_Number_Of_Rows=Insert_Row(row, Parameters[parameterNumber],false);
+            Insert_Row(row, Parameters[parameterNumber]);
 
         }
 
         // A2 filling
         Insert_Global_ParameterInA2( parameterNumber);
-        return return_Number_Of_Rows-1;
+        return return_Number_Of_Rows;
     }
 
 

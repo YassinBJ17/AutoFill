@@ -35,10 +35,10 @@ public class ParametersFilling {
                 end = i+1;
             }
 
-            if ((code[i].contains(function_name+"("))||(code[i].contains(function_name+" (")))
+            if ((code[i].contains(" "+function_name+"("))||(code[i].contains(" "+function_name+" (")))
                 break;
         }
-
+        //System.out.println(function_name +":start "+start+"end "+end);
 
         for (int j = start; j <= end; j++) {
 
@@ -71,10 +71,11 @@ public class ParametersFilling {
                 Parameters[numberOfParameters][INDEX_OF_POINTER]="isPointer";
                 p = p.replace("*", ""); // delete *
             }
+            //System.out.println("#"+p+"#");
+            String[] nameType=Parameters_Detect(p);
 
-
-            Parameters[numberOfParameters][INDEX_OF_NAME]= Parameters_Detect(p)[0];
-            Parameters[numberOfParameters][INDEX_OF_TYPE]= Parameters_Detect(p)[1];
+            Parameters[numberOfParameters][INDEX_OF_NAME]= nameType[0];
+            Parameters[numberOfParameters][INDEX_OF_TYPE]= nameType[1];
             domainClass=Extract_Domain(Parameters[numberOfParameters][INDEX_OF_TYPE]);
             Parameters[numberOfParameters][INDEX_OF_DOMAIN]=domainClass[0];
             Parameters[numberOfParameters][INDEX_OF_CLASS]=domainClass[0];

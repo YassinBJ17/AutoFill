@@ -10,7 +10,6 @@ import static file.commun.LoggerInitialize.*;
 public class GraphicUserInterfaces {
     public static JDialog Waiting_interface(String message) {
 
-
         JOptionPane pane = new JOptionPane(message, JOptionPane.INFORMATION_MESSAGE);
         pane.setForeground(Color.WHITE);
         JDialog dialog = pane.createDialog(null, "Message");
@@ -22,18 +21,6 @@ public class GraphicUserInterfaces {
 
         return JOptionPane.showInputDialog(null,"LLR path                                                                                                   ","..\\Datafiles\\LLR")+"\\";
     }
-
-    public static String Version_interface(){
-
-        return JOptionPane.showInputDialog(null,"Version :");
-    }
-
-    public static String Date_interface(){
-
-        return JOptionPane.showInputDialog(null,"Date :");
-    }
-
-
     public static boolean FileExisteDialog(String function_name) {
 
 
@@ -64,7 +51,6 @@ public class GraphicUserInterfaces {
                // }
               //}*/
 
-
     }
     public static void OpenFileDialog(String function_name) {
 
@@ -90,6 +76,6 @@ log4Error(methodName+" : "+e.getMessage() );
     }
     public static void Error_interface(String e){
     JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-}
+    }
 
 }

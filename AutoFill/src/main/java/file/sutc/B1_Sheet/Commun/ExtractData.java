@@ -25,7 +25,7 @@ public class ExtractData {
         max=max.substring(0,max.indexOf(" "));
 
         //invalid="[0x80000000.."+min+"-1] U ["+max+" +1..0x7FFFFFFF]";
-        invalid="[-2147483648.."+min+"[ # ]"+max+"..2147483648]";
+        invalid="[-2147483648.."+min+"[ # ]"+max+"..2147483647]";
         return invalid;
     }
     public static String[] Extract_Domain(String type) {

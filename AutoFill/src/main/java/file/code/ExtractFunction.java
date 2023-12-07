@@ -14,6 +14,7 @@ public class ExtractFunction {
         String Code_text= extractFunctionCode(functionName);
         if (Code_text==null)
             return null;
+
         Code_text="\n"+Code_text+"\n.";
         return Code_text.split("\n");
     }

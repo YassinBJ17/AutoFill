@@ -1,6 +1,5 @@
 package file.s3d;
 
-import static file.commun.GraphicUserInterfaces.Error_interface;
 import static file.commun.LoggerInitialize.log4Error;
 import static file.s3d.ExtractText.removeInvisibleChars;
 import static file.sutc.Commun.ExcelManipulation.*;
@@ -20,9 +19,6 @@ public class ExtractRequirements {
         String requirements_with_description ;
        // TextFromLlrFile=TextFromLlrFile.replace("\n\n","\n");
 
-
-
-
         for (int i = 0; i <causesTable.size() ; i++) {
 
             if (causesTable.get(i).startsWith("[")){
@@ -39,7 +35,6 @@ public class ExtractRequirements {
         for (int i = 0; i < effectsTable.size(); i++) {
 
             String requirement = effectsTable.get(i);
-
             String finalRequirements = processRequirements(requirement, TextFromLlrFile);
 
             if (finalRequirements.isEmpty()) {
@@ -86,8 +81,6 @@ public class ExtractRequirements {
         return finalRequirements;
     }
 
-
-
     public static String cleanLlrText(String llrText) {
 
         llrText= llrText.replace("Traceability","[");
@@ -105,7 +98,6 @@ public class ExtractRequirements {
 */
 
         return llrText;
-
 
     }
 }

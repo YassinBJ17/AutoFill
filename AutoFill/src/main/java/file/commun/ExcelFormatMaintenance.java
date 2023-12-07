@@ -3,23 +3,16 @@ package file.commun;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.CellRangeAddressList;
-
-import static file.commun.LoggerInitialize.log4Error;
 import static file.sutc.A2_Sheet.A2_ExcelSheet.numberOfHeaderFiles;
-import static file.sutc.Commun.ExcelManipulation.MergeCols;
-import static file.sutc.Commun.ExcelManipulation.MergeRows;
-import static file.sutc.Commun.ExcelRowsAndColsConstants.SHEET_B1_INDEX;
 import static file.sutc.SutcCreationProcess.numberOfUFT;
 import static file.sutc.SutcCreationProcess.workbook;
 
 public class ExcelFormatMaintenance {
 
-
     static String[] objectType = {"Define constant", "Type", "Variable"};
     static String[] inputOutput = {"In", "Out", "In/Out"};
     static String[] access = {"R", "W", "R/W"};
     static String[] stubInputOutput = {"_in","_inout", "_out", "_no"};
-
     static String[] valideInvalide = {"V","I"};
     static String[] stubReturn = {"Return"};
 
@@ -62,7 +55,6 @@ public class ExcelFormatMaintenance {
 
 
     }
-
     private static void mergeGreyCells(Sheet sheet,int start) {
 
         int mergeStart=0,mergeEnd = 0;
@@ -80,9 +72,9 @@ public class ExcelFormatMaintenance {
 
                 }
             }
-
         }
     }
+
     private static void setStubInputOutput(Sheet sheet,int start) {
 
         DataValidationHelper validationHelper = sheet.getDataValidationHelper();
@@ -110,12 +102,9 @@ public class ExcelFormatMaintenance {
             }
         }
     }
-
     private static void setValideInvalide(Sheet sheet,int start){
 
-
         DataValidationHelper validationHelper = sheet.getDataValidationHelper();
-
         for (int i = start; i <= sheet.getLastRowNum(); i++) {
             Cell cell = sheet.getRow(i).getCell(7); // Assuming column index 1 (column D)
             if (cell!=null)
@@ -128,7 +117,6 @@ public class ExcelFormatMaintenance {
         }
 
     }
-
     private static int getStubDefinitionPosition(Sheet sheet) {
 
 

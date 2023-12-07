@@ -1,5 +1,5 @@
 package file.sutc.B1_Sheet.Commun;
-import java.util.Objects;
+
 import static file.sutc.B1_Sheet.B1_ExcelSheet.INTERNAL_VARIABLES_POSITION;
 import static file.sutc.B1_Sheet.B1_ExcelSheet.Parameters;
 import static file.sutc.B1_Sheet.Commun.ExtractData.Access_Detect;
@@ -24,73 +24,46 @@ public class InsertData {
             Parameters[Parameter_number][INDEX_OF_CLASS]="-";
 
         if (((Parameters[Parameter_number][INDEX_OF_ACCESS].contains("R"))||(Parameters[Parameter_number][INDEX_OF_ACCESS].contains("In")))&&(!(Parameters[Parameter_number][INDEX_OF_INVALID_DOMAIN].equals("-")))){
-            int fist_row=row;
-            row+=Insert_Invalid_Row(row, Parameters[Parameter_number]);
-            row+=Insert_Row(row, Parameters[Parameter_number],false);
-            row+=Insert_Invalid_Row(row, Parameters[Parameter_number]);
-
+            int first_row=row;
+            Insert_Invalid_Row(row, Parameters[Parameter_number]);
+            row++;
+            Insert_Row(row, Parameters[Parameter_number]);
+            row++;
+            Insert_Invalid_Row(row, Parameters[Parameter_number]);
             for (int i = 1; i <= 5; i++)
-                MergeRows(SHEET_B1_INDEX, i, fist_row+1, row );
+                MergeRows(SHEET_B1_INDEX, i, first_row+1, row+1 ); // merge need exact number because don't start with 0
 
         }else {
-            row += Insert_Row(row, Parameters[Parameter_number],false);
+            Insert_Row(row, Parameters[Parameter_number]);
         }
         return ++row;
     }
-    public static int Insert_Invalid_Row(int row, String[] parameter){
+
+    public static void Insert_Invalid_Row(int row, String[] parameter) {
+            Insert_Manipulation(row, parameter);
+            parameter[INDEX_OF_INVALID_DOMAIN] = Insert_Invalide_Manipulation(row, parameter);
 
 
-
-            Insert_Manipulation(row,parameter);
-
-
-            if ((parameter[INDEX_OF_ACCESS].equalsIgnoreCase("in"))||(parameter[INDEX_OF_ACCESS].equalsIgnoreCase("R"))) {
-
-                parameter[INDEX_OF_INVALID_DOMAIN] = Insert_Invalide_Manipulation(row, parameter);
-
-
-                return 1; // one line added
-
-                //}else if ((parameter[INDEX_OF_ACCESS].equalsIgnoreCase("in/out"))||(parameter[INDEX_OF_ACCESS].equalsIgnoreCase("R/W"))){
-            }else {
-
-                parameter[INDEX_OF_INVALID_DOMAIN]=Insert_Invalide_Manipulation(row, parameter);
-
-                for (int i = 6; i <= 8; i++)
-                       MergeRows(SHEET_B1_INDEX, i, row+1, row +2);
-
-                return 2; // two line added
-
-            }
 
     }
-    public static int Insert_Row(int row, String[] parameter,boolean stubParameter){
 
-        int return_Number_Of_Rows=1;
+    private static boolean isInAccess(String[] parameter) {
+        return parameter[INDEX_OF_ACCESS].equalsIgnoreCase("in") || parameter[INDEX_OF_ACCESS].equalsIgnoreCase("R");
+    }
 
+    private static boolean isReadAccess(String[] parameter) {
+        return parameter[INDEX_OF_ACCESS].equalsIgnoreCase("in/out") || parameter[INDEX_OF_ACCESS].equalsIgnoreCase("R/W");
+    }
 
-        if ((parameter[INDEX_OF_ACCESS].equalsIgnoreCase("in"))||(parameter[INDEX_OF_ACCESS].equals("R"))||(Objects.equals(parameter[INDEX_OF_TYPE], "void"))){
-
-            //parameter=Classes_Filling(parameter);
-            Insert_Manipulation(row,parameter);
+    public static void mergeRowsInRange(int row) {
+        for (int i = 6; i <= 8; i++) {
+            MergeRows(SHEET_B1_INDEX, i, row + 1, row + 2);
         }
-        else{
+    }
 
-            Insert_Manipulation(row,parameter);
-            for (int i = 1; i <=8 ; i++)
-            {
-                boolean bool=((parameter[INDEX_OF_ACCESS].contains("W"))||(parameter[INDEX_OF_ACCESS].contains("Out"))||(parameter[INDEX_OF_ACCESS].equals("_in")))&&(!(parameter[INDEX_OF_ACCESS].contains("/")));
-                // Check if variable
-                if((Objects.equals(parameter[INDEX_OF_INVALID_DOMAIN], "-"))||(i>5)||(bool))
-                    if ((i==4 || i==5 ) && stubParameter )
-                    continue;
+    public static void Insert_Row(int row, String[] parameter){
 
-                    MergeRows(SHEET_B1_INDEX,i,row+1,row+2);
-            }
-            return_Number_Of_Rows++;
-        }
-
-        return return_Number_Of_Rows;
+        Insert_Manipulation(row, parameter);
 
 
     }
@@ -128,8 +101,12 @@ public class InsertData {
             if (i==1) {
                 if ((parameter[INDEX_OF_NAME].contains("["))&&(parameter[INDEX_OF_NAME].contains("]"))) {
                     Fill_Cell(parameter[INDEX_OF_NAME].replace("[", "[0..").replace("]", "-1]"), SHEET_B1_INDEX, row, i); // array manipulation
+
                     if (!parameter[INDEX_OF_TYPE].equals("not exist in the DD"))
                     parameter[INDEX_OF_TYPE]=parameter[INDEX_OF_TYPE].replace("Array of","")+"[ARRAY]";
+                }else if(parameter[INDEX_OF_TYPE].contains("Array of")) {
+                    parameter[INDEX_OF_TYPE]=parameter[INDEX_OF_TYPE].replace("Array of","")+"[ARRAY]";
+                    Fill_Cell(parameter[INDEX_OF_NAME]+"[0..-1]", SHEET_B1_INDEX, row, i);
                 }else
                     Fill_Cell(parameter[i], SHEET_B1_INDEX,row,i);
             }else

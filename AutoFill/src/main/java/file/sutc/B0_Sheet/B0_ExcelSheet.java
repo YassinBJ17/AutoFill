@@ -46,7 +46,6 @@ public class B0_ExcelSheet {
             } else {
                 List<String> effects = divideLongText(effect, 5000);
                 for (String dividedEffect : effects) {
-                    //System.out.println(dividedEffect);
                     Fill_Cell(dividedEffect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
                     number_of_effects++;
                 }

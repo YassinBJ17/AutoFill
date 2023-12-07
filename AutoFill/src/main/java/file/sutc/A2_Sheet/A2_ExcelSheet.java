@@ -39,7 +39,6 @@ public class A2_ExcelSheet {
 
 
         String header_files = Include_Modifier(Code_line); // extract the name of the header file
-        System.out.println(header_files+"-"+number_of_header_file);
         Fill_Cell(header_files, SHEET_A2_INDEX, number_of_header_file + SHEET_B1_INDEX, CELL_COL_2);
     }
 
