@@ -142,12 +142,12 @@ public class ExtractCausesEffectTable {
                 }
             } else {
 
-                for (int i = start_Of_Cause; i < start_Of_Cause+number_Of_Cause-1; i++) { // if 'switch'
+                for (int i = start_Of_Cause; i < start_Of_Cause+number_Of_Cause; i++) { // if 'switch'
 
                     cell = row.getCell(i);
 
-                    log4Debug(cell.getText());
                     if (IsRequirement(cell.getText()))
+                        log4Debug(cell.getText());
                         AddCause(cell.getText(), causesTable);
                 }
             }

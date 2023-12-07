@@ -20,18 +20,18 @@ public class FunctionReturnFilling {
         String type;
         String[] domainClass ;
 
-        for (String cLine : codeOfTheFunction) {
+        for (String codeLine : codeOfTheFunction) {
 
-            if (Prototype_Detect(cLine, functionName)) {
+            if (Prototype_Detect(codeLine, functionName)) {
 
-                prototype = cLine;
+                prototype = codeLine;
 
                 if (!(prototype.contains("void "))) {
 
 
                     type = prototype.substring(0, prototype.indexOf(functionName) - 1);
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_NAME]="RTRT_Ret_"+functionName;
-                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]=type;
+                    Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]=type.replace("const","");
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_ACCESS]="W";
 
                     domainClass = Extract_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]);

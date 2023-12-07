@@ -83,7 +83,7 @@ public class ExtractData {
             if(llrOfTheFunction[i].contains( Parameters[p][INDEX_OF_NAME])){
 
                 r= (llrOfTheFunction[i].substring(llrOfTheFunction[i].indexOf("(")+1, llrOfTheFunction[i].indexOf(")")));
-
+                System.out.println("r= "+r);
                 if ((!r.equals("R"))&&(!r.equals("W"))&&(!r.equals("R/W"))&&(!r.equals("R\\W")))
                 {
                     try {
