@@ -11,10 +11,9 @@ import static file.s3d.ExtractCausesEffectTable.*;
 import static file.s3d.ExtractFunction.ExtractFunctionFromSDDD;
 import static file.s3d.ExtractRequirements.ExtractDescriptionOfRequirements;
 import static file.s3d.ExtractRequirements.cleanLlrText;
-import static file.s3d.ExtractText.ExtractTextFromSDDD;
+import static file.s3d.ExtractTextFromS3D.ExtractTextFromSDDD;
 import static file.sutc.A0_Sheet.A0_ExcelSheet.fillingA0Sheet;
 import static file.sutc.A0_Sheet.A0_ExcelSheet.getSDDD_Version;
-import static file.sutc.A1_Sheet.A1_ExcelSheet.fillingA1Sheet;
 import static file.sutc.A2_Sheet.A2_ExcelSheet.fillingA2Sheet;
 import static file.sutc.B0_Sheet.B0_ExcelSheet.fillingB0Sheet;
 import static file.sutc.B1_Sheet.B1_ExcelSheet.*;
@@ -60,8 +59,36 @@ public class SutcCreationProcess {
         //OpenFileDialog(functionName); // open XLS
     }
 
-    private static String pathOfTheNewExcelFile(){
-       return  "..\\Datafiles\\SUTC\\" + functionName + "_SUTC.xls";
+    private static String pathOfTheNewExcelFile() {
+        String directoryPath = "C:\\Projets\\Fadex\\dev\\work\\LLT\\OSS_PU_LLT\\LL_Tests_BeforeTC"; // Replace this with your directory path
+        String fileName = functionName + "_SUTC.xls"; // Replace this with your file name
+
+        File directory = new File(directoryPath);
+        String filePath = searchFile(directory, fileName);
+
+        if (filePath != null) {
+            return filePath;
+        } else {
+            return "..\\Datafiles\\SUTC\\" + functionName + "_SUTC.xls"; // File not found
+        }
+    }
+
+    private static String searchFile(File directory, String fileName) {
+        File[] files = directory.listFiles();
+
+        if (files != null) {
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    String filePath = searchFile(file, fileName); // Recursively search subdirectories
+                    if (filePath != null) {
+                        return filePath;
+                    }
+                } else if (file.getName().equals(fileName)) {
+                    return file.getAbsolutePath();
+                }
+            }
+        }
+        return null; // File not found
     }
 
 
@@ -71,10 +98,9 @@ public class SutcCreationProcess {
 
       String TextFromLlrFile,textFromSDDD;
 
-
       textFromSDDD = ExtractTextFromSDDD(path);
       SDDD_Version= getSDDD_Version(textFromSDDD);
-      Pattern pattern = Pattern.compile("\\b.*\nThis function"); // key word in SDDD is "This function" should be existed in every function
+      Pattern pattern = Pattern.compile("\\b.*\nThis function",Pattern.CASE_INSENSITIVE); // key word in SDDD is "This function" should be existed in every function
       Matcher matcher = pattern.matcher(textFromSDDD);
       causeEffectTableOrder=getTheFirstCauseEffectTable(path);// used to locate the first Cause Effect Table in the SDDD
       JDialog dialog;
@@ -106,6 +132,7 @@ public class SutcCreationProcess {
           String newExcelFilePath = pathOfTheNewExcelFile() ; // creation of the path
           Extract_Table(path); // extract cause/effect table
           TextFromLlrFile= cleanLlrText(TextFromLlrFile);
+
           ExtractDescriptionOfRequirements(TextFromLlrFile);// extract all requirements
           utcUftCounter();
 
@@ -120,8 +147,9 @@ public class SutcCreationProcess {
 
           excelFormatMaintenance();
           WritingFile(newExcelFilePath);// save XLS
+
           dialog.setVisible(false); // hide the dialog
-          log4Info(functionName+".xls was saved successfully.");
+          log4Success(newExcelFilePath+"was saved successfully.");
       }
   }
 

@@ -1,6 +1,7 @@
 package file.sutc.A2_Sheet;
 
 import static file.sutc.B1_Sheet.B1_ExcelSheet.Parameters;
+import static file.sutc.B1_Sheet.Commun.InsertData.arraySizeReturn;
 import static file.sutc.B1_Sheet.Global.GlobalFilling.InternalDefinitionsExist;
 import static file.sutc.Commun.ExcelRowsAndColsConstants.*;
 import static file.sutc.SutcCreationProcess.codeOfTheFunction;
@@ -29,7 +30,8 @@ public class A2_ExcelSheet {
             Parameters[Parameter_number][INDEX_OF_NAME] = Parameters[Parameter_number][INDEX_OF_NAME].substring(0, index);
         }
         if (!InternalDefinitionsExist(Parameters[Parameter_number][INDEX_OF_NAME])) {
-            Fill_Cell(Parameters[Parameter_number][INDEX_OF_NAME], SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE+ Parameter_number + 1, CELL_COL_2);
+            String arraySize=arraySizeReturn(Parameters[Parameter_number][INDEX_OF_NAME]).replace("-1","")+"]";
+            Fill_Cell(Parameters[Parameter_number][INDEX_OF_NAME].replace("[0..","[").replace("]",arraySize), SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE+ Parameter_number + 1, CELL_COL_2);
             Fill_Cell(Parameters[Parameter_number][INDEX_OF_TYPE].replace("[ARRAY]",""), SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE+ Parameter_number + 1, CELL_COL_3);
         }
 

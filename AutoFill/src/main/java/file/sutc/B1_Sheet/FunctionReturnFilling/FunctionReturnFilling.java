@@ -41,7 +41,7 @@ public class FunctionReturnFilling {
 
                     if(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN].equals("-"))
                     {
-                        Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN]=DataDictionarySearch(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE],false);
+                        Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN]=DataDictionarySearch(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE],0);
                         Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_CLASS]= Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN];
                         Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_DOMAIN]);
                     }

@@ -1,8 +1,11 @@
 package file.sutc.B1_Sheet.Commun;
 
+import org.apache.commons.codec.binary.StringUtils;
+
 import static file.sutc.B1_Sheet.B1_ExcelSheet.INTERNAL_VARIABLES_POSITION;
 import static file.sutc.B1_Sheet.B1_ExcelSheet.Parameters;
 import static file.sutc.B1_Sheet.Commun.ExtractData.Access_Detect;
+import static file.sutc.B1_Sheet.DataDictionarySearch.DataDictionary.DataDictionarySearch;
 import static file.sutc.B1_Sheet.FunctionReturnFilling.FunctionReturnFilling.INDEX_RESERVED_FOR_FUNCTION_RETURN;
 import static file.sutc.Commun.ExcelManipulation.Fill_Cell;
 import static file.sutc.Commun.ExcelManipulation.MergeRows;
@@ -93,6 +96,26 @@ public class InsertData {
     return secondInterval;
     }
 
+    public static String arraySizeReturn(String variableName){
+
+        String arraySize=DataDictionarySearch(variableName,2); // 2 signify array dimension
+
+        if (arraySize.matches("-?\\d+(\\.\\d+)?")) {
+            int numericValue=1;
+            try {
+                 numericValue = Integer.parseInt(arraySize);
+            }catch(Exception e){
+
+            }
+
+            numericValue--;
+            arraySize=String.valueOf(numericValue);
+            return arraySize;
+        } else {
+            return arraySize+"-1";
+    }
+    }
+
     public static void Insert_Manipulation(int row, String[] parameter){
         for (int i = 1; i <= 8; i++) {
             if((i==4)||(i==5)||(i==7)){
@@ -100,7 +123,7 @@ public class InsertData {
 
             if (i==1) {
                 if ((parameter[INDEX_OF_NAME].contains("["))&&(parameter[INDEX_OF_NAME].contains("]"))) {
-                    Fill_Cell(parameter[INDEX_OF_NAME].replace("[", "[0..").replace("]", "-1]"), SHEET_B1_INDEX, row, i); // array manipulation
+                            Fill_Cell(parameter[INDEX_OF_NAME].replace("[", "[0..").replace("]", arraySizeReturn(parameter[INDEX_OF_NAME])+"]"),SHEET_B1_INDEX, row, i); // array manipulation
 
                     if (!parameter[INDEX_OF_TYPE].equals("not exist in the DD"))
                     parameter[INDEX_OF_TYPE]=parameter[INDEX_OF_TYPE].replace("Array of","")+"[ARRAY]";

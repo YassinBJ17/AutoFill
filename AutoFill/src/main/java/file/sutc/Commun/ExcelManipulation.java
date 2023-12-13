@@ -3,7 +3,6 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.*;
 
-import static file.commun.GraphicUserInterfaces.Error_interface;
 import static file.commun.LoggerInitialize.log4Debug;
 import static file.commun.LoggerInitialize.log4Error;
 import static file.sutc.SutcCreationProcess.workbook;
@@ -132,12 +131,17 @@ public class ExcelManipulation {
 
     } // merge an interval of cells
 
-    public static String stubCallRequirementsModifier(String s) {
+    public static String reqModifier(String s) {
         log4Debug(s);
-        for (int i = 0; i < 10; i++) {
-            s=s.replace("  "," ");
-            s=s.replace("\n\n","\n");
-        }
+
+        s = s.replaceAll("(?i)\\]: (?:Set|set) ", " by setting");
+
+
+        // Replace multiple successive newlines with a single newline
+        s = s.replaceAll("\\n{2,}", "\n");
+
+        // Replace multiple successive spaces with a single space
+        s = s.replaceAll(" {2,}", " ");
 
         s = s.replaceAll("(?i)(] corresponds to the following call|] corresponds to the call)", " by calling ");
         s = s.replaceAll("(?i)(]corresponds to the following call|]corresponds to the call)", " by calling ");
@@ -145,6 +149,7 @@ public class ExcelManipulation {
         s = s.replace("] :", " ");
 
         log4Debug(s);
+    /*
         if (s.contains("["))
         {
             String s1=s;
@@ -155,28 +160,19 @@ public class ExcelManipulation {
                 log4Error("Substring in square brackets not found.");
             }
 
-            if ((s1.trim().split("\\s+").length>1)||(s1.equalsIgnoreCase("index i"))) {
+            if ((s1.trim().split("\\s").length>1)||(s1.equalsIgnoreCase("index i"))) {
                s = s.replace("[", "");
                 s = s.replace("]", "");
             }
-        }
+
+
+        }  */
 
 
         return s;
     } // formatting STUB
-    public static String settingValueReqModifier(String s) {
 
-        for (int i = 0; i < 10; i++) {
-            s=s.replace("  "," ");
-        }
-
-        //s=s.replaceAll("\\n\\s*\\n", "\n");
-      //  s = s.replaceAll("(?i)\\]:? ?(?:set|Set)( \\{|$)", " by setting$1");
-          s = s.replaceAll("(?i)\\]:? ?(?:Set|set)( \\{|$)", " by setting$1");
-
-        return s;
-    }
-    public static String Cause_Modifier(String s){
+    public static String CauseModifier(String s){
 
         s=s.replaceAll("\n", "");
         s=s.replace("[", "");

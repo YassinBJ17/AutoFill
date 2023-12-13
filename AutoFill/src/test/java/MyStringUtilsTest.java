@@ -63,13 +63,13 @@ public class MyStringUtilsTest {
         // Test case 1: Basic string replacements
         String input1 = "This is  a   test.\n\n\nAnother test.";
         String expected1 = "This is a test.\nAnother test.";
-        String result1 = ExcelManipulation.stubCallRequirementsModifier(input1);
+        String result1 = ExcelManipulation.reqModifier(input1);
         assertEquals(expected1, result1);
 
         // Test case 2: Replacing phrases with " by calling "
         String input2 = "Function] corresponds to the following call:";
         String expected2 = "Function by calling :";
-        String result2 = ExcelManipulation.stubCallRequirementsModifier(input2);
+        String result2 = ExcelManipulation.reqModifier(input2);
         assertEquals(expected2, result2);
 
         // Test case 3: Removing "]:"
@@ -82,13 +82,13 @@ public class MyStringUtilsTest {
                 "•\tDrvLPSPI_Read:\n" +
                 "OUT: the address of {the read value}\n" +
                 "OUT: the address of {status}\n";
-        String result3 = ExcelManipulation.stubCallRequirementsModifier(input3);
+        String result3 = ExcelManipulation.reqModifier(input3);
         assertEquals(expected3, result3);
 
         // Test case 4: Removing "[ ... ]" when conditions are met
         String input4 = "This is [a test].";
         String expected4 = "This is a test.";
-        String result4 = ExcelManipulation.stubCallRequirementsModifier(input4);
+        String result4 = ExcelManipulation.reqModifier(input4);
         assertEquals(expected4, result4);
     }
 

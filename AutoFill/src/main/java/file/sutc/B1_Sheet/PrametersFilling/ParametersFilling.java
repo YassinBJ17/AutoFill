@@ -84,7 +84,7 @@ public class ParametersFilling {
 
             if(Parameters[numberOfParameters][INDEX_OF_DOMAIN].equals("-"))
             {
-                Parameters[numberOfParameters][INDEX_OF_DOMAIN]= DataDictionarySearch(Parameters[numberOfParameters][INDEX_OF_TYPE],false);
+                Parameters[numberOfParameters][INDEX_OF_DOMAIN]= DataDictionarySearch(Parameters[numberOfParameters][INDEX_OF_TYPE],0);
                 Parameters[numberOfParameters][INDEX_OF_CLASS]= Parameters[numberOfParameters][INDEX_OF_DOMAIN];
                 Parameters[numberOfParameters][INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(Parameters[numberOfParameters][INDEX_OF_DOMAIN]);
             }

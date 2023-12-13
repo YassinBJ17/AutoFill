@@ -14,7 +14,7 @@ import static file.commun.LoggerInitialize.log4Error;
 
 public class DataDictionary {
 
-    public static String searchExcelFiles(String directoryPath, String searchString,boolean searchForType){
+    public static String searchExcelFiles(String directoryPath, String searchString,int searchForType){
 
         String matchingRows = "";         // string to store the matching rows
         File directory = new File(directoryPath);
@@ -39,15 +39,25 @@ public class DataDictionary {
 
                             if (cell.getCellType() == CellType.STRING && cell.getStringCellValue().trim().equalsIgnoreCase(searchString.trim())) {
                                 Cell fourthCell = row.getCell(3);
+                                Cell thirdCell = row.getCell(2);
                                 Cell secondCell = row.getCell(1);
+
                                   matchingRows = secondCell.getStringCellValue();
 
                                 if((matchingRows.equalsIgnoreCase("STRUCTURE"))||(matchingRows.equalsIgnoreCase("STRUCT"))||(matchingRows.equalsIgnoreCase("UNION"))) {
                                     matchingRows= "-";
                                 }
                                 else {
-                                    if (!searchForType)
+                                    if (searchForType==0)
                                         matchingRows = fourthCell.getStringCellValue(); // return Domain
+                                else if (searchForType==2)
+                                        if (thirdCell.getCellType() == CellType.STRING) {
+                                            matchingRows = thirdCell.getStringCellValue(); // return array dimension
+                                        } else {
+                                            matchingRows = String.valueOf(thirdCell.getNumericCellValue());
+                                        }
+
+
                                 }
                             }
                         }
@@ -68,7 +78,7 @@ public class DataDictionary {
     }
     return "";
     }
-    public static String DataDictionarySearch(String ParameterToSearch, boolean searchForType){
+    public static String DataDictionarySearch(String ParameterToSearch, int searchForType){
         // specify the directory path
         String directoryPath = "../Datafiles/DD";
 

@@ -9,15 +9,17 @@ import java.io.IOException;
 import static file.commun.GraphicUserInterfaces.Error_interface;
 import static file.commun.LoggerInitialize.*;
 
-public class ExtractText {
+public class ExtractTextFromS3D {
 
    // public static final String PUNCTUATION_MARKS = "[^A-Za-z0-9 :\\r.\\n_\\-+<>\\/{}\\[\\]()\\*]";
 
 
     public static String removeInvisibleChars(String input) {
 
-         String pattern = "[^a-zA-Z0-9!\\[\\]\\s\\n \\-#$%&\"'‘’“”:()*+,./;<=>?@^_`{|}~]" ;
-         input=input.replaceAll("\t"," ");
+        String pattern = "[^a-zA-Z0-9!\\s\\n \\-#$%&\"'‘’“”:()*+,./;<=>?@^_`{|}~\\[\\]]";
+
+        input=input.replaceAll("\t"," ");
+
         return input.replaceAll(pattern, "");
 
 

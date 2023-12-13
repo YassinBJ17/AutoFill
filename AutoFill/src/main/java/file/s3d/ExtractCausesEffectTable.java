@@ -12,7 +12,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 import static file.commun.GraphicUserInterfaces.Error_interface;
-import static file.s3d.ExtractText.removeInvisibleChars;
+import static file.s3d.ExtractTextFromS3D.removeInvisibleChars;
 import static file.commun.LoggerInitialize.*;
 import static file.sutc.Commun.switchOrIfCalled.CheckIfSwitchExistInCode;
 import static file.sutc.Commun.switchOrIfCalled.switchArray;
@@ -114,6 +114,7 @@ public class ExtractCausesEffectTable {
 
             if (((Objects.equals(cell.getColor(), WHITE_COLOR_HEXA)) || Objects.equals(cell.getColor(), "auto") ||
                     Objects.equals(cell.getColor(), null)) && (IsRequirement(cell.getText()))) {
+
                 effectsTable.add(cell.getText());
             }
             else

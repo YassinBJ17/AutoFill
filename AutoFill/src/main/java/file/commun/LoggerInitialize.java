@@ -8,6 +8,9 @@ public class LoggerInitialize {
         public static final Logger logger4j = LogManager.getLogger();
 
 
+    public static void log4Success(String logging) {
+        logger4j.info("\u001B[32m" + logging + "\u001B[0m");
+    }
 
     public static void log4Info(String logging) {
         logger4j.info("\u001B[34m" + logging + "\u001B[0m");

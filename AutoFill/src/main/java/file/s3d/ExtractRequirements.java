@@ -1,7 +1,6 @@
 package file.s3d;
 
-import static file.commun.LoggerInitialize.log4Error;
-import static file.s3d.ExtractText.removeInvisibleChars;
+import static file.s3d.ExtractTextFromS3D.removeInvisibleChars;
 import static file.sutc.Commun.ExcelManipulation.*;
 import static file.sutc.SutcCreationProcess.causesTable;
 import static file.sutc.SutcCreationProcess.effectsTable;
@@ -21,81 +20,96 @@ public class ExtractRequirements {
 
         for (int i = 0; i <causesTable.size() ; i++) {
 
-            if (causesTable.get(i).startsWith("[")){
-                requirements_with_description=TextFromLlrFile.substring(TextFromLlrFile.lastIndexOf(causesTable.get(i))+1);// extract description
-               // System.out.println("requirements_with_description: "+requirements_with_description+"#");
-                requirements_with_description=requirements_with_description.replace(" [","[");// delete space
-                requirements_with_description=requirements_with_description.substring(0,requirements_with_description.indexOf("\n["));//end of description
-                requirements_with_description=Cause_Modifier(requirements_with_description);
-                causesTable.set(i,Cause_Modifier( requirements_with_description));
+            String cause = causesTable.get(i);
+            cause = processRequirements(cause, TextFromLlrFile,true);
+
+            if (!cause.isEmpty()) {
+                // cause = deleteExtraReturnLine(cause);
+                causesTable.set(i, (cause));
             }
+
 
         }
 
         for (int i = 0; i < effectsTable.size(); i++) {
 
-            String requirement = effectsTable.get(i);
-            String finalRequirements = processRequirements(requirement, TextFromLlrFile);
+            String requirements = effectsTable.get(i);
+            requirements = processRequirements(requirements, TextFromLlrFile,false);
 
-            if (finalRequirements.isEmpty()) {
-                requirement = deleteExtraReturnLine(requirement);
-                effectsTable.set(i, requirement);
-            } else {
-                finalRequirements = deleteExtraReturnLine(finalRequirements);
-                effectsTable.set(i, stubCallRequirementsModifier(settingValueReqModifier(finalRequirements)));
+            if (!requirements.isEmpty()) {
+                requirements = deleteExtraReturnLine(requirements);
+                effectsTable.set(i, (requirements));
             }
         }
 
     }
 
-    private static String processRequirements(String requirement, String TextFromLlrFile) {
-        String finalRequirements = requirement;
+    private static String processRequirements(String requirement, String TextFromLlrFile,boolean isCause) {
 
-        try {
 
-        while (requirement.startsWith("[")) {
-            String requirementsWithoutDescription = requirement.substring(requirement.indexOf("["), requirement.indexOf("]") + 1);
-
-            if (TextFromLlrFile.contains(requirementsWithoutDescription)) {
-
-                String requirementsWithDescription = TextFromLlrFile.substring(TextFromLlrFile.lastIndexOf(requirementsWithoutDescription) + 1);
-
-                requirementsWithDescription = requirementsWithDescription.replaceAll("\n ", "\n");
-
-                requirementsWithDescription = requirementsWithDescription.substring(0, requirementsWithDescription.indexOf("\n[") + 1);
-
-                finalRequirements = finalRequirements.replace(requirementsWithoutDescription, requirementsWithDescription);
-
-                requirement = requirement.replace(requirementsWithoutDescription, "");
-
-            } else {
-               return "";
-            }
-
+        if (!(requirement.contains("["))||requirement==""){
+            return requirement;
         }
-        }catch (StringIndexOutOfBoundsException e){
-            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
-            log4Error(methodName+" : "+e.getMessage() );
+
+        String finalRequirements = "";
+        String[] implementationSplit;
+        String implimentation;
+
+
+        implementationSplit=requirement.split("\\[");
+
+        for (int i=0;i<implementationSplit.length ;i++) {
+            String rest = "";
+            implementationSplit[i]="["+implementationSplit[i];
+
+            implimentation=implementationSplit[i].substring(implementationSplit[i].indexOf("["),implementationSplit[i].indexOf("]")+1 );
+            implimentation=implimentation.replace("[ ","[").replace(" ]","]").trim();
+            try {
+                rest =implementationSplit[i].substring(implementationSplit[i].indexOf("]")+1 );
+            }catch (Exception ignored){rest=""; }
+
+            if (implimentation.contains(" ")&&!(implimentation.contains("“")))
+            {
+                implimentation=replaceRequirement(implimentation,TextFromLlrFile);
+                implementationSplit[i]=implimentation+rest;
+            }
+        }
+
+        implementationSplit[0]=implementationSplit[0].replace("[","");
+        for (String str : implementationSplit) {
+            if(isCause){
+                finalRequirements+= CauseModifier(str); }
+                else{
+            finalRequirements+= reqModifier(str); // Append each string without adding a space
+        }
         }
 
         return finalRequirements;
+    }
+
+    private static String replaceRequirement(String requirement, String textFromLlrFile) {
+
+
+                String requirementsWithoutDescription = requirement.substring(requirement.indexOf("["), requirement.indexOf("]") + 1);
+                 if (textFromLlrFile.contains(requirementsWithoutDescription)) {
+
+                    String requirementsWithDescription = textFromLlrFile.substring(textFromLlrFile.lastIndexOf(requirementsWithoutDescription) + 1);
+
+                    requirementsWithDescription = requirementsWithDescription.replaceAll("\n ", "\n");
+
+                    requirementsWithDescription = requirementsWithDescription.substring(0, requirementsWithDescription.indexOf("\n[") + 1);
+
+                    return "\n"+requirementsWithDescription;
+
+            }
+
+        return requirement;
     }
 
     public static String cleanLlrText(String llrText) {
 
         llrText= llrText.replace("Traceability","[");
         llrText=removeInvisibleChars(llrText);
-/*
-        for (String s : effectsTable) {
-            s=s.replaceAll("Set"," Set");
-            llrText = llrText.replaceFirst(s, "");
-        }
-
-        for (String s : causesTable) {
-
-            llrText = llrText.replaceFirst(s, "");
-        }
-*/
 
         return llrText;
 

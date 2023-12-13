@@ -24,8 +24,10 @@ public class B0_ExcelSheet {
     private static int CausesFilling(){
         int number_of_causes = 1;
         for (String cause : causesTable) {
+           // System.out.println(cause);
             if (!(Objects.equals(cause, "null"))) {
                 cause = cause.replace("\n\n", "\n"); // delete extra line-return
+
                 Fill_Cell(cause, SHEET_B0_INDEX, number_of_causes + CAUSES_TABLE_POSITION, CELL_COL_2);
                 number_of_causes++;
             }
@@ -40,7 +42,7 @@ public class B0_ExcelSheet {
             effect = effect.replaceFirst("^\\n", "");// delete the first character from a string if it is equal to a newline character (\n)
             effect = effect.replace("\n\n", "\n"); // delete extra line return
 
-            if (effect.split("\n").length  < 30) {
+            if (effect.split("\n").length  < MAX_LINE_PER_EFFECT_CELL) {
                 Fill_Cell(effect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
                 number_of_effects++;
             } else {
@@ -110,6 +112,7 @@ public class B0_ExcelSheet {
 
 
         HeaderFilling();
+
         numberOfCauses=CausesFilling();
         number_of_effects=EffectFilling();
         removeExtraCells(number_of_effects);
