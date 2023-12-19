@@ -87,7 +87,7 @@ public class DataDictionary {
         ParameterToSearch=removeExtraCharacters(ParameterToSearch); // like * [ ]
 
         String matchingRows = searchExcelFiles(directoryPath, ParameterToSearch,searchForType);
-        if (matchingRows.equals("")) {
+        if (matchingRows.equals("")&&(searchForType!=2)) {
             return "not exist in the DD";
         }
         return matchingRows;

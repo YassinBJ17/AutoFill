@@ -13,14 +13,14 @@ public class Main {
 
              System.setProperty("log4j2.enableStackWalker", "true");
 
-             //String directory=Path_interface();
+             String directory=Path_interface();
 
             //String version=Version_interface();
              //String date=Date_interface();
 
             // if(Verification_licences())
             //    System.exit(0);
-            String directory="..\\Datafiles\\LLR\\";
+            //String directory="..\\Datafiles\\LLR\\";
             processing(directory);
            //customisedMacro(directory,version,date);
 

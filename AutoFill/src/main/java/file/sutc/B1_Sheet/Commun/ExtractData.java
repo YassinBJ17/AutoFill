@@ -80,7 +80,7 @@ public class ExtractData {
 
         for (int i = pos_start; i <pos_end ; i++) {
 
-            if(llrOfTheFunction[i].contains( Parameters[p][INDEX_OF_NAME])){
+            if(llrOfTheFunction[i].contains( Parameters[p][INDEX_OF_NAME].replaceAll("RTRT_",""))){
 
                 r= (llrOfTheFunction[i].substring(llrOfTheFunction[i].indexOf("(")+1, llrOfTheFunction[i].indexOf(")")));
                 if ((!r.equals("R"))&&(!r.equals("W"))&&(!r.equals("R/W"))&&(!r.equals("R\\W")))

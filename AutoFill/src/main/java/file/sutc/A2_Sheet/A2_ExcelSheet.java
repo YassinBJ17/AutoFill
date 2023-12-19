@@ -16,10 +16,18 @@ public class A2_ExcelSheet {
     public static int numberOfHeaderFiles =0;
     public static final int INTERNAL_DEFINITIONS_FIRST_LINE = 30;
 
+    public static final int END_OF_GLOBAL_DEFINITION = 89;
 
-    public static void Insert_Global_ParameterInA2(int Parameter_number) {
 
-        Fill_Cell("Variable", SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE+ Parameter_number + 1 , CELL_COL_1);
+    public static void Insert_Global_ParameterInA2(int Parameter_number,boolean isParameter) {
+
+        int rowIndex;
+
+                if(isParameter)
+                    rowIndex= END_OF_GLOBAL_DEFINITION-Parameter_number;
+                else rowIndex=INTERNAL_DEFINITIONS_FIRST_LINE+ Parameter_number + 1;
+
+        Fill_Cell("Variable", SHEET_A2_INDEX, rowIndex , CELL_COL_1);
         if (Parameters[Parameter_number][INDEX_OF_NAME].contains(".") || Parameters[Parameter_number][INDEX_OF_NAME].contains("->")) {
             int index;
             index = Parameters[Parameter_number][INDEX_OF_NAME].indexOf("->");
@@ -31,8 +39,8 @@ public class A2_ExcelSheet {
         }
         if (!InternalDefinitionsExist(Parameters[Parameter_number][INDEX_OF_NAME])) {
             String arraySize=arraySizeReturn(Parameters[Parameter_number][INDEX_OF_NAME]).replace("-1","")+"]";
-            Fill_Cell(Parameters[Parameter_number][INDEX_OF_NAME].replace("[0..","[").replace("]",arraySize), SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE+ Parameter_number + 1, CELL_COL_2);
-            Fill_Cell(Parameters[Parameter_number][INDEX_OF_TYPE].replace("[ARRAY]",""), SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE+ Parameter_number + 1, CELL_COL_3);
+            Fill_Cell(Parameters[Parameter_number][INDEX_OF_NAME].replace("[0..","[").replace("]",arraySize), SHEET_A2_INDEX,rowIndex, CELL_COL_2);
+            Fill_Cell(Parameters[Parameter_number][INDEX_OF_TYPE].replace("[ARRAY]",""), SHEET_A2_INDEX, rowIndex, CELL_COL_3);
         }
 
     }

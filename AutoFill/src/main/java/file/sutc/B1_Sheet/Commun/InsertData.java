@@ -99,7 +99,6 @@ public class InsertData {
     public static String arraySizeReturn(String variableName){
 
         String arraySize=DataDictionarySearch(variableName,2); // 2 signify array dimension
-
         if (arraySize.matches("-?\\d+(\\.\\d+)?")) {
             int numericValue=1;
             try {

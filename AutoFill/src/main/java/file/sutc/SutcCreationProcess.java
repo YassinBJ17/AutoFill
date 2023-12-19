@@ -60,7 +60,7 @@ public class SutcCreationProcess {
     }
 
     private static String pathOfTheNewExcelFile() {
-        String directoryPath = "C:\\Projets\\Fadex\\dev\\work\\LLT\\OSS_PU_LLT\\LL_Tests_BeforeTC"; // Replace this with your directory path
+       /* String directoryPath = "C:\\Projets\\Fadex\\dev\\work\\LLT\\OSS_PU_LLT\\LL_Tests_BeforeTC"; // Replace this with your directory path
         String fileName = functionName + "_SUTC.xls"; // Replace this with your file name
 
         File directory = new File(directoryPath);
@@ -71,6 +71,10 @@ public class SutcCreationProcess {
         } else {
             return "..\\Datafiles\\SUTC\\" + functionName + "_SUTC.xls"; // File not found
         }
+*/
+
+
+       return "..\\Datafiles\\SUTC\\" + functionName + "_SUTC.xls";
     }
 
     private static String searchFile(File directory, String fileName) {

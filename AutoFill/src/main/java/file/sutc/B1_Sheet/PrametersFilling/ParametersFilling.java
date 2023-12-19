@@ -3,6 +3,7 @@ package file.sutc.B1_Sheet.PrametersFilling;
 import file.sutc.B1_Sheet.B1_ExcelSheet;
 
 import static file.commun.LoggerInitialize.log4Error;
+import static file.sutc.A2_Sheet.A2_ExcelSheet.Insert_Global_ParameterInA2;
 import static file.sutc.B1_Sheet.B1_ExcelSheet.*;
 import static file.sutc.B1_Sheet.DataDictionarySearch.DataDictionary.DataDictionarySearch;
 import static file.sutc.Commun.ExcelManipulation.Parameters_Detect;
@@ -84,9 +85,12 @@ public class ParametersFilling {
 
             if(Parameters[numberOfParameters][INDEX_OF_DOMAIN].equals("-"))
             {
+
                 Parameters[numberOfParameters][INDEX_OF_DOMAIN]= DataDictionarySearch(Parameters[numberOfParameters][INDEX_OF_TYPE],0);
                 Parameters[numberOfParameters][INDEX_OF_CLASS]= Parameters[numberOfParameters][INDEX_OF_DOMAIN];
                 Parameters[numberOfParameters][INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(Parameters[numberOfParameters][INDEX_OF_DOMAIN]);
+
+
             }
 
             numberOfParameters++;
@@ -112,15 +116,25 @@ public class ParametersFilling {
             }
             else
             {
-                B1_ExcelSheet.prototypeOfTheFunction += "&"+ Parameters[i][INDEX_OF_NAME]+", ";
-                if(Parameters[i][INDEX_OF_DOMAIN].equals("-"))
-                    complex_parameters_index=Insert_Parameter(complex_parameters_index,i);
-                else
+                if(Parameters[i][INDEX_OF_DOMAIN].equals("-")&&(Parameters[i][INDEX_OF_TYPE].toUpperCase().contains("TS_"))) {
+
+                    Parameters[i][INDEX_OF_NAME]= "RTRT_"+Parameters[i][INDEX_OF_NAME];
+                    Insert_Global_ParameterInA2(i,true);
+                    normal_parameters_index = Insert_Parameter(normal_parameters_index, i);
+                }
+                else if ( Parameters[i][INDEX_OF_TYPE].toUpperCase().contains("TU_") ) {
+                    Parameters[i][INDEX_OF_NAME]= "RTRT_"+Parameters[i][INDEX_OF_NAME];
+                    Insert_Global_ParameterInA2(i,true);
+                    complex_parameters_index = Insert_Parameter(complex_parameters_index, i);
+
+
+                }
+                    else
                     normal_parameters_index=Insert_Parameter(normal_parameters_index,i);
 
+                prototypeOfTheFunction += "&"+ Parameters[i][INDEX_OF_NAME]+", ";
+
             }
-
-
         }
         Global_Start=complex_parameters_index;
 

@@ -154,7 +154,7 @@ public class GlobalFilling {
         }
 
         // A2 filling
-        Insert_Global_ParameterInA2( parameterNumber);
+        Insert_Global_ParameterInA2( parameterNumber,false);
         return return_Number_Of_Rows;
     }
 
