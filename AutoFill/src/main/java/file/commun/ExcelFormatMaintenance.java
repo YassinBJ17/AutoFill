@@ -25,12 +25,13 @@ public class ExcelFormatMaintenance {
 
         DataValidationHelper validationHelper = sheet.getDataValidationHelper();
 
+        if(endRange<startRange)
+        endRange=startRange;
         CellRangeAddressList objectTypePosition = new CellRangeAddressList(startRange, endRange,1, 1); // Cell A1 for example
         DataValidationConstraint objectTypeList = validationHelper.createExplicitListConstraint(objectType);
 
         DataValidation dataValidation = validationHelper.createValidation(objectTypeList, objectTypePosition);
         sheet.addValidationData(dataValidation);
-
         // Select B1
         sheet = workbook.getSheetAt(4);
         startRange=numberOfUFT+11;
@@ -158,7 +159,7 @@ public class ExcelFormatMaintenance {
             Cell cell = sheet.getRow(i).getCell(1); // Assuming column index 1 (column B)
             if (cell != null) {
                 if (cell.getStringCellValue().equals("End of Global Definition")) {
-                    return i;
+                    return i-1;
                 }
             }
         }

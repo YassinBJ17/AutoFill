@@ -7,6 +7,9 @@ import static file.sutc.Commun.ExcelManipulation.MergeCols;
 import static file.sutc.Commun.ExcelRowsAndColsConstants.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
+
+import java.util.Objects;
+
 import static file.sutc.B1_Sheet.B1_ExcelSheet.START_OF_PARAMETERS_TABLE;
 import static file.commun.LoggerInitialize.*;
 import static file.sutc.SutcCreationProcess.*;
@@ -71,7 +74,7 @@ public class RemoveExtraRow {
                     }
                 }
 
-                if ((secondCell.getCellType() == CellType.BLANK)&& !isMerged) {
+                if ((secondCell.getCellType() == CellType.BLANK)&& !isMerged && !Objects.equals(secondCell.getStringCellValue(), "'")) {
                     // If the second cell is empty or null, delete the row
                     A2_sheet.shiftRows(i + 1, A2_sheet.getLastRowNum(), -1);
                 }

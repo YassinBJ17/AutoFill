@@ -25,6 +25,8 @@ public class ExcelRowsAndColsConstants {
     public static final int INDEX_OF_INVALID_DOMAIN = 7;
     public static final int INDEX_OF_CLASS = 8;
 
+    public static final int INDEX_OF_INIT = 9;
+
 
 
     //ROWS CONSTANTS

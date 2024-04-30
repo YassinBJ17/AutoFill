@@ -60,10 +60,8 @@ public class ExtractCode {
             while (commentStart != -1) {
                 int commentEnd = returnedCode.indexOf("*/", commentStart + 2);
                 if (commentEnd == -1) {
-                    // The multi-line comment continues to the end of the code
                     returnedCode = returnedCode.substring(0, commentStart);
                 } else {
-                    // Remove the multi-line comment
                     returnedCode = returnedCode.substring(0, commentStart) + returnedCode.substring(commentEnd + 2);
                 }
                 commentStart = returnedCode.indexOf("/*");
@@ -74,6 +72,7 @@ public class ExtractCode {
         } else
 
             returnedCode =searchHeader(functionName,directory);
+
             if (returnedCode==null)
                 log4Error(functionName+" Not found");
             return returnedCode;

@@ -42,20 +42,21 @@ public class DataDictionary {
                                 Cell thirdCell = row.getCell(2);
                                 Cell secondCell = row.getCell(1);
 
-                                  matchingRows = secondCell.getStringCellValue();
+                                  matchingRows = secondCell.getStringCellValue().trim();
 
                                 if((matchingRows.equalsIgnoreCase("STRUCTURE"))||(matchingRows.equalsIgnoreCase("STRUCT"))||(matchingRows.equalsIgnoreCase("UNION"))) {
                                     matchingRows= "-";
                                 }
                                 else {
-                                    if (searchForType==0)
+                                    if (searchForType == 0)
                                         matchingRows = fourthCell.getStringCellValue(); // return Domain
-                                else if (searchForType==2)
+                                    else if (searchForType == 2){
                                         if (thirdCell.getCellType() == CellType.STRING) {
                                             matchingRows = thirdCell.getStringCellValue(); // return array dimension
                                         } else {
                                             matchingRows = String.valueOf(thirdCell.getNumericCellValue());
                                         }
+                                }
 
 
                                 }

@@ -2,6 +2,7 @@ import java.io.*;
 
 import static file.commun.BrowsingInputFolder.processing;
 import static file.commun.GraphicUserInterfaces.*;
+import static file.commun.LoggerInitialize.log4Error;
 import static file.commun.LoggerInitialize.log4Info;
 
 
@@ -21,7 +22,9 @@ public class Main {
             // if(Verification_licences())
             //    System.exit(0);
             //String directory="..\\Datafiles\\LLR\\";
+
             processing(directory);
+
            //customisedMacro(directory,version,date);
 
             log4Info("Process finished");

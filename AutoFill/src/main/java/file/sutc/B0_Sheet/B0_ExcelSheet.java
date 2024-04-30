@@ -5,8 +5,9 @@ import static file.sutc.B1_Sheet.Commun.RemoveExtraColumn.removeExtraCols;
 import static file.sutc.Commun.LongTextDivider.*;
 import static file.sutc.Commun.ExcelManipulation.*;
 import static file.sutc.Commun.ExcelRowsAndColsConstants.*;
-import java.util.List;
-import java.util.Objects;
+
+import java.util.*;
+
 import static file.commun.LoggerInitialize.*;
 import static file.sutc.Commun.utcUftNumberCounter.numberOfCauses;
 import static file.sutc.SutcCreationProcess.*;
@@ -23,10 +24,20 @@ public class B0_ExcelSheet {
     }
     private static int CausesFilling(){
         int number_of_causes = 1;
+
+        Set<String> set = new LinkedHashSet<>(causesTable);
+
+        causesTable = new ArrayList<>(set);
+
         for (String cause : causesTable) {
            // System.out.println(cause);
             if (!(Objects.equals(cause, "null"))) {
-                cause = cause.replace("\n\n", "\n"); // delete extra line-return
+
+                cause = cause.replaceAll("\\n{2,}", "\n"); // delete extra line-return
+
+                if (cause.startsWith("(") && cause.endsWith(")")) {
+                    cause = cause.substring(1, cause.length() - 1);
+                }
 
                 Fill_Cell(cause, SHEET_B0_INDEX, number_of_causes + CAUSES_TABLE_POSITION, CELL_COL_2);
                 number_of_causes++;
@@ -36,22 +47,26 @@ public class B0_ExcelSheet {
     }
     private static int EffectFilling() {
         int number_of_effects = 1;
+
+        Set<String> set = new LinkedHashSet<>(effectsTable);
+        effectsTable = new ArrayList<>(set);
+
         for (String effect : effectsTable) {
             effect = effect.replace("CALL ","\nCALL ");
             effect = effect.replace("Set ","\nSet ");
             effect = effect.replaceFirst("^\\n", "");// delete the first character from a string if it is equal to a newline character (\n)
             effect = effect.replace("\n\n", "\n"); // delete extra line return
 
-            if (effect.split("\n").length  < MAX_LINE_PER_EFFECT_CELL) {
+            //  if (effect.split("\n").length  < MAX_LINE_PER_EFFECT_CELL) {
                 Fill_Cell(effect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
                 number_of_effects++;
-            } else {
+           /* } else {
                 List<String> effects = divideLongText(effect);
                 for (String dividedEffect : effects) {
                     Fill_Cell(dividedEffect, SHEET_B0_INDEX, number_of_effects + EFFECT_TABLE_POSITION, CELL_COL_2);
                     number_of_effects++;
                 }
-            }
+            }*/
         }
         return number_of_effects;
     }
@@ -60,7 +75,7 @@ public class B0_ExcelSheet {
 
         if (numberOfCauses == 1)
             for (int i = 1; i < number_of_effects; i++) {
-                Fill_Cell("T", SHEET_B0_INDEX, EFFECT_TABLE_POSITION+i, CELL_COL_3);
+                Fill_Cell("X", SHEET_B0_INDEX, EFFECT_TABLE_POSITION+i, CELL_COL_3);
             }
 
         if (number_of_effects==1)
@@ -84,19 +99,37 @@ public class B0_ExcelSheet {
             Fill_Cell("N/A", SHEET_B0_INDEX, CELL_ROW_3, CELL_COL_3);
             Fill_Cell("N/A", SHEET_B0_INDEX, CELL_ROW_3, CELL_COL_2);
 
-            if (number_of_effects > 2)
-                MergeRows(SHEET_B0_INDEX, CELL_COL_3 + numberOfUFT, CELL_ROW_4 + 2, CELL_COL_2 + 2 + number_of_effects);// Merge LLR traceability
+            if (number_of_effects > 2) {
+
+                try {
+
+                    MergeRows(SHEET_B0_INDEX, CELL_COL_3 + numberOfUFT, CELL_ROW_4 + 2, CELL_COL_2 + 2 + number_of_effects);// Merge LLR traceability
+                }catch (Exception e){
+                    String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+                    log4Error(methodName+" : "+e.getMessage() );
+                }
 
 
+            }
         } else {
             workbook.getSheetAt(SHEET_B0_INDEX).shiftRows(EFFECT_TABLE_POSITION, END_OF_SHEET, -(NUMBER_OF_EMPTY_CELL - numberOfCauses + 1));
 
             if (numberOfCauses > 2)  // Number of causes is bigger than 1 cause
+
+                try{
                 MergeRows(SHEET_B0_INDEX, CELL_COL_3 + numberOfUFT, CELL_COL_4, CELL_COL_2 + numberOfCauses);// Merge LLR traceability
+                }catch (Exception e){
+                    String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+                    log4Error(methodName+" : "+e.getMessage() );
+                }
 
             if (number_of_effects > 2)
+                try {
                 MergeRows(SHEET_B0_INDEX, CELL_COL_3 + numberOfUFT, CELL_ROW_4 + numberOfCauses, CELL_COL_2 + numberOfCauses + number_of_effects);// Merge LLR traceability
-
+        }catch (Exception e){
+            String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+            log4Error(methodName+" : "+e.getMessage() );
+        }
         }
 
 
@@ -110,9 +143,7 @@ public class B0_ExcelSheet {
 
         int number_of_effects ;
 
-
         HeaderFilling();
-
         numberOfCauses=CausesFilling();
         number_of_effects=EffectFilling();
         removeExtraCells(number_of_effects);

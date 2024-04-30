@@ -23,7 +23,6 @@ public class GraphicUserInterfaces {
     }
     public static boolean FileExisteDialog(String function_name) {
 
-
         Object[] options = {"Ok", "Cancel"};
         int choice = JOptionPane.showOptionDialog(null,
                 "File already exists, Do you want to overwrite it?",

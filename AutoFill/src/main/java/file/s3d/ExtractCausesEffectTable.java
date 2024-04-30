@@ -76,7 +76,7 @@ public class ExtractCausesEffectTable {
 
         String causes = cell.trim();
         //logDebug(causes);
-
+        try {
         if ((!(causes.startsWith("["))) && (!(causes.endsWith("]")))) {
             if ((causes.contains("OR")) || (causes.contains("AND"))) { // OR , AND are required uppercase
 
@@ -95,11 +95,14 @@ public class ExtractCausesEffectTable {
                 c = removeInvisibleChars(c);
                 cause.add(c);
                 causes = causes.trim().substring(causes.indexOf("]") + 1);
-                if (!causes.trim().equals(""))
+                if (!causes.trim().equals("")) {
 
-                        causes = causes.trim().substring(causes.indexOf("[") - 1);
-
+                    causes = causes.trim().substring(causes.indexOf("[") - 1);
+                }
             }
+        }
+        }catch (Exception ignored){
+
         }
     }
 
@@ -116,11 +119,15 @@ public class ExtractCausesEffectTable {
                     Objects.equals(cell.getColor(), null)) && (IsRequirement(cell.getText()))) {
 
                 effectsTable.add(cell.getText());
+
             }
             else
             {
                 if(IsRequirement(cell.getText())) {
-
+                    cell = row.getCell(i);
+                    AddCause(cell.getText(), causesTable);
+                }
+/*
                     if (start_Of_Cause==0)
                         start_Of_Cause=i;
 
@@ -128,14 +135,13 @@ public class ExtractCausesEffectTable {
                 }
                 if(number_Of_Cause==1)
                     rowNumber++; // stored the row
-            }
+            */}
         }
 
-        if(number_Of_Cause>=2) { // if the line in cause/effect table is >3
-
+ /*       if(number_Of_Cause>=2) { // if the line in cause/effect table is >3
 
             if (!switchArray[rowNumber]) { // if 'if'
-                for (int i = start_Of_Cause; i <= start_Of_Cause+number_Of_Cause-1; i +=2) {
+                for (int i = start_Of_Cause; i <= start_Of_Cause+number_Of_Cause; i +=2) {
                     cell = row.getCell(i);
                     log4Debug(cell.getText());
                     if (IsRequirement(cell.getText()))
@@ -146,7 +152,6 @@ public class ExtractCausesEffectTable {
                 for (int i = start_Of_Cause; i < start_Of_Cause+number_Of_Cause; i++) { // if 'switch'
 
                     cell = row.getCell(i);
-
                     if (IsRequirement(cell.getText()))
                         log4Debug(cell.getText());
                         AddCause(cell.getText(), causesTable);
@@ -157,10 +162,9 @@ public class ExtractCausesEffectTable {
                 cell = row.getCell(i);
                 if (IsRequirement(cell.getText())){
                     AddCause(cell.getText(), causesTable);
-            }}
-        }
-
-
+            }
+            }
+        }*/
     }
 
     private static void openWordFile(String path){

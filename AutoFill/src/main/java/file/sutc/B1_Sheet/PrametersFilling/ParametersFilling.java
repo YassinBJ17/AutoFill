@@ -2,6 +2,7 @@ package file.sutc.B1_Sheet.PrametersFilling;
 
 import file.sutc.B1_Sheet.B1_ExcelSheet;
 
+import static file.commun.LoggerInitialize.log4Debug;
 import static file.commun.LoggerInitialize.log4Error;
 import static file.sutc.A2_Sheet.A2_ExcelSheet.Insert_Global_ParameterInA2;
 import static file.sutc.B1_Sheet.B1_ExcelSheet.*;
@@ -23,9 +24,7 @@ public class ParametersFilling {
         String[] domainClass ;
         String parameter;
         StringBuilder param= new StringBuilder();
-
         for (int i = code.length - 1; i >= 0; i--) {
-
             code[i] = code[i].replaceAll("\\(\\(" , "");
             code[i] = code[i].replaceAll("\\)\\)" , "");
 
@@ -36,18 +35,20 @@ public class ParametersFilling {
                 end = i+1;
             }
 
-            if ((code[i].contains(" "+function_name+"("))||(code[i].contains(" "+function_name+" (")))
+            if ((code[i].toLowerCase().contains(" "+function_name.toLowerCase()+"("))||(code[i].contains(" "+function_name.toLowerCase()+" (")))
                 break;
         }
         //System.out.println(function_name +":start "+start+"end "+end);
 
         for (int j = start; j <= end; j++) {
-
             param.append(code[j]);
         }
+
+        log4Debug("param"+param.toString());
         parameter=param.toString();
 
         try {
+            log4Debug("Parameters"+parameter);
             parameter = parameter.substring(parameter.indexOf("(") + 1, parameter.indexOf(")"));// extract all the param
         }catch (Exception e){
 
@@ -62,7 +63,6 @@ public class ParametersFilling {
         parameter = parameter.trim()+ ",";
         parameter = parameter.replaceAll(",,",",");
         parameter = parameter.replace(",", ", ");
-
         while (parameter.contains(",")){
             String p = parameter.substring(0, parameter.indexOf(","));
             parameter = parameter.substring(parameter.indexOf(",") + 1);
@@ -72,9 +72,8 @@ public class ParametersFilling {
                 Parameters[numberOfParameters][INDEX_OF_POINTER]="isPointer";
                 p = p.replace("*", ""); // delete *
             }
-            //System.out.println("#"+p+"#");
             String[] nameType=Parameters_Detect(p);
-
+            nameType[0]="p_"+nameType[0].replace("p_","");
             Parameters[numberOfParameters][INDEX_OF_NAME]= nameType[0];
             Parameters[numberOfParameters][INDEX_OF_TYPE]= nameType[1];
             domainClass=Extract_Domain(Parameters[numberOfParameters][INDEX_OF_TYPE]);
@@ -89,7 +88,6 @@ public class ParametersFilling {
                 Parameters[numberOfParameters][INDEX_OF_DOMAIN]= DataDictionarySearch(Parameters[numberOfParameters][INDEX_OF_TYPE],0);
                 Parameters[numberOfParameters][INDEX_OF_CLASS]= Parameters[numberOfParameters][INDEX_OF_DOMAIN];
                 Parameters[numberOfParameters][INDEX_OF_INVALID_DOMAIN]= Extract_Invalid_Domain(Parameters[numberOfParameters][INDEX_OF_DOMAIN]);
-
 
             }
 

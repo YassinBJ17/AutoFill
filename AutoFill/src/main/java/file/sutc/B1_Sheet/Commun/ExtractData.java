@@ -6,13 +6,15 @@ import static file.sutc.B1_Sheet.B1_ExcelSheet.Parameters;
 import static file.sutc.Commun.ExcelRowsAndColsConstants.INDEX_OF_NAME;
 import static file.sutc.SutcCreationProcess.llrOfTheFunction;
 
+
 public class ExtractData {
 
+    public static boolean robustnessTestOn=false;
     public static String Extract_Invalid_Domain(String domain){
 
         if (domain.equals("-")||domain.equals("not exist in the DD")||domain.equals("N.A."))
             return "-";
-
+        
         String max,min,invalid;
 
         domain=domain.substring(domain.indexOf("{")+1);
@@ -26,6 +28,7 @@ public class ExtractData {
 
         //invalid="[0x80000000.."+min+"-1] U ["+max+" +1..0x7FFFFFFF]";
         invalid="[-2147483648.."+min+"[ # ]"+max+"..2147483647]";
+
         return invalid;
     }
     public static String[] Extract_Domain(String type) {
@@ -59,6 +62,17 @@ public class ExtractData {
         }
         return tab;
     }
+
+    static public int countOccurrences(String sentence, String substring) {
+        int count = 0;
+        int index = 0;
+        while ((index = sentence.indexOf(substring, index)) != -1) {
+            count++;
+            index += substring.length();
+        }
+        return count;
+    }
+
     public static String Access_Detect( int p) {
         String r="";
         int pos_start=0,pos_end=0;
@@ -71,7 +85,7 @@ public class ExtractData {
             }
         }
         for (int i = 0; i < llrOfTheFunction.length ; i++) {
-            if(llrOfTheFunction[i].toUpperCase().contains("[COV.REQ"))
+            if(llrOfTheFunction[i].toUpperCase().contains("REQUIREMENTS"))
             {
                 pos_end=i;
                 break;
@@ -80,8 +94,11 @@ public class ExtractData {
 
         for (int i = pos_start; i <pos_end ; i++) {
 
-            if(llrOfTheFunction[i].contains( Parameters[p][INDEX_OF_NAME].replaceAll("RTRT_",""))){
-
+            String parameterName = Parameters[p][INDEX_OF_NAME].replaceAll("RTRT_", "");
+            String parameterName2 = parameterName.replace("_p","");
+            if (llrOfTheFunction[i].contains(parameterName)||llrOfTheFunction[i].contains(parameterName2))
+                {
+                    System.out.println(parameterName);
                 r= (llrOfTheFunction[i].substring(llrOfTheFunction[i].indexOf("(")+1, llrOfTheFunction[i].indexOf(")")));
                 if ((!r.equals("R"))&&(!r.equals("W"))&&(!r.equals("R/W"))&&(!r.equals("R\\W")))
                 {
@@ -94,7 +111,6 @@ public class ExtractData {
                         Error_interface(String.valueOf(e));
                     }
                 }
-
                 return r;
             }
         }

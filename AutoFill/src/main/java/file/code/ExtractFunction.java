@@ -7,9 +7,9 @@ public class ExtractFunction {
     public static String[] ExtractFunctionFromCode(String functionName){
 
 
-        if (functionName.equals("None")){
+        if (functionName.equals("None")||functionName.equals("None."))
             return null;
-        }
+
 
         String Code_text= extractFunctionCode(functionName);
         if (Code_text==null)

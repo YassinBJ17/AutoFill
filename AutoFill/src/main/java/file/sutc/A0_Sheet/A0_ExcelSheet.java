@@ -32,14 +32,14 @@ public class A0_ExcelSheet {
 
         CSU_Name=CSU_Name+"_";
         String CSC_Name="CSC_"+CSU_Name.substring(0,CSU_Name.indexOf("_"));
-        Fill_Cell(CSC_Name, SHEET_A0_INDEX, CELL_ROW_3, CELL_COL_3);//CSC Name Filling
+        Fill_Cell(CSC_Name.toUpperCase(), SHEET_A0_INDEX, CELL_ROW_3, CELL_COL_3);//CSC Name Filling
 
         Fill_Cell(designFileName, SHEET_A0_INDEX, CELL_ROW_8, CELL_COL_2);//Reference Documents Filling
         Fill_Cell(SDDD_Version, SHEET_A0_INDEX, CELL_ROW_8, CELL_COL_3);//Version of Documents Filling
 
         //Fill_Cell("FADEX-OVSP_SDDD-DD.xlsx", SHEET_A0_INDEX, CELL_ROW_9, CELL_COL_2);//Reference Documents Filling
         Fill_Cell("FADEX-OSS_PU_SDDD-DD.xlsx", SHEET_A0_INDEX, CELL_ROW_9, CELL_COL_2);//Reference Documents Filling
-        Fill_Cell("5", SHEET_A0_INDEX, CELL_ROW_9, CELL_COL_3);//Version of Documents Filling
+       // Fill_Cell("10", SHEET_A0_INDEX, CELL_ROW_9, CELL_COL_3);//Version of Documents Filling
 
       //   Fill_Cell(File_Name, SHEET_A0_INDEX, CELL_ROW_10, CELL_COL_2);//Reference Documents Filling
       //  Fill_Cell("1.0.1", SHEET_A0_INDEX, CELL_ROW_10, CELL_COL_3);

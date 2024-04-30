@@ -5,6 +5,7 @@ import java.util.Objects;
 import static file.code.ExtractFunction.ExtractFunctionFromCode;
 import static file.commun.LoggerInitialize.*;
 import static file.sutc.B1_Sheet.B1_ExcelSheet.*;
+import static file.sutc.B1_Sheet.Commun.ExtractData.*;
 import static file.sutc.B1_Sheet.Commun.InsertData.*;
 import static file.sutc.B1_Sheet.DataDictionarySearch.DataDictionary.DataDictionarySearch;
 import static file.sutc.B1_Sheet.FunctionReturnFilling.FunctionReturnFilling.INDEX_RESERVED_FOR_FUNCTION_RETURN;
@@ -12,8 +13,6 @@ import static file.sutc.B1_Sheet.PrametersFilling.ParametersFilling.ExtractParam
 import static file.sutc.Commun.ExcelManipulation.*;
 import static file.sutc.Commun.ExcelRowsAndColsConstants.*;
 
-import static file.sutc.B1_Sheet.Commun.ExtractData.Extract_Domain;
-import static file.sutc.B1_Sheet.Commun.ExtractData.Extract_Invalid_Domain;
 import static file.sutc.SutcCreationProcess.effectsTable;
 import static file.sutc.SutcCreationProcess.llrOfTheFunction;
 
@@ -34,8 +33,7 @@ public class StubsFilling {
         for (int i = 0; i <numberOfStubs ; i++) {
 
             Code_stub=ExtractFunctionFromCode(Stubs[i].trim());
-
-            Fill_Cell(Stubs[i], SHEET_B1_INDEX, STUB_DEFINITION_TABLE_POSITION +(i* DISTANCE_BETWEEN_STUBS), CELL_COL_2);
+            Fill_Cell(Stubs[i].replace(".",""), SHEET_B1_INDEX, STUB_DEFINITION_TABLE_POSITION +(i* DISTANCE_BETWEEN_STUBS), CELL_COL_2);
 
             if(Code_stub==null){
                 //ExcelModifier.Fill_Cell("not exist in the Code", SHEET_B1, B1_ExcelSheet.STUB_DEFINITION_TABLE_POSITION+ SutcCreation Process.number_of_UFT +(i* B1_ExcelSheet.DISTANCE_BETWEEN_STUBS)+2, CELL_COL_2);
@@ -61,18 +59,19 @@ public class StubsFilling {
 
                 //System.out.println(Stubs[i]+"-"+Parameters[j][INDEX_OF_NAME]);
 
-                if (Parameters[j][INDEX_OF_ACCESS]!=null)
+                if (Parameters[j][INDEX_OF_ACCESS]==null)
+                    Parameters[j][INDEX_OF_ACCESS]="";
                 if ((Parameters[j][INDEX_OF_ACCESS].contains("out")|| Parameters[j][INDEX_OF_ACCESS].contains("Return"))&&(!(Parameters[j][INDEX_OF_INVALID_DOMAIN].equals("-")))){
 
                     first_row=row;
                    // System.out.println(Parameters[j][INDEX_OF_NAME]+"first row"+row);
-                    Insert_Invalid_Row(row, Parameters[j]);
+                    Insert_Invalid_Row(row, Parameters[j],false);
                     mergeRowsInRange(row);
                     row+=2;
-                    Insert_Row(row, Parameters[j]);
+                    Insert_Row(row, Parameters[j],true);
                     mergeRowsInRange(row);
                     row+=2;
-                    Insert_Invalid_Row(row, Parameters[j]);
+                    Insert_Invalid_Row(row, Parameters[j],true);
                     mergeRowsInRange(row);
                     row++;
                    // System.out.println("end row"+row);
@@ -82,19 +81,22 @@ public class StubsFilling {
                 }else {
                     first_row=row;
                    // System.out.println(Parameters[j][INDEX_OF_NAME]+"first row"+row);
-                    Insert_Row(row, Parameters[j]);
+                    Insert_Row(row, Parameters[j],false);
 
                     if(!Objects.equals(Parameters[j][INDEX_OF_TYPE], "void"))
                     {
-                    mergeRowsInRange(row);
-                    row++;
+                        mergeRowsInRange(row);
+                        row++;
                     }
-
                   //  System.out.println("end row"+row);
                 }
                 for (int k = 1; k <= 3 && row>first_row ; k++)
+                    try{
                     MergeRows(SHEET_B1_INDEX, k, first_row+1, row+1 );
-
+                    }catch (Exception e){
+                        String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+                        log4Error(methodName+" : in STUB "+Stubs[i]+" "+e.getMessage()  );
+                    }
             }
 
             row=startStub+ DISTANCE_BETWEEN_STUBS;
@@ -195,25 +197,25 @@ public class StubsFilling {
              ) {
                     if (effect.contains(stubName+" with"))
                     {
+                        int numberParameters=countOccurrences(effect,"} and {");
+                        for (int i = 0; i <= numberParameters; i++) {
 
-                        if ((effect.toUpperCase().contains("IN/OUT:")) || (effect.toUpperCase().contains("IN/OUT ")))  {
+                            if ((effect.toUpperCase().contains("IN/OUT:")) || (effect.toUpperCase().contains("IN/OUT "))) {
 
-                            log4Debug(Parameters[0][INDEX_OF_NAME]+ " Access_IN_OUT :"+effect);
-                            Parameters[0][INDEX_OF_ACCESS] = "_inout";
+                                log4Debug(Parameters[i][INDEX_OF_NAME] + " Access_IN_OUT :" + effect);
+                                Parameters[i][INDEX_OF_ACCESS] = "_inout";
 
-                        } else if ((effect.toUpperCase().contains("OUT:")) || (effect.toUpperCase().contains("OUT "))) {
-                            log4Debug(Parameters[0][INDEX_OF_NAME]+ " Access_OUT :"+effect);
-                            Parameters[0][INDEX_OF_ACCESS] = "_out";
+                            } else if ((effect.toUpperCase().contains("OUT:")) || (effect.toUpperCase().contains("OUT "))) {
+                                log4Debug(Parameters[i][INDEX_OF_NAME] + " Access_OUT :" + effect);
+                                Parameters[i][INDEX_OF_ACCESS] = "_out";
 
-                        } else if ((effect.toUpperCase().contains("IN:") || (effect.toUpperCase().contains("IN ")))) {
-                            log4Debug(Parameters[0][INDEX_OF_NAME]+ " Access_IN :"+effect);
-                            Parameters[0][INDEX_OF_ACCESS] = "_in";
-                            Parameters[0][INDEX_OF_CLASS] = "-";
+                            } else if ((effect.toUpperCase().contains("IN:") || (effect.toUpperCase().contains("IN ")))) {
+                                log4Debug(Parameters[i][INDEX_OF_NAME] + " Access_IN :" + effect);
+                                Parameters[i][INDEX_OF_ACCESS] = "_in";
+                                Parameters[i][INDEX_OF_CLASS] = "-";
 
+                            }
                         }
-
-
-
                     }
         }
     }
@@ -226,12 +228,12 @@ public class StubsFilling {
         }
 
 
+
         for (String code_line  : Code) {
 
             if (Prototype_Detect(code_line, function_name)) {
 
                 if (!(code_line.contains("void ")))  {
-
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_NAME] = "return_"+function_name;
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE] = code_line.trim().substring(0, code_line.trim().indexOf(" ") );
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_ACCESS] = "Return";

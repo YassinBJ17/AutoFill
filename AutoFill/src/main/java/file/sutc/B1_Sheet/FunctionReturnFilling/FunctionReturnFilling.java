@@ -29,7 +29,7 @@ public class FunctionReturnFilling {
                 if (!(prototype.contains("void "))) {
 
 
-                    type = prototype.substring(0, prototype.indexOf(functionName) - 1);
+                    type = prototype.substring(0, prototype.toLowerCase().indexOf(functionName.toLowerCase()) - 1);
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_NAME]="RTRT_Ret_"+functionName;
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_TYPE]=type.replace("const","");
                     Parameters[INDEX_RESERVED_FOR_FUNCTION_RETURN][INDEX_OF_ACCESS]="W";

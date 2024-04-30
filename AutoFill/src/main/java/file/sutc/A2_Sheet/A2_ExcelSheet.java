@@ -21,11 +21,7 @@ public class A2_ExcelSheet {
 
     public static void Insert_Global_ParameterInA2(int Parameter_number,boolean isParameter) {
 
-        int rowIndex;
-
-                if(isParameter)
-                    rowIndex= END_OF_GLOBAL_DEFINITION-Parameter_number;
-                else rowIndex=INTERNAL_DEFINITIONS_FIRST_LINE+ Parameter_number + 1;
+        int rowIndex=INTERNAL_DEFINITIONS_FIRST_LINE+ Parameter_number ;
 
         Fill_Cell("Variable", SHEET_A2_INDEX, rowIndex , CELL_COL_1);
         if (Parameters[Parameter_number][INDEX_OF_NAME].contains(".") || Parameters[Parameter_number][INDEX_OF_NAME].contains("->")) {
@@ -38,9 +34,16 @@ public class A2_ExcelSheet {
             Parameters[Parameter_number][INDEX_OF_NAME] = Parameters[Parameter_number][INDEX_OF_NAME].substring(0, index);
         }
         if (!InternalDefinitionsExist(Parameters[Parameter_number][INDEX_OF_NAME])) {
-            String arraySize=arraySizeReturn(Parameters[Parameter_number][INDEX_OF_NAME]).replace("-1","")+"]";
-            Fill_Cell(Parameters[Parameter_number][INDEX_OF_NAME].replace("[0..","[").replace("]",arraySize), SHEET_A2_INDEX,rowIndex, CELL_COL_2);
-            Fill_Cell(Parameters[Parameter_number][INDEX_OF_TYPE].replace("[ARRAY]",""), SHEET_A2_INDEX, rowIndex, CELL_COL_3);
+            if (Parameters[Parameter_number][INDEX_OF_NAME].contains("[")&&Parameters[Parameter_number][INDEX_OF_NAME].contains("]")) {
+
+                String arraySize = arraySizeReturn(Parameters[Parameter_number][INDEX_OF_NAME],SHEET_A2_INDEX) + "]";
+                Fill_Cell(Parameters[Parameter_number][INDEX_OF_NAME].replace("[0..", "[").replace("]", arraySize), SHEET_A2_INDEX, rowIndex, CELL_COL_2);
+                Fill_Cell(Parameters[Parameter_number][INDEX_OF_TYPE].replace("[ARRAY]", ""), SHEET_A2_INDEX, rowIndex, CELL_COL_3);
+            }else
+            {
+                Fill_Cell(Parameters[Parameter_number][INDEX_OF_NAME], SHEET_A2_INDEX, rowIndex, CELL_COL_2);
+                Fill_Cell(Parameters[Parameter_number][INDEX_OF_TYPE], SHEET_A2_INDEX, rowIndex, CELL_COL_3);
+            }
         }
 
     }
@@ -57,7 +60,7 @@ public class A2_ExcelSheet {
         if (!(Code_line.contains("void "))) { // the function return a value
             Fill_Cell("Variable", SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_1);
             Fill_Cell("RTRT_Ret_"+function_name, SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_2);
-            String type = Code_line.substring(0, Code_line.indexOf(function_name.toLowerCase()) - 1); // type of the return value
+            String type = Code_line.substring(0, Code_line.toLowerCase().indexOf(function_name.toLowerCase()) - 1); // type of the return value
             Fill_Cell(type, SHEET_A2_INDEX, INTERNAL_DEFINITIONS_FIRST_LINE, CELL_COL_3);
 
             return_function=true;

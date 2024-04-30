@@ -22,7 +22,6 @@ public class ExtractTextFromS3D {
 
         return input.replaceAll(pattern, "");
 
-
     }
 
 

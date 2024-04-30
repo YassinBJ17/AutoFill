@@ -74,7 +74,7 @@ public class SutcCreationProcess {
 */
 
 
-       return "..\\Datafiles\\SUTC\\" + functionName + "_SUTC.xls";
+       return "..\\Datafiles\\SUTC\\" + functionName + ".xls";
     }
 
     private static String searchFile(File directory, String fileName) {
@@ -153,7 +153,7 @@ public class SutcCreationProcess {
           WritingFile(newExcelFilePath);// save XLS
 
           dialog.setVisible(false); // hide the dialog
-          log4Success(newExcelFilePath+"was saved successfully.");
+          log4Success(newExcelFilePath+" was saved successfully.");
       }
   }
 

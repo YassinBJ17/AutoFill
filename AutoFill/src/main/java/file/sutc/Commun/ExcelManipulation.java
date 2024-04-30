@@ -109,19 +109,25 @@ public class ExcelManipulation {
     public static void MergeRows(int sheetNumber, int start_col, int start_row, int end_row) {
 
         Sheet sheet= workbook.getSheetAt(sheetNumber);
+
+
         String string_range= (char) (start_col + 65)+""+(start_row)+":"+(char) (start_col + 65)+end_row;
         //System.out.println(string_range);
         CellRangeAddress range = CellRangeAddress.valueOf(string_range);
         sheet.addMergedRegion(range);
+
+
+
 
     } // merge an interval of cells
     public static void MergeCols(int sheet, int start_col, int start_row, int end_cols) {
 
         Sheet s= workbook.getSheetAt(sheet);
         String string_range= (char) (start_col + 65)+""+(start_row)+":"+(char) (end_cols + 65)+start_row;
-        CellRangeAddress range = CellRangeAddress.valueOf(string_range);
+
 
         try {
+            CellRangeAddress range = CellRangeAddress.valueOf(string_range);
             s.addMergedRegion(range);
         }catch (Exception e)
         {
@@ -134,7 +140,7 @@ public class ExcelManipulation {
     public static String reqModifier(String s) {
         log4Debug(s);
 
-        s = s.replaceAll("(?i)\\]: (?:Set|set) ", " by setting");
+        s = s.replaceAll("(?i)\\]: (?:Set|set) ", " by setting ");
 
 
         // Replace multiple successive newlines with a single newline
@@ -143,10 +149,14 @@ public class ExcelManipulation {
         // Replace multiple successive spaces with a single space
         s = s.replaceAll(" {2,}", " ");
 
-        s = s.replaceAll("(?i)(] corresponds to the following call|] corresponds to the call)", " by calling ");
-        s = s.replaceAll("(?i)(]corresponds to the following call|]corresponds to the call)", " by calling ");
         s = s.replace("]:", "");
         s = s.replace("] :", " ");
+        s = s.replace("] by setting", " by setting");
+        s = s.replaceAll("(?i)( corresponds to the following call| corresponds to the call)", " by calling ");
+        s = s.replaceAll("(?i)(corresponds to the following call|corresponds to the call)", " by calling ");
+        s = s.replaceAll("(?i)( corresponds to the following CALL| corresponds to the call)", " by calling ");
+        s = s.replaceAll("(?i)(corresponds to the following CALL|corresponds to the call)", " by calling ");
+        s = s.replace("] by calling", " by calling");
 
         log4Debug(s);
     /*
@@ -196,7 +206,6 @@ public class ExcelManipulation {
         return "";
     }
     public static String[] Parameters_Detect(String str) {
-
         str=str.replace("const","");
         str=str.replace("CONST","");
         String[] words = str.split("\\s+"); // Split the string into words
@@ -214,7 +223,7 @@ public class ExcelManipulation {
         line=line.toLowerCase();
         fct_name=fct_name.toLowerCase().trim();
 
-        return  (line.contains(fct_name))&&(!(line.contains("#")));
+        return  ((line.contains(fct_name+"("))||(line.contains(fct_name+" (")))&&(!(line.contains("#")));
 
     }
 

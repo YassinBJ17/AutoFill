@@ -8,10 +8,7 @@ import static file.commun.LoggerInitialize.log4Error;
 
 public class ExtractPrototype {
 
-
         public static String searchHeader(String functionName, String directoryPath) {
-
-
 
             File directory = new File(directoryPath);
             if (!directory.exists() || !directory.isDirectory()) {
@@ -42,12 +39,17 @@ public class ExtractPrototype {
         }
 
         private static String searchFunctionInHeader(File headerFile, String functionName) {
+            String ret="";
+            int i=0;
             try (BufferedReader reader = new BufferedReader(new FileReader(headerFile))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    if ((line.contains(functionName+" ("))||(line.contains(functionName+"( "))) {
-                        line=line.replace("extern","");
-                        return line.trim();
+                    if ((line.contains(functionName+" ("))||(line.contains(functionName+"("))||(i>0)) {
+                        ret = ret + line.trim().replace("extern", "");
+                        if (ret.contains(")")) {
+                            return ret.trim();
+                        } else
+                            i++;
                     }
                 }
             } catch (IOException e) {

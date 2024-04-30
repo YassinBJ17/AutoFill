@@ -12,12 +12,13 @@ public static void processing(String directory){
 
     String path;
 
-    
     File folder = new File(directory);
     File[] listOfFiles = folder.listFiles();
 
     assert listOfFiles != null;
+
     log4Info("Process started");
+
     for (File listOfFile : listOfFiles) {
        // try {
             if (listOfFile.isFile()) {

@@ -1,5 +1,8 @@
 package file.s3d;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static file.s3d.ExtractTextFromS3D.removeInvisibleChars;
 import static file.sutc.Commun.ExcelManipulation.*;
 import static file.sutc.SutcCreationProcess.causesTable;
@@ -7,29 +10,44 @@ import static file.sutc.SutcCreationProcess.effectsTable;
 
 public class ExtractRequirements {
 
-
-
-
-
-
     public static void ExtractDescriptionOfRequirements(String TextFromLlrFile) {
 
 
         String requirements_with_description ;
        // TextFromLlrFile=TextFromLlrFile.replace("\n\n","\n");
 
-        for (int i = 0; i <causesTable.size() ; i++) {
+        ArrayList<String> auxCausesTable = new ArrayList<>(causesTable);
+        causesTable.clear();
 
-            String cause = causesTable.get(i);
+        for (String cause:auxCausesTable) {
+
             cause = processRequirements(cause, TextFromLlrFile,true);
 
+            if ((cause.contains("OR")) || (cause.contains("AND"))) { // OR , AND are required uppercase;
+                String description=null;
+                if(cause.contains(":"))
+                {
+                    description=cause.substring(0,cause.indexOf(":")+1);
+                    cause=cause.substring(cause.indexOf(":")+1);
+                }
+
+
+                String[] cause_table = cause.split("(?<!\\bBITWISE)\\s+(OR|AND)\\s+");
+
+                if (description!=null)
+                    for (int i = 0; i < cause_table.length; i++) {
+                        cause_table[i] = description + cause_table[i];
+                    }
+
+                causesTable.addAll(Arrays.asList(cause_table));
+            }
+            else
             if (!cause.isEmpty()) {
                 // cause = deleteExtraReturnLine(cause);
-                causesTable.set(i, (cause));
+                causesTable.add(cause);
             }
-
-
         }
+
 
         for (int i = 0; i < effectsTable.size(); i++) {
 
@@ -47,7 +65,7 @@ public class ExtractRequirements {
     private static String processRequirements(String requirement, String TextFromLlrFile,boolean isCause) {
 
 
-        if (!(requirement.contains("["))||requirement==""){
+        if (!(requirement.contains("["))||requirement.isEmpty()){
             return requirement;
         }
 
@@ -66,7 +84,9 @@ public class ExtractRequirements {
             implimentation=implimentation.replace("[ ","[").replace(" ]","]").trim();
             try {
                 rest =implementationSplit[i].substring(implementationSplit[i].indexOf("]")+1 );
-            }catch (Exception ignored){rest=""; }
+            }catch (Exception ignored){
+                rest="";
+            }
 
             if (implimentation.contains(" ")&&!(implimentation.contains("“")))
             {
