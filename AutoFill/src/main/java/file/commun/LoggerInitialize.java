@@ -5,9 +5,8 @@ import org.apache.logging.log4j.Logger;
 
 public class LoggerInitialize {
 
-        public static final Logger logger4j = LogManager.getLogger();
-
-
+    public static final Logger logger4j = LogManager.getLogger();
+    
     public static void log4Success(String logging) {
         logger4j.info("\u001B[32m" + logging + "\u001B[0m");
     }

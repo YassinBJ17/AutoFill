@@ -3,6 +3,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import static file.code.ExtractFunction.ExtractFunctionFromCode;
@@ -12,8 +13,7 @@ import static file.s3d.ExtractFunction.ExtractFunctionFromSDDD;
 import static file.s3d.ExtractRequirements.ExtractDescriptionOfRequirements;
 import static file.s3d.ExtractRequirements.cleanLlrText;
 import static file.s3d.ExtractTextFromS3D.ExtractTextFromSDDD;
-import static file.sutc.A0_Sheet.A0_ExcelSheet.fillingA0Sheet;
-import static file.sutc.A0_Sheet.A0_ExcelSheet.getSDDD_Version;
+import static file.sutc.A0_Sheet.A0_ExcelSheet.*;
 import static file.sutc.A2_Sheet.A2_ExcelSheet.fillingA2Sheet;
 import static file.sutc.B0_Sheet.B0_ExcelSheet.fillingB0Sheet;
 import static file.sutc.B1_Sheet.B1_ExcelSheet.*;
@@ -38,6 +38,7 @@ public class SutcCreationProcess {
     public static String[] llrOfTheFunction;
     public static ArrayList<String> cause;
     public static String SDDD_Version;
+    public static String CSC_Name;
 
 
 
@@ -98,16 +99,18 @@ public class SutcCreationProcess {
 
 
 
-  public static void excelFinalManipulation(String path) {
+  public static void excelFinalManipulation(String path,String functionToGenerate) {
 
       String TextFromLlrFile,textFromSDDD;
 
       textFromSDDD = ExtractTextFromSDDD(path);
       SDDD_Version= getSDDD_Version(textFromSDDD);
+      CSC_Name=getCSC_Name(textFromSDDD);
       Pattern pattern = Pattern.compile("\\b.*\nThis function",Pattern.CASE_INSENSITIVE); // key word in SDDD is "This function" should be existed in every function
       Matcher matcher = pattern.matcher(textFromSDDD);
       causeEffectTableOrder=getTheFirstCauseEffectTable(path);// used to locate the first Cause Effect Table in the SDDD
       JDialog dialog;
+
 
       while (matcher.find()) {
 
@@ -120,6 +123,13 @@ public class SutcCreationProcess {
           llrOfTheFunction =TextFromLlrFile.split("\n"); //split each LLR line of the function in a table lowLevelReq
 
           functionName=llrOfTheFunction[1].trim().toLowerCase();
+
+          if ((!Objects.equals(functionToGenerate, "start"))&&(!functionToGenerate.equals(functionName))){
+              causeEffectTableOrder++;
+              continue;
+          }
+
+
           log4Info(functionName); // extract the name of the function
           codeOfTheFunction =ExtractFunctionFromCode(functionName);
 

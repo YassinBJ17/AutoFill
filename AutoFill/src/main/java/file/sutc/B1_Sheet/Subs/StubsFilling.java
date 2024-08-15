@@ -113,7 +113,7 @@ public class StubsFilling {
         Fill_Cell("End of UTC definition", SHEET_B1_INDEX,row-7,1);
         CorrectAlign(SHEET_B1_INDEX,row-7,1);
     }
-    public static int Extract_Stubs(){
+    public static int Extract_Stubs()   {
 
         int start= 0,end = 0;
         int numberOfStubs=0;

@@ -35,7 +35,7 @@ public class CustoMacro {
                 customisedMacro(file.getAbsolutePath(),version,date);
 
             } else {
-                if (file.getName().endsWith(".xlsm")) {
+                if (file.getName().endsWith(".xls")) {
                     // If the file is a .h file, search for the function prototype
                     System.out.println(file.getAbsolutePath());
                     Update(file,version,date);
@@ -68,11 +68,12 @@ public class CustoMacro {
 
 
 
-        Fill_Cell("DD",5 ,8 ,1 );
+        Fill_Cell("DD",0 ,8 ,2   ); // SDDD Name
+        Fill_Cell("TEST",0 ,8 ,3 ); // SDDD Version
 
-        Fill_Cell("FADEX-OVSP_SDDD-DD.xlsx",5 ,8 ,2 );
 
-        Fill_Cell("1", 5,8 ,3 );
+
+        Fill_Cell("1", 1,8 ,3 );
 
 
         FileOutputStream outputStream = new FileOutputStream(file);

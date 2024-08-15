@@ -29,8 +29,8 @@ public class utcUftNumberCounter {
             numberOfUFT = numberOfCauses + 1;
             numberOfUTC = numberOfUFT * 2;
         }
-
-
+        numberOfUTC=(Math.min(numberOfUFT, 40));
+        numberOfUFT=(Math.min(numberOfUFT, 20));
     }
 
 

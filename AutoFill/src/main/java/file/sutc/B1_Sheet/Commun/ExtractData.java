@@ -46,6 +46,7 @@ public class ExtractData {
                 {"uint64_t", "[0x0000000000000000..0xFFFFFFFFFFFFFFFF]","-"},
                 {"boolean_t", "{FALSE,TRUE}","[-2147483648..FALSE[ # ]TRUE..2147483647]"},
                 {"float32_t", "[-3.4E38..3.4E38]","-"},
+                {"t_float", "[-3.4E38..3.4E38]","-"},
                 {"float64_t", "[2.2E-308..1.7E308]","-"}
                 };
 
@@ -98,7 +99,7 @@ public class ExtractData {
             String parameterName2 = parameterName.replace("_p","");
             if (llrOfTheFunction[i].contains(parameterName)||llrOfTheFunction[i].contains(parameterName2))
                 {
-                    System.out.println(parameterName);
+                    //System.out.println(parameterName);
                 r= (llrOfTheFunction[i].substring(llrOfTheFunction[i].indexOf("(")+1, llrOfTheFunction[i].indexOf(")")));
                 if ((!r.equals("R"))&&(!r.equals("W"))&&(!r.equals("R/W"))&&(!r.equals("R\\W")))
                 {

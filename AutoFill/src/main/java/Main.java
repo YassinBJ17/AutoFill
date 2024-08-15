@@ -1,5 +1,6 @@
 import java.io.*;
 
+import static customisedMacro.CustoMacro.customisedMacro;
 import static file.commun.BrowsingInputFolder.processing;
 import static file.commun.GraphicUserInterfaces.*;
 import static file.commun.LoggerInitialize.log4Error;
@@ -13,15 +14,17 @@ public class Main {
 
 
              System.setProperty("log4j2.enableStackWalker", "true");
-
              String directory=Path_interface();
+             String functionName="";
 
-            //String version=Version_interface();
+             //String version=Version_interface();
              //String date=Date_interface();
 
             // if(Verification_licences())
             //    System.exit(0);
             //String directory="..\\Datafiles\\LLR\\";
+
+
 
             processing(directory);
 

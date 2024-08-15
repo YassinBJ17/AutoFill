@@ -8,6 +8,9 @@ import java.io.IOException;
 import static file.commun.LoggerInitialize.*;
 
 public class GraphicUserInterfaces {
+
+
+
     public static JDialog Waiting_interface(String message) {
 
         JOptionPane pane = new JOptionPane(message, JOptionPane.INFORMATION_MESSAGE);
@@ -21,6 +24,26 @@ public class GraphicUserInterfaces {
 
         return JOptionPane.showInputDialog(null,"LLR path                                                                                                   ","..\\Datafiles\\LLR")+"\\";
     }
+
+    public static String functionName(){
+
+        return JOptionPane.showInputDialog(null,"Which function would you like to generate?");
+    }
+
+
+    public static String Version_interface(){
+        return JOptionPane.showInputDialog(null,"Version:");
+    }
+
+    public static String Date_interface(){
+        return JOptionPane.showInputDialog(null,"Date:");
+    }
+
+    public static String DD_interface(String sddd){
+        return JOptionPane.showInputDialog(null,"DD Version of "+sddd);
+    }
+
+
     public static boolean FileExisteDialog(String function_name) {
 
         Object[] options = {"Ok", "Cancel"};
@@ -73,6 +96,28 @@ log4Error(methodName+" : "+e.getMessage() );
         }
 
     }
+
+    public static Boolean generateOneFunction(String sddd) {
+
+            int result = JOptionPane.showOptionDialog(
+                    null, // Parent component (null for default)
+                    "Do you want to generate all functions of "+sddd+" ?", // Message to display
+                    "Confirm Function Generation", // Dialog title
+                    JOptionPane.YES_NO_OPTION, // Option type
+                    JOptionPane.QUESTION_MESSAGE, // Message type
+                    null, // Icon (null for default)
+                    new String[]{"Yes", "No"}, // Button options
+                    "Yes" // Default button option
+            );
+            if (result == 0)
+                return true;
+            return false;
+
+
+
+
+    }
+
     public static void Error_interface(String e){
     JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
     }

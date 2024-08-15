@@ -88,7 +88,7 @@ public class ExtractRequirements {
                 rest="";
             }
 
-            if (implimentation.contains(" ")&&!(implimentation.contains("“")))
+            if (implimentation.contains(" ")&&!((implimentation.contains("“"))||(implimentation.contains("\""))))
             {
                 implimentation=replaceRequirement(implimentation,TextFromLlrFile);
                 implementationSplit[i]=implimentation+rest;

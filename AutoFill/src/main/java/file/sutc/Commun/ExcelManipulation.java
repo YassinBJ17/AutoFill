@@ -60,6 +60,7 @@ public class ExcelManipulation {
 
     public static void Fill_Cell(String text,int sheet, int row, int cell) { // filling one specific cell
 
+        //System.out.println(row+"-"+cell);
         Sheet s = workbook.getSheetAt(sheet);
             Row r = s.getRow(row);
             Cell c = r.getCell(cell);
@@ -120,11 +121,24 @@ public class ExcelManipulation {
 
 
     } // merge an interval of cells
+
+    public static String toExcelColumn(int columnNumber) {
+        StringBuilder columnName = new StringBuilder();
+        columnNumber++; // Adjust for zero-indexed input
+
+        while (columnNumber > 0) {
+            int remainder = (columnNumber - 1) % 26;
+            columnName.insert(0, (char) (remainder + 'A'));
+            columnNumber = (columnNumber - 1) / 26;
+        }
+
+        return columnName.toString();
+    }
+
     public static void MergeCols(int sheet, int start_col, int start_row, int end_cols) {
 
         Sheet s= workbook.getSheetAt(sheet);
-        String string_range= (char) (start_col + 65)+""+(start_row)+":"+(char) (end_cols + 65)+start_row;
-
+        String string_range= toExcelColumn(start_col )+""+(start_row)+":"+ toExcelColumn(end_cols)+start_row;
 
         try {
             CellRangeAddress range = CellRangeAddress.valueOf(string_range);

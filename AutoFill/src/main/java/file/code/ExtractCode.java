@@ -3,6 +3,7 @@ package file.code;
 import java.io.*;
 
 import static file.code.ExtractPrototype.searchHeader;
+import static file.commun.GraphicUserInterfaces.Error_interface;
 import static file.commun.LoggerInitialize.*;
 
 
@@ -75,6 +76,7 @@ public class ExtractCode {
 
             if (returnedCode==null)
                 log4Error(functionName+" Not found");
+                Error_interface(functionName+" Not found");
             return returnedCode;
 
 

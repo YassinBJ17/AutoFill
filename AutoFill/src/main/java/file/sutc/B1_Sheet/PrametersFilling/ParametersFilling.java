@@ -1,7 +1,6 @@
 package file.sutc.B1_Sheet.PrametersFilling;
 
 import file.sutc.B1_Sheet.B1_ExcelSheet;
-
 import static file.commun.LoggerInitialize.log4Debug;
 import static file.commun.LoggerInitialize.log4Error;
 import static file.sutc.A2_Sheet.A2_ExcelSheet.Insert_Global_ParameterInA2;
@@ -73,7 +72,7 @@ public class ParametersFilling {
                 p = p.replace("*", ""); // delete *
             }
             String[] nameType=Parameters_Detect(p);
-            nameType[0]="p_"+nameType[0].replace("p_","");
+            //nameType[0]="p_"+nameType[0].replace("p_","");
             Parameters[numberOfParameters][INDEX_OF_NAME]= nameType[0];
             Parameters[numberOfParameters][INDEX_OF_TYPE]= nameType[1];
             domainClass=Extract_Domain(Parameters[numberOfParameters][INDEX_OF_TYPE]);

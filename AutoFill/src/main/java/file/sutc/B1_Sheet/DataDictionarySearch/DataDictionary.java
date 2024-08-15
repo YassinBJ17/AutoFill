@@ -42,7 +42,7 @@ public class DataDictionary {
                                 Cell thirdCell = row.getCell(2);
                                 Cell secondCell = row.getCell(1);
 
-                                  matchingRows = secondCell.getStringCellValue().trim();
+                                matchingRows = secondCell.getStringCellValue().trim();
 
                                 if((matchingRows.equalsIgnoreCase("STRUCTURE"))||(matchingRows.equalsIgnoreCase("STRUCT"))||(matchingRows.equalsIgnoreCase("UNION"))) {
                                     matchingRows= "-";
@@ -57,7 +57,6 @@ public class DataDictionary {
                                             matchingRows = String.valueOf(thirdCell.getNumericCellValue());
                                         }
                                 }
-
 
                                 }
                             }
@@ -90,6 +89,24 @@ public class DataDictionary {
         String matchingRows = searchExcelFiles(directoryPath, ParameterToSearch,searchForType);
         if (matchingRows.equals("")&&(searchForType!=2)) {
             return "not exist in the DD";
+        }
+        return matchingRows;
+    }
+
+
+
+    public static String DataDictionarySearchForRange(String ParameterToSearch){
+        // specify the directory path
+        String directoryPath = "../Datafiles/DD";
+
+        // search for the string in the Excel files in the directory and print the matching rows
+
+        ParameterToSearch=removeExtraCharacters(ParameterToSearch); // like * [ ]
+
+        String matchingRows = searchExcelFiles(directoryPath, ParameterToSearch,3);
+
+        if (matchingRows.equalsIgnoreCase("FULL")||matchingRows.equalsIgnoreCase("N.A.")) {
+            return "";
         }
         return matchingRows;
     }
