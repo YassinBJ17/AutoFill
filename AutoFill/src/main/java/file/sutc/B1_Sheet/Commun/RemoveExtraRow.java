@@ -87,7 +87,7 @@ public class RemoveExtraRow {
         }
 
 
-        if (numberOfUFT<MAXIMUM_UFT_NUMBER)
+        if (numberOfUFT<=MAXIMUM_UFT_NUMBER)
         {
             try {
                 B1_sheet.shiftRows(START_OF_PARAMETERS_TABLE-2, B1_sheet.getLastRowNum(), numberOfUFT-(MAXIMUM_UFT_NUMBER));

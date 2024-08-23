@@ -8,7 +8,6 @@ import static file.sutc.SutcCreationProcess.llrOfTheFunction;
 
 
 public class ExtractData {
-
     public static boolean robustnessTestOn=false;
     public static String Extract_Invalid_Domain(String domain){
 
@@ -117,6 +116,4 @@ public class ExtractData {
         }
         return r;
     }
-
-
 }

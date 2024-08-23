@@ -74,7 +74,6 @@ public class SutcCreationProcess {
         }
 */
 
-
        return "..\\Datafiles\\SUTC\\" + functionName + ".xls";
     }
 
@@ -96,9 +95,6 @@ public class SutcCreationProcess {
         return null; // File not found
     }
 
-
-
-
   public static void excelFinalManipulation(String path,String functionToGenerate) {
 
       String TextFromLlrFile,textFromSDDD;
@@ -111,28 +107,23 @@ public class SutcCreationProcess {
       causeEffectTableOrder=getTheFirstCauseEffectTable(path);// used to locate the first Cause Effect Table in the SDDD
       JDialog dialog;
 
-
       while (matcher.find()) {
-
 
           causesTable= new ArrayList<>(); // initialize cause table
           effectsTable= new ArrayList<>(); // initialize effect table
-
 
           TextFromLlrFile =ExtractFunctionFromSDDD(textFromSDDD.substring(matcher.start()));
           llrOfTheFunction =TextFromLlrFile.split("\n"); //split each LLR line of the function in a table lowLevelReq
 
           functionName=llrOfTheFunction[1].trim().toLowerCase();
 
-          if ((!Objects.equals(functionToGenerate, "start"))&&(!functionToGenerate.equals(functionName))){
+          if ((!Objects.equals(functionToGenerate, "start"))&&(!functionToGenerate.toLowerCase().equals(functionName))){
               causeEffectTableOrder++;
               continue;
           }
 
-
           log4Info(functionName); // extract the name of the function
           codeOfTheFunction =ExtractFunctionFromCode(functionName);
-
 
          if (codeOfTheFunction ==null) {
               causeEffectTableOrder++; // increment table order
