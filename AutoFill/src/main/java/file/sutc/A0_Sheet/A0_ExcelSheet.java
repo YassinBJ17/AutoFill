@@ -12,9 +12,10 @@ public class A0_ExcelSheet {
     public static String getSDDD_Version(String textFromSDDD ){
 
         String ret ;
+        //System.out.println(textFromSDDD);
         ret = textFromSDDD.substring(textFromSDDD.indexOf("~")+1);
         ret=ret.substring(0,ret.indexOf(":"));
-
+        //System.out.println(ret);
         return ret;
 
     }

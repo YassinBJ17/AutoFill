@@ -79,8 +79,7 @@ public class ParametersFilling {
             Parameters[numberOfParameters][INDEX_OF_DOMAIN]=domainClass[0];
             Parameters[numberOfParameters][INDEX_OF_CLASS]=domainClass[0];
             Parameters[numberOfParameters][INDEX_OF_INVALID_DOMAIN]=domainClass[1];
-
-
+            
             if(Parameters[numberOfParameters][INDEX_OF_DOMAIN].equals("-"))
             {
 

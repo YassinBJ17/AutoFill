@@ -222,6 +222,7 @@ public class ExcelManipulation {
     public static String[] Parameters_Detect(String str) {
         str=str.replace("const","");
         str=str.replace("CONST","");
+        //System.out.println(str);
         String[] words = str.split("\\s+"); // Split the string into words
         String[] reversed = new String[words.length];
         int index = 0;
